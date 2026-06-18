@@ -1,9 +1,7 @@
-; md.mdp — production MD (apo-HEL), 20 ns, pipeline-validation + RMSF feature
-; NOTE: 20 ns / single replica is a validation length. Converged RMSF as a real feature
-;       will need longer + replicas (>=3) — decide before treating RMSF as a feature.
+; md.mdp — production MD (apo-HEL), 100 ns, single trajectory for RMSF statistics
 integrator              = md
 dt                      = 0.002
-nsteps                  = 10000000      ; 20 ns
+nsteps                  = 50000000      ; 100 ns
 continuation            = yes           ; velocities from NPT checkpoint
 
 ; Output
@@ -50,4 +48,4 @@ lincs_order             = 4
 
 ; No position restraints, no velocity generation in production
 gen_vel                 = no
-ld_seed                 = 20260618
+ld_seed                 = -1

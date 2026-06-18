@@ -28,8 +28,8 @@ deviations and their rationale are recorded here. Specialized FRESEAN / 3D-2PT r
 | Thermostat | V-rescale, 300 K, tau_t 0.1, groups Protein/Non-Protein | same | single bath OK (equilibrium run, not non-eq) |
 | Barostat | C-rescale for NPT equil; Parrinello-Rahman for production | **deviation** | PR rings if started far from equilibrium; C-rescale is the modern equilibration choice (fixes a house-script issue) |
 | Equilibration | EM → 100 ps NVT (posre) → 100 ps NPT (posre) | same | |
-| Production length | 20 ns, single replica | documented | pipeline-validation length; **converged RMSF will need longer + replicas — to decide before treating RMSF as a real feature** |
-| Seeds | gen-seed and ld-seed set explicitly (not -1) | deviation | reproducibility (house left defaults) |
+| Production length | 100 ns, single trajectory | documented | one long run for RMSF statistics (Brandon, 2026-06-18); replicas deferred |
+| Seeds | gen_seed = -1, ld_seed = -1 (random) | same | Brandon: bitwise repro is not the goal. Reproducibility = git-tracked inputs + documented protocol + saved derived outputs; random seeds also give genuinely independent replicas. If a trr is purged from scratch, re-pull and re-run. |
 | Output | xtc + energy + log every 10 ps; no trr | same | sufficient for RMSF |
 
 ## HEL-specific prep checkpoints (do not gloss over)

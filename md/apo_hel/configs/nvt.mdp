@@ -40,8 +40,8 @@ constraint_algorithm    = LINCS
 lincs_iter              = 1
 lincs_order             = 4
 
-; Velocity generation (explicit seed for reproducibility)
+; Velocity generation (random seed; bitwise repro not the goal — see docs/METHODS.md)
 gen_vel                 = yes
 gen_temp                = 300
-gen_seed                = 20260618
-ld_seed                 = 20260618
+gen_seed                = -1
+ld_seed                 = -1

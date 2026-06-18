@@ -7,13 +7,16 @@ flexibility feature} (the Westhof re-test). House default stack signed off as th
 \paragraph{Stack.} AMBER99SB-ILDN / TIP3P; dodecahedron box, 1.2\,nm clearance; neutralize $+$
 0.15\,M NaCl; leapfrog, 2\,fs, LINCS on h-bonds; PME ($r_\mathrm{coul}=r_\mathrm{vdw}=1.0$\,nm,
 potential-shift, DispCorr); V-rescale at 300\,K (Protein / Non-Protein); EM $\to$ 100\,ps NVT $\to$
-100\,ps NPT (both position-restrained) $\to$ 20\,ns production. Explicit \texttt{gen\_seed} and
-\texttt{ld\_seed} for reproducibility. Frozen \texttt{.mdp} files: \texttt{../md/apo\_hel/configs/}.
+100\,ps NPT (both position-restrained) $\to$ \textbf{100\,ns} production (single trajectory, for
+RMSF statistics). Random seeds (\texttt{gen\_seed} $=$ \texttt{ld\_seed} $= -1$): bitwise
+reproducibility is not the target --- the workflow reproduces from git-tracked inputs and saved
+derived outputs, and random seeds give genuinely independent replicas. Frozen \texttt{.mdp} files:
+\texttt{../md/apo\_hel/configs/}.
 
 \paragraph{Deliberate deviations from the house scripts.}
 (i) \textbf{C-rescale} barostat for NPT equilibration (Parrinello-Rahman only in production), since
 PR can ring when started far from equilibrium; (ii) reconciled the box type the old scripts disagreed
-on (dodecahedron); (iii) explicit random seeds.
+on (dodecahedron).
 
 \paragraph{HEL-specific checkpoints (not glossed over).} pdb2gmx must form HEL's \textbf{4 disulfides}
 (6--127, 30--115, 64--80, 76--94) --- verify the log reports 4 SS bonds. His15 protonation: record the
@@ -21,8 +24,8 @@ assigned state. Crystal waters (78 HOH) removed; fresh TIP3P added. Read every g
 than letting \texttt{-maxwarn} hide it.
 
 \paragraph{Caveats / flags.} TIP3P over-mobilizes water and 2\,fs$+$LINCS suppress H dynamics --- fine
-for relative RMSF and pipeline validation, \emph{not} for the dynamics-grade features. 20\,ns / single
-replica is a validation length; a converged RMSF feature will need longer $+\ge 3$ replicas.
+for relative RMSF and pipeline validation, \emph{not} for the dynamics-grade features. 100\,ns is a single
+trajectory for statistics; replicas are deferred (random seeds make adding independent ones trivial).
 
 \paragraph{Deferred: the distinctive run.} FRESEAN mode participation and 3D-2PT hydration
 thermodynamics require a \emph{separate} protocol --- high-frequency velocity output, constraint

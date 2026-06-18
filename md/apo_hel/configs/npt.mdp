@@ -47,4 +47,4 @@ lincs_iter              = 1
 lincs_order             = 4
 
 gen_vel                 = no
-ld_seed                 = 20260618
+ld_seed                 = -1
