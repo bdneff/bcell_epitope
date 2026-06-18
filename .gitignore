@@ -1,0 +1,45 @@
+# ---- large GROMACS outputs: regenerable, live on Gemini, never in git ----
+*.trr
+*.xtc
+*.edr
+*.cpt
+*.tpr
+*.gro
+mdout.mdp
+*#
+bck.*
+\#*\#
+
+# ---- Slurm logs ----
+slurm_*.out
+slurm_*.err
+*_[0-9]*.out
+*_[0-9]*.err
+
+# ---- LaTeX build artifacts (main.pdf IS tracked; see below) ----
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.toc
+*.log
+*.out
+manuscript/*.log
+
+# ---- python / notebooks / OS cruft ----
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+.DS_Store
+
+# ---- tracked on purpose (override) ----
+# inputs & curated data travel with the repo for reproducibility:
+!structures/*.pdb
+!benchmark/*.xlsx
+!benchmark/*.csv
+!md/**/configs/*.mdp
+!md/**/*.sh
+!manuscript/main.pdf

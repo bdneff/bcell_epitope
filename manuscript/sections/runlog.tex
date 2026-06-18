@@ -1,0 +1,22 @@
+\section{Run log}
+
+Exact-command reproducibility ledger. Append a row per stage; pin the GROMACS version actually
+used on Gemini, seeds, and Slurm job id.
+
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+Date & Stage & Command & GROMACS ver. & Job / output \\
+\midrule
+2026-06-18 & structure & \texttt{curl .../1AKI.pdb} & --- & \texttt{structures/1AKI.pdb} \\
+\textit{pending} & prep & \texttt{sbatch md/apo\_hel/prep.sh structures/1AKI.pdb} & \texttt{[verify]} & npt.gro/cpt \\
+\textit{pending} & production & \texttt{sbatch md/apo\_hel/md.sh} & \texttt{[verify]} & md.xtc \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Status (2026-06-18).} Project scaffolded; benchmark audited; first system (HEL/1AKI)
+selected and label mapping verified 1:1; apo-HEL run \#1 staged and signed off. \textbf{Next:}
+confirm Gemini's GROMACS module/version and partition, sync the repo to the Gemini folder, then
+\texttt{sbatch prep.sh}. Open: production length / replicas for a converged RMSF feature; scheduling
+the FRESEAN/3D-2PT run.

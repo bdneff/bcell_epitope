@@ -1,0 +1,21 @@
+\section{The label benchmark}
+
+Curated experimental alanine-scan $\Delta\Delta G$ for antigen-side residues lives in
+\texttt{benchmark/antigen\_alanine\_scanning\_benchmark\_v2.xlsx} (6 sheets: README,
+Simple\_Primary, Full\_Schema [51 cols], hGH\_Table2\_4, Paper\_Inventory, Counts). Audited
+2026-06-18.
+
+\paragraph{Coverage.} 203 primary rows, 13 datasets, 7 antigens. Source: AB-Bind~\cite{sirin2016}
+(195 rows; \texttt{github.com/sarahsirin/AB-Bind-Database}) and the Jin 1994 hGH thesis (8 rows).
+Sign convention: $+\Delta\Delta G \Rightarrow$ weaker binding $\Rightarrow$ residue important
+(38 negative = binding-improving alanines; 17 zeros).
+
+\paragraph{Integrity.} The $\Delta\Delta G \leftrightarrow K_d$-ratio arithmetic is internally
+consistent for all 203 rows ($<2\%$ vs $\exp(\Delta\Delta G/RT)$). No censoring in the primary set.
+The 4 non-alanine rows (hGH, EC50-derived) are correctly flagged \texttt{exclude\_from\_binding\_label}.
+Provenance (DOI, source line, URL) is complete except the two homology-modeled BoNT/A2 sets and the
+Jin rows. \texttt{transcription\_confidence} is uniformly \texttt{high} --- treat as a soft flag,
+possibly a default fill. \texttt{[verify]} spot-check 1--2 known hotspots against the source papers.
+
+\paragraph{Clean MD-correlation core.} Dropping homology models (\texttt{HM\_}) and EC50/excluded
+rows leaves \textbf{163 rows / 5 antigens on real PDBs} (VEGF, lysozyme, HPr, BoNT/A1, MT-SP1).

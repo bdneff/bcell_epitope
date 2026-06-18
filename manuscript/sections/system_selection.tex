@@ -1,0 +1,30 @@
+\section{First system: hen egg-white lysozyme (HEL)}
+
+HEL is the cleanest entry point: small (129 residues), rigid (apo $\approx$ bound), very stable,
+textbook AMBER behavior, and --- crucially --- it carries \textbf{three} independent antibody
+alanine scans in the benchmark, on a consistent 1--129 numbering:
+
+\begin{center}
+\begin{tabular}{llccc}
+\toprule
+Antibody & PDB & Ag chain & \# Ala & $\Delta\Delta G$ range (kcal/mol) \\
+\midrule
+HyHEL-63 & 1DQJ & C & 11 & 0.60--6.10 \\
+D1.3     & 1VFB & C & 12 & 0.20--2.90 \\
+HyHEL-10 & 3HFM & Y &  4 & 1.03--6.83 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Why this is better than one antibody.} HyHEL-10 and HyHEL-63 share an epitope and
+\emph{agree} on hotspots (K96: 6.83 vs 6.10; Y20: 4.87 vs 3.30; K97: 6.18 vs 3.50; R21: 1.03 vs 1.30)
+--- direct evidence for the antigen-intrinsic hotspot idea (Design note 1). D1.3 binds a
+\emph{non-overlapping} epitope (residues 18--24 and 116--129; zero residue overlap with the HyHELs),
+giving a second epitope plus built-in negative controls. Because we extract features from the apo
+antigen, \textbf{one apo-HEL trajectory} serves all three antibodies and their mean.
+
+\paragraph{Starting structure.} RCSB \textbf{1AKI} (1.5\,\AA{} X-ray, chain A, apo). Verified: the
+1AKI sequence matches the benchmark WT identity at all 23 labeled positions, so labels map 1:1 onto
+1--129 numbering (K96/K97/Y20 hotspots confirmed). Apo crystal chosen over antigen-stripped-from-complex
+to match the prediction scenario; HEL's rigidity makes the choice low-risk.
+\figorbox{hel_crossab_map.png}{0.8}

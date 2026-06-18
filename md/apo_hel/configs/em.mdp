@@ -1,0 +1,19 @@
+; em.mdp — energy minimization (apo-HEL)
+integrator      = steep
+emtol           = 1000.0
+emstep          = 0.01
+nsteps          = 50000
+
+cutoff-scheme   = Verlet
+nstlist         = 10
+ns_type         = grid
+pbc             = xyz
+
+coulombtype     = PME
+rcoulomb        = 1.0
+pme_order       = 4
+fourierspacing  = 0.16
+
+rvdw            = 1.0
+vdw-modifier    = Potential-shift-Verlet
+DispCorr        = EnerPres

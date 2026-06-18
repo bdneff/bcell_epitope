@@ -1,0 +1,36 @@
+\section{Design decisions to hold onto}
+
+Five issues decide whether the project produces a result or an artifact. Recorded here so they
+stay front-of-mind.
+
+\begin{enumerate}
+  \item \textbf{The label is antibody-specific; the features are antibody-agnostic.}
+  $\Delta\Delta G_\mathrm{bind}^{(i)}$ is a residue's contribution to \emph{one} paratope, but
+  $\mathbf{x}_i$ comes from the apo antigen and cannot know the antibody. So
+  $f(\mathbf{x}_i)\to\Delta\Delta G^{(i)}$ can only recover the \emph{antibody-marginal}
+  (antigen-intrinsic) hotspot propensity. This is not a weakness to hide --- it is exactly why
+  dynamics/flexibility features should help (cf.~Westhof). Where an antigen has several antibodies,
+  average $\Delta\Delta G^{(i)}$ over them to \emph{define} the intrinsic target.
+
+  \item \textbf{``Beyond SASA'' is the primary hypothesis, not a footnote.} Surface exposure is the
+  master confounder: exposed residues are simultaneously more likely to be hotspots, more flexible,
+  and more hydrated. The publishable claim is not ``flexibility predicts epitopes'' (Westhof has
+  that) but ``dynamics/solvation features add signal \emph{after} controlling for static exposure.''
+  Design: baseline $=$ SASA $+$ depth $+$ residue type; then test the partial $R^2$ added by RMSF,
+  mode participation, and 3D-2PT hydration.
+
+  \item \textbf{Effective $N \approx$ \#antigens/folds, not \#residues.} Residues within an antigen
+  are correlated and the intrinsic signal is per-fold. Split \textbf{leave-one-complex-out} (ideally
+  leave-one-fold-out); never random residue splits. At this scale the work is hypothesis-generating
+  --- powered for a strong dynamics-vs-exposure effect, not a deployable predictor. State this plainly.
+
+  \item \textbf{Features come from the apo antigen} --- which is the point and sets a ceiling.
+  Cryptic / induced-fit epitopes (conformational selection vs.\ induced fit) cannot be predicted in
+  principle from apo features. Conformational-selection epitopes \emph{should} show in apo
+  flexibility/mode features; pure induced-fit ones will not. That contrast is itself a result.
+
+  \item \textbf{The MD protocol is not one stack.} A flexibility/RMSF run differs from a
+  FRESEAN/3D-2PT run (the latter needs high-frequency velocity output, constraint removal, and a
+  water model validated for dynamics). Likely two protocols per antigen. The house TIP3P/2\,fs/LINCS
+  default is scrutinized accordingly (see \texttt{../docs/METHODS.md}).
+\end{enumerate}

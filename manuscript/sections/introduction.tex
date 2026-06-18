@@ -1,0 +1,23 @@
+\section{Motivation and the gap}
+
+We want to predict which residues of an antigen are B-cell epitope residues, from the antigen
+structure alone, in cases where the antibody is unknown. Doing this rigorously requires
+residue-level labels for ``binding importance.'' We take these from \textbf{alanine scanning}:
+for residue $i$, $\Delta\Delta G_\mathrm{bind}^{(i)} = \Delta G_\mathrm{bind}^{\mathrm{mut},i} -
+\Delta G_\mathrm{bind}^{\mathrm{WT}}$, with large positive values flagging residues whose
+wild-type identity stabilizes the interface. We treat this as a residue-level epitope score,
+$S_i^\mathrm{epitope} \approx \Delta\Delta G_\mathrm{bind}^{(i)}$. (Full derivation and the
+alchemical / StaB-ddG label tiers: \texttt{../../tcr/docs/b\_cell\_eptiope\_prediction\_may23\_update\_final.pdf}.)
+
+\paragraph{The gap.} Most B-cell epitope predictors label residues by \emph{contact distance} to
+a bound antibody. That conflates ``close'' with ``important'': a residue can sit at the interface
+yet contribute little energetically, or be energetically critical without being the nearest
+neighbor. Alanine-scan $\Delta\Delta G$ is a cleaner, energetic definition of importance. Separately,
+since Westhof et al.~\cite{westhof1984} it has been known that antigenicity correlates with
+\emph{segmental mobility} (flexibility / B-factor) --- an antigen-intrinsic, antibody-agnostic
+property. The opportunity is to test, with modern MD, whether antigen-only \emph{dynamical} and
+\emph{solvation} features (RMSF, collective-mode participation, hydration thermodynamics) predict
+energetic binding importance --- and whether they beat static exposure. This is where the
+author's methods background (FRESEAN collective-mode analysis; 3D-2PT-style hydration
+thermodynamics; non-equilibrium energy flow) is the differentiator
+(\texttt{../../\_literature/my\_manuscripts/}).
