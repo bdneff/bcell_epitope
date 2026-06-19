@@ -9,14 +9,17 @@ used on Gemini, seeds, and Slurm job id.
 Date & Stage & Command & GROMACS ver. & Job / output \\
 \midrule
 2026-06-18 & structure & \texttt{curl .../1AKI.pdb} & --- & \texttt{structures/1AKI.pdb} \\
-\textit{pending} & prep & \texttt{sbatch md/apo\_hel/prep.sh structures/1AKI.pdb} & \texttt{[verify]} & npt.gro/cpt \\
-\textit{pending} & production & \texttt{sbatch md/apo\_hel/md.sh} & \texttt{[verify]} & md.xtc \\
+\textit{pending} & prep & \texttt{sbatch md/apo\_hel/prep.sh structures/1AKI.pdb} & 2023.2-dev & npt.gro/cpt \\
+\textit{pending} & production & \texttt{sbatch md/apo\_hel/md.sh} & 2023.2-dev & md.xtc \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \paragraph{Status (2026-06-18).} Project scaffolded; benchmark audited; first system (HEL/1AKI)
-selected and label mapping verified 1:1; apo-HEL run \#1 staged and signed off. \textbf{Next:}
-confirm Gemini's GROMACS module/version and partition, sync the repo to the Gemini folder, then
-\texttt{sbatch prep.sh}. Production length set to 100\,ns (single trajectory). Open: replicas
-(deferred --- random seeds make them trivial); scheduling the FRESEAN/3D-2PT run.
+selected and label mapping verified 1:1; apo-HEL run \#1 staged and signed off. Gemini
+environment confirmed: module \texttt{Gromacs} (capital G), GROMACS \texttt{2023.2-dev}
+(avx2\_256), partition \texttt{gpu-a100} (4-day limit, A100 fastest); repo cloned to
+\texttt{/scratch/bneff/bcell\_epitope}. Production walltime set to 48\,h ceiling.
+\textbf{Next:} \texttt{git pull} on Gemini, then \texttt{sbatch prep.sh} $\to$ \texttt{sbatch
+md.sh}; record Slurm job ids and ns/day. Production length 100\,ns (single trajectory). Open:
+replicas (deferred --- random seeds make them trivial); scheduling the FRESEAN/3D-2PT run.

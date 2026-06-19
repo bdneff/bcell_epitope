@@ -10,7 +10,7 @@
 # Output: npt.gro, npt.cpt, topol.top  (inputs for md.sh)
 # =============================================================================
 #SBATCH -J hel_prep
-#SBATCH -p gpu-a100              # CONFIRM partition on Gemini
+#SBATCH -p gpu-a100              # confirmed on Gemini 2026-06-18 (4-day limit, A100 fastest)
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
@@ -25,7 +25,7 @@ INPUT_PDB="${1:?Usage: sbatch prep.sh <input.pdb>}"
 CFG="$(dirname "$0")/configs"
 
 echo "=== apo-HEL prep | $(date) | node $(hostname) | job ${SLURM_JOB_ID} ==="
-module load gromacs              # CONFIRM module name/version on Gemini
+module load Gromacs              # Gemini module = "Gromacs" (capital G); GROMACS 2023.2-dev
 gmx --version | grep -i version || true
 
 check() { [[ -f "$1" ]] || { echo "ERROR: missing expected output $1 ($2)"; exit 1; }; echo "  -> OK: $1"; }

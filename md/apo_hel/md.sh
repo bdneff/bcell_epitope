@@ -4,11 +4,11 @@
 # Run from the same directory as prep.sh outputs (npt.gro, npt.cpt, topol.top).
 # =============================================================================
 #SBATCH -J hel_prod
-#SBATCH -p gpu-a100              # CONFIRM partition on Gemini
+#SBATCH -p gpu-a100              # confirmed on Gemini 2026-06-18 (4-day limit, A100 fastest)
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
-#SBATCH --time=24:00:00
+#SBATCH --time=48:00:00          # 100 ns; generous ceiling (expect ~10-20 h on one A100)
 #SBATCH -o slurm_md_%j.out
 #SBATCH -e slurm_md_%j.err
 
@@ -16,7 +16,7 @@ set -euo pipefail
 CFG="$(dirname "$0")/configs"
 
 echo "=== apo-HEL production | $(date) | node $(hostname) | job ${SLURM_JOB_ID} ==="
-module load gromacs              # CONFIRM module name/version on Gemini
+module load Gromacs              # Gemini module = "Gromacs" (capital G); GROMACS 2023.2-dev
 gmx --version | grep -i version || true
 
 gmx grompp -f "$CFG/md.mdp" -c npt.gro -t npt.cpt -p topol.top -o md.tpr -nobackup
