@@ -22,7 +22,10 @@ set -euo pipefail
 
 INPUT_PDB="${1:?Usage: sbatch prep.sh <input.pdb>}"
 [[ -f "$INPUT_PDB" ]] || { echo "ERROR: $INPUT_PDB not found"; exit 1; }
-CFG="$(dirname "$0")/configs"
+# Slurm copies the batch script to a private spool dir, so $0/dirname won't find configs/.
+# Anchor to the submit dir (repo root when you run `sbatch md/apo_hel/prep.sh ...`).
+CFG="${SLURM_SUBMIT_DIR:-$PWD}/md/apo_hel/configs"
+[[ -d "$CFG" ]] || { echo "ERROR: configs dir not found at $CFG (submit from repo root)"; exit 1; }
 
 echo "=== apo-HEL prep | $(date) | node $(hostname) | job ${SLURM_JOB_ID} ==="
 module load Gromacs              # Gemini module = "Gromacs" (capital G); GROMACS 2023.2-dev

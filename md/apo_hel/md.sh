@@ -13,7 +13,10 @@
 #SBATCH -e slurm_md_%j.err
 
 set -euo pipefail
-CFG="$(dirname "$0")/configs"
+# Slurm copies the batch script to a private spool dir, so $0/dirname won't find configs/.
+# Anchor to the submit dir (repo root when you run `sbatch md/apo_hel/md.sh`).
+CFG="${SLURM_SUBMIT_DIR:-$PWD}/md/apo_hel/configs"
+[[ -d "$CFG" ]] || { echo "ERROR: configs dir not found at $CFG (submit from repo root)"; exit 1; }
 
 echo "=== apo-HEL production | $(date) | node $(hostname) | job ${SLURM_JOB_ID} ==="
 module load Gromacs              # Gemini module = "Gromacs" (capital G); GROMACS 2023.2-dev
