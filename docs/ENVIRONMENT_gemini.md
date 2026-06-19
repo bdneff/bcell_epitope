@@ -13,7 +13,7 @@ Gemini and are gitignored. Settings below are inherited from the working TGen sc
 
 ## Assumed job geometry (from md/scripts, adjust after confirming)
 - `--gres=gpu:1`, `--cpus-per-task=8`, `--mem=32G`, `-pin on`, `-ntmpi 1 -ntomp 8`.
-- Prep walltime ~4 h; 20 ns production walltime ~ a few h on one A100 (record actual ns/day).
+- Prep walltime ~4 h; 100 ns production walltime ~10--20 h on one A100 (record actual ns/day).
 - GPU offload: EM/equil `-nb gpu -pme gpu -bonded gpu`; production `-gpu_id 0 -pin on`.
 
 ## Sync workflow

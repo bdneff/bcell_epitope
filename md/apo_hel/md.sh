@@ -1,6 +1,6 @@
 #!/bin/bash
 # =============================================================================
-# md.sh — apo-HEL production MD (20 ns). Submit with: sbatch md.sh
+# md.sh — apo-HEL production MD (100 ns). Submit with: sbatch md.sh
 # Run from the same directory as prep.sh outputs (npt.gro, npt.cpt, topol.top).
 # =============================================================================
 #SBATCH -J hel_prod
