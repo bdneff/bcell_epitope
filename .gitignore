@@ -10,6 +10,11 @@ mdout.mdp
 bck.*
 \#*\#
 
+# ---- per-run working dir: all regenerable outputs live here, never in git ----
+# (catches topol.top, clean.pdb, posre.itp, *.itp etc. that escape the extension
+#  filters above). Run dirs live on Gemini; configs/ + *.sh + logs/.gitkeep stay tracked.
+md/**/out/
+
 # ---- Slurm logs ----
 slurm_*.out
 slurm_*.err

@@ -9,8 +9,8 @@ used on Gemini, seeds, and Slurm job id.
 Date & Stage & Command & GROMACS ver. & Job / output \\
 \midrule
 2026-06-18 & structure & \texttt{curl .../1AKI.pdb} & --- & \texttt{structures/1AKI.pdb} \\
-\textit{pending} & prep & \texttt{sbatch md/apo\_hel/prep.sh structures/1AKI.pdb} & 2023.2-dev & npt.gro/cpt \\
-\textit{pending} & production & \texttt{sbatch md/apo\_hel/md.sh} & 2023.2-dev & md.xtc \\
+\textit{pending} & prep & \texttt{sbatch md/1AKI/apo/prep.sh} & 2023.2-dev & out/npt.gro/cpt \\
+\textit{pending} & production & \texttt{sbatch md/1AKI/apo/md.sh} & 2023.2-dev & out/md.xtc \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -31,7 +31,7 @@ fixed while getting prep to run; recorded for reproducibility:
         \texttt{gromacs} errors on a missing \texttt{shared} dependency. Scripts updated.
   \item \textbf{Config paths under Slurm.} Slurm copies the batch script to a private spool
         dir, so \texttt{\$(dirname \$0)/configs} resolved into the spool dir and \texttt{ions.mdp}
-        was not found. Scripts now anchor configs to \texttt{\$SLURM\_SUBMIT\_DIR/md/apo\_hel/configs};
+        was not found. Scripts now anchor paths to \texttt{\$SLURM\_SUBMIT\_DIR};
         \textbf{always submit from the repo root}.
   \item \textbf{GPU bonded offload on EM.} \texttt{-bonded gpu} requires a dynamical integrator;
         EM uses \texttt{steep}, so the EM \texttt{mdrun} now uses \texttt{-nb gpu} only. NVT/NPT/

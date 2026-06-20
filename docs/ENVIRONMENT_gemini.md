@@ -20,14 +20,20 @@ Gemini and are gitignored. Settings below are inherited from the working TGen sc
   errors — needs a dynamical integrator); NVT/NPT (`md`) = `-nb gpu -pme gpu -bonded gpu`;
   production `-gpu_id 0 -pin on` (auto-assign).
 
+## Run-dir layout
+Per-PDB, per-state run dirs: `md/<PDB>/<state>/` (e.g. `md/1AKI/apo/`). Each owns its frozen
+`configs/` (mdps, git-tracked) + `prep.sh`/`md.sh` (git-tracked). Scripts write **all** GROMACS
+output into that run's `out/` (gitignored) and slurm logs into `logs/` — nothing lands in the
+repo root. Structures stay shared in `structures/<PDB>.pdb`.
+
 ## Sync workflow
 1. Stage inputs + frozen configs + sbatch here (git-tracked); commit + push.
 2. `git pull` on Gemini. Do **not** `rsync --delete` toward Gemini data.
-3. **Submit from the repo root** (`/scratch/bneff/bcell_epitope`) — scripts anchor configs to
-   `$SLURM_SUBMIT_DIR/md/apo_hel/configs`; Slurm spools the script, so `$0`-relative paths fail.
-4. `sbatch md/apo_hel/prep.sh structures/1AKI.pdb` → equilibrated system (stale outputs from a
+3. **Submit from the repo root** (`/scratch/bneff/bcell_epitope`) — scripts anchor paths to
+   `$SLURM_SUBMIT_DIR`; Slurm spools the script, so `$0`-relative paths fail.
+4. `sbatch md/1AKI/apo/prep.sh` → equilibrated system in `md/1AKI/apo/out/` (stale outputs from a
    failed run are overwritten; `prep.sh` uses `-nobackup`). Check `pdb2gmx.log` reports 4 SS bonds.
-5. `sbatch md/apo_hel/md.sh` → production; pull back `.xtc` (compressed) for analysis.
+5. `sbatch md/1AKI/apo/md.sh` → production; pull back `out/md.xtc` (compressed) for analysis.
 6. **Move logs/outputs off scratch promptly** — scratch is purged (logs were lost once). Keep the
-   small text logs (`slurm_*.out`, `pdb2gmx.log`, `md.log`).
+   small text logs (`logs/slurm_*.out`, `out/pdb2gmx.log`, `out/md.log`).
 7. Record job ids + ns/day + commands in `manuscript/sections/runlog.tex`.
