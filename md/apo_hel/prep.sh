@@ -62,7 +62,9 @@ check ions.gro genion
 
 # --- 5. Energy minimization --------------------------------------------------
 gmx grompp -f "$CFG/em.mdp" -c ions.gro -p topol.top -o em.tpr -nobackup
-gmx mdrun -v -deffnm em -ntmpi 1 -ntomp 8 -nb gpu -bonded gpu -pin on -nobackup
+# EM uses the 'steep' integrator; GPU bonded offload requires a dynamical integrator (md/sd),
+# so NO -bonded gpu here (it errors). -nb gpu is fine. NVT/NPT/prod use md, so they keep it.
+gmx mdrun -v -deffnm em -ntmpi 1 -ntomp 8 -nb gpu -pin on -nobackup
 check em.gro "mdrun EM"
 
 # --- 6. NVT (100 ps, restrained) --------------------------------------------

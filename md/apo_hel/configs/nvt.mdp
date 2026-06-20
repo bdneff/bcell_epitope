@@ -13,7 +13,6 @@ nstlog                  = 5000
 ; Neighbour searching
 cutoff-scheme           = Verlet
 nstlist                 = 10
-ns_type                 = grid
 pbc                     = xyz
 
 ; Electrostatics / vdW

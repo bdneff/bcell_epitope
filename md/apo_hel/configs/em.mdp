@@ -6,7 +6,6 @@ nsteps          = 50000
 
 cutoff-scheme   = Verlet
 nstlist         = 10
-ns_type         = grid
 pbc             = xyz
 
 coulombtype     = PME
