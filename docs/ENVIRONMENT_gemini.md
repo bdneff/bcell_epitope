@@ -16,11 +16,18 @@ Gemini and are gitignored. Settings below are inherited from the working TGen sc
 ## Assumed job geometry (from md/scripts, adjust after confirming)
 - `--gres=gpu:1`, `--cpus-per-task=8`, `--mem=32G`, `-pin on`, `-ntmpi 1 -ntomp 8`.
 - Prep walltime ~4 h; 100 ns production walltime ~10--20 h on one A100 (record actual ns/day).
-- GPU offload: EM/equil `-nb gpu -pme gpu -bonded gpu`; production `-gpu_id 0 -pin on`.
+- GPU offload depends on the integrator: **EM (`steep`) = `-nb gpu` only** (`-bonded gpu`
+  errors — needs a dynamical integrator); NVT/NPT (`md`) = `-nb gpu -pme gpu -bonded gpu`;
+  production `-gpu_id 0 -pin on` (auto-assign).
 
 ## Sync workflow
-1. Stage inputs + frozen configs + sbatch here (git-tracked).
-2. Sync repo → Gemini folder (rsync/git). Do **not** `rsync --delete` toward Gemini data.
-3. `sbatch md/apo_hel/prep.sh structures/1AKI.pdb` → equilibrated system.
-4. `sbatch md/apo_hel/md.sh` → production; pull back `.xtc` (compressed) for analysis.
-5. Record job ids + commands in `manuscript/sections/runlog.tex`.
+1. Stage inputs + frozen configs + sbatch here (git-tracked); commit + push.
+2. `git pull` on Gemini. Do **not** `rsync --delete` toward Gemini data.
+3. **Submit from the repo root** (`/scratch/bneff/bcell_epitope`) — scripts anchor configs to
+   `$SLURM_SUBMIT_DIR/md/apo_hel/configs`; Slurm spools the script, so `$0`-relative paths fail.
+4. `sbatch md/apo_hel/prep.sh structures/1AKI.pdb` → equilibrated system (stale outputs from a
+   failed run are overwritten; `prep.sh` uses `-nobackup`). Check `pdb2gmx.log` reports 4 SS bonds.
+5. `sbatch md/apo_hel/md.sh` → production; pull back `.xtc` (compressed) for analysis.
+6. **Move logs/outputs off scratch promptly** — scratch is purged (logs were lost once). Keep the
+   small text logs (`slurm_*.out`, `pdb2gmx.log`, `md.log`).
+7. Record job ids + ns/day + commands in `manuscript/sections/runlog.tex`.

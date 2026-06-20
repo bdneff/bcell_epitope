@@ -23,3 +23,21 @@ environment confirmed: module \texttt{Gromacs} (capital G), GROMACS \texttt{2023
 \textbf{Next:} \texttt{git pull} on Gemini, then \texttt{sbatch prep.sh} $\to$ \texttt{sbatch
 md.sh}; record Slurm job ids and ns/day. Production length 100\,ns (single trajectory). Open:
 replicas (deferred --- random seeds make them trivial); scheduling the FRESEAN/3D-2PT run.
+
+\paragraph{Run-script fixes (bringing up run \#1 on Gemini).} Three issues surfaced and were
+fixed while getting prep to run; recorded for reproducibility:
+\begin{itemize}
+  \item \textbf{Module name.} Gemini's module is \texttt{Gromacs} (capital G); lowercase
+        \texttt{gromacs} errors on a missing \texttt{shared} dependency. Scripts updated.
+  \item \textbf{Config paths under Slurm.} Slurm copies the batch script to a private spool
+        dir, so \texttt{\$(dirname \$0)/configs} resolved into the spool dir and \texttt{ions.mdp}
+        was not found. Scripts now anchor configs to \texttt{\$SLURM\_SUBMIT\_DIR/md/apo\_hel/configs};
+        \textbf{always submit from the repo root}.
+  \item \textbf{GPU bonded offload on EM.} \texttt{-bonded gpu} requires a dynamical integrator;
+        EM uses \texttt{steep}, so the EM \texttt{mdrun} now uses \texttt{-nb gpu} only. NVT/NPT/
+        production use \texttt{md} and keep \texttt{-nb/-pme/-bonded gpu} (audited).
+\end{itemize}
+Also removed the obsolete \texttt{ns\_type} entry from all mdp files (ignored under the Verlet
+scheme). \textbf{Caveat:} Gemini scratch is not durable --- move logs/outputs off scratch after
+each run (an earlier prep's logs were lost to a purge). Sanity check per run: \texttt{pdb2gmx.log}
+must report \textbf{4 disulfides} for HEL.
