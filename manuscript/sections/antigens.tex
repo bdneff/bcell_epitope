@@ -1,9 +1,10 @@
 \section{Simulated antigens}
 
 One section per antigen we simulate: what it is, the structural handle we use, and its
-alanine-scan labels. Structure-image placeholders render a box until the figure is added
-(see \texttt{figures/FIGURES.md}). \ddG\ values are the change in binding free energy,
-$K_d$/$K_i$-derived; positive weakens binding.
+alanine-scan labels. Each structure is coloured per residue by \ddG\ (blue $\le$ low,
+white mid-range, red $=$ hotspot / likely epitope; grey $=$ residue not scanned), one panel
+per antibody on a shared per-antigen colour scale. \ddG\ is the change in binding free
+energy, $K_d$/$K_i$-derived; positive weakens binding.
 
 \subsection{Lysozyme (hen egg-white, HEL)}
 Hen egg-white lysozyme is a 129-residue glycoside hydrolase and the canonical model antigen of
@@ -12,8 +13,10 @@ structural immunology: multiple high-resolution antibody complexes and alanine s
 disulfides. We simulate the apo enzyme from \texttt{1AKI}. The labels here are the HyHEL-63 scan
 (\texttt{1DQJ}, Table~\ref{tab:ddg-lysozyme}); the v2 benchmark adds D1.3 (\texttt{1VFB}) and
 HyHEL-10 (\texttt{3HFM}) scans for the same antigen.
-\begin{figure}[htbp]\centering\figorbox{lysozyme_structure.png}{0.45}
-\caption{Apo HEL --- relaxed apo frame from the 1AKI trajectory; cartoon coloured by secondary structure.}\end{figure}
+\begin{figure}[htbp]\centering
+\figorbox{lysozyme_1DQJ_ddg.png}{0.5}\\[-2pt]{\small HyHEL-63 (1DQJ)}\\[3pt]
+\figorbox{lysozyme_ddgbar.png}{0.55}
+\caption{HEL coloured per residue by HyHEL-63 alanine-scan \ddG\ (grey $=$ residue not scanned). Red marks the energetic hotspots --- candidate epitope core.}\end{figure}
 \input{sections/tables/lysozyme}
 
 \subsection{HPr}
@@ -23,8 +26,10 @@ shuttling a phosphoryl group between enzyme~I and the sugar-specific EIIA compon
 \textit{E.\ coli} protein is a well-folded open-faced $\beta$-sandwich with \emph{no cysteines},
 making it an exceptionally clean dynamics test case. The Jel42 epitope clusters in the C-terminal
 half (Table~\ref{tab:ddg-hpr}). We simulate the apo protein from \texttt{2JEL} (chain P).
-\begin{figure}[htbp]\centering\figorbox{hpr_structure.png}{0.45}
-\caption{Apo HPr (2JEL chain P); cartoon coloured by secondary structure.}\end{figure}
+\begin{figure}[htbp]\centering
+\figorbox{hpr_2JEL_ddg.png}{0.5}\\[-2pt]{\small Jel42 (2JEL)}\\[3pt]
+\figorbox{hpr_ddgbar.png}{0.55}
+\caption{HPr coloured per residue by Jel42 alanine-scan \ddG\ (grey $=$ not scanned). A single dominant hotspot (E70).}\end{figure}
 \input{sections/tables/hpr}
 
 \subsection{VEGF-A}
@@ -36,8 +41,11 @@ antibodies against the same receptor-binding face: fab-12 (\texttt{1BJ1}, the be
 precursor) and the affinity-matured Y0317 (\texttt{1CZ8}, ranibizumab) --- a useful
 same-antigen/different-affinity comparison (Table~\ref{tab:ddg-vegf}). We simulate the apo dimer
 from \texttt{1BJ1} (chains V,\,W).
-\begin{figure}[htbp]\centering\figorbox{vegf_structure.png}{0.45}
-\caption{Apo VEGF-A homodimer (1BJ1 chains V,W); cartoon coloured by secondary structure.}\end{figure}
+\begin{figure}[htbp]\centering
+\begin{minipage}{0.42\linewidth}\centering\figorbox{vegf_1BJ1_ddg.png}{1.0}\\[-2pt]{\small fab-12 (1BJ1)}\end{minipage}\hfill
+\begin{minipage}{0.42\linewidth}\centering\figorbox{vegf_1CZ8_ddg.png}{1.0}\\[-2pt]{\small Y0317 (1CZ8)}\end{minipage}\\[3pt]
+\figorbox{vegf_ddgbar.png}{0.55}
+\caption{VEGF-A homodimer coloured per residue by \ddG\ for each antibody (shared scale; grey $=$ not scanned). Both protomers carry the same labelled residues; red marks the hotspots.}\end{figure}
 \input{sections/tables/vegf}
 
 \subsection{MT-SP1 (matriptase)}
@@ -60,6 +68,9 @@ targeted by neutralizing antibodies. We simulate the isolated H\textsubscript{C}
 (\texttt{2NYY} chain A); the catalytic light-chain zinc lies outside this fragment. Two
 neutralizing mAbs, CR1 (\texttt{2NYY}) and AR2 (\texttt{2NZ9}), provide the labels
 (Table~\ref{tab:ddg-bonta1}).
-\begin{figure}[htbp]\centering\figorbox{bonta1_structure.png}{0.45}
-\caption{Bont/A1 H\textsubscript{C} domain (2NYY res 872--1295); cartoon coloured by secondary structure.}\end{figure}
+\begin{figure}[htbp]\centering
+\begin{minipage}{0.42\linewidth}\centering\figorbox{bonta1_2NYY_ddg.png}{1.0}\\[-2pt]{\small CR1 (2NYY)}\end{minipage}\hfill
+\begin{minipage}{0.42\linewidth}\centering\figorbox{bonta1_2NZ9_ddg.png}{1.0}\\[-2pt]{\small AR2 (2NZ9)}\end{minipage}\\[3pt]
+\figorbox{bonta1_ddgbar.png}{0.55}
+\caption{Bont/A1 H\textsubscript{C} coloured per residue by \ddG\ for two neutralizing mAbs (shared scale; grey $=$ not scanned). Red marks the hotspots --- the strongest reach \ddG\ $>7$ (binding essentially abolished).}\end{figure}
 \input{sections/tables/bonta1}
