@@ -3,7 +3,7 @@
 # prep.sh — apo-HEL (1AKI) system preparation. Submit FROM THE REPO ROOT:
 #   sbatch md/1AKI/apo/prep.sh
 #   pdb2gmx -> editconf -> solvate -> genion -> EM -> NVT -> NPT
-# Frozen stack: AMBER99SB-ILDN / TIP3P / dodecahedron 1.2 nm / 0.15 M NaCl
+# Frozen stack: AMBER99SB-ILDN / TIP3P / cubic 1.2 nm / 0.15 M NaCl
 #   (see docs/METHODS.md, signed off 2026-06-18). Frozen per-run mdps: ./configs.
 # Outputs -> md/1AKI/apo/out/ (gitignored); slurm logs -> md/1AKI/apo/logs/.
 # Produces (for md.sh): out/npt.gro, out/npt.cpt, out/topol.top
@@ -49,8 +49,8 @@ echo "=== Disulfide check (expect 4) ==="; grep -iE "disulfide|S-S|Linking .*CYS
     echo "  WARNING: no SS-bond lines matched — inspect pdb2gmx.log manually"
 check protein.gro pdb2gmx; check topol.top pdb2gmx
 
-# --- 2. Box: dodecahedron, 1.2 nm clearance ---------------------------------
-gmx editconf -f protein.gro -o box.gro -c -d 1.2 -bt dodecahedron -nobackup
+# --- 2. Box: cubic, 1.2 nm clearance ---------------------------------
+gmx editconf -f protein.gro -o box.gro -c -d 1.2 -bt cubic -nobackup
 check box.gro editconf
 
 # --- 3. Solvate (TIP3P) ------------------------------------------------------

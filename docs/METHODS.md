@@ -19,7 +19,7 @@ deviations and their rationale are recorded here. Specialized FRESEAN / 3D-2PT r
 |------|--------|------------------|-----------|
 | Protein FF | AMBER99SB-ILDN | same | signed-off default; well-validated for HEL |
 | Water | TIP3P | same | OK for pipeline validation + relative RMSF; **flagged** — upgrade to TIP4P/2005 for dynamics-grade features |
-| Box | dodecahedron, 1.2 nm clearance | reconciled (house scripts disagreed cubic/dodec) | efficient for globular HEL |
+| Box | cubic, 1.2 nm clearance | cubic preferred (interpretability; uniform across systems) | switched from dodec 2026-06-21; HEL re-run for uniformity |
 | Salt | neutralize + 0.15 M NaCl | same | physiological-ish |
 | Integrator/dt | leapfrog md, 2 fs | same | constraints on h-bonds permit 2 fs |
 | Constraints | h-bonds, LINCS | same | standard; **flagged** — remove for FRESEAN/2PT runs |

@@ -41,3 +41,20 @@ Also removed the obsolete \texttt{ns\_type} entry from all mdp files (ignored un
 scheme). \textbf{Caveat:} Gemini scratch is not durable --- move logs/outputs off scratch after
 each run (an earlier prep's logs were lost to a purge). Sanity check per run: \texttt{pdb2gmx.log}
 must report \textbf{4 disulfides} for HEL.
+
+\paragraph{Expansion to multiple antigens (2026-06-21).} Switched the box from dodecahedron to
+\textbf{cubic} (interpretability; uniform across systems) and re-ran HEL for consistency. Staged
+three further apo-antigen systems from the benchmark, hybrid-sourced (strip antigen chain(s) from
+the complex; numbering kept aligned to the labels). Provenance:
+\begin{itemize}
+  \item \textbf{HPr} --- \texttt{2JEL} chain P (res 1--85, no Cys); \texttt{md/2JEL/apo}.
+  \item \textbf{VEGF} --- \texttt{1BJ1} chains V$+$W (res 14--107, disulfide-linked homodimer;
+        \texttt{pdb2gmx -merge all} for the inter-chain SS); \texttt{md/1BJ1/apo}.
+  \item \textbf{Bont/A1 Hc} --- \texttt{2NYY} chain A res 872--1295 (C-terminal receptor-binding
+        domain only; catalytic-domain Zn/Ca excluded; res 872 is a domain cut $\to$ charged
+        N-terminus); \texttt{md/2NYY/apo}.
+\end{itemize}
+All four (HEL$+$these) submitted overnight as prep$\to$production chains
+(\texttt{sbatch --dependency=afterok}). \textbf{Deferred:} MT-SP1 (2 missing internal residues
+need loop modelling), Bont/A2 (homology models), hGH (provisional labels). Per-system disulfide
+expectations recorded in each \texttt{prep.sh}.
