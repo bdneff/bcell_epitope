@@ -17,6 +17,7 @@ FIG=manuscript/figures
 
 # key (matches \figorbox name) -> preferred (relaxed apo frame) | fallback (repo input structure)
 MAP=(
+  "hel_apo  - structures/1AKI.pdb"
   "lysozyme md/1AKI/apo/out/md_ref.pdb structures/1AKI.pdb"
   "hpr      md/2JEL/apo/out/md_ref.pdb structures/HPr_2JEL.pdb"
   "vegf     md/1BJ1/apo/out/md_ref.pdb structures/VEGF_1BJ1.pdb"
