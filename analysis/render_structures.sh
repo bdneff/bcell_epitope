@@ -36,6 +36,7 @@ for entry in "${MAP[@]}"; do
   "$TACHYON" "/tmp/${key}.dat" -res "$RES" "$RES" -aasamples 12 \
       -format TARGA -o "/tmp/${key}_structure.tga" >/dev/null 2>&1
   sips -s format png "/tmp/${key}_structure.tga" --out "$FIG/${key}_structure.png" >/dev/null
+  magick "$FIG/${key}_structure.png" -trim +repage -bordercolor white -border 4% "$FIG/${key}_structure.png"
   echo "    -> $FIG/${key}_structure.png"
   rendered=$((rendered+1))
 done

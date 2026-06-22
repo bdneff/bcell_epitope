@@ -81,11 +81,11 @@ for ag, (key, struct) in ANTIGEN.items():
         print(f"  {key}/{pdb} ({ABBREV.get(ab,ab)}): {sum(1 for x in d if x in present)} residues, "
               f"scale +/-{M:.2f} (data {amin:.2f}..{amax:.2f})")
     # shared per-antigen colorbar: VERTICAL, blue-white-red, white centered at 0
-    fig, ax = plt.subplots(figsize=(0.62, 3.0))
+    fig, ax = plt.subplots(figsize=(0.7, 3.0))
     cb = matplotlib.colorbar.ColorbarBase(ax, cmap=matplotlib.colormaps["bwr"],
             norm=colors.Normalize(vmin=vmin, vmax=vmax), orientation="vertical")
-    cb.set_label(r"$\Delta\Delta G_\mathrm{bind}$ (kcal/mol)", fontsize=9)
-    cb.ax.tick_params(labelsize=8)
+    cb.set_label(r"$\Delta\Delta G_\mathrm{bind}$ (kcal/mol)", fontsize=18)
+    cb.ax.tick_params(labelsize=16)
     fig.savefig(FIGDIR / f"{key}_ddgbar.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 (DDGDIR / "manifest.tsv").write_text("\n".join(manifest) + "\n")

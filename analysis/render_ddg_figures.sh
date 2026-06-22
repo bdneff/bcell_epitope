@@ -25,6 +25,7 @@ while IFS=$'\t' read -r key pdb ab struct datafile vmin vmax; do
   "$TACHYON" "/tmp/${key}_${pdb}.dat" -res "$RES" "$RES" -aasamples 12 \
       -format TARGA -o "/tmp/${key}_${pdb}_ddg.tga" >/dev/null 2>&1
   sips -s format png "/tmp/${key}_${pdb}_ddg.tga" --out "$out" >/dev/null
+  magick "$out" -trim +repage -bordercolor white -border 4% "$out"   # crop whitespace
   n=$((n+1))
 done < "$MAN"
 echo "rendered $n ddG panel(s). Now: cd manuscript && tectonic main.tex"
