@@ -1,7 +1,7 @@
 key	pdb	ab	struct	datafile	vmin	vmax
-lysozyme	1DQJ	HyHEL-63	structures/1AKI.pdb	manuscript/figures/ddg/lysozyme_1DQJ.dat	0.600	6.100
-hpr	2JEL	Jel42	structures/HPr_2JEL.pdb	manuscript/figures/ddg/hpr_2JEL.dat	-0.410	2.750
-vegf	1BJ1	fab-12	structures/VEGF_1BJ1.pdb	manuscript/figures/ddg/vegf_1BJ1.dat	0.000	4.100
-vegf	1CZ8	Y0317	structures/VEGF_1BJ1.pdb	manuscript/figures/ddg/vegf_1CZ8.dat	0.000	4.100
-bonta1	2NYY	CR1	structures/BontA1-Hc_2NYY.pdb	manuscript/figures/ddg/bonta1_2NYY.dat	-0.300	7.420
-bonta1	2NZ9	AR2	structures/BontA1-Hc_2NYY.pdb	manuscript/figures/ddg/bonta1_2NZ9.dat	-0.300	7.420
+lysozyme	1DQJ	HyHEL-63	structures/1AKI.pdb	manuscript/figures/ddg/lysozyme_1DQJ.dat	-6.100	6.100
+hpr	2JEL	Jel42	structures/HPr_2JEL.pdb	manuscript/figures/ddg/hpr_2JEL.dat	-2.750	2.750
+vegf	1BJ1	fab-12	structures/VEGF_1BJ1.pdb	manuscript/figures/ddg/vegf_1BJ1.dat	-4.100	4.100
+vegf	1CZ8	Y0317	structures/VEGF_1BJ1.pdb	manuscript/figures/ddg/vegf_1CZ8.dat	-4.100	4.100
+bonta1	2NYY	CR1	structures/BontA1-Hc_2NYY.pdb	manuscript/figures/ddg/bonta1_2NYY.dat	-7.420	7.420
+bonta1	2NZ9	AR2	structures/BontA1-Hc_2NYY.pdb	manuscript/figures/ddg/bonta1_2NZ9.dat	-7.420	7.420

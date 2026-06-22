@@ -65,7 +65,10 @@ for ag, (key, struct) in ANTIGEN.items():
         print(f"skip {ag}: {struct} missing"); continue
     present = struct_resids(struct)
     allddg = [v for pdb in data[ag] for v in data[ag][pdb].values()]
-    vmin, vmax = min(allddg), max(allddg)
+    amin, amax = min(allddg), max(allddg)
+    # symmetric scale so WHITE is pinned at ddG=0: blue=negative, red=positive (hotspot).
+    M = max(abs(amin), abs(amax))
+    vmin, vmax = -M, M
     for pdb, ab in complexes[ag]:
         d = data[ag][pdb]
         miss = sorted(set(d) - present)
@@ -75,14 +78,15 @@ for ag, (key, struct) in ANTIGEN.items():
             for resid in sorted(d):
                 if resid in present: f.write(f"{resid} {d[resid]:.3f}\n")
         manifest.append("\t".join([key, pdb, ABBREV.get(ab, ab), struct, str(df), f"{vmin:.3f}", f"{vmax:.3f}"]))
-        print(f"  {key}/{pdb} ({ABBREV.get(ab,ab)}): {sum(1 for x in d if x in present)} residues, scale [{vmin:.2f},{vmax:.2f}]")
-    # shared per-antigen colorbar (blue-white-red, white at midpoint)
-    fig, ax = plt.subplots(figsize=(3.2, 0.5))
+        print(f"  {key}/{pdb} ({ABBREV.get(ab,ab)}): {sum(1 for x in d if x in present)} residues, "
+              f"scale +/-{M:.2f} (data {amin:.2f}..{amax:.2f})")
+    # shared per-antigen colorbar: VERTICAL, blue-white-red, white centered at 0
+    fig, ax = plt.subplots(figsize=(0.62, 3.0))
     cb = matplotlib.colorbar.ColorbarBase(ax, cmap=matplotlib.colormaps["bwr"],
-            norm=colors.Normalize(vmin=vmin, vmax=vmax), orientation="horizontal")
+            norm=colors.Normalize(vmin=vmin, vmax=vmax), orientation="vertical")
     cb.set_label(r"$\Delta\Delta G_\mathrm{bind}$ (kcal/mol)", fontsize=9)
     cb.ax.tick_params(labelsize=8)
-    fig.tight_layout(); fig.savefig(FIGDIR / f"{key}_ddgbar.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+    fig.savefig(FIGDIR / f"{key}_ddgbar.png", dpi=200, bbox_inches="tight"); plt.close(fig)
 
 (DDGDIR / "manifest.tsv").write_text("\n".join(manifest) + "\n")
 print(f"wrote manifest with {len(manifest)-1} panels")
