@@ -28,6 +28,20 @@ SIMULATED = {
 def esc(s):
     return s.replace("&", "\\&").replace("_", "\\_")
 
+# Short, clean column labels for the verbose benchmark antibody names.
+ABBREV = {
+    "Neutralizing mAb (fab-12)":      "fab-12",
+    "affinity matured mAb (Y0317)":   "Y0317",
+    "mAb CR1":                        "CR1",
+    "mAb AR2":                        "AR2",
+    "Fab Inhibitor E2":               "E2",
+    "Fab Inhibitor S4":               "S4",
+    "Jel42 antibody":                 "Jel42",
+    "HYHEL-63":                       "HyHEL-63",
+}
+def ab_short(ab):
+    return ABBREV.get(ab, ab)
+
 rows = [r for r in csv.DictReader(open(CSV))
         if r["Use for MD correlation?"].startswith("YES")
         and r["Antigen"].strip() in SIMULATED]
@@ -58,7 +72,7 @@ for ag, info in SIMULATED.items():
     L.append(f"\\label{{tab:ddg-{info['key']}}}")
     L.append("\\begin{tabular}{l" + "r"*n + "}")
     L.append("\\toprule")
-    L.append("Residue & " + " & ".join(f"{esc(ab)} ({esc(pdb)})" for pdb, ab in cplx) + " \\\\")
+    L.append("Residue & " + " & ".join(f"{esc(ab_short(ab))} ({esc(pdb)})" for pdb, ab in cplx) + " \\\\")
     L.append("\\midrule")
     for resi in sorted(resmap):
         wt = resmap[resi]["wt"]; vals = resmap[resi]["vals"]
