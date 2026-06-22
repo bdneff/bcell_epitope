@@ -59,16 +59,21 @@ for r in rows:
         pass
 
 DDGDIR.mkdir(parents=True, exist_ok=True)
+# ONE global symmetric scale for ALL antigens: +/- the largest |ddG| in the entire
+# benchmark, so white=0 and colours are comparable across every figure.
+GM = 0.0
+for r in csv.DictReader(open(CSV)):
+    if not r["Use for MD correlation?"].startswith("YES"): continue
+    try: GM = max(GM, abs(float(r["Best ΔΔG kcal/mol"])))
+    except ValueError: pass
+vmin, vmax = -GM, GM
+print(f"global symmetric scale +/-{GM:.2f} (white at 0), shared across all colorbars")
+
 manifest = ["\t".join(["key","pdb","ab","struct","datafile","vmin","vmax"])]
 for ag, (key, struct) in ANTIGEN.items():
     if not pathlib.Path(struct).exists():
         print(f"skip {ag}: {struct} missing"); continue
     present = struct_resids(struct)
-    allddg = [v for pdb in data[ag] for v in data[ag][pdb].values()]
-    amin, amax = min(allddg), max(allddg)
-    # symmetric scale so WHITE is pinned at ddG=0: blue=negative, red=positive (hotspot).
-    M = max(abs(amin), abs(amax))
-    vmin, vmax = -M, M
     for pdb, ab in complexes[ag]:
         d = data[ag][pdb]
         miss = sorted(set(d) - present)
@@ -78,15 +83,15 @@ for ag, (key, struct) in ANTIGEN.items():
             for resid in sorted(d):
                 if resid in present: f.write(f"{resid} {d[resid]:.3f}\n")
         manifest.append("\t".join([key, pdb, ABBREV.get(ab, ab), struct, str(df), f"{vmin:.3f}", f"{vmax:.3f}"]))
-        print(f"  {key}/{pdb} ({ABBREV.get(ab,ab)}): {sum(1 for x in d if x in present)} residues, "
-              f"scale +/-{M:.2f} (data {amin:.2f}..{amax:.2f})")
-    # shared per-antigen colorbar: VERTICAL, blue-white-red, white centered at 0
-    fig, ax = plt.subplots(figsize=(0.7, 3.0))
-    cb = matplotlib.colorbar.ColorbarBase(ax, cmap=matplotlib.colormaps["bwr"],
-            norm=colors.Normalize(vmin=vmin, vmax=vmax), orientation="vertical")
-    cb.set_label(r"$\Delta\Delta G_\mathrm{bind}$ (kcal/mol)", fontsize=18)
-    cb.ax.tick_params(labelsize=16)
-    fig.savefig(FIGDIR / f"{key}_ddgbar.png", dpi=200, bbox_inches="tight"); plt.close(fig)
-
+        print(f"  {key}/{pdb} ({ABBREV.get(ab,ab)}): {sum(1 for x in d if x in present)} residues")
 (DDGDIR / "manifest.tsv").write_text("\n".join(manifest) + "\n")
 print(f"wrote manifest with {len(manifest)-1} panels")
+
+# ONE shared colorbar (identical dimensions/scale/labels/ticks for every figure)
+fig, ax = plt.subplots(figsize=(0.7, 3.0))
+cb = matplotlib.colorbar.ColorbarBase(ax, cmap=matplotlib.colormaps["bwr"],
+        norm=colors.Normalize(vmin=vmin, vmax=vmax), orientation="vertical")
+cb.set_label(r"$\Delta\Delta G_\mathrm{bind}$ (kcal/mol)", fontsize=18)
+cb.ax.tick_params(labelsize=16)
+fig.savefig(FIGDIR / "ddgbar.png", dpi=200, bbox_inches="tight"); plt.close(fig)
+print("wrote shared colorbar figures/ddgbar.png")

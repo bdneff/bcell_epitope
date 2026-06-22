@@ -3,9 +3,10 @@
 One section per antigen we simulate: what it is, the structural handle we use, and its
 alanine-scan labels. Each structure is coloured per residue by \ddG\ on a diverging scale
 with \textbf{white pinned at $0$}: red $=$ positive (hotspot / likely epitope), blue $=$
-negative, grey $=$ residue not scanned. One panel per antibody, shared per-antigen scale,
-vertical colourbar at right. \ddG\ is the change in binding free energy, $K_d$/$K_i$-derived;
-positive weakens binding.
+negative, grey $=$ residue not scanned. One panel per antibody; a single global colour scale
+($\pm$max$|\ddG|$ over the whole benchmark, white at $0$) is shared by every figure, so colours
+are directly comparable across antigens. Vertical colourbar at right. \ddG\ is the change in
+binding free energy, $K_d$/$K_i$-derived; positive weakens binding.
 
 \subsection{Lysozyme (hen egg-white, HEL)}
 Hen egg-white lysozyme is a 129-residue glycoside hydrolase and the canonical model antigen of
@@ -16,7 +17,7 @@ disulfides. We simulate the apo enzyme from \texttt{1AKI}. The labels here are t
 HyHEL-10 (\texttt{3HFM}) scans for the same antigen.
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.6\linewidth}\centering\figorbox{lysozyme_1DQJ_ddg.png}{0.95}\\[-2pt]{\small HyHEL-63 (1DQJ)}\end{minipage}\hfill
-\begin{minipage}[c]{0.14\linewidth}\centering\figorbox{lysozyme_ddgbar.png}{1.0}\end{minipage}
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
 \caption{HEL coloured per residue by HyHEL-63 alanine-scan \ddG\ (white $=0$, red $=$ hotspot, blue $<0$; grey $=$ not scanned). Red marks the candidate epitope core.}\end{figure}
 \input{sections/tables/lysozyme}
 
@@ -29,7 +30,7 @@ making it an exceptionally clean dynamics test case. The Jel42 epitope clusters 
 half (Table~\ref{tab:ddg-hpr}). We simulate the apo protein from \texttt{2JEL} (chain P).
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.6\linewidth}\centering\figorbox{hpr_2JEL_ddg.png}{0.95}\\[-2pt]{\small Jel42 (2JEL)}\end{minipage}\hfill
-\begin{minipage}[c]{0.14\linewidth}\centering\figorbox{hpr_ddgbar.png}{1.0}\end{minipage}
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
 \caption{HPr coloured per residue by Jel42 alanine-scan \ddG\ (white $=0$, red $=$ hotspot; grey $=$ not scanned). A single dominant hotspot (E70).}\end{figure}
 \input{sections/tables/hpr}
 
@@ -45,7 +46,7 @@ from \texttt{1BJ1} (chains V,\,W).
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.37\linewidth}\centering\figorbox{vegf_1BJ1_ddg.png}{1.0}\\[-2pt]{\small fab-12 (1BJ1)}\end{minipage}\hfill
 \begin{minipage}[c]{0.37\linewidth}\centering\figorbox{vegf_1CZ8_ddg.png}{1.0}\\[-2pt]{\small Y0317 (1CZ8)}\end{minipage}\hfill
-\begin{minipage}[c]{0.12\linewidth}\centering\figorbox{vegf_ddgbar.png}{1.0}\end{minipage}
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
 \caption{VEGF-A homodimer coloured per residue by \ddG\ for each antibody (shared scale, white $=0$; grey $=$ not scanned). Both protomers carry the same labelled residues; red marks the hotspots.}\end{figure}
 \input{sections/tables/vegf}
 
@@ -72,6 +73,6 @@ neutralizing mAbs, CR1 (\texttt{2NYY}) and AR2 (\texttt{2NZ9}), provide the labe
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.37\linewidth}\centering\figorbox{bonta1_2NYY_ddg.png}{1.0}\\[-2pt]{\small CR1 (2NYY)}\end{minipage}\hfill
 \begin{minipage}[c]{0.37\linewidth}\centering\figorbox{bonta1_2NZ9_ddg.png}{1.0}\\[-2pt]{\small AR2 (2NZ9)}\end{minipage}\hfill
-\begin{minipage}[c]{0.12\linewidth}\centering\figorbox{bonta1_ddgbar.png}{1.0}\end{minipage}
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
 \caption{Bont/A1 H\textsubscript{C} coloured per residue by \ddG\ for two neutralizing mAbs (shared scale, white $=0$; grey $=$ not scanned). Red marks the hotspots --- the strongest reach \ddG\ $>7$ (binding essentially abolished).}\end{figure}
 \input{sections/tables/bonta1}
