@@ -1,0 +1,65 @@
+\section{Simulated antigens}
+
+One section per antigen we simulate: what it is, the structural handle we use, and its
+alanine-scan labels. Structure-image placeholders render a box until the figure is added
+(see \texttt{figures/FIGURES.md}). \ddG\ values are the change in binding free energy,
+$K_d$/$K_i$-derived; positive weakens binding.
+
+\subsection{Lysozyme (hen egg-white, HEL)}
+Hen egg-white lysozyme is a 129-residue glycoside hydrolase and the canonical model antigen of
+structural immunology: multiple high-resolution antibody complexes and alanine scans exist
+(HyHEL-10, HyHEL-63, D1.3). It is compact and conformationally rigid, cross-linked by four
+disulfides. We simulate the apo enzyme from \texttt{1AKI}. The labels here are the HyHEL-63 scan
+(\texttt{1DQJ}, Table~\ref{tab:ddg-lysozyme}); the v2 benchmark adds D1.3 (\texttt{1VFB}) and
+HyHEL-10 (\texttt{3HFM}) scans for the same antigen.
+\begin{figure}[htbp]\centering\figorbox{lysozyme_structure.png}{0.45}
+\caption{Apo HEL (1AKI); label residues highlighted. \textit{Placeholder.}}\end{figure}
+\input{sections/tables/lysozyme}
+
+\subsection{HPr}
+The histidine-containing phosphocarrier protein (HPr) is a small ($\sim$9\,kDa, 85-residue)
+cytoplasmic protein of the bacterial phosphoenolpyruvate:sugar phosphotransferase system,
+shuttling a phosphoryl group between enzyme~I and the sugar-specific EIIA components. The
+\textit{E.\ coli} protein is a well-folded open-faced $\beta$-sandwich with \emph{no cysteines},
+making it an exceptionally clean dynamics test case. The Jel42 epitope clusters in the C-terminal
+half (Table~\ref{tab:ddg-hpr}). We simulate the apo protein from \texttt{2JEL} (chain P).
+\begin{figure}[htbp]\centering\figorbox{hpr_structure.png}{0.45}
+\caption{Apo HPr (2JEL chain P). \textit{Placeholder.}}\end{figure}
+\input{sections/tables/hpr}
+
+\subsection{VEGF-A}
+Vascular endothelial growth factor A is a secreted pro-angiogenic cytokine and a central drug
+target (bevacizumab, ranibizumab). Its receptor-binding domain is an antiparallel,
+disulfide-linked homodimer with a cystine-knot growth-factor fold; the two protomers are
+covalently joined, so the biological unit must be simulated as the dimer. The benchmark pairs two
+antibodies against the same receptor-binding face: fab-12 (\texttt{1BJ1}, the bevacizumab
+precursor) and the affinity-matured Y0317 (\texttt{1CZ8}, ranibizumab) --- a useful
+same-antigen/different-affinity comparison (Table~\ref{tab:ddg-vegf}). We simulate the apo dimer
+from \texttt{1BJ1} (chains V,\,W).
+\begin{figure}[htbp]\centering\figorbox{vegf_structure.png}{0.45}
+\caption{Apo VEGF-A homodimer (1BJ1 chains V,W). \textit{Placeholder.}}\end{figure}
+\input{sections/tables/vegf}
+
+\subsection{MT-SP1 (matriptase)}
+MT-SP1 / matriptase (ST14) is a type~II transmembrane serine protease of the S1 family; its
+extracellular catalytic domain is over-expressed in epithelial cancers and is a validated
+oncology target. The benchmark uses two inhibitory Fabs, E2 (\texttt{3BN9}) and S4 (\texttt{3NPS}),
+scanning the protease domain in chymotrypsin numbering (Table~\ref{tab:ddg-mtsp1}). Simulation is
+staged but \textbf{pending}: the crystal structures lack two internal residues (149, 218) that
+must be loop-modelled before MD.
+\begin{figure}[htbp]\centering\figorbox{mtsp1_structure.png}{0.45}
+\caption{MT-SP1 protease domain (3NPS chain A). \textit{Placeholder.}}\end{figure}
+\input{sections/tables/mtsp1}
+
+\subsection{Bont/A1 (H\textsubscript{C} receptor-binding domain)}
+Botulinum neurotoxin serotype A1 is among the most potent toxins known: a $\sim$150\,kDa di-chain
+protein comprising a zinc-metalloprotease light chain and a heavy chain. Its C-terminal
+heavy-chain domain (H\textsubscript{C}, here residues 872--1295) is the receptor-binding domain
+--- engaging neuronal gangliosides and the SV2 protein --- and the principal protective antigen
+targeted by neutralizing antibodies. We simulate the isolated H\textsubscript{C} domain
+(\texttt{2NYY} chain A); the catalytic light-chain zinc lies outside this fragment. Two
+neutralizing mAbs, CR1 (\texttt{2NYY}) and AR2 (\texttt{2NZ9}), provide the labels
+(Table~\ref{tab:ddg-bonta1}).
+\begin{figure}[htbp]\centering\figorbox{bonta1_structure.png}{0.45}
+\caption{Bont/A1 H\textsubscript{C} domain (2NYY res 872--1295). \textit{Placeholder.}}\end{figure}
+\input{sections/tables/bonta1}
