@@ -1,8 +1,11 @@
-# render_structure.tcl — clean cartoon render of a structure to a TGA (headless VMD).
+# render_structure.tcl — clean cartoon of a structure -> a Tachyon SCENE file (headless VMD).
 # Usage:
-#   vmd -dispdev text -e render_structure.tcl -args <structure.pdb|.gro> <out.tga> [resid ...]
+#   vmd -dispdev text -e render_structure.tcl -args <structure.pdb|.gro> <out.dat> [resid ...]
+# Writes a Tachyon scene; analysis/render_structures.sh then ray-traces it at high
+# resolution with the external `tachyon` binary and converts to PNG (macOS `sips`).
+# (display resize is ignored in headless text mode, so we render via external Tachyon
+#  with an explicit -res for print-quality output rather than render TachyonInternal.)
 # Optional trailing resids are drawn as red licorice over the cartoon (e.g. epitope residues).
-# Pair with analysis/render_structures.sh, which converts the TGA to PNG (macOS `sips`).
 
 if {[llength $argv] < 2} {
     puts "usage: vmd -dispdev text -e render_structure.tcl -args <structure> <out.tga> \[resid...\]"
@@ -19,7 +22,7 @@ mol delrep 0 top
 mol representation NewCartoon 0.30 12.0 4.5
 mol color Structure
 mol selection {protein}
-mol material AOChalky
+catch {mol material AOChalky}
 mol addrep top
 
 # optional: highlight alanine-scan / epitope residues as red licorice
@@ -27,21 +30,21 @@ if {[llength $hilite] > 0} {
     mol representation Licorice 0.30 12.0 12.0
     mol color ColorID 1
     mol selection "protein and resid $hilite"
-    mol material AOShiny
+    catch {mol material AOShiny}
     mol addrep top
 }
 
-# display / lighting for a publication-style still
-display projection Orthographic
-display depthcue off
-display ambientocclusion on
-display shadows on
-color Display Background white
-axes location Off
-catch {display resize 1600 1600}
-display resetview
-rotate x by -75
-rotate y by 20
+# display / lighting for a publication-style still. Each wrapped in catch so an
+# unsupported attribute (e.g. across VMD versions) can't silently abort the render.
+catch {display projection Orthographic}
+catch {display depthcue off}
+catch {display ambientocclusion on}
+catch {display shadows on}
+catch {color Display Background white}
+catch {axes location Off}
+catch {display resetview}
+catch {rotate x by -75}
+catch {rotate y by 20}
 
-render TachyonInternal $outimg
+render Tachyon $outimg
 quit
