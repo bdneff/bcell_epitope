@@ -12,18 +12,15 @@ binding free energy, $K_d$/$K_i$-derived; positive weakens binding.
 Hen egg-white lysozyme is a 129-residue glycoside hydrolase and the canonical model antigen of
 structural immunology: multiple high-resolution antibody complexes and alanine scans exist
 (HyHEL-10, HyHEL-63, D1.3). It is compact and conformationally rigid, cross-linked by four
-disulfides. We simulate the apo enzyme from \texttt{1AKI}. Three independent antibody alanine
-scans label the same antigen (Table~\ref{tab:ddg-lysozyme}): HyHEL-63 (\texttt{1DQJ}), D1.3
-(\texttt{1VFB}) and HyHEL-10 (\texttt{3HFM}) --- overlapping but distinct epitopes, a useful
-internal check on whether the predicted hotspots are antibody-specific. HyHEL-63 and HyHEL-10
-share the K96/K97 hotspot pair, whereas D1.3 engages the opposite face (the 18--24 and 116--129
-segments).
+disulfides. We simulate the apo enzyme from \texttt{1AKI}. The labels here are the HyHEL-63 scan
+(\texttt{1DQJ}, Table~\ref{tab:ddg-lysozyme}); the v2 benchmark adds D1.3 (\texttt{1VFB}) and
+HyHEL-10 (\texttt{3HFM}) scans for the same antigen.
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.27\linewidth}\centering\figorbox{lysozyme_1DQJ_ddg.png}{1.0}\\[-2pt]{\small HyHEL-63 (1DQJ)}\end{minipage}\hfill
 \begin{minipage}[c]{0.27\linewidth}\centering\figorbox{lysozyme_1VFB_ddg.png}{1.0}\\[-2pt]{\small D1.3 (1VFB)}\end{minipage}\hfill
 \begin{minipage}[c]{0.27\linewidth}\centering\figorbox{lysozyme_3HFM_ddg.png}{1.0}\\[-2pt]{\small HyHEL-10 (3HFM)}\end{minipage}\hfill
 \begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
-\caption{HEL coloured per residue by alanine-scan \ddG\ for three antibodies (shared global scale, white $=0$, red $=$ hotspot, blue $<0$; grey $=$ not scanned). HyHEL-63 and HyHEL-10 converge on the K96/K97 epitope; D1.3 marks a distinct face.}\end{figure}
+\caption{HEL coloured per residue by alanine-scan \ddG\ for its three antibodies (shared scale, white $=0$, red $=$ hotspot, blue $<0$; grey $=$ not scanned). Distinct but overlapping epitope cores across HyHEL-63, D1.3 and HyHEL-10.}\end{figure}
 \input{sections/tables/lysozyme}
 
 \subsection{HPr}
