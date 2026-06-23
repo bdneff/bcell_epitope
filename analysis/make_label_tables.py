@@ -12,7 +12,7 @@ Recorded in manuscript/figures/FIGURES.md.
 """
 import csv, collections, pathlib
 
-CSV = pathlib.Path("benchmark/antigen_alanine_scan_extracted_SIMPLE_v1.csv")
+CSV = pathlib.Path("benchmark/antigen_alanine_scan_extracted_SIMPLE_v3.csv")
 OUTDIR = pathlib.Path("manuscript/sections/tables")  # one table fragment per antigen
 
 # Antigens we are simulating (display order). 'key' = output filename stem (also the
@@ -23,6 +23,10 @@ SIMULATED = {
     "VEGF":      dict(key="vegf",     struct="strip 1BJ1 chains V,W (dimer)",qty="d", assay="SPR"),
     "MT-SP1":    dict(key="mtsp1",    struct="strip 3NPS chain A",           qty="i", assay="enzymatic inhibition"),
     "Bont/A1":   dict(key="bonta1",   struct="extract 2NYY Hc (res 872-1295)",qty="d", assay="KinExA"),
+    "IFN-gamma receptor":  dict(key="ifngr",  struct="strip 1JRH chain I", qty="d", assay="SPR"),
+    "Tissue factor":       dict(key="tf",     struct="strip 1AHW chain C", qty="d", assay="SPR"),
+    "HCMV glycoprotein B": dict(key="hcmvgb", struct="strip 5C6T chain A", qty="d", assay="SPR"),
+    "human growth hormone":dict(key="hgh",    struct="apo 1HGU",          qty="d", assay="ELISA"),
 }
 
 def esc(s):
@@ -38,8 +42,6 @@ ABBREV = {
     "Fab Inhibitor S4":               "S4",
     "Jel42 antibody":                 "Jel42",
     "HYHEL-63":                       "HyHEL-63",
-    "HyHEL-10 Fv":                    "HyHEL-10",
-    "IgG1-kappa D1.3 Fv":             "D1.3",
 }
 def ab_short(ab):
     return ABBREV.get(ab, ab)

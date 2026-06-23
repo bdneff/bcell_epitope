@@ -78,3 +78,55 @@ neutralizing mAbs, CR1 (\texttt{2NYY}) and AR2 (\texttt{2NZ9}), provide the labe
 \begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
 \caption{Bont/A1 H\textsubscript{C} coloured per residue by \ddG\ for two neutralizing mAbs (shared scale, white $=0$; grey $=$ not scanned). Red marks the hotspots --- the strongest reach \ddG\ $>7$ (binding essentially abolished).}\end{figure}
 \input{sections/tables/bonta1}
+
+\subsection{IFN-$\gamma$ receptor}
+The interferon-$\gamma$ receptor $\alpha$-chain (IFN-$\gamma$R1) ectodomain is the high-affinity
+ligand-binding subunit of the type~II interferon receptor: two fibronectin type~III domains
+forming an L-shaped $\beta$-sandwich that engages the IFN-$\gamma$ homodimer. The neutralizing
+antibody A6 binds this ectodomain and the published alanine scan localises a compact energetic
+hotspot on one face (Table~\ref{tab:ddg-ifngr}). It is a clean, rigid, single-chain
+$\sim$95-residue Ig-like domain --- an attractive small test antigen. We simulate the apo
+ectodomain stripped from \texttt{1JRH} (chain~I).
+\begin{figure}[H]\centering
+\begin{minipage}[c]{0.6\linewidth}\centering\figorbox{ifngr_1JRH_ddg.png}{0.95}\\[-2pt]{\small A6 (1JRH)}\end{minipage}\hfill
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
+\caption{IFN-$\gamma$ receptor coloured per residue by A6 alanine-scan \ddG\ (shared scale, white $=0$, red $=$ hotspot; grey $=$ not scanned). The hotspots cluster on a single $\beta$-sandwich face.}\end{figure}
+\input{sections/tables/ifngr}
+
+\subsection{Tissue factor}
+Tissue factor (TF, coagulation factor~III) is the cell-surface initiator of the extrinsic
+blood-coagulation cascade: its extracellular region is a two-domain fibronectin type~III module
+that binds and allosterically activates factor~VIIa. The inhibitory Fab 5G9 blocks the
+macromolecular substrate site, and its antigen-side alanine scan marks the functional epitope
+(Table~\ref{tab:ddg-tf}). The ectodomain is a well-folded, single-chain $\sim$200-residue
+$\beta$-rich protein. We simulate the apo ectodomain stripped from \texttt{1AHW} (chain~C).
+\begin{figure}[H]\centering
+\begin{minipage}[c]{0.6\linewidth}\centering\figorbox{tf_1AHW_ddg.png}{0.95}\\[-2pt]{\small 5G9 (1AHW)}\end{minipage}\hfill
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
+\caption{Tissue factor coloured per residue by 5G9 alanine-scan \ddG\ (shared scale, white $=0$, red $=$ hotspot; grey $=$ not scanned).}\end{figure}
+\input{sections/tables/tf}
+
+\subsection{HCMV glycoprotein B}
+Glycoprotein~B (gB) is the conserved class~III fusion machine of human cytomegalovirus and a
+principal target of neutralizing antibodies. The ectodomain is a large, elongated trimer; the
+antibody 1G2 recognises antigenic domain~2 and its alanine scan identifies the contact hotspots
+(Table~\ref{tab:ddg-hcmvgb}). This is our largest antigen ($\sim$566 modelled residues) and is
+biologically trimeric --- we simulate the apo protomer as deposited in \texttt{5C6T} (chain~A),
+noting that the native oligomeric state may modulate the dynamics of the buried interfaces.
+\begin{figure}[H]\centering
+\begin{minipage}[c]{0.6\linewidth}\centering\figorbox{hcmvgb_5C6T_ddg.png}{0.95}\\[-2pt]{\small 1G2 (5C6T)}\end{minipage}\hfill
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
+\caption{HCMV glycoprotein~B protomer coloured per residue by 1G2 alanine-scan \ddG\ (shared scale, white $=0$, red $=$ hotspot; grey $=$ not scanned).}\end{figure}
+\input{sections/tables/hcmvgb}
+
+\subsection{Human growth hormone}
+Human growth hormone (hGH, somatotropin) is a 191-residue four-helix-bundle cytokine and the
+historical birthplace of alanine-scanning mutagenesis. Here the antibody-specific labels are the
+MAb3 scan (Table~\ref{tab:ddg-hgh}); the benchmark additionally carries a secondary,
+provisional profile of the total \ddG\ aggregated across 21 anti-hGH MAbs (not antibody-specific,
+held out of the primary labels). We simulate the apo hormone from \texttt{1HGU} (chain~A).
+\begin{figure}[H]\centering
+\begin{minipage}[c]{0.6\linewidth}\centering\figorbox{hgh_1HGU_ddg.png}{0.95}\\[-2pt]{\small MAb3 (1HGU)}\end{minipage}\hfill
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
+\caption{Human growth hormone coloured per residue by MAb3 alanine-scan \ddG\ (shared scale, white $=0$, red $=$ hotspot; grey $=$ not scanned). Only the four MAb3-scanned positions are coloured.}\end{figure}
+\input{sections/tables/hgh}

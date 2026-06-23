@@ -10,7 +10,7 @@ VMD="${VMD:-vmd}"
 TACHYON="${TACHYON:-/Applications/VMD.app/Contents/vmd2/lib/tachyon_MACOSXARM64}"
 RES="${RES:-1600}"
 TCL=analysis/vmd/render_ddg.tcl
-MAN=manuscript/figures/ddg/manifest.tsv
+MAN="${MAN:-manuscript/figures/ddg/manifest.tsv}"
 
 command -v "$VMD" >/dev/null || { echo "ERROR: VMD not found ('$VMD'). Set VMD=/path/to/vmd."; exit 1; }
 [[ -f "$MAN" ]] || { echo "ERROR: $MAN missing — run python3 analysis/make_ddg_coloring.py first"; exit 1; }

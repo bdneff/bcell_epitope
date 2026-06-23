@@ -18,7 +18,7 @@ import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib import cm, colors
 
-CSV = pathlib.Path("benchmark/antigen_alanine_scan_extracted_SIMPLE_v1.csv")
+CSV = pathlib.Path("benchmark/antigen_alanine_scan_extracted_SIMPLE_v3.csv")
 DDGDIR = pathlib.Path("manuscript/figures/ddg")
 FIGDIR = pathlib.Path("manuscript/figures")
 
@@ -28,12 +28,15 @@ ANTIGEN = {
     "HPr":      ("hpr",      "structures/HPr_2JEL.pdb"),
     "VEGF":     ("vegf",     "structures/VEGF_1BJ1.pdb"),
     "Bont/A1":  ("bonta1",   "structures/BontA1-Hc_2NYY.pdb"),
+    "IFN-gamma receptor":  ("ifngr",  "structures/IFNgR_1JRH.pdb"),
+    "Tissue factor":       ("tf",     "structures/TissueFactor_1AHW.pdb"),
+    "HCMV glycoprotein B": ("hcmvgb", "structures/HCMVgB_5C6T.pdb"),
+    "human growth hormone":("hgh",    "structures/hGH_1HGU.pdb"),
 }
 ABBREV = {
     "Neutralizing mAb (fab-12)": "fab-12", "affinity matured mAb (Y0317)": "Y0317",
     "mAb CR1": "CR1", "mAb AR2": "AR2", "Fab Inhibitor E2": "E2", "Fab Inhibitor S4": "S4",
     "Jel42 antibody": "Jel42", "HYHEL-63": "HyHEL-63",
-    "HyHEL-10 Fv": "HyHEL-10", "IgG1-kappa D1.3 Fv": "D1.3",
 }
 
 def struct_resids(path):
