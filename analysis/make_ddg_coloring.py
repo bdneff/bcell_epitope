@@ -33,6 +33,7 @@ ABBREV = {
     "Neutralizing mAb (fab-12)": "fab-12", "affinity matured mAb (Y0317)": "Y0317",
     "mAb CR1": "CR1", "mAb AR2": "AR2", "Fab Inhibitor E2": "E2", "Fab Inhibitor S4": "S4",
     "Jel42 antibody": "Jel42", "HYHEL-63": "HyHEL-63",
+    "HyHEL-10 Fv": "HyHEL-10", "IgG1-kappa D1.3 Fv": "D1.3",
 }
 
 def struct_resids(path):

@@ -1,5 +1,7 @@
 key	pdb	ab	struct	datafile	vmin	vmax
 lysozyme	1DQJ	HyHEL-63	structures/1AKI.pdb	manuscript/figures/ddg/lysozyme_1DQJ.dat	-7.420	7.420
+lysozyme	1VFB	D1.3	structures/1AKI.pdb	manuscript/figures/ddg/lysozyme_1VFB.dat	-7.420	7.420
+lysozyme	3HFM	HyHEL-10	structures/1AKI.pdb	manuscript/figures/ddg/lysozyme_3HFM.dat	-7.420	7.420
 hpr	2JEL	Jel42	structures/HPr_2JEL.pdb	manuscript/figures/ddg/hpr_2JEL.dat	-7.420	7.420
 vegf	1BJ1	fab-12	structures/VEGF_1BJ1.pdb	manuscript/figures/ddg/vegf_1BJ1.dat	-7.420	7.420
 vegf	1CZ8	Y0317	structures/VEGF_1BJ1.pdb	manuscript/figures/ddg/vegf_1CZ8.dat	-7.420	7.420

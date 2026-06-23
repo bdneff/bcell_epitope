@@ -38,6 +38,8 @@ ABBREV = {
     "Fab Inhibitor S4":               "S4",
     "Jel42 antibody":                 "Jel42",
     "HYHEL-63":                       "HyHEL-63",
+    "HyHEL-10 Fv":                    "HyHEL-10",
+    "IgG1-kappa D1.3 Fv":             "D1.3",
 }
 def ab_short(ab):
     return ABBREV.get(ab, ab)
