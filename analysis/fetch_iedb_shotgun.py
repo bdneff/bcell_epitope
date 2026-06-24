@@ -69,7 +69,11 @@ def main():
     shot = [r for r in functional if "flow cytometry" in r["assay_names"].lower()]
     print(f"discontinuous={len(rows)}  functional={len(functional)}  shotgun(flow cytometry)={len(shot)}")
 
-    ag = collections.defaultdict(lambda: {"epi": 0, "refs": set(), "res": set(), "org": "", "uni": ""})
+    # Each discontinuous-epitope record is ONE antibody's mapped footprint (one
+    # antibody -> one conformational epitope), so the per-antigen record count is the
+    # number of antibodies mapped. Receptor IDs are populated in only ~11% of records,
+    # so we count antibody mappings (records), not distinct receptor objects.
+    ag = collections.defaultdict(lambda: {"abs": 0, "refs": set(), "res": set(), "org": "", "uni": ""})
     for r in shot:
         name = (r["parent_source_antigen_name"] or "").strip()
         if not name:
@@ -77,7 +81,7 @@ def main():
         m = re.search(r"UniProt:(\w+)", name)
         base = re.sub(r"\s*\(UniProt:\w+\)", "", name).strip()
         d = ag[base]
-        d["epi"] += 1
+        d["abs"] += 1
         d["org"] = (r["parent_source_antigen_source_org_name"] or "").strip()
         d["uni"] = m.group(1) if m else ""
         if r["pubmed_id"]:
@@ -87,10 +91,10 @@ def main():
                 d["res"].add(x.strip())
 
     out = []
-    for name, d in sorted(ag.items(), key=lambda kv: -kv[1]["epi"]):
+    for name, d in sorted(ag.items(), key=lambda kv: -kv[1]["abs"]):
         known = any(h in name.lower() for h in HAVE)
-        out.append(dict(antigen=name, uniprot=d["uni"], organism=d["org"], n_epitopes=d["epi"],
-                        n_refs=len(d["refs"]), n_critical_residues=len(d["res"]),
+        out.append(dict(antigen=name, uniprot=d["uni"], organism=d["org"], n_antibodies=d["abs"],
+                        n_studies=len(d["refs"]), n_critical_residues=len(d["res"]),
                         already_in_benchmark="yes" if known else "", sim_category=sim_category(name)))
     OUT.parent.mkdir(exist_ok=True)
     with open(OUT, "w", newline="") as f:

@@ -1,0 +1,42 @@
+\section{A second label tier: binary critical-residue maps}
+
+The $\ddG$ antigens above are the gold standard --- a graded, energetic importance per
+residue --- but experimental alanine scans with full $\ddG$ tables are scarce. A much larger
+body of data exists at a coarser but still \emph{energetic} resolution: \textbf{saturating
+shotgun alanine scans} read out by flow cytometry (Integral Molecular's platform; Davidson \&
+Doranz), which classify each scanned residue as \emph{critical} or \emph{non-critical} for a
+given antibody. A residue is critical when its mutation measurably abolishes binding, so even
+this binary call is grounded in binding energy, not mere proximity --- it is the same
+quantity as $\ddG$, thresholded. We therefore treat these as a second label tier:
+\textbf{Tier~1}, graded $\ddG$ (\S\ref{sec:simulated-antigens}); \textbf{Tier~2}, binary
+critical/non-critical.
+
+\paragraph{Source and the proximity filter.} We mine these from IEDB
+(\texttt{query-api.iedb.org}), keeping only conformational (discontinuous) epitopes defined by
+\emph{binding} assays and explicitly discarding every structure/contact-derived record --- the
+proximity labels this project argues against (recall that $>99\%$ of structure-linked IEDB
+epitopes are crystal/cryo-EM contact, \S\ref{sec:motivation}). Within the binding-derived set
+we take the flow-cytometry (shotgun-mutagenesis) subset, whose curated residue list \emph{is}
+the set of critical residues. This yields $3{,}213$ antibody--antigen epitope maps over
+$186$ antigens. Table~\ref{tab:binary-survey} lists the simulatable, not-yet-included
+candidates; note the depth of antibody sampling per antigen (e.g.\ dengue envelope: $781$
+mapped antibodies across $30$ studies), which lets a Tier-2 antigen carry a
+\emph{consensus} epitope (residues critical across many antibodies) as well as
+antibody-specific maps.
+
+\input{sections/tables/binary_survey}
+
+\paragraph{Representation.} Each Tier-2 antigen is rendered like the $\ddG$ antigens but with a
+\emph{categorical} colouring --- red $=$ critical, blue $=$ scanned but not critical, grey $=$
+not scanned --- so the two tiers read consistently while remaining visually distinct
+(Fig.~\ref{fig:binary-flagship}). The shotgun residues are reported in UniProt numbering and
+carry their wild-type identity, so they are mapped onto a simulation structure and
+wild-type-verified before use, exactly as for the $\ddG$ antigens. Tier-2 antigens enter the
+benchmark as a separate label stream (binary), never merged into the $\ddG$ tables; in the
+leakage-controlled evaluation they are held out by antigen like everything else.
+
+\begin{figure}[H]\centering\figorbox{binary_flagship_ddg.png}{0.5}
+\caption{\textit{Placeholder.} Flagship Tier-2 critical-residue map (red $=$ critical, blue $=$
+scanned/non-critical, grey $=$ not scanned), pending numbering verification of the chosen
+antigen against its simulation structure.}\label{fig:binary-flagship}
+\end{figure}

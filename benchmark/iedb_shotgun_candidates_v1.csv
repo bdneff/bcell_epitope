@@ -1,4 +1,4 @@
-antigen,uniprot,organism,n_epitopes,n_refs,n_critical_residues,already_in_benchmark,sim_category
+antigen,uniprot,organism,n_antibodies,n_studies,n_critical_residues,already_in_benchmark,sim_category
 Spike glycoprotein,P0DTC2,SARS-CoV2,1017,76,697,,viral glycoprotein (large/trimeric)
 Genome polyprotein,P17763,Dengue virus,781,30,632,,flavi/alphavirus E-protein (soluble ectodomain avail)
 Structural polyprotein,Q8JUX5,Alphavirus chikungunya,128,6,98,,flavi/alphavirus E-protein (soluble ectodomain avail)
