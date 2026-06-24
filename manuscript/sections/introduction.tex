@@ -9,15 +9,32 @@ wild-type identity stabilizes the interface. We treat this as a residue-level ep
 $S_i^\mathrm{epitope} \approx \Delta\Delta G_\mathrm{bind}^{(i)}$. (Full derivation and the
 alchemical / StaB-ddG label tiers: \texttt{../../tcr/docs/b\_cell\_eptiope\_prediction\_may23\_update\_final.pdf}.)
 
-\paragraph{The gap.} Most B-cell epitope predictors label residues by \emph{contact distance} to
-a bound antibody. That conflates ``close'' with ``important'': a residue can sit at the interface
-yet contribute little energetically, or be energetically critical without being the nearest
-neighbor. Alanine-scan $\Delta\Delta G$ is a cleaner, energetic definition of importance. Separately,
-since Westhof et al.~\cite{westhof1984} it has been known that antigenicity correlates with
-\emph{segmental mobility} (flexibility / B-factor) --- an antigen-intrinsic, antibody-agnostic
-property. The opportunity is to test, with modern MD, whether antigen-only \emph{dynamical} and
-\emph{solvation} features (RMSF, collective-mode participation, hydration thermodynamics) predict
-energetic binding importance --- and whether they beat static exposure. This is where the
-author's methods background (FRESEAN collective-mode analysis; 3D-2PT-style hydration
-thermodynamics; non-equilibrium energy flow) is the differentiator
-(\texttt{../../\_literature/my\_manuscripts/}).
+\paragraph{The gap.} Most B-cell epitope predictors --- and the benchmarks that train them ---
+label residues by \emph{contact distance} to a bound antibody. As a coarse first pass this is
+defensible: proximity to the paratope is a reasonable way to \emph{nominate} candidate interface
+residues. The limitation is treating every contact as a positive label of equal weight, which
+conflates ``close'' with ``important'': many interface residues contribute little binding free
+energy, while a few hotspots carry most of the affinity. The bias is baked into the data itself.
+Of the $4{,}164$ conformational (discontinuous) B-cell epitopes in IEDB that carry a deposited
+structure, essentially all ($4{,}161$; $>99\%$) are defined by crystallographic or cryo-EM
+\emph{contact} rather than by any binding measurement;\footnote{IEDB next-generation query API
+(\texttt{query-api.iedb.org}), \texttt{bcell\_search}, structure type \emph{Discontinuous peptide}
+with a non-null \texttt{pdb\_id}, queried 2026-06. IEDB attaches a structure only when the epitope
+was itself defined from one, so structure-linked records are overwhelmingly contact-derived; the
+mutation/binding-derived epitopes carry no \texttt{pdb\_id}.} models trained on these labels
+therefore inherit proximity as their working definition of ``epitope.'' Alanine-scan
+$\Delta\Delta G$ supplies the missing energetic refinement --- \emph{which} of the contacting
+residues actually pay for binding. Even a binary critical/non-critical call from a saturating
+alanine scan is energetically grounded, since ``critical'' means mutation measurably weakens
+binding; proximity and energetics are thus complementary, the former a candidate filter and the
+latter the importance label.
+
+Separately, since Westhof et al.~\cite{westhof1984} it has been known that antigenicity correlates
+with \emph{segmental mobility} (flexibility / B-factor) --- an antigen-intrinsic, antibody-agnostic
+property --- and energy-decomposition analyses of plain MD trajectories can already localize
+antibody epitopes on an antigen without knowledge of the antibody~\cite{serapian2020}. The
+opportunity is to test, with modern MD, whether antigen-only \emph{dynamical} and \emph{solvation}
+features (RMSF, collective-mode participation, hydration thermodynamics) predict energetic binding
+importance --- and whether they beat static exposure. This is where the author's methods background
+(FRESEAN collective-mode analysis; 3D-2PT-style hydration thermodynamics; non-equilibrium energy
+flow) is the differentiator (\texttt{../../\_literature/my\_manuscripts/}).
