@@ -1,0 +1,187 @@
+antigen,uniprot,organism,n_epitopes,n_refs,n_critical_residues,already_in_benchmark,sim_category
+Spike glycoprotein,P0DTC2,SARS-CoV2,1017,76,697,,viral glycoprotein (large/trimeric)
+Genome polyprotein,P17763,Dengue virus,781,30,632,,flavi/alphavirus E-protein (soluble ectodomain avail)
+Structural polyprotein,Q8JUX5,Alphavirus chikungunya,128,6,98,,flavi/alphavirus E-protein (soluble ectodomain avail)
+Envelope glycoprotein,Q05320,Orthoebolavirus zairense (Ebola),92,9,98,,viral envelope glycoprotein
+Hemagglutinin,P03452,Influenza A virus,81,22,296,,viral glycoprotein (large/trimeric)
+External core antigen,P0C767,Orthohepadnavirus hominoidei,69,1,5,,other / check per-antigen
+Envelopment polyprotein,A2T069,Rift Valley fever virus,63,8,210,,flavi/alphavirus E-protein (soluble ectodomain avail)
+Frameshifted structural polyprotein,P0DOK1,Alphavirus chikungunya,60,2,56,,flavi/alphavirus E-protein (soluble ectodomain avail)
+Claudin-6,P56747,Homo sapiens (human),35,1,19,,membrane protein (hard; check)
+Growth-regulated alpha protein,P09341,Homo sapiens (human),30,1,23,,soluble chemokine/cytokine (EASY)
+MHC class I antigen,S6AU73,Homo sapiens (human),15,2,4,,MHC/HLA (simulatable)
+"HLA class I histocompatibility antigen, B alpha chain",P01889,Homo sapiens (human),15,5,38,,MHC/HLA (simulatable)
+Fusion glycoprotein F0,O36634,Human respiratory syncytial virus,13,8,133,,other / check per-antigen
+"Major histocompatibility complex, class I, B (Fragment)",A0A140T953,Homo sapiens (human),13,1,2,,MHC/HLA (simulatable)
+"HLA class II histocompatibility antigen, DRB1 beta chain",P01911,Homo sapiens (human),12,3,8,,MHC/HLA (simulatable)
+CD276 antigen,Q5ZPR3,Homo sapiens (human),12,1,3,,other / check per-antigen
+Thyrotropin receptor,P16473,Homo sapiens (human),11,4,24,,membrane protein (hard; check)
+"HLA class I histocompatibility antigen, A alpha chain",P04439,Homo sapiens (human),11,3,12,,MHC/HLA (simulatable)
+Hepatitis A virus cellular receptor 2,Q8TDQ0,Homo sapiens (human),11,1,21,,receptor (check soluble ectodomain)
+T-cell surface antigen CD2,P06729,Homo sapiens (human),11,1,3,,other / check per-antigen
+MHC class I polypeptide-related sequence A,A0A0G2JJ55,Homo sapiens (human),10,2,40,,MHC/HLA (simulatable)
+Integrin alpha-IIb,Q9QUM0,Mus musculus (mouse),10,2,26,,other / check per-antigen
+Programmed cell death protein 1,Q15116,Homo sapiens (human),10,6,58,,other / check per-antigen
+Large envelope protein,Q76R62,Orthohepadnavirus hominoidei,10,1,25,,viral envelope glycoprotein
+Factor H binding protein,Q9JXV4,Neisseria meningitidis,9,7,91,,other / check per-antigen
+Receptor tyrosine-protein kinase erbB-2,P04626,Homo sapiens (human),9,5,87,,receptor (check soluble ectodomain)
+ADP-ribosyl cyclase/cyclic ADP-ribose hydrolase 1,P28907,Homo sapiens (human),9,5,71,,other / check per-antigen
+Tumor necrosis factor receptor superfamily member 5,F6SNI1,Macaca mulatta (rhesus macaque),9,3,54,,receptor (check soluble ectodomain)
+Tyrosine-protein phosphatase non-receptor type substrate 1,P78324,Homo sapiens (human),9,3,57,,receptor (check soluble ectodomain)
+HLA class I histocompatibility antigen A alpha chain,Q5SUL5,Homo sapiens (human),8,2,39,,MHC/HLA (simulatable)
+"Solute carrier family 2, facilitated glucose transporter member 4",P14672,Homo sapiens (human),8,1,11,,other / check per-antigen
+Integrin beta-1,P05556,Homo sapiens (human),8,1,3,,other / check per-antigen
+HLA class II histocompatibility antigen DR beta chain,D7RIG5,Homo sapiens (human),7,3,4,,MHC/HLA (simulatable)
+"Major histocompatibility complex, class I, A (Fragment)",A0A140T9I0,Homo sapiens (human),7,2,3,,MHC/HLA (simulatable)
+Envelope glycoprotein B,P08666,Human herpesvirus 2,7,5,97,yes,viral envelope glycoprotein
+B-lymphocyte antigen CD20,P11836,Homo sapiens (human),7,5,45,,membrane protein (hard; check)
+Tumor necrosis factor receptor superfamily member 9,Q07011,Homo sapiens (human),7,3,37,,receptor (check soluble ectodomain)
+Epidermal growth factor receptor,P00533,Homo sapiens (human),7,4,26,,receptor (check soluble ectodomain)
+CD81 antigen,P60033,Homo sapiens (human),7,3,40,,membrane protein (hard; check)
+Natural cytotoxicity triggering receptor 1,O76036,Homo sapiens (human),7,1,39,,receptor (check soluble ectodomain)
+HLA class I histocompatibility antigen B alpha chain,Q2L6G2,Homo sapiens (human),6,3,5,,MHC/HLA (simulatable)
+"HLA class II histocompatibility antigen, DR alpha chain",P01903,Homo sapiens (human),6,1,6,,MHC/HLA (simulatable)
+Cystic fibrosis transmembrane conductance regulator,P13569,Homo sapiens (human),6,1,56,,other / check per-antigen
+Intercellular adhesion molecule 1,P05362,Homo sapiens (human),5,2,23,,other / check per-antigen
+Major prion protein,P04925,Mus musculus (mouse),5,2,23,,other / check per-antigen
+Blood group Rh(D) polypeptide,Q02161,Homo sapiens (human),5,2,7,,other / check per-antigen
+Other Homo sapiens (human) protein,,Homo sapiens (human),5,2,4,,other / check per-antigen
+"Major histocompatibility complex, class II, DR beta 1 (Fragment)",A0A5S8K7D1,Homo sapiens (human),5,2,4,,MHC/HLA (simulatable)
+"Isoform 2 of HLA class I histocompatibility antigen, A alpha chain (UniProt:P04439-2)",P04439,Homo sapiens (human),5,1,3,,MHC/HLA (simulatable)
+Integrin beta-3,P05106,Homo sapiens (human),4,3,30,,other / check per-antigen
+Botulinum neurotoxin type A,P0DPI1,Clostridium botulinum,4,2,24,yes,other / check per-antigen
+Envelope glycoprotein gp160,P04578,Lentivirus humimdef1,4,3,52,,viral envelope glycoprotein
+HLA class I histocompatibility antigen C alpha chain,Q53YP1,Homo sapiens (human),4,1,1,,MHC/HLA (simulatable)
+Integrin alpha-V,P06756,Homo sapiens (human),4,2,22,,other / check per-antigen
+Podoplanin,F1SUY1,Sus scrofa (pig),4,4,10,,other / check per-antigen
+Receptor tyrosine-protein kinase erbB-3,P21860,Homo sapiens (human),4,3,40,,receptor (check soluble ectodomain)
+E-selectin,P16581,Homo sapiens (human),4,1,12,,other / check per-antigen
+Dipeptidyl peptidase 4,P27487,Homo sapiens (human),4,1,5,,other / check per-antigen
+Outer surface protein A,P0CL66,Borreliella burgdorferi (Lyme disease spirochete),4,2,35,,other / check per-antigen
+"Variant surface glycoprotein (VSG, atypical), putative",Q38G47,Trypanosoma brucei,4,1,37,,other / check per-antigen
+Mesothelin,Q13421,Homo sapiens (human),4,1,20,,other / check per-antigen
+Probable C-C chemokine receptor type 3,P51678,Mus musculus (mouse),4,1,3,,soluble chemokine/cytokine (EASY)
+Integrin beta-8,P26012,Homo sapiens (human),4,1,17,,other / check per-antigen
+Solute carrier family 15 member 4,Q8N697,Homo sapiens (human),4,1,26,,other / check per-antigen
+Attachment glycoprotein,A0AAX3C924,Parahenipavirus langyaense,4,1,37,,other / check per-antigen
+Glycoprotein G,Q9IH62,Henipavirus nipahense (Nipah henipavirus),4,1,71,,other / check per-antigen
+Protein Tax-1,P14079,Deltaretrovirus priTlym1,3,1,9,,other / check per-antigen
+"H-2 class I histocompatibility antigen, D-D alpha chain",P01900,Mus musculus (mouse),3,2,7,,MHC/HLA (simulatable)
+MHC class II antigen,A0A0D5XQ77,Homo sapiens (human),3,1,1,,MHC/HLA (simulatable)
+Choriogonadotropin subunit beta variant 1,A6NKQ9,Homo sapiens (human),3,1,4,,other / check per-antigen
+Epithelial discoidin domain-containing receptor 1,Q08345,Homo sapiens (human),3,2,26,,receptor (check soluble ectodomain)
+P-selectin,P16109,Homo sapiens (human),3,1,3,,other / check per-antigen
+Tumor necrosis factor receptor superfamily member 10B,O14763,Homo sapiens (human),3,2,30,,receptor (check soluble ectodomain)
+5'-nucleotidase,P21589,Homo sapiens (human),3,2,44,,other / check per-antigen
+Pre-small/secreted glycoprotein,P60170,Orthoebolavirus zairense (Ebola),3,1,18,,other / check per-antigen
+Glycoprotein,P08667,Lyssavirus rabies (Rabies lyssavirus),3,2,48,,other / check per-antigen
+Integrin alpha-5,P08648,Homo sapiens (human),3,1,4,,other / check per-antigen
+Integrin beta-2,P05107,Homo sapiens (human),3,1,8,,other / check per-antigen
+Tyrosine-protein kinase transmembrane receptor ROR2,Q01974,Homo sapiens (human),3,1,17,,receptor (check soluble ectodomain)
+T-cell differentiation antigen CD6,P30203,Homo sapiens (human),3,1,3,,other / check per-antigen
+B-lymphocyte antigen CD19,P15391,Homo sapiens (human),3,2,15,,other / check per-antigen
+"Erythrocyte membrane protein 1, PfEMP1",Q8I639,Plasmodium falciparum (malaria parasite P. falciparum),3,1,22,,other / check per-antigen
+B- and T-lymphocyte attenuator,Q7Z6A9,Homo sapiens (human),3,1,49,,other / check per-antigen
+Guanylyl cyclase C,P25092,Homo sapiens (human),3,1,12,,other / check per-antigen
+"Major histocompatibility complex, class I, A",A0A140T913,Homo sapiens (human),3,1,14,,MHC/HLA (simulatable)
+Thyroid peroxidase,P07202,Homo sapiens (human),2,1,7,,other / check per-antigen
+Immunoglobulin heavy constant gamma 2,P01859,Homo sapiens (human),2,1,2,,other / check per-antigen
+Matrix protein 2,P06821,Influenza A virus,2,1,3,,other / check per-antigen
+HLA class II histocompatibility antigen DP beta chain,Q5EP54,Homo sapiens (human),2,1,1,,MHC/HLA (simulatable)
+MHC class I chain-related protein A,Q96QC4,Homo sapiens (human),2,1,3,,MHC/HLA (simulatable)
+Immunoglobulin lambda variable 2-14,P01704,Homo sapiens (human),2,1,1,,other / check per-antigen
+Myeloblastin,P24158,Homo sapiens (human),2,1,8,,other / check per-antigen
+Claudin-1,O95832,Homo sapiens (human),2,1,9,,membrane protein (hard; check)
+Bifunctional hemolysin/adenylate cyclase,P0DKX7,Bordetella pertussis,2,1,35,,other / check per-antigen
+Plasminogen,P00747,Homo sapiens (human),2,1,66,,other / check per-antigen
+Selectin P ligand,A0A8I3PYN9,Canis lupus (wolf or dog),2,1,2,,other / check per-antigen
+Choline transporter-like protein 2,Q8IWA5,Homo sapiens (human),2,1,2,,other / check per-antigen
+Nucleoprotein,P03466,Influenza A virus,2,1,23,,other / check per-antigen
+Programmed cell death 1 ligand 1,Q9NZQ7,Homo sapiens (human),2,2,22,,other / check per-antigen
+Membrane glycoprotein gB,Q5PPC7,Suid alphaherpesvirus 1 (Alphaherpesvirus pseudorabies virus PRV),2,2,18,,other / check per-antigen
+ATP-dependent translocase ABCB1,P08183,Homo sapiens (human),2,2,14,,other / check per-antigen
+Interleukin-7 receptor subunit alpha,P16871,Homo sapiens (human),2,1,32,,soluble chemokine/cytokine (EASY)
+Integrin alpha-2,P17301,Homo sapiens (human),2,1,2,,other / check per-antigen
+Podoplanin isoform X1,A0A384CET4,Ursus maritimus (white bear),2,2,4,,other / check per-antigen
+GDNF family receptor alpha-like,Q6UXV0,Homo sapiens (human),2,1,33,,receptor (check soluble ectodomain)
+Phosphate-binding protein PstS 1,P9WGU1,Mycobacterium tuberculosis,2,1,34,,other / check per-antigen
+Amino acid transporter heavy chain SLC3A2,P08195,Homo sapiens (human),2,1,12,,other / check per-antigen
+Hepatocyte growth factor receptor,P08581,Homo sapiens (human),2,1,19,,receptor (check soluble ectodomain)
+Isoform A17 of Neuropilin-2 (UniProt:O60462-3),O60462,Homo sapiens (human),2,1,41,,other / check per-antigen
+Glycoprotein 42,P03205,Human herpesvirus 4 (Epstein Barr virus),2,1,29,,other / check per-antigen
+Carbonic anhydrase 12,O43570,Homo sapiens (human),2,1,21,,other / check per-antigen
+Interleukin-2 receptor subunit alpha,P01589,Homo sapiens (human),2,1,13,,soluble chemokine/cytokine (EASY)
+Glutamate carboxypeptidase 2,Q04609,Homo sapiens (human),2,1,33,,other / check per-antigen
+Major capsid protein L1,P03101,Alphapapillomavirus 9,2,1,8,,other / check per-antigen
+Paired immunoglobulin-like type 2 receptor alpha,Q9UKJ1,Homo sapiens (human),2,1,16,,receptor (check soluble ectodomain)
+Outer membrane insertion C-terminal signal domain protein,Q3MK87,Moraxella catarrhalis,1,1,2,,other / check per-antigen
+HLA class II histocompatibility antigen DQ beta chain,Q5Y7D6,Homo sapiens (human),1,1,1,,MHC/HLA (simulatable)
+Isoform 2 of MHC class I polypeptide-related sequence A (UniProt:Q29983-2),Q29983,Homo sapiens (human),1,1,1,,MHC/HLA (simulatable)
+"H-2 class I histocompatibility antigen, L-D alpha chain",P01897,Mus musculus (mouse),1,1,2,,MHC/HLA (simulatable)
+"Major histocompatibility complex, class I, C",A0A140T962,Homo sapiens (human),1,1,2,,MHC/HLA (simulatable)
+"Major histocompatibility complex, class I, B",A0A140TA02,Homo sapiens (human),1,1,1,,MHC/HLA (simulatable)
+Neurogenic locus notch homolog protein 1,P46531,Homo sapiens (human),1,1,22,,other / check per-antigen
+"H-2 class I histocompatibility antigen, K-D alpha chain",P01902,Mus musculus (mouse),1,1,2,,MHC/HLA (simulatable)
+Intercellular adhesion molecule 4,Q14773,Homo sapiens (human),1,1,1,,other / check per-antigen
+Beta-2-microglobulin,P61769,Homo sapiens (human),1,1,1,,other / check per-antigen
+Sonic hedgehog protein,Q15465,Homo sapiens (human),1,1,22,,other / check per-antigen
+Protective antigen,P13423,Bacillus anthracis (anthrax bacterium),1,1,5,,other / check per-antigen
+Calmodulin-sensitive adenylate cyclase,P40136,Bacillus anthracis (anthrax bacterium),1,1,6,,other / check per-antigen
+Serine protease hepsin,P05981,Homo sapiens (human),1,1,20,,other / check per-antigen
+Ephrin type-A receptor 2,P29317,Homo sapiens (human),1,1,17,,receptor (check soluble ectodomain)
+Protein-glutamine gamma-glutamyltransferase 2,P21980,Homo sapiens (human),1,1,3,,other / check per-antigen
+Glucagon receptor,P47871,Homo sapiens (human),1,1,15,,receptor (check soluble ectodomain)
+Glutamate decarboxylase 2,Q05329,Homo sapiens (human),1,1,1,,other / check per-antigen
+Lymphotoxin-alpha,P01374,Homo sapiens (human),1,1,27,,other / check per-antigen
+Urokinase plasminogen activator surface receptor,Q03405,Homo sapiens (human),1,1,12,,receptor (check soluble ectodomain)
+T-cell surface glycoprotein CD4,P01730,Homo sapiens (human),1,1,18,,other / check per-antigen
+Myelin-oligodendrocyte glycoprotein,Q16653,Homo sapiens (human),1,1,4,,other / check per-antigen
+Envelope glycoprotein GP350,P03200,Human herpesvirus 4 (Epstein Barr virus),1,1,25,,viral envelope glycoprotein
+Tumor necrosis factor receptor superfamily member 17,Q02223,Homo sapiens (human),1,1,12,,receptor (check soluble ectodomain)
+Collagen alpha-3(IV) chain,Q01955,Homo sapiens (human),1,1,30,,other / check per-antigen
+Semaphorin-4D,Q92854,Homo sapiens (human),1,1,45,,other / check per-antigen
+Isoform 3 of Integrin alpha-IIb (UniProt:P08514-3),P08514,Homo sapiens (human),1,1,1,,other / check per-antigen
+Interleukin-3 receptor subunit alpha,P26951,Homo sapiens (human),1,1,18,,soluble chemokine/cytokine (EASY)
+Toll-like receptor 4,O00206,Homo sapiens (human),1,1,3,,receptor (check soluble ectodomain)
+Complement C5,P01031,Homo sapiens (human),1,1,6,,other / check per-antigen
+Natural cytotoxicity triggering receptor 3 ligand 1,Q68D85,Homo sapiens (human),1,1,15,,receptor (check soluble ectodomain)
+Ectonucleoside triphosphate diphosphohydrolase 3,O75355,Homo sapiens (human),1,1,25,,other / check per-antigen
+Cytotoxic T-lymphocyte protein 4,P16410,Homo sapiens (human),1,1,20,,other / check per-antigen
+Hemagglutinin glycoprotein,Q786F2,Measles morbillivirus (Measles virus),1,1,1,,viral glycoprotein (large/trimeric)
+"ABC transporter, substrate-binding protein, putative",Q2G2D8,Staphylococcus aureus,1,1,14,,other / check per-antigen
+Cadherin-6,P55285,Homo sapiens (human),1,1,29,,other / check per-antigen
+5-hydroxytryptamine receptor 2B,P41595,Homo sapiens (human),1,1,21,,receptor (check soluble ectodomain)
+Isoform 18 of CD44 antigen (UniProt:P16070-18),P16070,Homo sapiens (human),1,1,3,,other / check per-antigen
+Activin receptor type-2A,P27037,Homo sapiens (human),1,1,17,,receptor (check soluble ectodomain)
+Activin receptor type-2B,Q13705,Homo sapiens (human),1,1,20,,receptor (check soluble ectodomain)
+Tissue factor,P13726,Homo sapiens (human),1,1,22,yes,other / check per-antigen
+C-C chemokine receptor type 5,P51681,Homo sapiens (human),1,1,6,,soluble chemokine/cytokine (EASY)
+Inactive tyrosine-protein kinase transmembrane receptor ROR1,Q01973,Homo sapiens (human),1,1,12,,receptor (check soluble ectodomain)
+Lysosome membrane protein 2,Q14108,Homo sapiens (human),1,1,15,,other / check per-antigen
+Transforming growth factor beta activator LRRC32,Q14392,Homo sapiens (human),1,1,18,,other / check per-antigen
+Prostaglandin E2 receptor EP4 subtype,P35408,Homo sapiens (human),1,1,16,,receptor (check soluble ectodomain)
+Fibroblast growth factor receptor 4,P22455,Homo sapiens (human),1,1,16,,receptor (check soluble ectodomain)
+Immunoglobulin heavy variable 1-3,A0A0C4DH29,Homo sapiens (human),1,1,20,,other / check per-antigen
+Isoform 1 of Immunoglobulin heavy constant gamma 1 (UniProt:P01857-1),P01857,Homo sapiens (human),1,1,17,,other / check per-antigen
+Megakaryocyte and platelet inhibitory receptor G6b,O95866,Homo sapiens (human),1,1,14,,receptor (check soluble ectodomain)
+V-type immunoglobulin domain-containing suppressor of T-cell activation,Q9H7M9,Homo sapiens (human),1,1,16,,other / check per-antigen
+Apelin receptor,P35414,Homo sapiens (human),1,1,32,,receptor (check soluble ectodomain)
+Rifin,C0H5N9,Plasmodium falciparum (malaria parasite P. falciparum),1,1,18,,other / check per-antigen
+Envelope glycoprotein D,Q69091,Human herpesvirus 1,1,1,8,,viral envelope glycoprotein
+Basal cell adhesion molecule,P50895,Homo sapiens (human),1,1,1,,other / check per-antigen
+Pre-glycoprotein polyprotein GP complex,P08669,Mammarenavirus lassaense (Lassa mammarenavirus),1,1,12,,flavi/alphavirus E-protein (soluble ectodomain avail)
+Interleukin-2 receptor subunit beta,P14784,Homo sapiens (human),1,1,11,,soluble chemokine/cytokine (EASY)
+Cytokine receptor common subunit gamma,P31785,Homo sapiens (human),1,1,17,,receptor (check soluble ectodomain)
+T-cell surface glycoprotein CD8 alpha chain,P01732,Homo sapiens (human),1,1,16,,other / check per-antigen
+Receptor tyrosine-protein kinase erbB-4,Q15303,Homo sapiens (human),1,1,34,,receptor (check soluble ectodomain)
+Envelope glycoprotein H,P03231,Human herpesvirus 4 (Epstein Barr virus),1,1,24,,viral envelope glycoprotein
+G-protein coupled receptor family C group 5 member D,Q9NZD1,Homo sapiens (human),1,1,17,,receptor (check soluble ectodomain)
+Interleukin 17 receptor B,A0A3S5ZP46,Bos taurus (bovine),1,1,11,,soluble chemokine/cytokine (EASY)
+Hemagglutinin-neuraminidase,A9Z0P6,Human respirovirus 3 (Human parainfluenza 3 virus),1,1,17,,viral glycoprotein (large/trimeric)
+Neuraminidase,P03474,Influenza B virus (Influenza virus type B),1,1,15,,other / check per-antigen
+Decorin-binding protein A,O50917,Borreliella burgdorferi (Lyme disease spirochete),1,1,16,,other / check per-antigen
+Nectin-4,Q96NY8,Homo sapiens (human),1,1,16,,other / check per-antigen
+Envelop protein OPG153,P24758,Orthopoxvirus vaccinia (Vaccinia virus),1,1,20,,other / check per-antigen
+Envelope protein OPG108,A0A7H0DN80,Orthopoxvirus monkeypox,1,1,1,,viral envelope glycoprotein
+Virion glycoprotein B,Q7T5E1,Simplexvirus macacinealpha1,1,1,15,yes,other / check per-antigen
+CD40 ligand,P29965,Homo sapiens (human),1,1,13,,other / check per-antigen
