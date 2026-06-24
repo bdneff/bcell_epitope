@@ -11,39 +11,50 @@ set vmin     [lindex $argv 2]
 set vmax     [lindex $argv 3]
 set outscene [lindex $argv 4]
 
-mol new $struct waitfor all
+set mid [mol new $struct waitfor all]
 
-# read resid -> ddg, stamp ddg into the beta field
-set resids {}
+# Stamp values into beta and build an EXPLICIT chain-aware selection of labelled
+# residues (the sentinel/"beta>x" trick does not colour reliably in VMD 2.0a7).
+# Data lines: "<resid> <value>" or "<chain> <resid> <value>" (chain-aware, so HA1/HA2
+# numbered from 1 don't collide).
+set clauses {}
 set fp [open $datafile r]
 while {[gets $fp line] >= 0} {
     if {[string trim $line] eq ""} continue
-    lassign $line resid ddg
-    set sel [atomselect top "resid $resid"]
-    $sel set beta $ddg
+    if {[llength $line] >= 3} {
+        lassign $line chain resid val
+        set sel [atomselect top "chain $chain and resid $resid"]
+        lappend clauses "(chain $chain and resid $resid)"
+    } else {
+        lassign $line resid val
+        set sel [atomselect top "resid $resid"]
+        lappend clauses "(resid $resid)"
+    }
+    $sel set beta $val
     $sel delete
-    lappend resids $resid
 }
 close $fp
+set labelled [join $clauses " or "]
 
 mol delrep 0 top
 color scale method BWR
 catch {color scale midpoint 0.5}
 
-# rep 0: labelled residues, colored by ddG (Beta) on the fixed [vmin,vmax] scale
+# rep 0: labelled residues, colored by value (Beta) on the fixed [vmin,vmax] scale
 mol representation NewCartoon 0.30 12.0 4.5
 mol color Beta
-mol selection "protein and resid $resids"
+mol selection "protein and ($labelled)"
 catch {mol material AOChalky}
-mol addrep top
-catch {mol scaleminmax top 0 $vmin $vmax}
+mol addrep $mid
+set rep0 [expr {[molinfo $mid get numreps] - 1}]
+catch {mol scaleminmax $mid $rep0 $vmin $vmax}
 
 # rep 1: everything else, gray (distinct from the white midpoint)
 mol representation NewCartoon 0.30 12.0 4.5
 mol color ColorID 2
-mol selection "protein and not (resid $resids)"
+mol selection "protein and not ($labelled)"
 catch {mol material AOChalky}
-mol addrep top
+mol addrep $mid
 
 catch {display projection Orthographic}
 catch {display depthcue off}

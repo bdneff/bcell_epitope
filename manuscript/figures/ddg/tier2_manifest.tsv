@@ -1,0 +1,5 @@
+key	panel	struct	datafile	vmin	vmax
+dengueE	freq	structures/DengueE_1OKE.pdb	manuscript/figures/ddg/dengueE_freq.dat	-102	102
+dengueE	binary	structures/DengueE_1OKE.pdb	manuscript/figures/ddg/dengueE_binary.dat	-1	1
+ha	freq	structures/HA_1HGG.pdb	manuscript/figures/ddg/ha_freq.dat	-8	8
+ha	binary	structures/HA_1HGG.pdb	manuscript/figures/ddg/ha_binary.dat	-1	1

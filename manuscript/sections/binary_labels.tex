@@ -26,17 +26,41 @@ antibody-specific maps.
 
 \input{sections/tables/binary_survey}
 
-\paragraph{Representation.} Each Tier-2 antigen is rendered like the $\ddG$ antigens but with a
-\emph{categorical} colouring --- red $=$ critical, blue $=$ scanned but not critical, grey $=$
-not scanned --- so the two tiers read consistently while remaining visually distinct
-(Fig.~\ref{fig:binary-flagship}). The shotgun residues are reported in UniProt numbering and
-carry their wild-type identity, so they are mapped onto a simulation structure and
-wild-type-verified before use, exactly as for the $\ddG$ antigens. Tier-2 antigens enter the
-benchmark as a separate label stream (binary), never merged into the $\ddG$ tables; in the
-leakage-controlled evaluation they are held out by antigen like everything else.
+\paragraph{Numbering verification.} The shotgun residues are reported in UniProt numbering and
+carry their wild-type identity, but aggregating by UniProt accession mixes proteins, numbering
+conventions, and (for viruses) serotypes/subtypes. We therefore map every residue onto a single
+reference structure and \emph{discard any residue whose wild-type identity does not match} ---
+exactly the wild-type check applied to the $\ddG$ antigens. This is strict: of dengue's raw
+critical positions only those matching DENV2 envelope survive, and likewise only H3 residues
+survive for influenza. What remains is clean and biologically coherent --- the top dengue residue
+(fusion loop, E101) is called critical by 102 of 632 antibodies.
 
-\begin{figure}[H]\centering\figorbox{binary_flagship_ddg.png}{0.5}
-\caption{\textit{Placeholder.} Flagship Tier-2 critical-residue map (red $=$ critical, blue $=$
-scanned/non-critical, grey $=$ not scanned), pending numbering verification of the chosen
-antigen against its simulation structure.}\label{fig:binary-flagship}
+\paragraph{Representation.} We render each staged antigen two ways
+(Figs.~\ref{fig:dengueE-tier2},~\ref{fig:ha-tier2}): \textbf{binary} (red $=$ critical for at
+least one antibody, grey $=$ not) and \textbf{consensus frequency} (white$\rightarrow$red by the
+number of antibodies for which the residue is critical). The frequency view is itself an
+energetic-importance signal --- it ranks residues by immunodominance across hundreds of
+antibodies --- and reduces to the binary view under any threshold, so we keep both and decide
+later. Tier-2 antigens enter the benchmark as a separate (binary/graded) label stream, never
+merged into the $\ddG$ tables; in the leakage-controlled evaluation they are held out by antigen.
+
+\begin{figure}[H]\centering
+\begin{minipage}[c]{0.30\linewidth}\centering\figorbox{dengueE_binary_tier2.png}{1.0}\\[-2pt]{\small binary (critical)}\end{minipage}\hfill
+\begin{minipage}[c]{0.30\linewidth}\centering\figorbox{dengueE_freq_tier2.png}{1.0}\\[-2pt]{\small consensus (\# antibodies)}\end{minipage}\hfill
+\begin{minipage}[c]{0.13\linewidth}\centering\figorbox{dengueE_freqbar.png}{1.0}\end{minipage}
+\caption{\textbf{Dengue envelope (DENV2, \texttt{1OKE} sE):} $96$ wild-type-verified critical
+residues from $632$ antibodies. Binary (left) and antibody-frequency consensus (right). The
+deepest red is the conserved fusion loop (E101, critical for $102$ antibodies); a second focus is
+the EDIII lateral ridge --- both textbook dengue neutralization sites.}\label{fig:dengueE-tier2}
+\end{figure}
+
+\begin{figure}[H]\centering
+\begin{minipage}[c]{0.42\linewidth}\centering\figorbox{ha_binary_tier2.png}{1.0}\\[-2pt]{\small binary (critical)}\end{minipage}\hfill
+\begin{minipage}[c]{0.42\linewidth}\centering\figorbox{ha_freq_tier2.png}{1.0}\\[-2pt]{\small consensus (\# antibodies)}\end{minipage}\hfill
+\begin{minipage}[c]{0.12\linewidth}\centering\figorbox{ha_freqbar.png}{1.0}\end{minipage}
+\caption{\textbf{Influenza hemagglutinin (H3 X-31, \texttt{1HGG} protomer):} $84$
+wild-type-verified critical residues (HA1 head $+$ HA2 stem) from $79$ antibodies, binary and
+antibody-frequency consensus. Critical residues concentrate on the HA1 globular head (the classic
+antigenic sites) with a sparser stem contribution. Native HA is an obligate trimer; one protomer
+is shown.}\label{fig:ha-tier2}
 \end{figure}
