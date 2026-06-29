@@ -59,9 +59,14 @@ All four (HEL$+$these) submitted overnight as prep$\to$production chains
 Bont/A2 (homology models), hGH (provisional labels). Per-system disulfide
 expectations recorded in each \texttt{prep.sh}.
 
-\paragraph{Structure-repair triage (2026-06-29).} Audited \texttt{REMARK 465} for the incomplete
-staged structures and set a per-structure repair policy --- gap length dictates the tool, identity
-(FASTA/\texttt{SEQRES}) is not the bottleneck, geometry is. Full reasoning and the gap table in
-\S\ref{sec:repair}. Outcome: 1HGU $\to$ \texttt{pdbfixer} (2-res loop); 1AHW $\to$ \texttt{pdbfixer}
-or \textsc{Modeller} for the 8-res loop V83--G90 (pending a label-proximity check); 5C6T $\to$
-AlphaFold (32-res gap, beyond \texttt{pdbfixer}). Six staged systems are pristine and run as-is.
+\paragraph{Structure repair (2026-06-29).} Audited \texttt{REMARK 465} for the incomplete staged
+structures and repaired two of three by AlphaFold-loop grafting with restrained closure (method +
+RMSDs in \S\ref{sec:repair}; scripts \texttt{analysis/repair\_structure.py},
+\texttt{finalize\_structure.py}, \texttt{close\_loops.py}; host env
+\texttt{env/repair-environment.yml}). \textbf{hGH} (\texttt{1HGU}, K38--E39 grafted from AFDB
+\texttt{P01241}) and \textbf{tissue factor} (\texttt{1AHW}, loop V83--G90 from AFDB
+\texttt{P13726}; AF--crystal global C$\alpha$-RMSD 1.12\,\AA) are now frozen as
+\texttt{structures/\{hGH\_1HGU,TissueFactor\_1AHW\}\_fixed.pdb} --- continuous, correct disulfides,
+clash-free --- so both are ready to prep. \textbf{HCMV gB} (\texttt{5C6T}) is \emph{absent from
+AlphaFold~DB} (viral) and its 32-residue gap is de-novo prediction; deferred pending an AF3
+(AlphaFold Server) model. Net: eight antigens ready to \texttt{sbatch} on Gemini.

@@ -1,0 +1,5 @@
+# Regenerable repair intermediates stay out of git; the AlphaFold source models
+# (AF-*.pdb) ARE tracked for provenance (AFDB model versions change over time).
+*_full.pdb
+*_grafted.pdb
+*_closed.pdb

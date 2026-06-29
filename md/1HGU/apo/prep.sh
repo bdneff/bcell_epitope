@@ -6,11 +6,15 @@
 # Outputs -> md/1HGU/apo/out/ (gitignored); slurm logs -> md/1HGU/apo/logs/.
 # Expected disulfides: 2.
 # -----------------------------------------------------------------------------
-# !! REPAIR REQUIRED before this will prep: 2-residue loop gap (38-39) + missing atoms (Pro37, Ala148)
-#    Build missing atoms/loops with pdbfixer (needs python>=3.10 / conda env):
-#      pdbfixer structures/hGH_1HGU.pdb --add-atoms=heavy --add-residues \
-#               --output=structures/hGH_1HGU_fixed.pdb
-#    Then commit structures/hGH_1HGU_fixed.pdb as the frozen input. This prep.sh reads that fixed file.
+# REPAIR DONE -> structures/hGH_1HGU_fixed.pdb (frozen input; committed). Provenance:
+#    2-residue internal gap (K38-E39) grafted from AlphaFold model AF-P01241 (AFDB v6),
+#    side chains completed (pdbfixer), loop closed by restrained OpenMM min. See manuscript
+#    sec:repair. Reproduce in the bcell-repair env (env/repair-environment.yml):
+#      micromamba run -n bcell-repair python analysis/repair_structure.py \
+#          --crystal structures/hGH_1HGU.pdb --chain A --af structures/repair/AF-P01241.pdb \
+#          --out structures/repair/hGH_1HGU_grafted.pdb
+#      ... finalize_structure.py (side chains) ... close_loops.py 36-41 ... strip H -> _fixed.pdb
+#    Validated: continuous chain, 2 disulfides (53-165, 182-189), no clashes.
 # -----------------------------------------------------------------------------
 # =============================================================================
 #SBATCH -J hGH_apo_prep

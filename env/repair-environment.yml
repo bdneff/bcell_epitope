@@ -1,0 +1,17 @@
+# Local structure-repair environment for bcell_epitope.
+# Used to repair incomplete crystal structures before apo-MD (see manuscript §sec:repair):
+#   - pdbfixer: fill short missing loops / missing heavy atoms (needs Python >=3.10, OpenMM >=8.2)
+#   - mdanalysis + biopython: superpose AlphaFold models onto crystals, RMSD over matched residues
+# Create with micromamba/conda:
+#   micromamba create -y -n bcell-repair -f env/repair-environment.yml
+# This env is NOT for production MD (that runs on Gemini's Gromacs module); it is host-side prep only.
+name: bcell-repair
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - openmm>=8.2
+  - pdbfixer>=1.11
+  - mdanalysis
+  - biopython
+  - numpy

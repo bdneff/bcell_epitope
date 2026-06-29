@@ -55,33 +55,46 @@ loop anyway) and arbitrary for anything longer, where real loop modelling (\text
 Rosetta) or a full predicted model (AlphaFold) is required. Disordered \emph{termini} are not
 modelled at all: they bear no labels and would only add unrestrained flailing, so we cap them.
 
-\paragraph{Per-structure decisions} (gaps read from \texttt{REMARK 465}; verified
-2026-06-29). \texttt{pdbfixer} needs Python~$\geq 3.10$, so repairs run in the Gemini environment.
+\paragraph{Method used: AlphaFold-loop grafting with restrained closure.} Rather than let a
+fixer build loops blind, we graft the missing internal residues from an AlphaFold model and use
+the crystal for everything resolved. For each antigen we (i) sequence-align the crystal chain to
+its AlphaFold model to fix the numbering offset, (ii) measure the C$\alpha$-RMSD between model and
+crystal over all matched residues --- the ``is the prediction trustworthy here'' test --- and
+(iii) for each internal gap, locally superpose the model on the flanking resolved residues and
+splice in its loop at crystal numbering. \texttt{pdbfixer} then completes any partial side chains,
+and a short OpenMM minimization with all crystal atoms position-restrained (only the loop free,
+plus an explicit harmonic across the spliced junction) closes the peptide bonds. Disordered termini
+are capped, not modelled. Scripts: \texttt{analysis/repair\_structure.py},
+\texttt{finalize\_structure.py}, \texttt{close\_loops.py}; host-side env
+\texttt{env/repair-environment.yml} (Python~3.11, OpenMM~8.5, \texttt{pdbfixer}, run locally, not on
+Gemini).
 
 \begin{center}\small
-\begin{tabular}{@{}l p{0.42\linewidth} l@{}}
+\begin{tabular}{@{}l p{0.34\linewidth} l@{}}
 \toprule
-Antigen (PDB, chain) & Unresolved segments (\texttt{REMARK 465}) & Decision \\
+Antigen (PDB, chain) & Unresolved segments (\texttt{REMARK 465}) & Repair outcome \\
 \midrule
-hGH (\texttt{1HGU} A) & F1; \textbf{K38--E39} (internal); F191 & \texttt{pdbfixer} \\
-Tissue factor (\texttt{1AHW} C) & S1--T3; \textbf{V83--G90} (8-res); Q212--E219 & loop-model$^{\dagger}$ \\
-HCMV gB (\texttt{5C6T} A) & 63--87 (25); 115--120; 219--220; 237--239; \textbf{437--468 (32)} & AlphaFold \\
+hGH (\texttt{1HGU} A) & F1; \textbf{K38--E39} (internal); F191 & AF-graft (AFDB \texttt{P01241}); \textbf{done} \\
+Tissue factor (\texttt{1AHW} C) & S1--T3; \textbf{V83--G90} (8-res); Q212--E219 & AF-graft (AFDB \texttt{P13726}); \textbf{done} \\
+HCMV gB (\texttt{5C6T} A) & 63--87 (25); 115--120; 219--220; 237--239; \textbf{437--468 (32)} & not in AFDB $\to$ AF3 prediction (pending) \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\noindent $^{\dagger}$The only consequential 1AHW gap is the internal 8-residue loop V83--G90
-(a flexible Gly/Ser-rich segment). Eight residues is genuine \emph{de novo} loop modelling, beyond
-\texttt{pdbfixer}'s reliable range. If this loop is remote from the labelled (SKEMPI) epitope
-residues, the crude build is defensible because apo dynamics will sample it; if it abuts the
-binding face, it is loop-modelled (\textsc{Modeller}) before MD. Proximity check pending.
+\noindent For tissue factor the AlphaFold model agrees closely with the crystal (global
+C$\alpha$-RMSD $1.12$\,\AA\ over 200 residues; the V83--G90 loop fits its flanks at $1.29$\,\AA),
+so the 8-residue graft is well supported. For hGH only the 2-residue K38--E39 turn is grafted
+(local fit $1.81$\,\AA); the larger global RMSD ($3.36$\,\AA, hinge flexibility of the four-helix
+bundle) is immaterial for so short a splice. Both repaired chains validate as continuous, with the
+expected disulfides (hGH 53--165, 182--189; TF 49--57, 186--209) and no steric clashes. HCMV gB is
+a viral protein \emph{absent from AlphaFold~DB}, and its largest gap (32 residues) is true
+\emph{de novo} prediction, not loop repair; it requires a fresh AF3 model (AlphaFold Server) before
+its short gaps can be grafted the same way.
 
-\paragraph{Consequences for the run queue.} This separates the staged systems cleanly. Pristine
-chains run as-is: HEL (\texttt{1AKI}), HPr (\texttt{2JEL}), VEGF (\texttt{1BJ1}), IFN-$\gamma$R
-(\texttt{1JRH}), Dengue~E (\texttt{1OKE}), HA (\texttt{1HGG}). The repair queue is 1HGU
-(\texttt{pdbfixer}), 1AHW (\texttt{pdbfixer} or \textsc{Modeller}, pending the proximity check),
-and 5C6T (AlphaFold); the same logic covers the previously deferred MT-SP1
-(\S\ref{sec:simulated-antigens}, two internal residues $\to$ \texttt{pdbfixer}) and Bont/A1.
-Practical note: the working copies in \texttt{structures/} were stripped of their headers, so
-\texttt{SEQRES} must be re-attached from the RCSB header before repair to give the tool its
-reference sequence.
+\paragraph{Consequences for the run queue.} Eight of the nine non-pristine/pristine antigens are
+now ready to prep on Gemini (\texttt{git pull} then \texttt{sbatch}): pristine chains HEL
+(\texttt{1AKI}), HPr (\texttt{2JEL}), VEGF (\texttt{1BJ1}), IFN-$\gamma$R (\texttt{1JRH}),
+Dengue~E (\texttt{1OKE}), HA (\texttt{1HGG}); plus the repaired hGH (\texttt{1HGU}) and tissue
+factor (\texttt{1AHW}). Outstanding: HCMV gB (\texttt{5C6T}, awaiting an AF3 model) and the
+previously deferred MT-SP1 (\S\ref{sec:simulated-antigens}, two internal residues, same AF-graft
+recipe) and Bont/A1.

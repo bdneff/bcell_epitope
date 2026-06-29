@@ -6,11 +6,15 @@
 # Outputs -> md/1AHW/apo/out/ (gitignored); slurm logs -> md/1AHW/apo/logs/.
 # Expected disulfides: 2.
 # -----------------------------------------------------------------------------
-# !! REPAIR REQUIRED before this will prep: 8-residue disordered loop gap (83-90)
-#    Build missing atoms/loops with pdbfixer (needs python>=3.10 / conda env):
-#      pdbfixer structures/TissueFactor_1AHW.pdb --add-atoms=heavy --add-residues \
-#               --output=structures/TissueFactor_1AHW_fixed.pdb
-#    Then commit structures/TissueFactor_1AHW_fixed.pdb as the frozen input. This prep.sh reads that fixed file.
+# REPAIR DONE -> structures/TissueFactor_1AHW_fixed.pdb (frozen input; committed). Provenance:
+#    8-residue internal loop (V83-G90) grafted from AlphaFold model AF-P13726 (AFDB v6;
+#    AF vs crystal global CA-RMSD 1.12 A, loop flank fit 1.29 A), loop closed by restrained
+#    OpenMM min. See manuscript sec:repair. Reproduce in bcell-repair env:
+#      micromamba run -n bcell-repair python analysis/repair_structure.py \
+#          --crystal structures/TissueFactor_1AHW.pdb --chain C --af structures/repair/AF-P13726.pdb \
+#          --out structures/repair/TissueFactor_1AHW_grafted.pdb
+#      ... finalize_structure.py ... close_loops.py 81-92 ... strip H -> _fixed.pdb
+#    Validated: continuous chain, 2 disulfides (49-57, 186-209), no clashes.
 # -----------------------------------------------------------------------------
 # =============================================================================
 #SBATCH -J TF_apo_prep
