@@ -18,9 +18,15 @@ Run inside the bcell-repair env:
 import argparse
 import sys
 import numpy as np
-from Bio.PDB import PDBParser, PDBIO, Superimposer
+from Bio.PDB import PDBParser, MMCIFParser, PDBIO, Superimposer
 from Bio.PDB.Polypeptide import is_aa
 from Bio.Align import PairwiseAligner
+
+
+def load_first_model(path, sid):
+    """Parse PDB or mmCIF (AlphaFold Server returns CIF) and return model 0."""
+    parser = MMCIFParser(QUIET=True) if path.lower().endswith('.cif') else PDBParser(QUIET=True)
+    return parser.get_structure(sid, path)[0]
 
 THREE2ONE = {
     'ALA':'A','ARG':'R','ASN':'N','ASP':'D','CYS':'C','GLN':'Q','GLU':'E',
@@ -94,9 +100,8 @@ def main():
     ap.add_argument('--max-gap', type=int, default=20, help='refuse to graft gaps longer than this')
     args = ap.parse_args()
 
-    p = PDBParser(QUIET=True)
-    crys_model = p.get_structure('x', args.crystal)[0]
-    af_chain = chain_residues(list(p.get_structure('a', args.af)[0])[0])
+    crys_model = load_first_model(args.crystal, 'x')
+    af_chain = chain_residues(list(load_first_model(args.af, 'a'))[0])
     crys_chain_obj = crys_model[args.chain]
     crys_res = chain_residues(crys_chain_obj)
 

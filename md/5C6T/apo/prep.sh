@@ -6,11 +6,13 @@
 # Outputs -> md/5C6T/apo/out/ (gitignored); slurm logs -> md/5C6T/apo/logs/.
 # Expected disulfides: 5.
 # -----------------------------------------------------------------------------
-# !! REPAIR REQUIRED before this will prep: heavy disorder incl. 32-residue gap (437-468) + others; prefer a full-ectodomain AlphaFold model
-#    Build missing atoms/loops with pdbfixer (needs python>=3.10 / conda env):
-#      pdbfixer structures/HCMVgB_5C6T.pdb --add-atoms=heavy --add-residues \
-#               --output=structures/HCMVgB_5C6T_fixed.pdb
-#    Then commit structures/HCMVgB_5C6T_fixed.pdb as the frozen input. This prep.sh reads that fixed file.
+# !! REPAIR PENDING AF3 MODEL: gB is absent from AlphaFold DB (viral) and has a 32-residue
+#    internal gap (437-468) + shorter gaps (115-120, 219-220, 237-239). Needs a fresh AF3
+#    model (AlphaFold Server), then AF-graft (same recipe as 1HGU/1AHW). One-step finish:
+#      1) submit structures/repair/gB_5C6T_ectodomain.fasta at https://alphafoldserver.com
+#      2) save the model as structures/repair/AF3-gB_5C6T.cif
+#      3) bash analysis/repair_gB.sh   -> writes structures/HCMVgB_5C6T_fixed.pdb (read here)
+#    See manuscript sec:repair. Expected disulfides: 5.
 # -----------------------------------------------------------------------------
 # =============================================================================
 #SBATCH -J gB_apo_prep
