@@ -55,6 +55,13 @@ the complex; numbering kept aligned to the labels). Provenance:
         N-terminus); \texttt{md/2NYY/apo}.
 \end{itemize}
 All four (HEL$+$these) submitted overnight as prep$\to$production chains
-(\texttt{sbatch --dependency=afterok}). \textbf{Deferred:} MT-SP1 (2 missing internal residues
-need loop modelling), Bont/A2 (homology models), hGH (provisional labels). Per-system disulfide
+(\texttt{sbatch --dependency=afterok}). \textbf{Deferred:} MT-SP1 (2 missing internal residues),
+Bont/A2 (homology models), hGH (provisional labels). Per-system disulfide
 expectations recorded in each \texttt{prep.sh}.
+
+\paragraph{Structure-repair triage (2026-06-29).} Audited \texttt{REMARK 465} for the incomplete
+staged structures and set a per-structure repair policy --- gap length dictates the tool, identity
+(FASTA/\texttt{SEQRES}) is not the bottleneck, geometry is. Full reasoning and the gap table in
+\S\ref{sec:repair}. Outcome: 1HGU $\to$ \texttt{pdbfixer} (2-res loop); 1AHW $\to$ \texttt{pdbfixer}
+or \textsc{Modeller} for the 8-res loop V83--G90 (pending a label-proximity check); 5C6T $\to$
+AlphaFold (32-res gap, beyond \texttt{pdbfixer}). Six staged systems are pristine and run as-is.

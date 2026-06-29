@@ -32,3 +32,56 @@ trajectory for statistics; replicas are deferred (random seeds make adding indep
 thermodynamics require a \emph{separate} protocol --- high-frequency velocity output, constraint
 removal / sub-fs dt, TIP4P/2005 --- with settings pulled from the FRESEAN and energy-transfer
 manuscripts. This is the run that powers the mode-based and hydration feature classes.
+
+\section{Structure completeness and the repair strategy}\label{sec:repair}
+
+Several crystal structures are incomplete --- disordered termini, internal loops, or whole
+segments that the experiment never resolved (PDB \texttt{REMARK 465}). Apo-MD demands a chemically
+complete chain, so each gap forces a choice. We make that choice explicitly per structure rather
+than feeding everything through one tool, because \textbf{the right repair scales with gap length},
+and the wrong tool on a long gap produces a confident-looking but meaningless model.
+
+\paragraph{What a ``fixer'' can and cannot supply.} The instinct to ``just grab the FASTA for the
+missing residues'' conflates two different problems. The deposited sequence (\texttt{SEQRES}, the
+same residues a fixer recovers automatically by diffing \texttt{SEQRES} against the resolved
+\texttt{ATOM} records) supplies the \emph{identity} of the missing residues --- but identity is the
+easy half. The hard half is \emph{geometry}: where the missing backbone atoms sit in three
+dimensions, about which the sequence says nothing. \texttt{pdbfixer} (OpenMM) builds missing
+heavy atoms onto resolved residues from templates --- valid and routine --- and threads missing
+residues in with default internal coordinates followed by a short minimization of only the new
+atoms. That minimization removes clashes; it performs \emph{no} conformational sampling. The result
+is therefore reliable for a short surface gap (apo equilibration relaxes a two- or three-residue
+loop anyway) and arbitrary for anything longer, where real loop modelling (\textsc{Modeller},
+Rosetta) or a full predicted model (AlphaFold) is required. Disordered \emph{termini} are not
+modelled at all: they bear no labels and would only add unrestrained flailing, so we cap them.
+
+\paragraph{Per-structure decisions} (gaps read from \texttt{REMARK 465}; verified
+2026-06-29). \texttt{pdbfixer} needs Python~$\geq 3.10$, so repairs run in the Gemini environment.
+
+\begin{center}\small
+\begin{tabular}{@{}l p{0.42\linewidth} l@{}}
+\toprule
+Antigen (PDB, chain) & Unresolved segments (\texttt{REMARK 465}) & Decision \\
+\midrule
+hGH (\texttt{1HGU} A) & F1; \textbf{K38--E39} (internal); F191 & \texttt{pdbfixer} \\
+Tissue factor (\texttt{1AHW} C) & S1--T3; \textbf{V83--G90} (8-res); Q212--E219 & loop-model$^{\dagger}$ \\
+HCMV gB (\texttt{5C6T} A) & 63--87 (25); 115--120; 219--220; 237--239; \textbf{437--468 (32)} & AlphaFold \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent $^{\dagger}$The only consequential 1AHW gap is the internal 8-residue loop V83--G90
+(a flexible Gly/Ser-rich segment). Eight residues is genuine \emph{de novo} loop modelling, beyond
+\texttt{pdbfixer}'s reliable range. If this loop is remote from the labelled (SKEMPI) epitope
+residues, the crude build is defensible because apo dynamics will sample it; if it abuts the
+binding face, it is loop-modelled (\textsc{Modeller}) before MD. Proximity check pending.
+
+\paragraph{Consequences for the run queue.} This separates the staged systems cleanly. Pristine
+chains run as-is: HEL (\texttt{1AKI}), HPr (\texttt{2JEL}), VEGF (\texttt{1BJ1}), IFN-$\gamma$R
+(\texttt{1JRH}), Dengue~E (\texttt{1OKE}), HA (\texttt{1HGG}). The repair queue is 1HGU
+(\texttt{pdbfixer}), 1AHW (\texttt{pdbfixer} or \textsc{Modeller}, pending the proximity check),
+and 5C6T (AlphaFold); the same logic covers the previously deferred MT-SP1
+(\S\ref{sec:simulated-antigens}, two internal residues $\to$ \texttt{pdbfixer}) and Bont/A1.
+Practical note: the working copies in \texttt{structures/} were stripped of their headers, so
+\texttt{SEQRES} must be re-attached from the RCSB header before repair to give the tool its
+reference sequence.
