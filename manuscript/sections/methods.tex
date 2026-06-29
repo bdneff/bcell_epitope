@@ -88,8 +88,11 @@ so the 8-residue graft is well supported. For hGH only the 2-residue K38--E39 tu
 bundle) is immaterial for so short a splice. Both repaired chains validate as continuous, with the
 expected disulfides (hGH 53--165, 182--189; TF 49--57, 186--209) and no steric clashes. HCMV gB is
 a viral protein \emph{absent from AlphaFold~DB}, and its largest gap (32 residues) is true
-\emph{de novo} prediction, not loop repair; it requires a fresh AF3 model (AlphaFold Server) before
-its short gaps can be grafted the same way.
+\emph{de novo} prediction, not loop repair; it requires a fresh model. We generate one with
+\textbf{AlphaFold3} on Gemini (the lab's \texttt{alphafold\_3.0.1} Singularity container and
+installed weights/databases; \texttt{md/5C6T/apo/af3.sbatch}, mirroring the episcaf pipeline), then
+graft its loops the same way. The AF3 model's agreement with the crystal over the resolved residues
+is the same trust check applied above; if it disagrees we simulate the AF3 ectodomain directly.
 
 \paragraph{Consequences for the run queue.} Eight of the nine non-pristine/pristine antigens are
 now ready to prep on Gemini (\texttt{git pull} then \texttt{sbatch}): pristine chains HEL

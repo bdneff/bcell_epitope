@@ -7,11 +7,11 @@
 # Expected disulfides: 5.
 # -----------------------------------------------------------------------------
 # !! REPAIR PENDING AF3 MODEL: gB is absent from AlphaFold DB (viral) and has a 32-residue
-#    internal gap (437-468) + shorter gaps (115-120, 219-220, 237-239). Needs a fresh AF3
-#    model (AlphaFold Server), then AF-graft (same recipe as 1HGU/1AHW). One-step finish:
-#      1) submit structures/repair/gB_5C6T_ectodomain.fasta at https://alphafoldserver.com
-#      2) save the model as structures/repair/AF3-gB_5C6T.cif
-#      3) bash analysis/repair_gB.sh   -> writes structures/HCMVgB_5C6T_fixed.pdb (read here)
+#    internal gap (437-468) + shorter gaps (115-120, 219-220, 237-239). Generate an AF3 model
+#    on Gemini (lab container; mirrors episcaf), then AF-graft (same recipe as 1HGU/1AHW):
+#      1) on Gemini:  sbatch md/5C6T/apo/af3.sbatch   -> md/5C6T/apo/af3/out/gb_5c6t/*_model.cif
+#      2) pull md/5C6T/apo/af3/out back, then (local repair env): bash analysis/repair_gB.sh
+#         -> writes structures/HCMVgB_5C6T_fixed.pdb (read here)
 #    See manuscript sec:repair. Expected disulfides: 5.
 # -----------------------------------------------------------------------------
 # =============================================================================
