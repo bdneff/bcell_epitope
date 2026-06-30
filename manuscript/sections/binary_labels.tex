@@ -4,7 +4,7 @@ The $\ddG$ antigens above are the gold standard --- a graded, energetic importan
 residue --- but experimental alanine scans with full $\ddG$ tables are scarce. A much larger
 body of data exists at a coarser but still \emph{energetic} resolution: \textbf{saturating
 shotgun alanine scans} read out by flow cytometry (Integral Molecular's platform; Davidson \&
-Doranz), which classify each scanned residue as \emph{critical} or \emph{non-critical} for a
+Doranz~\cite{davidson2014}), which classify each scanned residue as \emph{critical} or \emph{non-critical} for a
 given antibody. A residue is critical when its mutation measurably abolishes binding, so even
 this binary call is grounded in binding energy, not mere proximity --- it is the same
 quantity as $\ddG$, thresholded. We therefore treat these as a second label tier:
@@ -12,7 +12,7 @@ quantity as $\ddG$, thresholded. We therefore treat these as a second label tier
 critical/non-critical.
 
 \paragraph{Source and the proximity filter.} We mine these from IEDB
-(\texttt{query-api.iedb.org}), keeping only conformational (discontinuous) epitopes defined by
+(\texttt{query-api.iedb.org})~\cite{vita2019}, keeping only conformational (discontinuous) epitopes defined by
 \emph{binding} assays and explicitly discarding every structure/contact-derived record --- the
 proximity labels this project argues against (recall that $>99\%$ of structure-linked IEDB
 epitopes are crystal/cryo-EM contact, \S\ref{sec:motivation}). Within the binding-derived set

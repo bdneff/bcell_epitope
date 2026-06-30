@@ -13,8 +13,9 @@ Hen egg-white lysozyme is a 129-residue glycoside hydrolase and the canonical mo
 structural immunology: multiple high-resolution antibody complexes and alanine scans exist
 (HyHEL-10, HyHEL-63, D1.3). It is compact and conformationally rigid, cross-linked by four
 disulfides. We simulate the apo enzyme from \texttt{1AKI}. The labels here are the HyHEL-63 scan
-(\texttt{1DQJ}, Table~\ref{tab:ddg-lysozyme}); the v2 benchmark adds D1.3 (\texttt{1VFB}) and
-HyHEL-10 (\texttt{3HFM}) scans for the same antigen.
+(\texttt{1DQJ}, Table~\ref{tab:ddg-lysozyme})~\cite{li2000}; the v2 benchmark adds D1.3
+(\texttt{1VFB})~\cite{bhat1994} and HyHEL-10 (\texttt{3HFM})~\cite{padlan1989} scans for the same
+antigen. These $\ddG$ values are drawn from the AB-Bind database~\cite{sirin2016}.
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.27\linewidth}\centering\figorbox{lysozyme_1DQJ_ddg.png}{1.0}\\[-2pt]{\small HyHEL-63 (1DQJ)}\end{minipage}\hfill
 \begin{minipage}[c]{0.27\linewidth}\centering\figorbox{lysozyme_1VFB_ddg.png}{1.0}\\[-2pt]{\small D1.3 (1VFB)}\end{minipage}\hfill
@@ -29,7 +30,8 @@ cytoplasmic protein of the bacterial phosphoenolpyruvate:sugar phosphotransferas
 shuttling a phosphoryl group between enzyme~I and the sugar-specific EIIA components. The
 \textit{E.\ coli} protein is a well-folded open-faced $\beta$-sandwich with \emph{no cysteines},
 making it an exceptionally clean dynamics test case. The Jel42 epitope clusters in the C-terminal
-half (Table~\ref{tab:ddg-hpr}). We simulate the apo protein from \texttt{2JEL} (chain P).
+half (Table~\ref{tab:ddg-hpr})~\cite{prasad1998}; $\ddG$ values via AB-Bind~\cite{sirin2016}. We
+simulate the apo protein from \texttt{2JEL} (chain P).
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.6\linewidth}\centering\figorbox{hpr_2JEL_ddg.png}{0.95}\\[-2pt]{\small Jel42 (2JEL)}\end{minipage}\hfill
 \begin{minipage}[c]{0.13\linewidth}\centering\figorbox{ddgbar.png}{1.0}\end{minipage}
@@ -42,8 +44,9 @@ target (bevacizumab, ranibizumab). Its receptor-binding domain is an antiparalle
 disulfide-linked homodimer with a cystine-knot growth-factor fold; the two protomers are
 covalently joined, so the biological unit must be simulated as the dimer. The benchmark pairs two
 antibodies against the same receptor-binding face: fab-12 (\texttt{1BJ1}, the bevacizumab
-precursor) and the affinity-matured Y0317 (\texttt{1CZ8}, ranibizumab) --- a useful
-same-antigen/different-affinity comparison (Table~\ref{tab:ddg-vegf}). We simulate the apo dimer
+precursor)~\cite{muller1998} and the affinity-matured Y0317 (\texttt{1CZ8},
+ranibizumab)~\cite{chen1999} --- a useful same-antigen/different-affinity comparison
+(Table~\ref{tab:ddg-vegf}); $\ddG$ values via AB-Bind~\cite{sirin2016}. We simulate the apo dimer
 from \texttt{1BJ1} (chains V,\,W).
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.37\linewidth}\centering\figorbox{vegf_1BJ1_ddg.png}{1.0}\\[-2pt]{\small fab-12 (1BJ1)}\end{minipage}\hfill
@@ -55,8 +58,9 @@ from \texttt{1BJ1} (chains V,\,W).
 \subsection{MT-SP1 (matriptase)}
 MT-SP1 / matriptase (ST14) is a type~II transmembrane serine protease of the S1 family; its
 extracellular catalytic domain is over-expressed in epithelial cancers and is a validated
-oncology target. The benchmark uses two inhibitory Fabs, E2 (\texttt{3BN9}) and S4 (\texttt{3NPS}),
-scanning the protease domain in chymotrypsin numbering (Table~\ref{tab:ddg-mtsp1}). Simulation is
+oncology target. The benchmark uses two inhibitory Fabs, E2 (\texttt{3BN9})~\cite{farady2008} and S4
+(\texttt{3NPS})~\cite{schneider2012}, scanning the protease domain in chymotrypsin numbering
+(Table~\ref{tab:ddg-mtsp1}; $\ddG$ via AB-Bind~\cite{sirin2016}). Simulation is
 staged but \textbf{pending}: the crystal structures lack two internal residues (149, 218) that
 must be repaired before MD (\S\ref{sec:repair}).
 \begin{figure}[H]\centering\figorbox{mtsp1_structure.png}{0.45}
@@ -71,7 +75,7 @@ heavy-chain domain (H\textsubscript{C}, here residues 872--1295) is the receptor
 targeted by neutralizing antibodies. We simulate the isolated H\textsubscript{C} domain
 (\texttt{2NYY} chain A); the catalytic light-chain zinc lies outside this fragment. Two
 neutralizing mAbs, CR1 (\texttt{2NYY}) and AR2 (\texttt{2NZ9}), provide the labels
-(Table~\ref{tab:ddg-bonta1}).
+(Table~\ref{tab:ddg-bonta1})~\cite{garciarodriguez2007}; $\ddG$ via AB-Bind~\cite{sirin2016}.
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.37\linewidth}\centering\figorbox{bonta1_2NYY_ddg.png}{1.0}\\[-2pt]{\small CR1 (2NYY)}\end{minipage}\hfill
 \begin{minipage}[c]{0.37\linewidth}\centering\figorbox{bonta1_2NZ9_ddg.png}{1.0}\\[-2pt]{\small AR2 (2NZ9)}\end{minipage}\hfill
@@ -84,7 +88,8 @@ The interferon-$\gamma$ receptor $\alpha$-chain (IFN-$\gamma$R1) ectodomain is t
 ligand-binding subunit of the type~II interferon receptor: two fibronectin type~III domains
 forming an L-shaped $\beta$-sandwich that engages the IFN-$\gamma$ homodimer. The neutralizing
 antibody A6 binds this ectodomain and the published alanine scan localises a compact energetic
-hotspot on one face (Table~\ref{tab:ddg-ifngr}). It is a clean, rigid, single-chain
+hotspot on one face (Table~\ref{tab:ddg-ifngr})~\cite{hofstadter1999}; $\ddG$ values curated via
+SKEMPI~2.0~\cite{skempi2}. It is a clean, rigid, single-chain
 $\sim$95-residue Ig-like domain --- an attractive small test antigen. We simulate the apo
 ectodomain stripped from \texttt{1JRH} (chain~I).
 \begin{figure}[H]\centering
@@ -98,7 +103,7 @@ Tissue factor (TF, coagulation factor~III) is the cell-surface initiator of the 
 blood-coagulation cascade: its extracellular region is a two-domain fibronectin type~III module
 that binds and allosterically activates factor~VIIa. The inhibitory Fab 5G9 blocks the
 macromolecular substrate site, and its antigen-side alanine scan marks the functional epitope
-(Table~\ref{tab:ddg-tf}). The ectodomain is a well-folded, single-chain $\sim$200-residue
+(Table~\ref{tab:ddg-tf})~\cite{huang1998}; $\ddG$ values curated via SKEMPI~2.0~\cite{skempi2}. The ectodomain is a well-folded, single-chain $\sim$200-residue
 $\beta$-rich protein. We simulate the apo ectodomain stripped from \texttt{1AHW} (chain~C).
 \begin{figure}[H]\centering
 \begin{minipage}[c]{0.6\linewidth}\centering\figorbox{tf_1AHW_ddg.png}{0.95}\\[-2pt]{\small 5G9 (1AHW)}\end{minipage}\hfill
@@ -110,7 +115,8 @@ $\beta$-rich protein. We simulate the apo ectodomain stripped from \texttt{1AHW}
 Glycoprotein~B (gB) is the conserved class~III fusion machine of human cytomegalovirus and a
 principal target of neutralizing antibodies. The ectodomain is a large, elongated trimer; the
 antibody 1G2 recognises antigenic domain~2 and its alanine scan identifies the contact hotspots
-(Table~\ref{tab:ddg-hcmvgb}). This is our largest antigen ($\sim$566 modelled residues) and is
+(Table~\ref{tab:ddg-hcmvgb})~\cite{chandramouli2015}; $\ddG$ values curated via
+SKEMPI~2.0~\cite{skempi2}. This is our largest antigen ($\sim$566 modelled residues) and is
 biologically trimeric --- we simulate the apo protomer as deposited in \texttt{5C6T} (chain~A),
 noting that the native oligomeric state may modulate the dynamics of the buried interfaces.
 \begin{figure}[H]\centering
@@ -122,7 +128,9 @@ noting that the native oligomeric state may modulate the dynamics of the buried 
 \subsection{Human growth hormone}
 Human growth hormone (hGH, somatotropin) is a 191-residue four-helix-bundle cytokine and the
 historical birthplace of alanine-scanning mutagenesis. Here the antibody-specific labels are the
-MAb3 scan (Table~\ref{tab:ddg-hgh}); the benchmark additionally carries a secondary,
+MAb3 scan (Table~\ref{tab:ddg-hgh})~\cite{jin1992}\,\textbf{[verify]} (benchmark cites L.\ Jin's
+1994 thesis, Table~3.2; the published values are in~\cite{jin1992}); the benchmark additionally
+carries a secondary,
 provisional profile of the total \ddG\ aggregated across 21 anti-hGH MAbs (not antibody-specific,
 held out of the primary labels). We simulate the apo hormone from \texttt{1HGU} (chain~A).
 \begin{figure}[H]\centering
