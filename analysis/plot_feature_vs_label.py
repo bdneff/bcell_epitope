@@ -29,8 +29,9 @@ plt.rcParams.update({
     "axes.linewidth": 1.1, "axes.spines.top": False, "axes.spines.right": False,
     "figure.dpi": 150, "savefig.bbox": "tight", "font.family": "DejaVu Sans",
 })
-GREY = "#c2c2c2"      # not important
-RED = "#c1272d"       # experimentally important
+GREY = "#cccccc"      # not scanned (no alanine-scan data; plotted at ddG=0)
+BLUE = "#4878b8"      # scanned but weak / binding-improving (|ddG| below the important cutoff)
+RED = "#c1272d"       # scanned and important (ddG >= cutoff)
 SHADE = "#ffe2b0"     # "SASA would call epitope" region
 
 LABEL_CSV = "benchmark/antigen_alanine_scan_extracted_SIMPLE_v3.csv"
@@ -139,12 +140,17 @@ def main():
         P_pred += n_pred; P_tp += n_tp; P_imp += n_imp; P_res += n_res
         print(f"{KEY2PDB[k]:6s} {n_res:5d} {n_pred:6d} {n_tp:4d} {n_imp:5d} "
               f"{prec:6.2f} {recall:7.2f} {rho:9.3f} {A:6.2f}")
-        # plot ALL residues: grey = not important, red = experimentally important
+        # 3-way: grey = not scanned, blue = scanned-weak, red = scanned-important
+        scanned = np.array([r in lab for r in resids])
+        weak = scanned & ~important
+        bulk = ~scanned
         ax.axvspan(thr, max(x.max(), thr) + 0.02, color=SHADE, alpha=0.5, lw=0)
-        ax.scatter(x[~important], y[~important], c=GREY, s=20, alpha=0.7, edgecolors="none",
-                   label="not important")
+        ax.scatter(x[bulk], y[bulk], c=GREY, s=18, alpha=0.7, edgecolors="none",
+                   label="not scanned")
+        ax.scatter(x[weak], y[weak], c=BLUE, s=26, alpha=0.85, edgecolors="none",
+                   label=f"scanned, weak ($\\Delta\\Delta G<{args.cutoff:g}$)", zorder=2)
         ax.scatter(x[important], y[important], c=RED, s=46, alpha=0.95, edgecolors="k",
-                   linewidths=0.4, label="important (binding)", zorder=3)
+                   linewidths=0.4, label=f"important ($\\Delta\\Delta G\\geq{args.cutoff:g}$)", zorder=3)
         ax.axvline(thr, color="#e8820c", ls="--", lw=1.8)
         ax.set_title(f"{KEY2PDB[k]}   precision {prec:.0%} · recall {recall:.0%}",
                      fontsize=14, fontweight="bold")
@@ -156,10 +162,10 @@ def main():
     # single figure-level legend BELOW the grid (outside all panels -> hides no data)
     handles, labs = axes[0][0].get_legend_handles_labels()
     handles.append(Patch(facecolor=SHADE, alpha=0.6)); labs.append(f"SASA $\\geq$ {thr} (exposure's call)")
-    fig.legend(handles, labs, loc="lower center", ncol=3, fontsize=14, frameon=True,
+    fig.legend(handles, labs, loc="lower center", ncol=4, fontsize=13, frameon=True,
                markerscale=1.4, bbox_to_anchor=(0.5, 0.005))
-    fig.suptitle(f"Static surface exposure as an epitope label (apo, single-frame): every residue by "
-                 f"{args.label};\nred = experimentally important, shaded = SASA$\\geq${thr} "
+    fig.suptitle(f"Static surface exposure as an epitope label (apo, single-frame): every residue, "
+                 f"{args.label} vs alanine-scan $\\Delta\\Delta G$;\nshaded $=$ SASA$\\geq${thr} "
                  f"(what exposure alone would call epitope)", fontsize=16, fontweight="bold")
     fig.tight_layout(rect=[0, 0.05, 1, 0.95])
     p1 = outdir / "sasa_allres_per_antigen.png"
@@ -167,17 +173,22 @@ def main():
 
     # pooled: all residues, same decision line -- the manuscript figure
     fig2, ax = plt.subplots(figsize=(8.5, 6.0))
-    allx, ally, allimp = [], [], []
+    allx, ally, allscan, allimp = [], [], [], []
     for k in keys:
         for r in sorted(feat[k]):
             allx.append(feat[k][r]); ally.append(labels[k].get(r, 0.0))
+            allscan.append(r in labels[k])
             allimp.append(r in labels[k] and labels[k][r] >= args.cutoff)
-    allx, ally, allimp = np.array(allx), np.array(ally), np.array(allimp)
+    allx, ally = np.array(allx), np.array(ally)
+    allscan, allimp = np.array(allscan), np.array(allimp)
+    allweak = allscan & ~allimp
     ax.axvspan(thr, allx.max() + 0.03, color=SHADE, alpha=0.55, lw=0)
-    ax.scatter(allx[~allimp], ally[~allimp], c=GREY, s=16, alpha=0.55, edgecolors="none",
-               label="not important for binding")
+    ax.scatter(allx[~allscan], ally[~allscan], c=GREY, s=14, alpha=0.5, edgecolors="none",
+               label="not scanned")
+    ax.scatter(allx[allweak], ally[allweak], c=BLUE, s=30, alpha=0.85, edgecolors="none",
+               label=f"scanned, weak ($\\Delta\\Delta G<{args.cutoff:g}$)", zorder=2)
     ax.scatter(allx[allimp], ally[allimp], c=RED, s=42, alpha=0.95, edgecolors="k",
-               linewidths=0.4, label="important for binding", zorder=3)
+               linewidths=0.4, label=f"important ($\\Delta\\Delta G\\geq{args.cutoff:g}$)", zorder=3)
     ax.axvline(thr, color="#e8820c", ls="--", lw=2.2)
     prec_all = P_tp / P_pred if P_pred else float("nan")
     recall_all = P_tp / P_imp if P_imp else float("nan")
@@ -192,8 +203,8 @@ def main():
     # legend BELOW the axes (outside the plot -> hides no data)
     h2, l2 = ax.get_legend_handles_labels()
     h2.append(Patch(facecolor=SHADE, alpha=0.6)); l2.append(f"SASA $\\geq$ {thr} (exposure's call)")
-    ax.legend(h2, l2, loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=3, fontsize=13.5,
-              frameon=True, markerscale=1.3, columnspacing=1.2, handletextpad=0.5)
+    ax.legend(h2, l2, loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=2, fontsize=13,
+              frameon=True, markerscale=1.3, columnspacing=1.5, handletextpad=0.5)
     ax.margins(x=0.02)
     p2 = outdir / "sasa_allres_pooled.png"
     fig2.savefig(p2, dpi=220, bbox_inches="tight"); plt.close(fig2)
