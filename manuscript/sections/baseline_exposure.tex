@@ -71,6 +71,23 @@ rigid), not in the high-mobility band --- crystal mobility inversely tracks ener
 \texttt{plot\_feature\_vs\_label.py}.}\label{fig:bfactor-baseline}
 \end{figure}
 
+\paragraph{Flexibility versus energetic isolation.} That the hotspots are rigid rather than mobile is
+less a contradiction of the flexibility hypothesis than a pointer to a different variable. Westhof's
+mobility~\cite{westhof1984} and our B-factor test both ask about \emph{motion}; but the property that
+makes a surface patch easy for an antibody to engage may instead be \emph{energetic and dynamic
+isolation} --- the thesis of Serapian and Colombo~\cite{serapian2020}, whose MD-based energy
+decomposition (a matrix of local inter-residue coupling energies) identifies antibody epitopes as
+surface regions \emph{weakly coupled} to the rest of the protein: substructures that make few
+stabilising nonbonded contacts with the core, sit near energetic frustration, and behave as
+semi-autonomous dynamic units. Such a patch can be grabbed without fighting the protein's own
+stability network --- and if it is also locally rigid (pre-organised), the antibody pays little
+conformational-entropy penalty to hold it: \emph{decoupled enough to grab, ordered enough to keep}.
+On this view the predictive quantity is not raw mobility but a residue's \emph{coupling} to its
+environment --- intra-protein nonbonded interaction energy and the correlation structure of its
+motions. Those are exactly the features the apo-MD program targets (intra-protein energetics,
+correlated motion, FRESEAN mode participation), and they are blind spots of both static baselines
+here, which see exposure and motion but not coupling.
+
 \paragraph{Where this leaves us.} Neither static proxy recovers the energetic hotspots from a single
 crystal: exposure has no precision ($\sim 3\%$), and mobility points the wrong way ($\rho = -0.29$).
 That is precisely the opening for apo-MD --- RMSF is a cleaner, crystal-contact-free mobility measure,
