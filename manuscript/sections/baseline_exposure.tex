@@ -17,13 +17,9 @@ deposited crystal of each antigen, and for \emph{six of the eight} the crystal i
 biases the two features differently. For SASA we compute on the antigen chain \emph{alone} (antibody
 atoms deleted), so the epitope surface is not buried in the calculation --- but the coordinates are the
 \emph{bound} conformation, so these are holo-state SASA values, equal to apo only absent induced fit.
-For B-factors the bias is more direct: the antibody is present in the crystal and damps exactly the
-epitope residues' B-factors, which on its own could \emph{manufacture} the rigid-hotspot signal below.
-The two genuine apo structures trend the same as the rest (B-factor $\rho=-0.23,\,-0.40$), so the
-patterns are not pure artefacts --- but a single crystal, especially a complex, cannot cleanly report
-the \emph{free} antigen. Apo-MD removes this at the root: trajectory SASA and RMSF are computed on the
-unbound antigen, no antibody and no lattice. We therefore read the static baselines as motivating
-bounds, not clean measurements.
+For B-factors the bias is more direct --- the bound antibody damps exactly the epitope residues'
+B-factors --- so we re-test on genuine apo crystals in the mobility section below. The SASA panel
+remains single-crystal and reads as a motivating bound, not a clean measurement.
 
 \paragraph{Setup.} We pool every residue of the eight $\ddG$ antigens ($1{,}790$ residues).
 A residue is \emph{important} if its alanine-scan $\ddG \geq 1$\,kcal/mol for any antibody
@@ -54,8 +50,9 @@ surface, how exposed it is says nothing about how much binding energy it carries
 high recall, no precision, no within-interface ranking --- is precisely what the dynamic and
 energetic features are meant to fill, and every feature we add is scored against this baseline.
 
-\paragraph{Caveats.} (i) Single-frame apo SASA; trajectory-averaging will move values and is the
-real control. (ii) \texttt{5C6T} (gB) is anomalous here --- it is scored on the unrepaired structure
+\paragraph{Caveats.} (i) Single-frame SASA on the input crystals (6/8 complex-derived, so bound
+conformation; antibody removed for the calc); trajectory-averaging on the apo simulation is the real
+control. (ii) \texttt{5C6T} (gB) is anomalous here --- it is scored on the unrepaired structure
 (\S\ref{sec:repair}) \emph{and} as an isolated protomer of a native trimer, so residues buried in the
 trimer interface read as exposed; \texttt{2JEL} (HPr) carries only one hotspot. (iii) Residues never
 scanned are treated as non-epitope, which alanine scans largely justify (they target the known
@@ -68,26 +65,36 @@ crystallographic B-factor, and it is the \emph{static analogue of the RMSF} we w
 apo trajectories --- so a B-factor signal would foreshadow the dynamics payoff. We test it the same
 way: per-residue C$\alpha$ B-factor, z-normalised per structure (raw B-factors are incomparable
 across crystals --- resolution, refinement, overall scaling), against $\ddG$
-(Fig.~\ref{fig:bfactor-baseline}). The result runs \emph{opposite} to the naive expectation. The
-energetic hotspots are among the most \emph{rigid} residues, not the most mobile: pooled Spearman
-$\rho = -0.29$, negative in six of eight antigens, with whole-protein AUC $<0.5$ (anti-discriminative).
-Residues that pay the most binding free energy are pre-organised, low-B anchors, not floppy high-B
-loops --- and the classic flexibility--antigenicity correlation concerns where antibodies \emph{bind}
-(surface loops), not which residue carries the binding \emph{energy}, exactly the
-proximity-vs-energetics distinction of \S\ref{sec:motivation}.
+(Fig.~\ref{fig:bfactor-baseline}). Because six of eight benchmark crystals are antibody complexes
+whose bound antibody damps the epitope residues' B-factors, we run this test on \textbf{genuine apo
+structures}: HPr \texttt{1OPD}, VEGF \texttt{4KZN}, tissue factor \texttt{2HFT}, BoNT/A1
+H$_\mathrm{C}$ \texttt{3FUO}, gB \texttt{5CXF}, plus the already-apo lysozyme \texttt{1AKI} and hGH
+\texttt{1HGU} (IFN-$\gamma$ receptor dropped --- no ligand-free structure exists;
+\texttt{analysis/recompute\_apo\_baselines.py}, all verified to cover the scanned residues). The
+result runs \emph{against} the naive expectation, if weakly: the energetic hotspots are not the most
+mobile residues but trend toward the \emph{rigid} side --- pooled scanned Spearman $\rho = -0.23$
+($-0.29$ on the original complex-bound set, so the antibody-damping confound is real but minor). The
+trend is \emph{not} robust: per antigen it swings from $\rho=+0.28$ (VEGF, mobile hotspots) to $-0.70$
+(tissue factor). The honest statement is that crystal mobility gives \emph{no} reliable
+flexible-hotspot signal, at most a weak rigidity tendency --- which still cuts against the naive
+flexibility--antigenicity reading~\cite{westhof1984}, whose correlation concerns where antibodies
+\emph{bind} (surface loops), not which residue carries the binding \emph{energy}, the
+proximity-vs-energetics distinction of \S\ref{sec:motivation}. A clean answer needs the lattice- and
+antibody-free measurement that apo-MD RMSF provides.
 
 \begin{figure}[H]\centering
 \figorbox{bfactor_baseline.png}{0.78}
-\caption{\textbf{Crystallographic mobility as an epitope label.} Per-residue C$\alpha$ B-factor
-(z-scored per structure; right $=$ more mobile) vs.\ alanine-scan $\ddG$, colours as in
-Fig.~\ref{fig:sasa-baseline}. The important (red) residues cluster at \emph{low} B-factor (left,
-rigid), not in the high-mobility band --- crystal mobility inversely tracks energetic importance
-(pooled Spearman $-0.29$). \texttt{analysis/compute\_bfactor.py} $+$
-\texttt{plot\_feature\_vs\_label.py}.}\label{fig:bfactor-baseline}
+\caption{\textbf{Crystallographic mobility as an epitope label (apo structures).} Per-residue
+C$\alpha$ B-factor (z-scored per structure; right $=$ more mobile) on genuine apo (antibody-free)
+crystals vs.\ alanine-scan $\ddG$, colours as in Fig.~\ref{fig:sasa-baseline}. The important (red)
+residues lean toward \emph{low} B-factor (rigid) rather than the high-mobility band, but only weakly
+(pooled Spearman $-0.23$; $-0.29$ on the complex-bound set) and inconsistently across antigens.
+\texttt{analysis/recompute\_apo\_baselines.py} $+$ \texttt{plot\_feature\_vs\_label.py}.}\label{fig:bfactor-baseline}
 \end{figure}
 
-\paragraph{Flexibility versus energetic isolation.} That the hotspots are rigid rather than mobile is
-less a contradiction of the flexibility hypothesis than a pointer to a different variable. Westhof's
+\paragraph{Flexibility versus energetic isolation.} That the hotspots lean rigid rather than mobile
+--- weakly, but with no hint of the opposite --- is less a contradiction of the flexibility hypothesis
+than a pointer to a different variable. Westhof's
 mobility~\cite{westhof1984} and our B-factor test both ask about \emph{motion}; but the property that
 makes a surface patch easy for an antibody to engage may instead be \emph{energetic and dynamic
 isolation} --- the thesis of Serapian and Colombo~\cite{serapian2020}, whose MD-based energy
@@ -104,12 +111,11 @@ correlated motion, FRESEAN mode participation), and they are blind spots of both
 here, which see exposure and motion but not coupling.
 
 \paragraph{Where this leaves us.} Neither static proxy recovers the energetic hotspots from a single
-crystal: exposure has no precision ($\sim 3\%$), and mobility points the wrong way ($\rho = -0.29$).
-That is precisely the opening for apo-MD --- RMSF is a cleaner, crystal-contact-free mobility measure,
-and the trajectory additionally exposes the correlated-motion, mode-participation (FRESEAN), and
-hydration (3D-2PT) features that no single structure carries. The question the rest of this work
-asks is whether dynamics \emph{done properly} recovers signal where these static proxies fail.
-The B-factor is a reasonable first-pass mobility proxy --- it is the standard one --- though an
-imperfect measure of intrinsic flexibility: crystal contacts, resolution, and refinement choices
-all contribute, and the per-structure z-score removes only the overall scale. MD RMSF measures the
-same quantity for the free protein without those confounds, and is the cleaner test to come.
+crystal: exposure has no precision ($\sim 3\%$), and apo mobility gives no reliable signal (weak,
+inconsistent $\rho \approx -0.23$). That is precisely the opening for apo-MD --- RMSF is a cleaner,
+lattice- and antibody-free mobility measure, and the trajectory additionally exposes the
+correlated-motion, mode-participation (FRESEAN), and hydration (3D-2PT) features that no single
+structure carries. B-factors are a reasonable first-pass proxy --- the standard one --- but even
+re-run on apo crystals they conflate intrinsic flexibility with resolution, refinement, and packing;
+the per-structure z-score removes only the overall scale. The question the rest of this work asks is
+whether dynamics \emph{done properly} recovers signal where these static proxies fail.

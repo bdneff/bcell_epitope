@@ -1,0 +1,1679 @@
+antigen,key,pdb,chain,resid,resname,bfactor,bfactor_z
+Lysozyme,lysozyme,1AKI,A,1,LYS,21.12,0.9885
+Lysozyme,lysozyme,1AKI,A,2,VAL,18.10,0.1457
+Lysozyme,lysozyme,1AKI,A,3,PHE,17.43,-0.0413
+Lysozyme,lysozyme,1AKI,A,4,GLY,16.34,-0.3455
+Lysozyme,lysozyme,1AKI,A,5,ARG,15.91,-0.4655
+Lysozyme,lysozyme,1AKI,A,6,CYS,14.62,-0.8256
+Lysozyme,lysozyme,1AKI,A,7,GLU,13.83,-1.0461
+Lysozyme,lysozyme,1AKI,A,8,LEU,12.72,-1.3559
+Lysozyme,lysozyme,1AKI,A,9,ALA,13.25,-1.2079
+Lysozyme,lysozyme,1AKI,A,10,ALA,16.58,-0.2786
+Lysozyme,lysozyme,1AKI,A,11,ALA,15.23,-0.6553
+Lysozyme,lysozyme,1AKI,A,12,MET,13.69,-1.0851
+Lysozyme,lysozyme,1AKI,A,13,LYS,14.58,-0.8367
+Lysozyme,lysozyme,1AKI,A,14,ARG,17.66,0.0229
+Lysozyme,lysozyme,1AKI,A,15,HIS,15.99,-0.4432
+Lysozyme,lysozyme,1AKI,A,16,GLY,18.71,0.3159
+Lysozyme,lysozyme,1AKI,A,17,LEU,15.38,-0.6135
+Lysozyme,lysozyme,1AKI,A,18,ASP,16.25,-0.3707
+Lysozyme,lysozyme,1AKI,A,19,ASN,17.19,-0.1083
+Lysozyme,lysozyme,1AKI,A,20,TYR,15.54,-0.5688
+Lysozyme,lysozyme,1AKI,A,21,ARG,15.68,-0.5297
+Lysozyme,lysozyme,1AKI,A,22,GLY,17.72,0.0396
+Lysozyme,lysozyme,1AKI,A,23,TYR,15.42,-0.6023
+Lysozyme,lysozyme,1AKI,A,24,SER,16.89,-0.1920
+Lysozyme,lysozyme,1AKI,A,25,LEU,13.16,-1.2331
+Lysozyme,lysozyme,1AKI,A,26,GLY,13.88,-1.0321
+Lysozyme,lysozyme,1AKI,A,27,ASN,14.74,-0.7921
+Lysozyme,lysozyme,1AKI,A,28,TRP,16.49,-0.3037
+Lysozyme,lysozyme,1AKI,A,29,VAL,14.15,-0.9567
+Lysozyme,lysozyme,1AKI,A,30,CYS,15.59,-0.5549
+Lysozyme,lysozyme,1AKI,A,31,ALA,15.82,-0.4907
+Lysozyme,lysozyme,1AKI,A,32,ALA,13.08,-1.2554
+Lysozyme,lysozyme,1AKI,A,33,LYS,16.16,-0.3958
+Lysozyme,lysozyme,1AKI,A,34,PHE,17.51,-0.0190
+Lysozyme,lysozyme,1AKI,A,35,GLU,15.45,-0.5939
+Lysozyme,lysozyme,1AKI,A,36,SER,17.79,0.0592
+Lysozyme,lysozyme,1AKI,A,37,ASN,20.85,0.9132
+Lysozyme,lysozyme,1AKI,A,38,PHE,14.75,-0.7893
+Lysozyme,lysozyme,1AKI,A,39,ASN,16.77,-0.2255
+Lysozyme,lysozyme,1AKI,A,40,THR,16.08,-0.4181
+Lysozyme,lysozyme,1AKI,A,41,GLN,16.67,-0.2534
+Lysozyme,lysozyme,1AKI,A,42,ALA,17.42,-0.0441
+Lysozyme,lysozyme,1AKI,A,43,THR,17.73,0.0424
+Lysozyme,lysozyme,1AKI,A,44,ASN,19.51,0.5392
+Lysozyme,lysozyme,1AKI,A,45,ARG,18.37,0.2210
+Lysozyme,lysozyme,1AKI,A,46,ASN,20.10,0.7039
+Lysozyme,lysozyme,1AKI,A,47,THR,19.12,0.4303
+Lysozyme,lysozyme,1AKI,A,48,ASP,17.33,-0.0692
+Lysozyme,lysozyme,1AKI,A,49,GLY,17.27,-0.0860
+Lysozyme,lysozyme,1AKI,A,50,SER,14.28,-0.9205
+Lysozyme,lysozyme,1AKI,A,51,THR,13.82,-1.0488
+Lysozyme,lysozyme,1AKI,A,52,ASP,13.43,-1.1577
+Lysozyme,lysozyme,1AKI,A,53,TYR,13.61,-1.1075
+Lysozyme,lysozyme,1AKI,A,54,GLY,15.67,-0.5325
+Lysozyme,lysozyme,1AKI,A,55,ILE,14.01,-0.9958
+Lysozyme,lysozyme,1AKI,A,56,LEU,14.96,-0.7307
+Lysozyme,lysozyme,1AKI,A,57,GLN,11.55,-1.6824
+Lysozyme,lysozyme,1AKI,A,58,ILE,16.09,-0.4153
+Lysozyme,lysozyme,1AKI,A,59,ASN,10.60,-1.9475
+Lysozyme,lysozyme,1AKI,A,60,SER,13.81,-1.0516
+Lysozyme,lysozyme,1AKI,A,61,ARG,18.54,0.2685
+Lysozyme,lysozyme,1AKI,A,62,TRP,16.06,-0.4237
+Lysozyme,lysozyme,1AKI,A,63,TRP,15.21,-0.6609
+Lysozyme,lysozyme,1AKI,A,64,CYS,15.76,-0.5074
+Lysozyme,lysozyme,1AKI,A,65,ASN,16.46,-0.3120
+Lysozyme,lysozyme,1AKI,A,66,ASP,15.28,-0.6414
+Lysozyme,lysozyme,1AKI,A,67,GLY,19.40,0.5085
+Lysozyme,lysozyme,1AKI,A,68,ARG,19.77,0.6118
+Lysozyme,lysozyme,1AKI,A,69,THR,20.02,0.6815
+Lysozyme,lysozyme,1AKI,A,70,PRO,21.73,1.1588
+Lysozyme,lysozyme,1AKI,A,71,GLY,24.03,1.8007
+Lysozyme,lysozyme,1AKI,A,72,SER,26.94,2.6129
+Lysozyme,lysozyme,1AKI,A,73,ARG,22.60,1.4016
+Lysozyme,lysozyme,1AKI,A,74,ASN,18.87,0.3606
+Lysozyme,lysozyme,1AKI,A,75,LEU,14.82,-0.7698
+Lysozyme,lysozyme,1AKI,A,76,CYS,16.46,-0.3120
+Lysozyme,lysozyme,1AKI,A,77,ASN,19.18,0.4471
+Lysozyme,lysozyme,1AKI,A,78,ILE,20.14,0.7150
+Lysozyme,lysozyme,1AKI,A,79,PRO,19.12,0.4303
+Lysozyme,lysozyme,1AKI,A,80,CYS,14.33,-0.9065
+Lysozyme,lysozyme,1AKI,A,81,SER,15.64,-0.5409
+Lysozyme,lysozyme,1AKI,A,82,ALA,18.01,0.1206
+Lysozyme,lysozyme,1AKI,A,83,LEU,18.66,0.3020
+Lysozyme,lysozyme,1AKI,A,84,LEU,16.38,-0.3344
+Lysozyme,lysozyme,1AKI,A,85,SER,20.86,0.9160
+Lysozyme,lysozyme,1AKI,A,86,SER,20.44,0.7987
+Lysozyme,lysozyme,1AKI,A,87,ASP,18.72,0.3187
+Lysozyme,lysozyme,1AKI,A,88,ILE,16.22,-0.3790
+Lysozyme,lysozyme,1AKI,A,89,THR,16.87,-0.1976
+Lysozyme,lysozyme,1AKI,A,90,ALA,16.63,-0.2646
+Lysozyme,lysozyme,1AKI,A,91,SER,11.35,-1.7382
+Lysozyme,lysozyme,1AKI,A,92,VAL,13.44,-1.1549
+Lysozyme,lysozyme,1AKI,A,93,ASN,15.10,-0.6916
+Lysozyme,lysozyme,1AKI,A,94,CYS,13.58,-1.1158
+Lysozyme,lysozyme,1AKI,A,95,ALA,15.63,-0.5437
+Lysozyme,lysozyme,1AKI,A,96,LYS,13.27,-1.2024
+Lysozyme,lysozyme,1AKI,A,97,LYS,16.43,-0.3204
+Lysozyme,lysozyme,1AKI,A,98,ILE,16.36,-0.3400
+Lysozyme,lysozyme,1AKI,A,99,VAL,18.71,0.3159
+Lysozyme,lysozyme,1AKI,A,100,SER,23.81,1.7393
+Lysozyme,lysozyme,1AKI,A,101,ASP,26.98,2.6240
+Lysozyme,lysozyme,1AKI,A,102,GLY,30.67,3.6539
+Lysozyme,lysozyme,1AKI,A,103,ASN,25.22,2.1328
+Lysozyme,lysozyme,1AKI,A,104,GLY,19.51,0.5392
+Lysozyme,lysozyme,1AKI,A,105,MET,16.07,-0.4209
+Lysozyme,lysozyme,1AKI,A,106,ASN,18.58,0.2796
+Lysozyme,lysozyme,1AKI,A,107,ALA,18.74,0.3243
+Lysozyme,lysozyme,1AKI,A,108,TRP,14.68,-0.8088
+Lysozyme,lysozyme,1AKI,A,109,VAL,19.96,0.6648
+Lysozyme,lysozyme,1AKI,A,110,ALA,18.78,0.3355
+Lysozyme,lysozyme,1AKI,A,111,TRP,15.74,-0.5130
+Lysozyme,lysozyme,1AKI,A,112,ARG,19.60,0.5643
+Lysozyme,lysozyme,1AKI,A,113,ASN,20.16,0.7206
+Lysozyme,lysozyme,1AKI,A,114,ARG,21.43,1.0750
+Lysozyme,lysozyme,1AKI,A,115,CYS,15.08,-0.6972
+Lysozyme,lysozyme,1AKI,A,116,LYS,19.14,0.4359
+Lysozyme,lysozyme,1AKI,A,117,GLY,29.06,3.2045
+Lysozyme,lysozyme,1AKI,A,118,THR,22.31,1.3207
+Lysozyme,lysozyme,1AKI,A,119,ASP,22.61,1.4044
+Lysozyme,lysozyme,1AKI,A,120,VAL,20.10,0.7039
+Lysozyme,lysozyme,1AKI,A,121,GLN,21.12,0.9885
+Lysozyme,lysozyme,1AKI,A,122,ALA,19.46,0.5252
+Lysozyme,lysozyme,1AKI,A,123,TRP,16.76,-0.2283
+Lysozyme,lysozyme,1AKI,A,124,ILE,16.82,-0.2116
+Lysozyme,lysozyme,1AKI,A,125,ARG,19.12,0.4303
+Lysozyme,lysozyme,1AKI,A,126,GLY,21.28,1.0332
+Lysozyme,lysozyme,1AKI,A,127,CYS,19.13,0.4331
+Lysozyme,lysozyme,1AKI,A,128,ARG,28.29,2.9896
+Lysozyme,lysozyme,1AKI,A,129,LEU,26.89,2.5989
+human growth hormone,hgh,1HGU,A,2,PRO,22.63,-1.3091
+human growth hormone,hgh,1HGU,A,3,THR,28.07,-0.6962
+human growth hormone,hgh,1HGU,A,4,ILE,28.68,-0.6275
+human growth hormone,hgh,1HGU,A,5,PRO,29.19,-0.5700
+human growth hormone,hgh,1HGU,A,6,LEU,27.08,-0.8077
+human growth hormone,hgh,1HGU,A,7,SER,26.36,-0.8889
+human growth hormone,hgh,1HGU,A,8,ARG,26.38,-0.8866
+human growth hormone,hgh,1HGU,A,9,LEU,22.86,-1.2832
+human growth hormone,hgh,1HGU,A,10,PHE,20.93,-1.5006
+human growth hormone,hgh,1HGU,A,11,GLN,23.35,-1.2280
+human growth hormone,hgh,1HGU,A,12,ASN,20.81,-1.5141
+human growth hormone,hgh,1HGU,A,13,ALA,23.02,-1.2651
+human growth hormone,hgh,1HGU,A,14,MET,23.52,-1.2088
+human growth hormone,hgh,1HGU,A,15,LEU,20.13,-1.5907
+human growth hormone,hgh,1HGU,A,16,ARG,19.55,-1.6561
+human growth hormone,hgh,1HGU,A,17,ALA,24.84,-1.0601
+human growth hormone,hgh,1HGU,A,18,HIS,27.26,-0.7875
+human growth hormone,hgh,1HGU,A,19,ARG,29.01,-0.5903
+human growth hormone,hgh,1HGU,A,20,LEU,32.06,-0.2467
+human growth hormone,hgh,1HGU,A,21,HIS,27.86,-0.7199
+human growth hormone,hgh,1HGU,A,22,GLN,26.12,-0.9159
+human growth hormone,hgh,1HGU,A,23,LEU,24.70,-1.0759
+human growth hormone,hgh,1HGU,A,24,ALA,22.53,-1.3203
+human growth hormone,hgh,1HGU,A,25,PHE,28.54,-0.6433
+human growth hormone,hgh,1HGU,A,26,ASP,26.83,-0.8359
+human growth hormone,hgh,1HGU,A,27,THR,24.19,-1.1333
+human growth hormone,hgh,1HGU,A,28,TYR,24.96,-1.0466
+human growth hormone,hgh,1HGU,A,29,GLU,29.53,-0.5317
+human growth hormone,hgh,1HGU,A,30,GLU,32.15,-0.2366
+human growth hormone,hgh,1HGU,A,31,PHE,30.01,-0.4776
+human growth hormone,hgh,1HGU,A,32,GLU,32.60,-0.1859
+human growth hormone,hgh,1HGU,A,33,GLU,31.15,-0.3492
+human growth hormone,hgh,1HGU,A,34,ALA,33.31,-0.1059
+human growth hormone,hgh,1HGU,A,35,TYR,35.36,0.1251
+human growth hormone,hgh,1HGU,A,36,ILE,36.94,0.3031
+human growth hormone,hgh,1HGU,A,40,GLN,44.55,1.1604
+human growth hormone,hgh,1HGU,A,41,LYS,44.03,1.1018
+human growth hormone,hgh,1HGU,A,42,TYR,41.90,0.8619
+human growth hormone,hgh,1HGU,A,43,SER,40.46,0.6996
+human growth hormone,hgh,1HGU,A,44,PHE,37.82,0.4022
+human growth hormone,hgh,1HGU,A,45,LEU,38.26,0.4518
+human growth hormone,hgh,1HGU,A,46,GLN,38.26,0.4518
+human growth hormone,hgh,1HGU,A,47,ALA,35.14,0.1003
+human growth hormone,hgh,1HGU,A,48,PRO,33.18,-0.1205
+human growth hormone,hgh,1HGU,A,49,GLN,33.93,-0.0360
+human growth hormone,hgh,1HGU,A,50,ALA,35.97,0.1938
+human growth hormone,hgh,1HGU,A,51,SER,38.34,0.4608
+human growth hormone,hgh,1HGU,A,52,LEU,38.09,0.4326
+human growth hormone,hgh,1HGU,A,53,CYS,37.24,0.3369
+human growth hormone,hgh,1HGU,A,54,PHE,33.03,-0.1374
+human growth hormone,hgh,1HGU,A,55,SER,30.04,-0.4743
+human growth hormone,hgh,1HGU,A,56,GLU,29.98,-0.4810
+human growth hormone,hgh,1HGU,A,57,SER,37.58,0.3752
+human growth hormone,hgh,1HGU,A,58,ILE,41.86,0.8574
+human growth hormone,hgh,1HGU,A,59,PRO,45.17,1.2303
+human growth hormone,hgh,1HGU,A,60,THR,48.65,1.6223
+human growth hormone,hgh,1HGU,A,61,PRO,53.18,2.1327
+human growth hormone,hgh,1HGU,A,62,SER,55.29,2.3704
+human growth hormone,hgh,1HGU,A,63,ASN,53.38,2.1552
+human growth hormone,hgh,1HGU,A,64,ARG,48.75,1.6336
+human growth hormone,hgh,1HGU,A,65,GLU,42.69,0.9509
+human growth hormone,hgh,1HGU,A,66,GLN,41.41,0.8067
+human growth hormone,hgh,1HGU,A,67,ALA,45.39,1.2551
+human growth hormone,hgh,1HGU,A,68,GLN,47.80,1.5266
+human growth hormone,hgh,1HGU,A,69,GLN,49.49,1.7170
+human growth hormone,hgh,1HGU,A,70,LYS,46.50,1.3801
+human growth hormone,hgh,1HGU,A,71,SER,42.91,0.9757
+human growth hormone,hgh,1HGU,A,72,ASN,37.34,0.3481
+human growth hormone,hgh,1HGU,A,73,LEU,31.75,-0.2816
+human growth hormone,hgh,1HGU,A,74,GLN,27.26,-0.7875
+human growth hormone,hgh,1HGU,A,75,LEU,24.92,-1.0511
+human growth hormone,hgh,1HGU,A,76,LEU,24.40,-1.1097
+human growth hormone,hgh,1HGU,A,77,ARG,26.39,-0.8855
+human growth hormone,hgh,1HGU,A,78,ILE,26.53,-0.8697
+human growth hormone,hgh,1HGU,A,79,SER,26.63,-0.8584
+human growth hormone,hgh,1HGU,A,80,LEU,26.02,-0.9272
+human growth hormone,hgh,1HGU,A,81,LEU,28.50,-0.6478
+human growth hormone,hgh,1HGU,A,82,LEU,30.81,-0.3875
+human growth hormone,hgh,1HGU,A,83,ILE,35.27,0.1149
+human growth hormone,hgh,1HGU,A,84,GLN,39.33,0.5723
+human growth hormone,hgh,1HGU,A,85,SER,41.86,0.8574
+human growth hormone,hgh,1HGU,A,86,TRP,41.25,0.7886
+human growth hormone,hgh,1HGU,A,87,LEU,38.56,0.4856
+human growth hormone,hgh,1HGU,A,88,GLU,42.51,0.9306
+human growth hormone,hgh,1HGU,A,89,PRO,40.54,0.7087
+human growth hormone,hgh,1HGU,A,90,VAL,42.38,0.9160
+human growth hormone,hgh,1HGU,A,91,GLY,46.90,1.4252
+human growth hormone,hgh,1HGU,A,92,PHE,51.17,1.9062
+human growth hormone,hgh,1HGU,A,93,LEU,50.74,1.8578
+human growth hormone,hgh,1HGU,A,94,ARG,49.37,1.7034
+human growth hormone,hgh,1HGU,A,95,SER,48.39,1.5930
+human growth hormone,hgh,1HGU,A,96,VAL,45.62,1.2810
+human growth hormone,hgh,1HGU,A,97,PHE,43.45,1.0365
+human growth hormone,hgh,1HGU,A,98,ALA,38.57,0.4867
+human growth hormone,hgh,1HGU,A,99,ASN,35.17,0.1037
+human growth hormone,hgh,1HGU,A,100,SER,36.26,0.2265
+human growth hormone,hgh,1HGU,A,101,LEU,37.11,0.3222
+human growth hormone,hgh,1HGU,A,102,VAL,38.70,0.5014
+human growth hormone,hgh,1HGU,A,103,TYR,39.78,0.6230
+human growth hormone,hgh,1HGU,A,104,GLY,41.09,0.7706
+human growth hormone,hgh,1HGU,A,105,ALA,43.35,1.0252
+human growth hormone,hgh,1HGU,A,106,SER,43.44,1.0354
+human growth hormone,hgh,1HGU,A,107,ASP,43.49,1.0410
+human growth hormone,hgh,1HGU,A,108,SER,44.64,1.1706
+human growth hormone,hgh,1HGU,A,109,ASP,44.56,1.1616
+human growth hormone,hgh,1HGU,A,110,VAL,35.93,0.1893
+human growth hormone,hgh,1HGU,A,111,TYR,30.82,-0.3864
+human growth hormone,hgh,1HGU,A,112,ASP,27.68,-0.7401
+human growth hormone,hgh,1HGU,A,113,LEU,22.68,-1.3034
+human growth hormone,hgh,1HGU,A,114,LEU,23.34,-1.2291
+human growth hormone,hgh,1HGU,A,115,LYS,27.16,-0.7987
+human growth hormone,hgh,1HGU,A,116,ASP,27.91,-0.7142
+human growth hormone,hgh,1HGU,A,117,LEU,27.89,-0.7165
+human growth hormone,hgh,1HGU,A,118,GLU,29.84,-0.4968
+human growth hormone,hgh,1HGU,A,119,GLU,25.89,-0.9418
+human growth hormone,hgh,1HGU,A,120,GLY,28.68,-0.6275
+human growth hormone,hgh,1HGU,A,121,ILE,29.06,-0.5847
+human growth hormone,hgh,1HGU,A,122,GLN,35.57,0.1487
+human growth hormone,hgh,1HGU,A,123,THR,36.37,0.2389
+human growth hormone,hgh,1HGU,A,124,LEU,35.11,0.0969
+human growth hormone,hgh,1HGU,A,125,MET,34.52,0.0304
+human growth hormone,hgh,1HGU,A,126,GLY,33.62,-0.0709
+human growth hormone,hgh,1HGU,A,127,ARG,36.93,0.3020
+human growth hormone,hgh,1HGU,A,128,LEU,33.99,-0.0293
+human growth hormone,hgh,1HGU,A,129,GLU,36.03,0.2006
+human growth hormone,hgh,1HGU,A,130,ASP,38.67,0.4980
+human growth hormone,hgh,1HGU,A,131,GLY,42.21,0.8968
+human growth hormone,hgh,1HGU,A,132,SER,42.51,0.9306
+human growth hormone,hgh,1HGU,A,133,PRO,40.25,0.6760
+human growth hormone,hgh,1HGU,A,134,ARG,39.08,0.5442
+human growth hormone,hgh,1HGU,A,135,THR,37.72,0.3910
+human growth hormone,hgh,1HGU,A,136,GLY,36.51,0.2546
+human growth hormone,hgh,1HGU,A,137,GLN,36.88,0.2963
+human growth hormone,hgh,1HGU,A,138,ALA,39.39,0.5791
+human growth hormone,hgh,1HGU,A,139,PHE,38.66,0.4969
+human growth hormone,hgh,1HGU,A,140,LYS,38.97,0.5318
+human growth hormone,hgh,1HGU,A,141,GLN,40.31,0.6827
+human growth hormone,hgh,1HGU,A,142,THR,35.09,0.0947
+human growth hormone,hgh,1HGU,A,143,TYR,36.40,0.2422
+human growth hormone,hgh,1HGU,A,144,ALA,34.82,0.0642
+human growth hormone,hgh,1HGU,A,145,LYS,33.03,-0.1374
+human growth hormone,hgh,1HGU,A,146,PHE,38.24,0.4495
+human growth hormone,hgh,1HGU,A,147,ASP,39.13,0.5498
+human growth hormone,hgh,1HGU,A,148,ALA,43.41,1.0320
+human growth hormone,hgh,1HGU,A,149,ASN,44.62,1.1683
+human growth hormone,hgh,1HGU,A,150,SER,45.00,1.2111
+human growth hormone,hgh,1HGU,A,151,HIS,45.16,1.2291
+human growth hormone,hgh,1HGU,A,152,ASN,42.83,0.9667
+human growth hormone,hgh,1HGU,A,153,ASP,37.12,0.3234
+human growth hormone,hgh,1HGU,A,154,ASP,32.52,-0.1949
+human growth hormone,hgh,1HGU,A,155,ALA,25.99,-0.9305
+human growth hormone,hgh,1HGU,A,156,LEU,24.87,-1.0567
+human growth hormone,hgh,1HGU,A,157,LEU,24.41,-1.1085
+human growth hormone,hgh,1HGU,A,158,LYS,24.12,-1.1412
+human growth hormone,hgh,1HGU,A,159,ASN,25.68,-0.9655
+human growth hormone,hgh,1HGU,A,160,TYR,27.29,-0.7841
+human growth hormone,hgh,1HGU,A,161,GLY,24.69,-1.0770
+human growth hormone,hgh,1HGU,A,162,LEU,21.04,-1.4882
+human growth hormone,hgh,1HGU,A,163,LEU,24.39,-1.1108
+human growth hormone,hgh,1HGU,A,164,TYR,26.96,-0.8213
+human growth hormone,hgh,1HGU,A,165,CYS,30.76,-0.3932
+human growth hormone,hgh,1HGU,A,166,PHE,24.32,-1.1187
+human growth hormone,hgh,1HGU,A,167,ARG,25.51,-0.9846
+human growth hormone,hgh,1HGU,A,168,LYS,23.35,-1.2280
+human growth hormone,hgh,1HGU,A,169,ASP,19.37,-1.6763
+human growth hormone,hgh,1HGU,A,170,MET,24.90,-1.0533
+human growth hormone,hgh,1HGU,A,171,ASP,22.65,-1.3068
+human growth hormone,hgh,1HGU,A,172,LYS,17.38,-1.9005
+human growth hormone,hgh,1HGU,A,173,VAL,17.56,-1.8803
+human growth hormone,hgh,1HGU,A,174,GLU,20.49,-1.5502
+human growth hormone,hgh,1HGU,A,175,THR,17.29,-1.9107
+human growth hormone,hgh,1HGU,A,176,PHE,22.14,-1.3643
+human growth hormone,hgh,1HGU,A,177,LEU,20.79,-1.5164
+human growth hormone,hgh,1HGU,A,178,ARG,23.37,-1.2257
+human growth hormone,hgh,1HGU,A,179,ILE,21.57,-1.4285
+human growth hormone,hgh,1HGU,A,180,VAL,24.08,-1.1457
+human growth hormone,hgh,1HGU,A,181,GLN,31.59,-0.2996
+human growth hormone,hgh,1HGU,A,182,CYS,40.15,0.6647
+human growth hormone,hgh,1HGU,A,183,ARG,40.47,0.7008
+human growth hormone,hgh,1HGU,A,184,SER,39.66,0.6095
+human growth hormone,hgh,1HGU,A,185,VAL,46.22,1.3486
+human growth hormone,hgh,1HGU,A,186,GLU,45.73,1.2934
+human growth hormone,hgh,1HGU,A,187,GLY,44.58,1.1638
+human growth hormone,hgh,1HGU,A,188,SER,49.00,1.6618
+human growth hormone,hgh,1HGU,A,189,CYS,50.74,1.8578
+human growth hormone,hgh,1HGU,A,190,GLY,52.96,2.1079
+HPr,hpr,1OPD,A,1,MET,18.87,1.5775
+HPr,hpr,1OPD,A,2,PHE,12.95,0.2256
+HPr,hpr,1OPD,A,3,GLU,10.52,-0.3293
+HPr,hpr,1OPD,A,4,GLN,10.46,-0.3430
+HPr,hpr,1OPD,A,5,GLU,11.27,-0.1580
+HPr,hpr,1OPD,A,6,VAL,9.87,-0.4777
+HPr,hpr,1OPD,A,7,THR,11.31,-0.1489
+HPr,hpr,1OPD,A,8,ILE,11.03,-0.2128
+HPr,hpr,1OPD,A,9,THR,13.08,0.2553
+HPr,hpr,1OPD,A,10,ALA,12.83,0.1982
+HPr,hpr,1OPD,A,11,PRO,13.24,0.2918
+HPr,hpr,1OPD,A,12,ASN,16.79,1.1025
+HPr,hpr,1OPD,A,13,GLY,15.53,0.8148
+HPr,hpr,1OPD,A,14,LEU,15.80,0.8764
+HPr,hpr,1OPD,A,15,HIS,13.71,0.3992
+HPr,hpr,1OPD,A,16,THR,15.59,0.8285
+HPr,hpr,1OPD,A,17,ARG,13.22,0.2873
+HPr,hpr,1OPD,A,18,PRO,11.71,-0.0575
+HPr,hpr,1OPD,A,19,ALA,11.57,-0.0895
+HPr,hpr,1OPD,A,20,ALA,11.20,-0.1740
+HPr,hpr,1OPD,A,21,GLN,11.41,-0.1261
+HPr,hpr,1OPD,A,22,PHE,9.38,-0.5896
+HPr,hpr,1OPD,A,23,VAL,8.02,-0.9002
+HPr,hpr,1OPD,A,24,LYS,12.07,0.0247
+HPr,hpr,1OPD,A,25,GLU,11.04,-0.2105
+HPr,hpr,1OPD,A,26,ALA,8.22,-0.8545
+HPr,hpr,1OPD,A,27,LYS,10.30,-0.3795
+HPr,hpr,1OPD,A,28,GLY,9.82,-0.4891
+HPr,hpr,1OPD,A,29,PHE,8.11,-0.8796
+HPr,hpr,1OPD,A,30,THR,11.01,-0.2174
+HPr,hpr,1OPD,A,31,SER,8.80,-0.7221
+HPr,hpr,1OPD,A,32,GLU,10.36,-0.3658
+HPr,hpr,1OPD,A,33,ILE,7.27,-1.0715
+HPr,hpr,1OPD,A,34,THR,8.05,-0.8933
+HPr,hpr,1OPD,A,35,VAL,8.21,-0.8568
+HPr,hpr,1OPD,A,36,THR,7.23,-1.0806
+HPr,hpr,1OPD,A,37,SER,10.56,-0.3202
+HPr,hpr,1OPD,A,38,ASN,12.26,0.0681
+HPr,hpr,1OPD,A,39,GLY,11.24,-0.1649
+HPr,hpr,1OPD,A,40,LYS,9.14,-0.6444
+HPr,hpr,1OPD,A,41,SER,8.27,-0.8431
+HPr,hpr,1OPD,A,42,ALA,7.82,-0.9459
+HPr,hpr,1OPD,A,43,SER,8.93,-0.6924
+HPr,hpr,1OPD,A,44,ALA,8.50,-0.7906
+HPr,hpr,1OPD,A,45,LYS,9.20,-0.6307
+HPr,hpr,1OPD,A,46,ASP,11.45,-0.1169
+HPr,hpr,1OPD,A,47,LEU,10.21,-0.4001
+HPr,hpr,1OPD,A,48,PHE,10.21,-0.4001
+HPr,hpr,1OPD,A,49,LYS,10.43,-0.3498
+HPr,hpr,1OPD,A,50,LEU,9.46,-0.5713
+HPr,hpr,1OPD,A,51,GLN,10.82,-0.2608
+HPr,hpr,1OPD,A,52,THR,11.79,-0.0393
+HPr,hpr,1OPD,A,53,LEU,15.37,0.7782
+HPr,hpr,1OPD,A,54,GLY,20.19,1.8789
+HPr,hpr,1OPD,A,55,LEU,15.34,0.7714
+HPr,hpr,1OPD,A,56,THR,12.29,0.0749
+HPr,hpr,1OPD,A,57,GLN,8.90,-0.6992
+HPr,hpr,1OPD,A,58,GLY,9.81,-0.4914
+HPr,hpr,1OPD,A,59,THR,9.34,-0.5988
+HPr,hpr,1OPD,A,60,VAL,9.94,-0.4617
+HPr,hpr,1OPD,A,61,VAL,9.97,-0.4549
+HPr,hpr,1OPD,A,62,THR,8.19,-0.8614
+HPr,hpr,1OPD,A,63,ILE,7.63,-0.9892
+HPr,hpr,1OPD,A,64,SER,7.90,-0.9276
+HPr,hpr,1OPD,A,65,ALA,7.62,-0.9915
+HPr,hpr,1OPD,A,66,GLU,9.15,-0.6421
+HPr,hpr,1OPD,A,67,GLY,9.39,-0.5873
+HPr,hpr,1OPD,A,68,GLU,11.56,-0.0918
+HPr,hpr,1OPD,A,69,ASP,8.42,-0.8088
+HPr,hpr,1OPD,A,70,GLU,9.48,-0.5668
+HPr,hpr,1OPD,A,71,GLN,12.55,0.1343
+HPr,hpr,1OPD,A,72,LYS,10.95,-0.2311
+HPr,hpr,1OPD,A,73,ALA,9.01,-0.6741
+HPr,hpr,1OPD,A,74,VAL,13.00,0.2370
+HPr,hpr,1OPD,A,75,GLU,15.03,0.7006
+HPr,hpr,1OPD,A,76,HIS,14.34,0.5430
+HPr,hpr,1OPD,A,77,LEU,11.61,-0.0804
+HPr,hpr,1OPD,A,78,VAL,11.90,-0.0142
+HPr,hpr,1OPD,A,79,LYS,14.95,0.6823
+HPr,hpr,1OPD,A,80,LEU,14.98,0.6892
+HPr,hpr,1OPD,A,81,MET,19.91,1.8150
+HPr,hpr,1OPD,A,82,ALA,23.22,2.5708
+HPr,hpr,1OPD,A,83,GLU,26.48,3.3153
+HPr,hpr,1OPD,A,84,LEU,26.85,3.3998
+HPr,hpr,1OPD,A,85,GLU,31.36,4.4297
+VEGF,vegf,4KZN,A,13,GLU,61.11,4.9070
+VEGF,vegf,4KZN,A,14,VAL,30.50,1.0444
+VEGF,vegf,4KZN,A,15,VAL,20.19,-0.2566
+VEGF,vegf,4KZN,A,16,LYS,24.35,0.2684
+VEGF,vegf,4KZN,A,17,PHE,15.78,-0.8131
+VEGF,vegf,4KZN,A,18,MET,20.40,-0.2301
+VEGF,vegf,4KZN,A,19,ASP,21.30,-0.1165
+VEGF,vegf,4KZN,A,20,VAL,17.91,-0.5443
+VEGF,vegf,4KZN,A,21,TYR,20.00,-0.2806
+VEGF,vegf,4KZN,A,22,GLN,20.04,-0.2755
+VEGF,vegf,4KZN,A,23,ARG,18.27,-0.4989
+VEGF,vegf,4KZN,A,24,SER,17.50,-0.5960
+VEGF,vegf,4KZN,A,25,TYR,14.76,-0.9418
+VEGF,vegf,4KZN,A,26,CYS,16.54,-0.7172
+VEGF,vegf,4KZN,A,27,HIS,16.38,-0.7374
+VEGF,vegf,4KZN,A,28,PRO,16.79,-0.6856
+VEGF,vegf,4KZN,A,29,ILE,23.03,0.1018
+VEGF,vegf,4KZN,A,30,GLU,24.96,0.3453
+VEGF,vegf,4KZN,A,31,THR,16.33,-0.7437
+VEGF,vegf,4KZN,A,32,LEU,17.48,-0.5986
+VEGF,vegf,4KZN,A,33,VAL,25.15,0.3693
+VEGF,vegf,4KZN,A,34,ASP,31.33,1.1491
+VEGF,vegf,4KZN,A,35,ILE,23.71,0.1876
+VEGF,vegf,4KZN,A,36,PHE,38.83,2.0955
+VEGF,vegf,4KZN,A,37,GLN,40.90,2.3567
+VEGF,vegf,4KZN,A,38,GLU,35.63,1.6917
+VEGF,vegf,4KZN,A,39,TYR,27.74,0.6961
+VEGF,vegf,4KZN,A,40,PRO,32.64,1.3144
+VEGF,vegf,4KZN,A,41,ASP,46.52,3.0659
+VEGF,vegf,4KZN,A,42,GLU,38.37,2.0375
+VEGF,vegf,4KZN,A,43,ILE,47.63,3.2060
+VEGF,vegf,4KZN,A,44,GLU,36.08,1.7485
+VEGF,vegf,4KZN,A,45,TYR,24.78,0.3226
+VEGF,vegf,4KZN,A,46,ILE,25.55,0.4198
+VEGF,vegf,4KZN,A,47,PHE,17.19,-0.6351
+VEGF,vegf,4KZN,A,48,LYS,15.79,-0.8118
+VEGF,vegf,4KZN,A,49,PRO,18.22,-0.5052
+VEGF,vegf,4KZN,A,50,SER,19.83,-0.3020
+VEGF,vegf,4KZN,A,51,CYS,18.41,-0.4812
+VEGF,vegf,4KZN,A,52,VAL,15.59,-0.8370
+VEGF,vegf,4KZN,A,53,PRO,17.86,-0.5506
+VEGF,vegf,4KZN,A,54,LEU,16.62,-0.7071
+VEGF,vegf,4KZN,A,55,MET,18.12,-0.5178
+VEGF,vegf,4KZN,A,56,ARG,16.02,-0.7828
+VEGF,vegf,4KZN,A,57,CYS,14.07,-1.0288
+VEGF,vegf,4KZN,A,58,GLY,21.42,-0.1014
+VEGF,vegf,4KZN,A,59,GLY,18.45,-0.4761
+VEGF,vegf,4KZN,A,60,CYS,21.43,-0.1001
+VEGF,vegf,4KZN,A,61,CYS,19.89,-0.2944
+VEGF,vegf,4KZN,A,62,ASN,24.45,0.2810
+VEGF,vegf,4KZN,A,63,ASP,27.51,0.6671
+VEGF,vegf,4KZN,A,64,GLU,25.91,0.4652
+VEGF,vegf,4KZN,A,65,GLY,26.57,0.5485
+VEGF,vegf,4KZN,A,66,LEU,20.04,-0.2755
+VEGF,vegf,4KZN,A,67,GLU,18.65,-0.4509
+VEGF,vegf,4KZN,A,68,CYS,18.77,-0.4358
+VEGF,vegf,4KZN,A,69,VAL,17.46,-0.6011
+VEGF,vegf,4KZN,A,70,PRO,15.11,-0.8976
+VEGF,vegf,4KZN,A,71,THR,17.94,-0.5405
+VEGF,vegf,4KZN,A,72,GLU,16.99,-0.6604
+VEGF,vegf,4KZN,A,73,GLU,17.37,-0.6124
+VEGF,vegf,4KZN,A,74,SER,17.15,-0.6402
+VEGF,vegf,4KZN,A,75,ASN,16.70,-0.6970
+VEGF,vegf,4KZN,A,76,ILE,18.10,-0.5203
+VEGF,vegf,4KZN,A,77,THR,16.24,-0.7550
+VEGF,vegf,4KZN,A,78,MET,14.59,-0.9632
+VEGF,vegf,4KZN,A,79,GLN,17.86,-0.5506
+VEGF,vegf,4KZN,A,80,ILE,14.54,-0.9695
+VEGF,vegf,4KZN,A,81,MET,19.35,-0.3626
+VEGF,vegf,4KZN,A,82,ARG,23.08,0.1081
+VEGF,vegf,4KZN,A,83,ILE,21.34,-0.1115
+VEGF,vegf,4KZN,A,84,LYS,24.75,0.3188
+VEGF,vegf,4KZN,A,85,PRO,24.67,0.3087
+VEGF,vegf,4KZN,A,86,HIS,22.62,0.0500
+VEGF,vegf,4KZN,A,87,GLN,24.72,0.3150
+VEGF,vegf,4KZN,A,88,GLY,28.13,0.7453
+VEGF,vegf,4KZN,A,89,GLN,24.57,0.2961
+VEGF,vegf,4KZN,A,90,HIS,26.71,0.5662
+VEGF,vegf,4KZN,A,91,ILE,20.09,-0.2692
+VEGF,vegf,4KZN,A,92,GLY,25.10,0.3630
+VEGF,vegf,4KZN,A,93,GLU,19.50,-0.3437
+VEGF,vegf,4KZN,A,94,MET,21.10,-0.1418
+VEGF,vegf,4KZN,A,95,SER,18.35,-0.4888
+VEGF,vegf,4KZN,A,96,PHE,15.47,-0.8522
+VEGF,vegf,4KZN,A,97,LEU,20.91,-0.1657
+VEGF,vegf,4KZN,A,98,GLN,13.98,-1.0402
+VEGF,vegf,4KZN,A,99,HIS,14.50,-0.9746
+VEGF,vegf,4KZN,A,100,ASN,18.24,-0.5026
+VEGF,vegf,4KZN,A,101,LYS,20.47,-0.2213
+VEGF,vegf,4KZN,A,102,CYS,16.72,-0.6945
+VEGF,vegf,4KZN,A,103,GLU,17.60,-0.5834
+VEGF,vegf,4KZN,A,104,CYS,16.48,-0.7247
+VEGF,vegf,4KZN,A,105,ARG,19.85,-0.2995
+VEGF,vegf,4KZN,A,106,PRO,22.90,0.0854
+VEGF,vegf,4KZN,A,107,LYS,30.68,1.0671
+Tissue factor,tf,2HFT,A,1,SER,48.08,2.2691
+Tissue factor,tf,2HFT,A,2,GLY,45.26,1.9949
+Tissue factor,tf,2HFT,A,3,THR,39.25,1.4104
+Tissue factor,tf,2HFT,A,4,THR,29.75,0.4864
+Tissue factor,tf,2HFT,A,5,ASN,28.67,0.3814
+Tissue factor,tf,2HFT,A,6,THR,27.12,0.2306
+Tissue factor,tf,2HFT,A,7,VAL,28.23,0.3386
+Tissue factor,tf,2HFT,A,8,ALA,22.86,-0.1837
+Tissue factor,tf,2HFT,A,9,ALA,20.56,-0.4074
+Tissue factor,tf,2HFT,A,10,TYR,20.26,-0.4365
+Tissue factor,tf,2HFT,A,11,ASN,21.15,-0.3500
+Tissue factor,tf,2HFT,A,12,LEU,19.82,-0.4793
+Tissue factor,tf,2HFT,A,13,THR,23.27,-0.1438
+Tissue factor,tf,2HFT,A,14,TRP,19.71,-0.4900
+Tissue factor,tf,2HFT,A,15,LYS,18.24,-0.6330
+Tissue factor,tf,2HFT,A,16,SER,15.73,-0.8771
+Tissue factor,tf,2HFT,A,17,THR,16.69,-0.7837
+Tissue factor,tf,2HFT,A,18,ASN,16.44,-0.8081
+Tissue factor,tf,2HFT,A,19,PHE,16.05,-0.8460
+Tissue factor,tf,2HFT,A,20,LYS,17.83,-0.6729
+Tissue factor,tf,2HFT,A,21,THR,16.40,-0.8119
+Tissue factor,tf,2HFT,A,22,ILE,19.27,-0.5328
+Tissue factor,tf,2HFT,A,23,LEU,17.09,-0.7448
+Tissue factor,tf,2HFT,A,24,GLU,20.22,-0.4404
+Tissue factor,tf,2HFT,A,25,TRP,20.23,-0.4395
+Tissue factor,tf,2HFT,A,26,GLU,24.15,-0.0582
+Tissue factor,tf,2HFT,A,27,PRO,21.73,-0.2936
+Tissue factor,tf,2HFT,A,28,LYS,27.97,0.3133
+Tissue factor,tf,2HFT,A,29,PRO,26.84,0.2034
+Tissue factor,tf,2HFT,A,30,VAL,31.39,0.6459
+Tissue factor,tf,2HFT,A,31,ASN,33.07,0.8093
+Tissue factor,tf,2HFT,A,32,GLN,27.02,0.2209
+Tissue factor,tf,2HFT,A,33,VAL,19.74,-0.4871
+Tissue factor,tf,2HFT,A,34,TYR,17.62,-0.6933
+Tissue factor,tf,2HFT,A,35,THR,17.84,-0.6719
+Tissue factor,tf,2HFT,A,36,VAL,18.17,-0.6398
+Tissue factor,tf,2HFT,A,37,GLN,17.20,-0.7341
+Tissue factor,tf,2HFT,A,38,ILE,18.69,-0.5892
+Tissue factor,tf,2HFT,A,39,SER,18.90,-0.5688
+Tissue factor,tf,2HFT,A,40,THR,22.46,-0.2226
+Tissue factor,tf,2HFT,A,41,LYS,27.65,0.2822
+Tissue factor,tf,2HFT,A,42,SER,26.49,0.1694
+Tissue factor,tf,2HFT,A,43,GLY,26.25,0.1460
+Tissue factor,tf,2HFT,A,44,ASP,26.46,0.1665
+Tissue factor,tf,2HFT,A,45,TRP,22.52,-0.2167
+Tissue factor,tf,2HFT,A,46,LYS,21.32,-0.3334
+Tissue factor,tf,2HFT,A,47,SER,19.15,-0.5445
+Tissue factor,tf,2HFT,A,48,LYS,18.46,-0.6116
+Tissue factor,tf,2HFT,A,49,CYS,17.98,-0.6583
+Tissue factor,tf,2HFT,A,50,PHE,18.79,-0.5795
+Tissue factor,tf,2HFT,A,51,TYR,19.47,-0.5134
+Tissue factor,tf,2HFT,A,52,THR,19.90,-0.4715
+Tissue factor,tf,2HFT,A,53,THR,21.42,-0.3237
+Tissue factor,tf,2HFT,A,54,ASP,20.98,-0.3665
+Tissue factor,tf,2HFT,A,55,THR,18.97,-0.5620
+Tissue factor,tf,2HFT,A,56,GLU,20.84,-0.3801
+Tissue factor,tf,2HFT,A,57,CYS,17.55,-0.7001
+Tissue factor,tf,2HFT,A,58,ASP,17.51,-0.7040
+Tissue factor,tf,2HFT,A,59,LEU,14.78,-0.9695
+Tissue factor,tf,2HFT,A,60,THR,15.85,-0.8654
+Tissue factor,tf,2HFT,A,61,ASP,18.56,-0.6019
+Tissue factor,tf,2HFT,A,62,GLU,15.89,-0.8615
+Tissue factor,tf,2HFT,A,63,ILE,14.78,-0.9695
+Tissue factor,tf,2HFT,A,64,VAL,16.99,-0.7546
+Tissue factor,tf,2HFT,A,65,LYS,19.75,-0.4861
+Tissue factor,tf,2HFT,A,66,ASP,18.60,-0.5980
+Tissue factor,tf,2HFT,A,67,VAL,14.58,-0.9890
+Tissue factor,tf,2HFT,A,68,LYS,16.19,-0.8324
+Tissue factor,tf,2HFT,A,69,GLN,17.60,-0.6952
+Tissue factor,tf,2HFT,A,70,THR,17.81,-0.6748
+Tissue factor,tf,2HFT,A,71,TYR,18.35,-0.6223
+Tissue factor,tf,2HFT,A,72,LEU,20.18,-0.4443
+Tissue factor,tf,2HFT,A,73,ALA,15.91,-0.8596
+Tissue factor,tf,2HFT,A,74,ARG,18.41,-0.6165
+Tissue factor,tf,2HFT,A,75,VAL,17.59,-0.6962
+Tissue factor,tf,2HFT,A,76,PHE,19.71,-0.4900
+Tissue factor,tf,2HFT,A,77,SER,21.65,-0.3013
+Tissue factor,tf,2HFT,A,78,TYR,20.70,-0.3937
+Tissue factor,tf,2HFT,A,79,PRO,23.69,-0.1029
+Tissue factor,tf,2HFT,A,80,ALA,23.56,-0.1156
+Tissue factor,tf,2HFT,A,81,GLY,21.20,-0.3451
+Tissue factor,tf,2HFT,A,82,ASN,25.15,0.0390
+Tissue factor,tf,2HFT,A,83,VAL,31.57,0.6634
+Tissue factor,tf,2HFT,A,84,GLU,37.46,1.2363
+Tissue factor,tf,2HFT,A,85,SER,40.15,1.4979
+Tissue factor,tf,2HFT,A,86,THR,46.49,2.1145
+Tissue factor,tf,2HFT,A,91,GLU,45.41,2.0095
+Tissue factor,tf,2HFT,A,92,PRO,35.02,0.9990
+Tissue factor,tf,2HFT,A,93,LEU,27.49,0.2666
+Tissue factor,tf,2HFT,A,94,TYR,25.79,0.1013
+Tissue factor,tf,2HFT,A,95,GLU,23.48,-0.1234
+Tissue factor,tf,2HFT,A,96,ASN,21.68,-0.2984
+Tissue factor,tf,2HFT,A,97,SER,17.96,-0.6602
+Tissue factor,tf,2HFT,A,98,PRO,18.42,-0.6155
+Tissue factor,tf,2HFT,A,99,GLU,22.40,-0.2284
+Tissue factor,tf,2HFT,A,100,PHE,18.06,-0.6505
+Tissue factor,tf,2HFT,A,101,THR,16.47,-0.8051
+Tissue factor,tf,2HFT,A,102,PRO,15.38,-0.9111
+Tissue factor,tf,2HFT,A,103,TYR,15.04,-0.9442
+Tissue factor,tf,2HFT,A,104,LEU,16.16,-0.8353
+Tissue factor,tf,2HFT,A,105,GLU,18.98,-0.5610
+Tissue factor,tf,2HFT,A,106,THR,16.08,-0.8431
+Tissue factor,tf,2HFT,A,107,ASN,16.05,-0.8460
+Tissue factor,tf,2HFT,A,108,LEU,17.47,-0.7079
+Tissue factor,tf,2HFT,A,109,GLY,18.28,-0.6291
+Tissue factor,tf,2HFT,A,110,GLN,22.55,-0.2138
+Tissue factor,tf,2HFT,A,111,PRO,20.49,-0.4142
+Tissue factor,tf,2HFT,A,112,THR,19.39,-0.5211
+Tissue factor,tf,2HFT,A,113,ILE,19.75,-0.4861
+Tissue factor,tf,2HFT,A,114,GLN,20.08,-0.4540
+Tissue factor,tf,2HFT,A,115,SER,24.30,-0.0436
+Tissue factor,tf,2HFT,A,116,PHE,33.84,0.8842
+Tissue factor,tf,2HFT,A,117,GLU,46.71,2.1359
+Tissue factor,tf,2HFT,A,118,GLN,55.71,3.0112
+Tissue factor,tf,2HFT,A,119,VAL,56.10,3.0491
+Tissue factor,tf,2HFT,A,120,GLY,49.98,2.4539
+Tissue factor,tf,2HFT,A,121,THR,46.78,2.1427
+Tissue factor,tf,2HFT,A,122,LYS,38.45,1.3326
+Tissue factor,tf,2HFT,A,123,VAL,31.27,0.6343
+Tissue factor,tf,2HFT,A,124,ASN,28.63,0.3775
+Tissue factor,tf,2HFT,A,125,VAL,20.63,-0.4005
+Tissue factor,tf,2HFT,A,126,THR,18.55,-0.6028
+Tissue factor,tf,2HFT,A,127,VAL,16.56,-0.7964
+Tissue factor,tf,2HFT,A,128,GLU,20.93,-0.3714
+Tissue factor,tf,2HFT,A,129,ASP,19.93,-0.4686
+Tissue factor,tf,2HFT,A,130,GLU,24.39,-0.0349
+Tissue factor,tf,2HFT,A,131,ARG,21.68,-0.2984
+Tissue factor,tf,2HFT,A,132,THR,17.40,-0.7147
+Tissue factor,tf,2HFT,A,133,LEU,17.99,-0.6573
+Tissue factor,tf,2HFT,A,134,VAL,17.49,-0.7059
+Tissue factor,tf,2HFT,A,135,ARG,24.49,-0.0251
+Tissue factor,tf,2HFT,A,136,ARG,32.33,0.7374
+Tissue factor,tf,2HFT,A,137,ASN,38.30,1.3180
+Tissue factor,tf,2HFT,A,138,ASN,37.40,1.2304
+Tissue factor,tf,2HFT,A,139,THR,27.99,0.3153
+Tissue factor,tf,2HFT,A,140,PHE,23.59,-0.1127
+Tissue factor,tf,2HFT,A,141,LEU,20.08,-0.4540
+Tissue factor,tf,2HFT,A,142,SER,17.60,-0.6952
+Tissue factor,tf,2HFT,A,143,LEU,15.79,-0.8713
+Tissue factor,tf,2HFT,A,144,ARG,19.13,-0.5464
+Tissue factor,tf,2HFT,A,145,ASP,14.71,-0.9763
+Tissue factor,tf,2HFT,A,146,VAL,16.00,-0.8508
+Tissue factor,tf,2HFT,A,147,PHE,14.78,-0.9695
+Tissue factor,tf,2HFT,A,148,GLY,15.07,-0.9413
+Tissue factor,tf,2HFT,A,149,LYS,16.65,-0.7876
+Tissue factor,tf,2HFT,A,150,ASP,15.66,-0.8839
+Tissue factor,tf,2HFT,A,151,LEU,17.49,-0.7059
+Tissue factor,tf,2HFT,A,152,ILE,18.85,-0.5737
+Tissue factor,tf,2HFT,A,153,TYR,16.10,-0.8411
+Tissue factor,tf,2HFT,A,154,THR,19.49,-0.5114
+Tissue factor,tf,2HFT,A,155,LEU,18.17,-0.6398
+Tissue factor,tf,2HFT,A,156,TYR,21.58,-0.3082
+Tissue factor,tf,2HFT,A,157,TYR,25.44,0.0673
+Tissue factor,tf,2HFT,A,158,TRP,27.13,0.2316
+Tissue factor,tf,2HFT,A,159,LYS,40.52,1.5339
+Tissue factor,tf,2HFT,A,160,SER,49.80,2.4364
+Tissue factor,tf,2HFT,A,163,SER,61.31,3.5558
+Tissue factor,tf,2HFT,A,164,GLY,56.99,3.1357
+Tissue factor,tf,2HFT,A,165,LYS,49.23,2.3810
+Tissue factor,tf,2HFT,A,166,LYS,38.54,1.3413
+Tissue factor,tf,2HFT,A,167,THR,29.13,0.4261
+Tissue factor,tf,2HFT,A,168,ALA,21.72,-0.2945
+Tissue factor,tf,2HFT,A,169,LYS,18.38,-0.6194
+Tissue factor,tf,2HFT,A,170,THR,17.54,-0.7011
+Tissue factor,tf,2HFT,A,171,ASN,17.25,-0.7293
+Tissue factor,tf,2HFT,A,172,THR,14.94,-0.9539
+Tissue factor,tf,2HFT,A,173,ASN,20.16,-0.4463
+Tissue factor,tf,2HFT,A,174,GLU,22.80,-0.1895
+Tissue factor,tf,2HFT,A,175,PHE,22.80,-0.1895
+Tissue factor,tf,2HFT,A,176,LEU,28.18,0.3337
+Tissue factor,tf,2HFT,A,177,ILE,32.15,0.7198
+Tissue factor,tf,2HFT,A,178,ASP,40.98,1.5786
+Tissue factor,tf,2HFT,A,179,VAL,43.15,1.7897
+Tissue factor,tf,2HFT,A,180,ASP,49.75,2.4316
+Tissue factor,tf,2HFT,A,181,LYS,54.34,2.8780
+Tissue factor,tf,2HFT,A,182,GLY,55.25,2.9665
+Tissue factor,tf,2HFT,A,183,GLU,53.14,2.7613
+Tissue factor,tf,2HFT,A,184,ASN,41.84,1.6623
+Tissue factor,tf,2HFT,A,185,TYR,30.34,0.5438
+Tissue factor,tf,2HFT,A,186,CYS,27.10,0.2287
+Tissue factor,tf,2HFT,A,187,PHE,24.92,0.0167
+Tissue factor,tf,2HFT,A,188,SER,22.62,-0.2070
+Tissue factor,tf,2HFT,A,189,VAL,19.51,-0.5095
+Tissue factor,tf,2HFT,A,190,GLN,17.89,-0.6670
+Tissue factor,tf,2HFT,A,191,ALA,16.54,-0.7983
+Tissue factor,tf,2HFT,A,192,VAL,16.09,-0.8421
+Tissue factor,tf,2HFT,A,193,ILE,16.45,-0.8071
+Tissue factor,tf,2HFT,A,194,PRO,19.80,-0.4813
+Tissue factor,tf,2HFT,A,195,SER,18.59,-0.5990
+Tissue factor,tf,2HFT,A,196,ARG,18.34,-0.6233
+Tissue factor,tf,2HFT,A,197,THR,24.45,-0.0290
+Tissue factor,tf,2HFT,A,198,VAL,25.88,0.1100
+Tissue factor,tf,2HFT,A,199,ASN,23.18,-0.1525
+Tissue factor,tf,2HFT,A,200,ARG,18.91,-0.5678
+Tissue factor,tf,2HFT,A,201,LYS,17.64,-0.6913
+Tissue factor,tf,2HFT,A,202,SER,18.57,-0.6009
+Tissue factor,tf,2HFT,A,203,THR,22.66,-0.2031
+Tissue factor,tf,2HFT,A,204,ASP,24.69,-0.0057
+Tissue factor,tf,2HFT,A,205,SER,22.99,-0.1710
+Tissue factor,tf,2HFT,A,206,PRO,25.63,0.0857
+Tissue factor,tf,2HFT,A,207,VAL,26.97,0.2161
+Tissue factor,tf,2HFT,A,208,GLU,31.14,0.6216
+Tissue factor,tf,2HFT,A,209,CYS,30.41,0.5506
+Tissue factor,tf,2HFT,A,210,MET,39.81,1.4648
+Tissue factor,tf,2HFT,A,211,GLY,47.58,2.2205
+Bont/A1,bonta1,3FUO,A,876,THR,34.00,1.8842
+Bont/A1,bonta1,3FUO,A,877,SER,27.83,0.9879
+Bont/A1,bonta1,3FUO,A,878,ILE,21.56,0.0770
+Bont/A1,bonta1,3FUO,A,879,LEU,20.58,-0.0654
+Bont/A1,bonta1,3FUO,A,880,ASN,19.97,-0.1540
+Bont/A1,bonta1,3FUO,A,881,LEU,21.25,0.0320
+Bont/A1,bonta1,3FUO,A,882,ARG,23.62,0.3763
+Bont/A1,bonta1,3FUO,A,883,TYR,30.95,1.4411
+Bont/A1,bonta1,3FUO,A,884,GLU,39.74,2.7180
+Bont/A1,bonta1,3FUO,A,885,SER,42.35,3.0972
+Bont/A1,bonta1,3FUO,A,886,ASN,40.75,2.8648
+Bont/A1,bonta1,3FUO,A,887,HIS,35.67,2.1268
+Bont/A1,bonta1,3FUO,A,888,LEU,29.30,1.2014
+Bont/A1,bonta1,3FUO,A,889,ILE,24.56,0.5128
+Bont/A1,bonta1,3FUO,A,890,ASP,21.84,0.1177
+Bont/A1,bonta1,3FUO,A,891,LEU,23.02,0.2891
+Bont/A1,bonta1,3FUO,A,892,SER,22.93,0.2760
+Bont/A1,bonta1,3FUO,A,893,ARG,24.28,0.4721
+Bont/A1,bonta1,3FUO,A,894,TYR,22.68,0.2397
+Bont/A1,bonta1,3FUO,A,895,ALA,23.02,0.2891
+Bont/A1,bonta1,3FUO,A,896,SER,24.51,0.5056
+Bont/A1,bonta1,3FUO,A,897,LYS,27.26,0.9051
+Bont/A1,bonta1,3FUO,A,898,ILE,26.66,0.8179
+Bont/A1,bonta1,3FUO,A,899,ASN,26.74,0.8295
+Bont/A1,bonta1,3FUO,A,900,ILE,25.05,0.5840
+Bont/A1,bonta1,3FUO,A,901,GLY,23.69,0.3864
+Bont/A1,bonta1,3FUO,A,902,SER,24.80,0.5477
+Bont/A1,bonta1,3FUO,A,903,LYS,23.74,0.3937
+Bont/A1,bonta1,3FUO,A,904,VAL,23.80,0.4024
+Bont/A1,bonta1,3FUO,A,905,ASN,24.15,0.4533
+Bont/A1,bonta1,3FUO,A,906,PHE,22.20,0.1700
+Bont/A1,bonta1,3FUO,A,907,ASP,22.57,0.2237
+Bont/A1,bonta1,3FUO,A,908,PRO,23.82,0.4053
+Bont/A1,bonta1,3FUO,A,909,ILE,25.69,0.6770
+Bont/A1,bonta1,3FUO,A,910,ASP,24.11,0.4475
+Bont/A1,bonta1,3FUO,A,911,LYS,22.28,0.1816
+Bont/A1,bonta1,3FUO,A,912,ASN,19.46,-0.2281
+Bont/A1,bonta1,3FUO,A,913,GLN,16.63,-0.6392
+Bont/A1,bonta1,3FUO,A,914,ILE,15.59,-0.7903
+Bont/A1,bonta1,3FUO,A,915,GLN,14.73,-0.9152
+Bont/A1,bonta1,3FUO,A,916,LEU,16.97,-0.5898
+Bont/A1,bonta1,3FUO,A,917,PHE,19.31,-0.2498
+Bont/A1,bonta1,3FUO,A,918,ASN,20.93,-0.0145
+Bont/A1,bonta1,3FUO,A,919,LEU,22.92,0.2746
+Bont/A1,bonta1,3FUO,A,920,GLU,26.69,0.8223
+Bont/A1,bonta1,3FUO,A,921,SER,24.84,0.5535
+Bont/A1,bonta1,3FUO,A,922,SER,21.18,0.0218
+Bont/A1,bonta1,3FUO,A,923,LYS,19.60,-0.2077
+Bont/A1,bonta1,3FUO,A,924,ILE,19.58,-0.2106
+Bont/A1,bonta1,3FUO,A,925,GLU,21.73,0.1017
+Bont/A1,bonta1,3FUO,A,926,VAL,21.50,0.0683
+Bont/A1,bonta1,3FUO,A,927,ILE,21.71,0.0988
+Bont/A1,bonta1,3FUO,A,928,LEU,21.65,0.0901
+Bont/A1,bonta1,3FUO,A,929,LYS,22.21,0.1714
+Bont/A1,bonta1,3FUO,A,930,ASN,22.20,0.1700
+Bont/A1,bonta1,3FUO,A,931,ALA,19.72,-0.1903
+Bont/A1,bonta1,3FUO,A,932,ILE,19.97,-0.1540
+Bont/A1,bonta1,3FUO,A,933,VAL,19.35,-0.2440
+Bont/A1,bonta1,3FUO,A,934,TYR,20.18,-0.1235
+Bont/A1,bonta1,3FUO,A,935,ASN,20.08,-0.1380
+Bont/A1,bonta1,3FUO,A,936,SER,20.42,-0.0886
+Bont/A1,bonta1,3FUO,A,937,MET,21.74,0.1032
+Bont/A1,bonta1,3FUO,A,938,TYR,20.25,-0.1133
+Bont/A1,bonta1,3FUO,A,939,GLU,19.67,-0.1976
+Bont/A1,bonta1,3FUO,A,940,ASN,16.43,-0.6682
+Bont/A1,bonta1,3FUO,A,941,PHE,15.92,-0.7423
+Bont/A1,bonta1,3FUO,A,942,SER,15.24,-0.8411
+Bont/A1,bonta1,3FUO,A,943,THR,15.88,-0.7481
+Bont/A1,bonta1,3FUO,A,944,SER,14.45,-0.9559
+Bont/A1,bonta1,3FUO,A,945,PHE,14.22,-0.9893
+Bont/A1,bonta1,3FUO,A,946,TRP,13.21,-1.1360
+Bont/A1,bonta1,3FUO,A,947,ILE,12.68,-1.2130
+Bont/A1,bonta1,3FUO,A,948,ARG,12.86,-1.1868
+Bont/A1,bonta1,3FUO,A,949,ILE,13.40,-1.1084
+Bont/A1,bonta1,3FUO,A,950,PRO,14.75,-0.9123
+Bont/A1,bonta1,3FUO,A,951,LYS,15.24,-0.8411
+Bont/A1,bonta1,3FUO,A,952,TYR,17.28,-0.5447
+Bont/A1,bonta1,3FUO,A,953,PHE,21.78,0.1090
+Bont/A1,bonta1,3FUO,A,954,ASN,26.63,0.8135
+Bont/A1,bonta1,3FUO,A,955,SER,25.77,0.6886
+Bont/A1,bonta1,3FUO,A,956,ILE,27.32,0.9138
+Bont/A1,bonta1,3FUO,A,957,SER,25.67,0.6741
+Bont/A1,bonta1,3FUO,A,958,LEU,27.64,0.9603
+Bont/A1,bonta1,3FUO,A,959,ASN,29.41,1.2174
+Bont/A1,bonta1,3FUO,A,960,ASN,23.44,0.3501
+Bont/A1,bonta1,3FUO,A,961,GLU,21.50,0.0683
+Bont/A1,bonta1,3FUO,A,962,TYR,17.95,-0.4474
+Bont/A1,bonta1,3FUO,A,963,THR,18.67,-0.3428
+Bont/A1,bonta1,3FUO,A,964,ILE,16.66,-0.6348
+Bont/A1,bonta1,3FUO,A,965,ILE,17.45,-0.5201
+Bont/A1,bonta1,3FUO,A,966,ASN,20.05,-0.1423
+Bont/A1,bonta1,3FUO,A,967,CYS,21.23,0.0291
+Bont/A1,bonta1,3FUO,A,968,MET,28.46,1.0794
+Bont/A1,bonta1,3FUO,A,969,GLU,36.94,2.3113
+Bont/A1,bonta1,3FUO,A,970,ASN,38.52,2.5408
+Bont/A1,bonta1,3FUO,A,971,ASN,32.79,1.7084
+Bont/A1,bonta1,3FUO,A,972,SER,24.46,0.4983
+Bont/A1,bonta1,3FUO,A,973,GLY,17.91,-0.4532
+Bont/A1,bonta1,3FUO,A,974,TRP,15.82,-0.7568
+Bont/A1,bonta1,3FUO,A,975,LYS,16.79,-0.6159
+Bont/A1,bonta1,3FUO,A,976,VAL,14.83,-0.9007
+Bont/A1,bonta1,3FUO,A,977,SER,17.77,-0.4736
+Bont/A1,bonta1,3FUO,A,978,LEU,17.10,-0.5709
+Bont/A1,bonta1,3FUO,A,979,ASN,18.47,-0.3719
+Bont/A1,bonta1,3FUO,A,980,TYR,19.65,-0.2005
+Bont/A1,bonta1,3FUO,A,981,GLY,18.97,-0.2992
+Bont/A1,bonta1,3FUO,A,982,GLU,20.01,-0.1482
+Bont/A1,bonta1,3FUO,A,983,ILE,16.15,-0.7089
+Bont/A1,bonta1,3FUO,A,984,ILE,16.39,-0.6740
+Bont/A1,bonta1,3FUO,A,985,TRP,16.30,-0.6871
+Bont/A1,bonta1,3FUO,A,986,THR,18.48,-0.3704
+Bont/A1,bonta1,3FUO,A,987,LEU,19.87,-0.1685
+Bont/A1,bonta1,3FUO,A,988,GLN,21.95,0.1337
+Bont/A1,bonta1,3FUO,A,989,ASP,23.99,0.4300
+Bont/A1,bonta1,3FUO,A,990,THR,26.64,0.8150
+Bont/A1,bonta1,3FUO,A,991,GLN,31.44,1.5123
+Bont/A1,bonta1,3FUO,A,992,GLU,31.02,1.4513
+Bont/A1,bonta1,3FUO,A,993,ILE,27.08,0.8789
+Bont/A1,bonta1,3FUO,A,994,LYS,25.92,0.7104
+Bont/A1,bonta1,3FUO,A,995,GLN,22.81,0.2586
+Bont/A1,bonta1,3FUO,A,996,ARG,23.03,0.2906
+Bont/A1,bonta1,3FUO,A,997,VAL,21.83,0.1162
+Bont/A1,bonta1,3FUO,A,998,VAL,20.25,-0.1133
+Bont/A1,bonta1,3FUO,A,999,PHE,20.12,-0.1322
+Bont/A1,bonta1,3FUO,A,1000,LYS,22.27,0.1802
+Bont/A1,bonta1,3FUO,A,1001,TYR,19.19,-0.2673
+Bont/A1,bonta1,3FUO,A,1002,SER,18.96,-0.3007
+Bont/A1,bonta1,3FUO,A,1003,GLN,17.61,-0.4968
+Bont/A1,bonta1,3FUO,A,1004,MET,19.77,-0.1830
+Bont/A1,bonta1,3FUO,A,1005,ILE,19.85,-0.1714
+Bont/A1,bonta1,3FUO,A,1006,ASN,21.34,0.0451
+Bont/A1,bonta1,3FUO,A,1007,ILE,19.43,-0.2324
+Bont/A1,bonta1,3FUO,A,1008,SER,16.96,-0.5912
+Bont/A1,bonta1,3FUO,A,1009,ASP,18.63,-0.3486
+Bont/A1,bonta1,3FUO,A,1010,TYR,17.29,-0.5433
+Bont/A1,bonta1,3FUO,A,1011,ILE,15.03,-0.8716
+Bont/A1,bonta1,3FUO,A,1012,ASN,13.50,-1.0939
+Bont/A1,bonta1,3FUO,A,1013,ARG,13.16,-1.1433
+Bont/A1,bonta1,3FUO,A,1014,TRP,15.49,-0.8048
+Bont/A1,bonta1,3FUO,A,1015,ILE,17.06,-0.5767
+Bont/A1,bonta1,3FUO,A,1016,PHE,15.70,-0.7743
+Bont/A1,bonta1,3FUO,A,1017,VAL,14.30,-0.9777
+Bont/A1,bonta1,3FUO,A,1018,THR,14.94,-0.8847
+Bont/A1,bonta1,3FUO,A,1019,ILE,15.25,-0.8396
+Bont/A1,bonta1,3FUO,A,1020,THR,16.28,-0.6900
+Bont/A1,bonta1,3FUO,A,1021,ASN,15.47,-0.8077
+Bont/A1,bonta1,3FUO,A,1022,ASN,16.27,-0.6915
+Bont/A1,bonta1,3FUO,A,1023,ARG,17.73,-0.4794
+Bont/A1,bonta1,3FUO,A,1024,LEU,20.31,-0.1046
+Bont/A1,bonta1,3FUO,A,1025,ASN,21.45,0.0610
+Bont/A1,bonta1,3FUO,A,1026,ASN,22.30,0.1845
+Bont/A1,bonta1,3FUO,A,1027,SER,21.77,0.1075
+Bont/A1,bonta1,3FUO,A,1028,LYS,20.47,-0.0813
+Bont/A1,bonta1,3FUO,A,1029,ILE,18.64,-0.3472
+Bont/A1,bonta1,3FUO,A,1030,TYR,17.22,-0.5535
+Bont/A1,bonta1,3FUO,A,1031,ILE,18.22,-0.4082
+Bont/A1,bonta1,3FUO,A,1032,ASN,19.12,-0.2774
+Bont/A1,bonta1,3FUO,A,1033,GLY,21.55,0.0756
+Bont/A1,bonta1,3FUO,A,1034,ARG,24.97,0.5724
+Bont/A1,bonta1,3FUO,A,1035,LEU,23.64,0.3792
+Bont/A1,bonta1,3FUO,A,1036,ILE,22.88,0.2688
+Bont/A1,bonta1,3FUO,A,1037,ASP,24.38,0.4867
+Bont/A1,bonta1,3FUO,A,1038,GLN,24.26,0.4692
+Bont/A1,bonta1,3FUO,A,1039,LYS,22.86,0.2659
+Bont/A1,bonta1,3FUO,A,1040,PRO,23.03,0.2906
+Bont/A1,bonta1,3FUO,A,1041,ILE,20.71,-0.0465
+Bont/A1,bonta1,3FUO,A,1042,SER,23.69,0.3864
+Bont/A1,bonta1,3FUO,A,1043,ASN,25.72,0.6813
+Bont/A1,bonta1,3FUO,A,1044,LEU,23.25,0.3225
+Bont/A1,bonta1,3FUO,A,1045,GLY,22.46,0.2078
+Bont/A1,bonta1,3FUO,A,1046,ASN,21.01,-0.0029
+Bont/A1,bonta1,3FUO,A,1047,ILE,19.91,-0.1627
+Bont/A1,bonta1,3FUO,A,1048,HIS,20.23,-0.1162
+Bont/A1,bonta1,3FUO,A,1049,ALA,20.22,-0.1177
+Bont/A1,bonta1,3FUO,A,1050,SER,23.46,0.3530
+Bont/A1,bonta1,3FUO,A,1051,ASN,24.01,0.4329
+Bont/A1,bonta1,3FUO,A,1052,ASN,22.81,0.2586
+Bont/A1,bonta1,3FUO,A,1053,ILE,19.15,-0.2731
+Bont/A1,bonta1,3FUO,A,1054,MET,18.18,-0.4140
+Bont/A1,bonta1,3FUO,A,1055,PHE,17.66,-0.4895
+Bont/A1,bonta1,3FUO,A,1056,LYS,18.94,-0.3036
+Bont/A1,bonta1,3FUO,A,1057,LEU,19.80,-0.1787
+Bont/A1,bonta1,3FUO,A,1058,ASP,23.97,0.4271
+Bont/A1,bonta1,3FUO,A,1059,GLY,21.97,0.1366
+Bont/A1,bonta1,3FUO,A,1060,CYS,20.80,-0.0334
+Bont/A1,bonta1,3FUO,A,1061,ARG,23.27,0.3254
+Bont/A1,bonta1,3FUO,A,1062,ASP,23.74,0.3937
+Bont/A1,bonta1,3FUO,A,1063,THR,24.57,0.5143
+Bont/A1,bonta1,3FUO,A,1064,HIS,23.01,0.2877
+Bont/A1,bonta1,3FUO,A,1065,ARG,20.49,-0.0784
+Bont/A1,bonta1,3FUO,A,1066,TYR,16.89,-0.6014
+Bont/A1,bonta1,3FUO,A,1067,ILE,15.94,-0.7394
+Bont/A1,bonta1,3FUO,A,1068,TRP,15.32,-0.8295
+Bont/A1,bonta1,3FUO,A,1069,ILE,15.18,-0.8498
+Bont/A1,bonta1,3FUO,A,1070,LYS,15.29,-0.8338
+Bont/A1,bonta1,3FUO,A,1071,TYR,16.23,-0.6973
+Bont/A1,bonta1,3FUO,A,1072,PHE,15.32,-0.8295
+Bont/A1,bonta1,3FUO,A,1073,ASN,15.26,-0.8382
+Bont/A1,bonta1,3FUO,A,1074,LEU,17.18,-0.5593
+Bont/A1,bonta1,3FUO,A,1075,PHE,19.32,-0.2484
+Bont/A1,bonta1,3FUO,A,1076,ASP,22.47,0.2092
+Bont/A1,bonta1,3FUO,A,1077,LYS,22.87,0.2673
+Bont/A1,bonta1,3FUO,A,1078,GLU,21.53,0.0727
+Bont/A1,bonta1,3FUO,A,1079,LEU,20.12,-0.1322
+Bont/A1,bonta1,3FUO,A,1080,ASN,22.17,0.1656
+Bont/A1,bonta1,3FUO,A,1081,GLU,25.96,0.7162
+Bont/A1,bonta1,3FUO,A,1082,LYS,25.79,0.6915
+Bont/A1,bonta1,3FUO,A,1083,GLU,23.71,0.3893
+Bont/A1,bonta1,3FUO,A,1084,ILE,20.69,-0.0494
+Bont/A1,bonta1,3FUO,A,1085,LYS,23.47,0.3545
+Bont/A1,bonta1,3FUO,A,1086,ASP,22.36,0.1932
+Bont/A1,bonta1,3FUO,A,1087,LEU,20.81,-0.0319
+Bont/A1,bonta1,3FUO,A,1088,TYR,21.33,0.0436
+Bont/A1,bonta1,3FUO,A,1089,ASP,24.28,0.4721
+Bont/A1,bonta1,3FUO,A,1090,ASN,24.59,0.5172
+Bont/A1,bonta1,3FUO,A,1091,GLN,20.94,-0.0131
+Bont/A1,bonta1,3FUO,A,1092,SER,23.03,0.2906
+Bont/A1,bonta1,3FUO,A,1093,ASN,24.48,0.5012
+Bont/A1,bonta1,3FUO,A,1094,SER,23.95,0.4242
+Bont/A1,bonta1,3FUO,A,1095,GLY,19.73,-0.1888
+Bont/A1,bonta1,3FUO,A,1096,ILE,17.50,-0.5128
+Bont/A1,bonta1,3FUO,A,1097,LEU,15.44,-0.8120
+Bont/A1,bonta1,3FUO,A,1098,LYS,15.84,-0.7539
+Bont/A1,bonta1,3FUO,A,1099,ASP,14.61,-0.9326
+Bont/A1,bonta1,3FUO,A,1100,PHE,14.35,-0.9704
+Bont/A1,bonta1,3FUO,A,1101,TRP,13.59,-1.0808
+Bont/A1,bonta1,3FUO,A,1102,GLY,13.21,-1.1360
+Bont/A1,bonta1,3FUO,A,1103,ASP,15.93,-0.7409
+Bont/A1,bonta1,3FUO,A,1104,TYR,16.58,-0.6464
+Bont/A1,bonta1,3FUO,A,1105,LEU,16.12,-0.7133
+Bont/A1,bonta1,3FUO,A,1106,GLN,16.57,-0.6479
+Bont/A1,bonta1,3FUO,A,1107,TYR,15.44,-0.8120
+Bont/A1,bonta1,3FUO,A,1108,ASP,18.57,-0.3573
+Bont/A1,bonta1,3FUO,A,1109,LYS,17.77,-0.4736
+Bont/A1,bonta1,3FUO,A,1110,PRO,17.74,-0.4779
+Bont/A1,bonta1,3FUO,A,1111,TYR,16.45,-0.6653
+Bont/A1,bonta1,3FUO,A,1112,TYR,15.63,-0.7844
+Bont/A1,bonta1,3FUO,A,1113,MET,16.78,-0.6174
+Bont/A1,bonta1,3FUO,A,1114,LEU,17.86,-0.4605
+Bont/A1,bonta1,3FUO,A,1115,ASN,19.29,-0.2528
+Bont/A1,bonta1,3FUO,A,1116,LEU,22.90,0.2717
+Bont/A1,bonta1,3FUO,A,1117,TYR,23.66,0.3821
+Bont/A1,bonta1,3FUO,A,1118,ASP,22.70,0.2426
+Bont/A1,bonta1,3FUO,A,1119,PRO,21.97,0.1366
+Bont/A1,bonta1,3FUO,A,1120,ASN,22.12,0.1584
+Bont/A1,bonta1,3FUO,A,1121,LYS,18.84,-0.3181
+Bont/A1,bonta1,3FUO,A,1122,TYR,18.03,-0.4358
+Bont/A1,bonta1,3FUO,A,1123,VAL,15.95,-0.7380
+Bont/A1,bonta1,3FUO,A,1124,ASP,17.60,-0.4983
+Bont/A1,bonta1,3FUO,A,1125,VAL,18.30,-0.3966
+Bont/A1,bonta1,3FUO,A,1126,ASN,22.27,0.1802
+Bont/A1,bonta1,3FUO,A,1127,ASN,21.51,0.0697
+Bont/A1,bonta1,3FUO,A,1128,VAL,18.40,-0.3820
+Bont/A1,bonta1,3FUO,A,1129,GLY,17.24,-0.5506
+Bont/A1,bonta1,3FUO,A,1130,ILE,16.47,-0.6624
+Bont/A1,bonta1,3FUO,A,1131,ARG,15.79,-0.7612
+Bont/A1,bonta1,3FUO,A,1132,GLY,13.34,-1.1171
+Bont/A1,bonta1,3FUO,A,1133,TYR,13.20,-1.1375
+Bont/A1,bonta1,3FUO,A,1134,MET,15.90,-0.7452
+Bont/A1,bonta1,3FUO,A,1135,TYR,15.03,-0.8716
+Bont/A1,bonta1,3FUO,A,1136,LEU,17.16,-0.5622
+Bont/A1,bonta1,3FUO,A,1137,LYS,24.11,0.4475
+Bont/A1,bonta1,3FUO,A,1138,GLY,30.28,1.3438
+Bont/A1,bonta1,3FUO,A,1139,PRO,29.98,1.3002
+Bont/A1,bonta1,3FUO,A,1140,ARG,29.22,1.1898
+Bont/A1,bonta1,3FUO,A,1141,GLY,29.76,1.2682
+Bont/A1,bonta1,3FUO,A,1142,SER,28.31,1.0576
+Bont/A1,bonta1,3FUO,A,1143,VAL,25.94,0.7133
+Bont/A1,bonta1,3FUO,A,1144,MET,28.42,1.0736
+Bont/A1,bonta1,3FUO,A,1145,THR,28.29,1.0547
+Bont/A1,bonta1,3FUO,A,1146,THR,28.92,1.1462
+Bont/A1,bonta1,3FUO,A,1147,ASN,27.51,0.9414
+Bont/A1,bonta1,3FUO,A,1148,ILE,23.18,0.3123
+Bont/A1,bonta1,3FUO,A,1149,TYR,19.24,-0.2600
+Bont/A1,bonta1,3FUO,A,1150,LEU,18.22,-0.4082
+Bont/A1,bonta1,3FUO,A,1151,ASN,16.80,-0.6145
+Bont/A1,bonta1,3FUO,A,1152,SER,17.07,-0.5753
+Bont/A1,bonta1,3FUO,A,1153,SER,16.95,-0.5927
+Bont/A1,bonta1,3FUO,A,1154,LEU,17.05,-0.5782
+Bont/A1,bonta1,3FUO,A,1155,TYR,18.16,-0.4169
+Bont/A1,bonta1,3FUO,A,1156,ARG,19.27,-0.2557
+Bont/A1,bonta1,3FUO,A,1157,GLY,17.79,-0.4707
+Bont/A1,bonta1,3FUO,A,1158,THR,17.51,-0.5113
+Bont/A1,bonta1,3FUO,A,1159,LYS,16.73,-0.6246
+Bont/A1,bonta1,3FUO,A,1160,PHE,13.77,-1.0546
+Bont/A1,bonta1,3FUO,A,1161,ILE,12.65,-1.2174
+Bont/A1,bonta1,3FUO,A,1162,ILE,11.86,-1.3321
+Bont/A1,bonta1,3FUO,A,1163,LYS,14.74,-0.9137
+Bont/A1,bonta1,3FUO,A,1164,LYS,17.28,-0.5447
+Bont/A1,bonta1,3FUO,A,1165,TYR,24.14,0.4518
+Bont/A1,bonta1,3FUO,A,1166,ALA,29.67,1.2552
+Bont/A1,bonta1,3FUO,A,1167,SER,33.34,1.7883
+Bont/A1,bonta1,3FUO,A,1168,GLY,32.21,1.6241
+Bont/A1,bonta1,3FUO,A,1169,ASN,29.48,1.2276
+Bont/A1,bonta1,3FUO,A,1170,LYS,24.67,0.5288
+Bont/A1,bonta1,3FUO,A,1171,ASP,24.57,0.5143
+Bont/A1,bonta1,3FUO,A,1172,ASN,20.61,-0.0610
+Bont/A1,bonta1,3FUO,A,1173,ILE,17.16,-0.5622
+Bont/A1,bonta1,3FUO,A,1174,VAL,14.25,-0.9849
+Bont/A1,bonta1,3FUO,A,1175,ARG,15.73,-0.7699
+Bont/A1,bonta1,3FUO,A,1176,ASN,19.56,-0.2135
+Bont/A1,bonta1,3FUO,A,1177,ASN,21.17,0.0204
+Bont/A1,bonta1,3FUO,A,1178,ASP,17.37,-0.5317
+Bont/A1,bonta1,3FUO,A,1179,ARG,14.65,-0.9268
+Bont/A1,bonta1,3FUO,A,1180,VAL,13.09,-1.1534
+Bont/A1,bonta1,3FUO,A,1181,TYR,14.16,-0.9980
+Bont/A1,bonta1,3FUO,A,1182,ILE,13.10,-1.1520
+Bont/A1,bonta1,3FUO,A,1183,ASN,14.12,-1.0038
+Bont/A1,bonta1,3FUO,A,1184,VAL,15.09,-0.8629
+Bont/A1,bonta1,3FUO,A,1185,VAL,14.93,-0.8861
+Bont/A1,bonta1,3FUO,A,1186,VAL,15.75,-0.7670
+Bont/A1,bonta1,3FUO,A,1187,LYS,19.68,-0.1961
+Bont/A1,bonta1,3FUO,A,1188,ASN,19.43,-0.2324
+Bont/A1,bonta1,3FUO,A,1189,LYS,15.26,-0.8382
+Bont/A1,bonta1,3FUO,A,1190,GLU,15.66,-0.7801
+Bont/A1,bonta1,3FUO,A,1191,TYR,13.79,-1.0517
+Bont/A1,bonta1,3FUO,A,1192,ARG,13.72,-1.0619
+Bont/A1,bonta1,3FUO,A,1193,LEU,13.06,-1.1578
+Bont/A1,bonta1,3FUO,A,1194,ALA,12.60,-1.2246
+Bont/A1,bonta1,3FUO,A,1195,THR,14.25,-0.9849
+Bont/A1,bonta1,3FUO,A,1196,ASN,18.54,-0.3617
+Bont/A1,bonta1,3FUO,A,1197,ALA,22.45,0.2063
+Bont/A1,bonta1,3FUO,A,1198,SER,27.15,0.8891
+Bont/A1,bonta1,3FUO,A,1199,GLN,29.61,1.2464
+Bont/A1,bonta1,3FUO,A,1200,ALA,31.43,1.5108
+Bont/A1,bonta1,3FUO,A,1201,GLY,26.97,0.8629
+Bont/A1,bonta1,3FUO,A,1202,VAL,20.29,-0.1075
+Bont/A1,bonta1,3FUO,A,1203,GLU,18.07,-0.4300
+Bont/A1,bonta1,3FUO,A,1204,LYS,14.44,-0.9573
+Bont/A1,bonta1,3FUO,A,1205,ILE,12.85,-1.1883
+Bont/A1,bonta1,3FUO,A,1206,LEU,12.79,-1.1970
+Bont/A1,bonta1,3FUO,A,1207,SER,13.17,-1.1418
+Bont/A1,bonta1,3FUO,A,1208,ALA,14.69,-0.9210
+Bont/A1,bonta1,3FUO,A,1209,LEU,15.21,-0.8455
+Bont/A1,bonta1,3FUO,A,1210,GLU,15.53,-0.7990
+Bont/A1,bonta1,3FUO,A,1211,ILE,16.90,-0.6000
+Bont/A1,bonta1,3FUO,A,1212,PRO,18.18,-0.4140
+Bont/A1,bonta1,3FUO,A,1213,ASP,19.32,-0.2484
+Bont/A1,bonta1,3FUO,A,1214,VAL,16.81,-0.6130
+Bont/A1,bonta1,3FUO,A,1215,GLY,17.77,-0.4736
+Bont/A1,bonta1,3FUO,A,1216,ASN,19.23,-0.2615
+Bont/A1,bonta1,3FUO,A,1217,LEU,15.69,-0.7757
+Bont/A1,bonta1,3FUO,A,1218,SER,15.60,-0.7888
+Bont/A1,bonta1,3FUO,A,1219,GLN,15.43,-0.8135
+Bont/A1,bonta1,3FUO,A,1220,VAL,15.10,-0.8614
+Bont/A1,bonta1,3FUO,A,1221,VAL,14.67,-0.9239
+Bont/A1,bonta1,3FUO,A,1222,VAL,14.03,-1.0169
+Bont/A1,bonta1,3FUO,A,1223,MET,17.33,-0.5375
+Bont/A1,bonta1,3FUO,A,1224,LYS,23.52,0.3617
+Bont/A1,bonta1,3FUO,A,1225,SER,28.34,1.0619
+Bont/A1,bonta1,3FUO,A,1226,LYS,34.80,2.0004
+Bont/A1,bonta1,3FUO,A,1227,ASN,38.86,2.5902
+Bont/A1,bonta1,3FUO,A,1231,ILE,43.48,3.2613
+Bont/A1,bonta1,3FUO,A,1232,THR,41.99,3.0449
+Bont/A1,bonta1,3FUO,A,1233,ASN,39.39,2.6672
+Bont/A1,bonta1,3FUO,A,1234,LYS,35.27,2.0687
+Bont/A1,bonta1,3FUO,A,1235,CYS,27.79,0.9820
+Bont/A1,bonta1,3FUO,A,1236,LYS,22.52,0.2165
+Bont/A1,bonta1,3FUO,A,1237,MET,16.79,-0.6159
+Bont/A1,bonta1,3FUO,A,1238,ASN,15.43,-0.8135
+Bont/A1,bonta1,3FUO,A,1239,LEU,16.22,-0.6987
+Bont/A1,bonta1,3FUO,A,1240,GLN,17.82,-0.4663
+Bont/A1,bonta1,3FUO,A,1241,ASP,19.10,-0.2804
+Bont/A1,bonta1,3FUO,A,1242,ASN,20.44,-0.0857
+Bont/A1,bonta1,3FUO,A,1243,ASN,22.16,0.1642
+Bont/A1,bonta1,3FUO,A,1244,GLY,20.54,-0.0712
+Bont/A1,bonta1,3FUO,A,1245,ASN,21.06,0.0044
+Bont/A1,bonta1,3FUO,A,1246,ASP,20.23,-0.1162
+Bont/A1,bonta1,3FUO,A,1247,ILE,17.10,-0.5709
+Bont/A1,bonta1,3FUO,A,1248,GLY,15.80,-0.7597
+Bont/A1,bonta1,3FUO,A,1249,PHE,15.64,-0.7830
+Bont/A1,bonta1,3FUO,A,1250,ILE,14.43,-0.9588
+Bont/A1,bonta1,3FUO,A,1251,GLY,13.36,-1.1142
+Bont/A1,bonta1,3FUO,A,1252,PHE,14.57,-0.9384
+Bont/A1,bonta1,3FUO,A,1253,HIS,15.65,-0.7815
+Bont/A1,bonta1,3FUO,A,1254,GLN,20.25,-0.1133
+Bont/A1,bonta1,3FUO,A,1255,PHE,20.05,-0.1423
+Bont/A1,bonta1,3FUO,A,1256,ASN,21.92,0.1293
+Bont/A1,bonta1,3FUO,A,1257,ASN,22.85,0.2644
+Bont/A1,bonta1,3FUO,A,1258,ILE,18.23,-0.4067
+Bont/A1,bonta1,3FUO,A,1259,ALA,15.74,-0.7685
+Bont/A1,bonta1,3FUO,A,1260,LYS,12.33,-1.2638
+Bont/A1,bonta1,3FUO,A,1261,LEU,11.74,-1.3495
+Bont/A1,bonta1,3FUO,A,1262,VAL,12.08,-1.3002
+Bont/A1,bonta1,3FUO,A,1263,ALA,12.93,-1.1767
+Bont/A1,bonta1,3FUO,A,1264,SER,14.59,-0.9355
+Bont/A1,bonta1,3FUO,A,1265,ASN,17.32,-0.5389
+Bont/A1,bonta1,3FUO,A,1266,TRP,18.85,-0.3167
+Bont/A1,bonta1,3FUO,A,1267,TYR,19.50,-0.2222
+Bont/A1,bonta1,3FUO,A,1268,ASN,23.27,0.3254
+Bont/A1,bonta1,3FUO,A,1269,ARG,31.30,1.4919
+Bont/A1,bonta1,3FUO,A,1270,GLN,39.16,2.6338
+Bont/A1,bonta1,3FUO,A,1271,ILE,46.39,3.6841
+Bont/A1,bonta1,3FUO,A,1272,GLU,52.23,4.5325
+Bont/A1,bonta1,3FUO,A,1273,ARG,55.24,4.9697
+Bont/A1,bonta1,3FUO,A,1274,SER,58.82,5.4898
+Bont/A1,bonta1,3FUO,A,1275,SER,61.26,5.8443
+Bont/A1,bonta1,3FUO,A,1278,LEU,32.40,1.6517
+Bont/A1,bonta1,3FUO,A,1279,GLY,25.45,0.6421
+Bont/A1,bonta1,3FUO,A,1280,CYS,20.77,-0.0378
+Bont/A1,bonta1,3FUO,A,1281,SER,19.15,-0.2731
+Bont/A1,bonta1,3FUO,A,1282,TRP,16.37,-0.6769
+Bont/A1,bonta1,3FUO,A,1283,GLU,16.64,-0.6377
+Bont/A1,bonta1,3FUO,A,1284,PHE,14.17,-0.9965
+Bont/A1,bonta1,3FUO,A,1285,ILE,13.93,-1.0314
+Bont/A1,bonta1,3FUO,A,1286,PRO,14.27,-0.9820
+Bont/A1,bonta1,3FUO,A,1287,VAL,15.26,-0.8382
+Bont/A1,bonta1,3FUO,A,1288,ASP,15.97,-0.7351
+Bont/A1,bonta1,3FUO,A,1289,ASP,18.51,-0.3661
+Bont/A1,bonta1,3FUO,A,1290,GLY,16.42,-0.6697
+Bont/A1,bonta1,3FUO,A,1291,TRP,16.53,-0.6537
+Bont/A1,bonta1,3FUO,A,1292,GLY,21.45,0.0610
+Bont/A1,bonta1,3FUO,A,1293,GLU,24.03,0.4358
+Bont/A1,bonta1,3FUO,A,1294,ARG,30.81,1.4208
+Bont/A1,bonta1,3FUO,A,1295,PRO,34.57,1.9670
+Bont/A1,bonta1,3FUO,A,1296,LEU,41.14,2.9214
+HCMV glycoprotein B,hcmvgb,5CXF,A,87,THR,140.63,1.0686
+HCMV glycoprotein B,hcmvgb,5CXF,A,88,LYS,120.91,0.2589
+HCMV glycoprotein B,hcmvgb,5CXF,A,89,TYR,110.02,-0.1882
+HCMV glycoprotein B,hcmvgb,5CXF,A,90,PRO,98.51,-0.6608
+HCMV glycoprotein B,hcmvgb,5CXF,A,91,TYR,81.90,-1.3428
+HCMV glycoprotein B,hcmvgb,5CXF,A,92,ARG,79.59,-1.4376
+HCMV glycoprotein B,hcmvgb,5CXF,A,93,VAL,90.42,-0.9930
+HCMV glycoprotein B,hcmvgb,5CXF,A,94,CYS,98.12,-0.6768
+HCMV glycoprotein B,hcmvgb,5CXF,A,95,SER,106.75,-0.3225
+HCMV glycoprotein B,hcmvgb,5CXF,A,96,MET,122.39,0.3197
+HCMV glycoprotein B,hcmvgb,5CXF,A,97,ALA,145.63,1.2739
+HCMV glycoprotein B,hcmvgb,5CXF,A,98,GLN,154.50,1.6381
+HCMV glycoprotein B,hcmvgb,5CXF,A,99,GLY,151.21,1.5030
+HCMV glycoprotein B,hcmvgb,5CXF,A,100,THR,146.17,1.2960
+HCMV glycoprotein B,hcmvgb,5CXF,A,101,ASP,124.35,0.4001
+HCMV glycoprotein B,hcmvgb,5CXF,A,102,LEU,103.23,-0.4670
+HCMV glycoprotein B,hcmvgb,5CXF,A,103,ILE,82.45,-1.3202
+HCMV glycoprotein B,hcmvgb,5CXF,A,104,ARG,78.13,-1.4976
+HCMV glycoprotein B,hcmvgb,5CXF,A,105,PHE,80.76,-1.3896
+HCMV glycoprotein B,hcmvgb,5CXF,A,106,GLU,87.63,-1.1075
+HCMV glycoprotein B,hcmvgb,5CXF,A,107,ARG,98.96,-0.6423
+HCMV glycoprotein B,hcmvgb,5CXF,A,108,ASN,91.83,-0.9351
+HCMV glycoprotein B,hcmvgb,5CXF,A,109,ILE,98.97,-0.6419
+HCMV glycoprotein B,hcmvgb,5CXF,A,110,ILE,104.34,-0.4214
+HCMV glycoprotein B,hcmvgb,5CXF,A,111,CYS,110.21,-0.1804
+HCMV glycoprotein B,hcmvgb,5CXF,A,112,THR,131.59,0.6974
+HCMV glycoprotein B,hcmvgb,5CXF,A,113,SER,144.55,1.2295
+HCMV glycoprotein B,hcmvgb,5CXF,A,114,MET,164.72,2.0577
+HCMV glycoprotein B,hcmvgb,5CXF,A,115,LYS,170.81,2.3077
+HCMV glycoprotein B,hcmvgb,5CXF,A,121,LEU,131.59,0.6974
+HCMV glycoprotein B,hcmvgb,5CXF,A,122,ASP,130.92,0.6699
+HCMV glycoprotein B,hcmvgb,5CXF,A,123,GLU,143.06,1.1684
+HCMV glycoprotein B,hcmvgb,5CXF,A,124,GLY,149.41,1.4291
+HCMV glycoprotein B,hcmvgb,5CXF,A,125,ILE,141.68,1.1117
+HCMV glycoprotein B,hcmvgb,5CXF,A,126,MET,128.18,0.5574
+HCMV glycoprotein B,hcmvgb,5CXF,A,127,VAL,119.53,0.2022
+HCMV glycoprotein B,hcmvgb,5CXF,A,128,VAL,112.86,-0.0716
+HCMV glycoprotein B,hcmvgb,5CXF,A,129,TYR,116.41,0.0741
+HCMV glycoprotein B,hcmvgb,5CXF,A,130,LYS,113.69,-0.0375
+HCMV glycoprotein B,hcmvgb,5CXF,A,131,ARG,126.40,0.4843
+HCMV glycoprotein B,hcmvgb,5CXF,A,132,ASN,114.31,-0.0121
+HCMV glycoprotein B,hcmvgb,5CXF,A,133,ILE,105.92,-0.3566
+HCMV glycoprotein B,hcmvgb,5CXF,A,134,VAL,107.83,-0.2781
+HCMV glycoprotein B,hcmvgb,5CXF,A,135,ALA,106.78,-0.3213
+HCMV glycoprotein B,hcmvgb,5CXF,A,136,HIS,111.80,-0.1151
+HCMV glycoprotein B,hcmvgb,5CXF,A,137,THR,113.39,-0.0499
+HCMV glycoprotein B,hcmvgb,5CXF,A,138,PHE,120.77,0.2532
+HCMV glycoprotein B,hcmvgb,5CXF,A,139,LYS,123.86,0.3800
+HCMV glycoprotein B,hcmvgb,5CXF,A,140,VAL,115.43,0.0339
+HCMV glycoprotein B,hcmvgb,5CXF,A,141,ARG,124.70,0.4145
+HCMV glycoprotein B,hcmvgb,5CXF,A,142,VAL,119.88,0.2166
+HCMV glycoprotein B,hcmvgb,5CXF,A,143,TYR,113.00,-0.0659
+HCMV glycoprotein B,hcmvgb,5CXF,A,144,GLN,116.79,0.0897
+HCMV glycoprotein B,hcmvgb,5CXF,A,145,LYS,112.87,-0.0712
+HCMV glycoprotein B,hcmvgb,5CXF,A,146,VAL,108.91,-0.2338
+HCMV glycoprotein B,hcmvgb,5CXF,A,147,LEU,109.82,-0.1964
+HCMV glycoprotein B,hcmvgb,5CXF,A,148,THR,111.73,-0.1180
+HCMV glycoprotein B,hcmvgb,5CXF,A,149,PHE,110.09,-0.1854
+HCMV glycoprotein B,hcmvgb,5CXF,A,150,ARG,113.46,-0.0470
+HCMV glycoprotein B,hcmvgb,5CXF,A,151,ARG,113.00,-0.0659
+HCMV glycoprotein B,hcmvgb,5CXF,A,152,SER,110.78,-0.1570
+HCMV glycoprotein B,hcmvgb,5CXF,A,153,TYR,112.98,-0.0667
+HCMV glycoprotein B,hcmvgb,5CXF,A,154,ALA,120.03,0.2228
+HCMV glycoprotein B,hcmvgb,5CXF,A,155,GLY,111.27,-0.1369
+HCMV glycoprotein B,hcmvgb,5CXF,A,156,HIS,121.76,0.2938
+HCMV glycoprotein B,hcmvgb,5CXF,A,157,ARG,124.74,0.4162
+HCMV glycoprotein B,hcmvgb,5CXF,A,158,THR,122.29,0.3156
+HCMV glycoprotein B,hcmvgb,5CXF,A,159,THR,109.53,-0.2083
+HCMV glycoprotein B,hcmvgb,5CXF,A,160,TYR,104.68,-0.4075
+HCMV glycoprotein B,hcmvgb,5CXF,A,161,LEU,102.39,-0.5015
+HCMV glycoprotein B,hcmvgb,5CXF,A,162,LEU,107.83,-0.2781
+HCMV glycoprotein B,hcmvgb,5CXF,A,163,GLY,110.81,-0.1558
+HCMV glycoprotein B,hcmvgb,5CXF,A,164,SER,113.73,-0.0359
+HCMV glycoprotein B,hcmvgb,5CXF,A,165,ASN,110.77,-0.1574
+HCMV glycoprotein B,hcmvgb,5CXF,A,166,THR,103.71,-0.4473
+HCMV glycoprotein B,hcmvgb,5CXF,A,167,GLU,97.09,-0.7191
+HCMV glycoprotein B,hcmvgb,5CXF,A,168,TYR,102.19,-0.5097
+HCMV glycoprotein B,hcmvgb,5CXF,A,169,VAL,112.25,-0.0967
+HCMV glycoprotein B,hcmvgb,5CXF,A,170,ALA,112.97,-0.0671
+HCMV glycoprotein B,hcmvgb,5CXF,A,171,PRO,115.16,0.0228
+HCMV glycoprotein B,hcmvgb,5CXF,A,172,PRO,117.61,0.1234
+HCMV glycoprotein B,hcmvgb,5CXF,A,173,MET,127.97,0.5488
+HCMV glycoprotein B,hcmvgb,5CXF,A,174,TRP,123.89,0.3813
+HCMV glycoprotein B,hcmvgb,5CXF,A,175,GLU,125.42,0.4441
+HCMV glycoprotein B,hcmvgb,5CXF,A,176,ILE,136.25,0.8887
+HCMV glycoprotein B,hcmvgb,5CXF,A,177,HIS,134.02,0.7972
+HCMV glycoprotein B,hcmvgb,5CXF,A,178,HIS,142.80,1.1577
+HCMV glycoprotein B,hcmvgb,5CXF,A,179,ILE,135.06,0.8399
+HCMV glycoprotein B,hcmvgb,5CXF,A,180,ASN,142.18,1.1322
+HCMV glycoprotein B,hcmvgb,5CXF,A,181,LYS,138.16,0.9672
+HCMV glycoprotein B,hcmvgb,5CXF,A,182,PHE,146.17,1.2960
+HCMV glycoprotein B,hcmvgb,5CXF,A,183,ALA,145.85,1.2829
+HCMV glycoprotein B,hcmvgb,5CXF,A,184,GLN,143.65,1.1926
+HCMV glycoprotein B,hcmvgb,5CXF,A,185,CYS,145.23,1.2575
+HCMV glycoprotein B,hcmvgb,5CXF,A,186,TYR,143.46,1.1848
+HCMV glycoprotein B,hcmvgb,5CXF,A,187,SER,133.25,0.7656
+HCMV glycoprotein B,hcmvgb,5CXF,A,188,SER,126.54,0.4901
+HCMV glycoprotein B,hcmvgb,5CXF,A,189,TYR,129.88,0.6272
+HCMV glycoprotein B,hcmvgb,5CXF,A,190,SER,133.12,0.7602
+HCMV glycoprotein B,hcmvgb,5CXF,A,191,ARG,135.66,0.8645
+HCMV glycoprotein B,hcmvgb,5CXF,A,192,VAL,142.91,1.1622
+HCMV glycoprotein B,hcmvgb,5CXF,A,193,ILE,148.94,1.4098
+HCMV glycoprotein B,hcmvgb,5CXF,A,194,GLY,146.84,1.3236
+HCMV glycoprotein B,hcmvgb,5CXF,A,195,GLY,140.22,1.0517
+HCMV glycoprotein B,hcmvgb,5CXF,A,196,THR,151.34,1.5083
+HCMV glycoprotein B,hcmvgb,5CXF,A,197,VAL,139.30,1.0140
+HCMV glycoprotein B,hcmvgb,5CXF,A,198,PHE,131.39,0.6892
+HCMV glycoprotein B,hcmvgb,5CXF,A,199,VAL,127.05,0.5110
+HCMV glycoprotein B,hcmvgb,5CXF,A,200,ALA,110.14,-0.1833
+HCMV glycoprotein B,hcmvgb,5CXF,A,201,TYR,122.32,0.3168
+HCMV glycoprotein B,hcmvgb,5CXF,A,202,HIS,128.25,0.5603
+HCMV glycoprotein B,hcmvgb,5CXF,A,203,ARG,135.40,0.8538
+HCMV glycoprotein B,hcmvgb,5CXF,A,204,ASP,147.08,1.3334
+HCMV glycoprotein B,hcmvgb,5CXF,A,205,SER,143.32,1.1790
+HCMV glycoprotein B,hcmvgb,5CXF,A,206,HIS,144.33,1.2205
+HCMV glycoprotein B,hcmvgb,5CXF,A,207,GLU,147.36,1.3449
+HCMV glycoprotein B,hcmvgb,5CXF,A,208,ASN,135.88,0.8736
+HCMV glycoprotein B,hcmvgb,5CXF,A,209,LYS,142.75,1.1556
+HCMV glycoprotein B,hcmvgb,5CXF,A,210,THR,142.30,1.1372
+HCMV glycoprotein B,hcmvgb,5CXF,A,211,MET,147.27,1.3412
+HCMV glycoprotein B,hcmvgb,5CXF,A,212,GLN,137.94,0.9581
+HCMV glycoprotein B,hcmvgb,5CXF,A,213,LEU,128.38,0.5656
+HCMV glycoprotein B,hcmvgb,5CXF,A,214,ILE,129.03,0.5923
+HCMV glycoprotein B,hcmvgb,5CXF,A,215,PRO,132.92,0.7520
+HCMV glycoprotein B,hcmvgb,5CXF,A,216,ASP,134.03,0.7976
+HCMV glycoprotein B,hcmvgb,5CXF,A,217,ASP,146.63,1.3149
+HCMV glycoprotein B,hcmvgb,5CXF,A,218,TYR,150.38,1.4689
+HCMV glycoprotein B,hcmvgb,5CXF,A,219,SER,144.45,1.2254
+HCMV glycoprotein B,hcmvgb,5CXF,A,220,ASN,133.20,0.7635
+HCMV glycoprotein B,hcmvgb,5CXF,A,221,THR,131.65,0.6999
+HCMV glycoprotein B,hcmvgb,5CXF,A,222,HIS,146.56,1.3121
+HCMV glycoprotein B,hcmvgb,5CXF,A,223,SER,133.41,0.7721
+HCMV glycoprotein B,hcmvgb,5CXF,A,224,THR,133.90,0.7923
+HCMV glycoprotein B,hcmvgb,5CXF,A,225,ARG,127.47,0.5282
+HCMV glycoprotein B,hcmvgb,5CXF,A,226,TYR,130.66,0.6592
+HCMV glycoprotein B,hcmvgb,5CXF,A,227,VAL,123.66,0.3718
+HCMV glycoprotein B,hcmvgb,5CXF,A,228,THR,130.12,0.6371
+HCMV glycoprotein B,hcmvgb,5CXF,A,229,VAL,124.86,0.4211
+HCMV glycoprotein B,hcmvgb,5CXF,A,230,LYS,126.52,0.4892
+HCMV glycoprotein B,hcmvgb,5CXF,A,231,ASP,128.80,0.5829
+HCMV glycoprotein B,hcmvgb,5CXF,A,232,GLN,133.54,0.7775
+HCMV glycoprotein B,hcmvgb,5CXF,A,233,TRP,137.23,0.9290
+HCMV glycoprotein B,hcmvgb,5CXF,A,234,HIS,132.69,0.7426
+HCMV glycoprotein B,hcmvgb,5CXF,A,235,SER,122.69,0.3320
+HCMV glycoprotein B,hcmvgb,5CXF,A,236,ARG,122.09,0.3074
+HCMV glycoprotein B,hcmvgb,5CXF,A,237,GLY,130.44,0.6502
+HCMV glycoprotein B,hcmvgb,5CXF,A,238,SER,129.98,0.6313
+HCMV glycoprotein B,hcmvgb,5CXF,A,239,THR,124.59,0.4100
+HCMV glycoprotein B,hcmvgb,5CXF,A,240,ALA,109.69,-0.2018
+HCMV glycoprotein B,hcmvgb,5CXF,A,241,THR,120.61,0.2466
+HCMV glycoprotein B,hcmvgb,5CXF,A,242,HIS,119.24,0.1903
+HCMV glycoprotein B,hcmvgb,5CXF,A,243,ARG,117.28,0.1099
+HCMV glycoprotein B,hcmvgb,5CXF,A,244,GLU,112.70,-0.0782
+HCMV glycoprotein B,hcmvgb,5CXF,A,245,THR,121.41,0.2794
+HCMV glycoprotein B,hcmvgb,5CXF,A,246,CYS,125.39,0.4428
+HCMV glycoprotein B,hcmvgb,5CXF,A,247,ASN,125.38,0.4424
+HCMV glycoprotein B,hcmvgb,5CXF,A,248,LEU,115.84,0.0507
+HCMV glycoprotein B,hcmvgb,5CXF,A,249,ASN,124.47,0.4051
+HCMV glycoprotein B,hcmvgb,5CXF,A,250,CYS,122.49,0.3238
+HCMV glycoprotein B,hcmvgb,5CXF,A,251,MET,117.92,0.1361
+HCMV glycoprotein B,hcmvgb,5CXF,A,252,LEU,123.67,0.3722
+HCMV glycoprotein B,hcmvgb,5CXF,A,253,THR,123.41,0.3615
+HCMV glycoprotein B,hcmvgb,5CXF,A,254,ILE,123.96,0.3841
+HCMV glycoprotein B,hcmvgb,5CXF,A,255,THR,129.59,0.6153
+HCMV glycoprotein B,hcmvgb,5CXF,A,256,THR,122.90,0.3406
+HCMV glycoprotein B,hcmvgb,5CXF,A,257,ALA,111.54,-0.1258
+HCMV glycoprotein B,hcmvgb,5CXF,A,258,ARG,112.81,-0.0737
+HCMV glycoprotein B,hcmvgb,5CXF,A,259,SER,117.36,0.1131
+HCMV glycoprotein B,hcmvgb,5CXF,A,260,LYS,122.09,0.3074
+HCMV glycoprotein B,hcmvgb,5CXF,A,261,TYR,119.09,0.1842
+HCMV glycoprotein B,hcmvgb,5CXF,A,262,PRO,117.19,0.1062
+HCMV glycoprotein B,hcmvgb,5CXF,A,263,TYR,118.94,0.1780
+HCMV glycoprotein B,hcmvgb,5CXF,A,264,HIS,115.56,0.0392
+HCMV glycoprotein B,hcmvgb,5CXF,A,265,PHE,110.72,-0.1595
+HCMV glycoprotein B,hcmvgb,5CXF,A,266,PHE,108.59,-0.2469
+HCMV glycoprotein B,hcmvgb,5CXF,A,267,ALA,107.56,-0.2892
+HCMV glycoprotein B,hcmvgb,5CXF,A,268,THR,107.48,-0.2925
+HCMV glycoprotein B,hcmvgb,5CXF,A,269,SER,104.62,-0.4099
+HCMV glycoprotein B,hcmvgb,5CXF,A,270,THR,103.30,-0.4641
+HCMV glycoprotein B,hcmvgb,5CXF,A,271,GLY,114.28,-0.0133
+HCMV glycoprotein B,hcmvgb,5CXF,A,272,ASP,120.73,0.2515
+HCMV glycoprotein B,hcmvgb,5CXF,A,273,VAL,105.22,-0.3853
+HCMV glycoprotein B,hcmvgb,5CXF,A,274,VAL,106.92,-0.3155
+HCMV glycoprotein B,hcmvgb,5CXF,A,275,TYR,107.79,-0.2798
+HCMV glycoprotein B,hcmvgb,5CXF,A,276,ILE,116.17,0.0643
+HCMV glycoprotein B,hcmvgb,5CXF,A,277,SER,120.85,0.2564
+HCMV glycoprotein B,hcmvgb,5CXF,A,278,PRO,117.77,0.1300
+HCMV glycoprotein B,hcmvgb,5CXF,A,279,PHE,129.32,0.6042
+HCMV glycoprotein B,hcmvgb,5CXF,A,280,TYR,134.87,0.8321
+HCMV glycoprotein B,hcmvgb,5CXF,A,281,ASN,146.84,1.3236
+HCMV glycoprotein B,hcmvgb,5CXF,A,282,GLY,144.91,1.2443
+HCMV glycoprotein B,hcmvgb,5CXF,A,283,THR,151.94,1.5330
+HCMV glycoprotein B,hcmvgb,5CXF,A,284,ASN,141.79,1.1162
+HCMV glycoprotein B,hcmvgb,5CXF,A,285,ARG,141.07,1.0866
+HCMV glycoprotein B,hcmvgb,5CXF,A,286,ASN,148.79,1.4036
+HCMV glycoprotein B,hcmvgb,5CXF,A,287,ALA,131.26,0.6839
+HCMV glycoprotein B,hcmvgb,5CXF,A,288,SER,133.51,0.7762
+HCMV glycoprotein B,hcmvgb,5CXF,A,289,TYR,125.66,0.4539
+HCMV glycoprotein B,hcmvgb,5CXF,A,290,PHE,130.39,0.6481
+HCMV glycoprotein B,hcmvgb,5CXF,A,291,GLY,132.33,0.7278
+HCMV glycoprotein B,hcmvgb,5CXF,A,292,GLU,133.85,0.7902
+HCMV glycoprotein B,hcmvgb,5CXF,A,293,ASN,139.96,1.0411
+HCMV glycoprotein B,hcmvgb,5CXF,A,294,ALA,133.65,0.7820
+HCMV glycoprotein B,hcmvgb,5CXF,A,295,ASP,138.04,0.9622
+HCMV glycoprotein B,hcmvgb,5CXF,A,296,LYS,132.11,0.7188
+HCMV glycoprotein B,hcmvgb,5CXF,A,297,PHE,131.24,0.6830
+HCMV glycoprotein B,hcmvgb,5CXF,A,298,PHE,126.08,0.4712
+HCMV glycoprotein B,hcmvgb,5CXF,A,299,ILE,129.69,0.6194
+HCMV glycoprotein B,hcmvgb,5CXF,A,300,PHE,126.09,0.4716
+HCMV glycoprotein B,hcmvgb,5CXF,A,301,PRO,123.29,0.3566
+HCMV glycoprotein B,hcmvgb,5CXF,A,302,ASN,146.83,1.3231
+HCMV glycoprotein B,hcmvgb,5CXF,A,303,TYR,141.42,1.1010
+HCMV glycoprotein B,hcmvgb,5CXF,A,304,THR,150.77,1.4849
+HCMV glycoprotein B,hcmvgb,5CXF,A,305,ILE,146.50,1.3096
+HCMV glycoprotein B,hcmvgb,5CXF,A,306,VAL,158.67,1.8093
+HCMV glycoprotein B,hcmvgb,5CXF,A,307,SER,155.21,1.6672
+HCMV glycoprotein B,hcmvgb,5CXF,A,308,ASP,154.61,1.6426
+HCMV glycoprotein B,hcmvgb,5CXF,A,309,PHE,146.97,1.3289
+HCMV glycoprotein B,hcmvgb,5CXF,A,310,GLY,161.11,1.9095
+HCMV glycoprotein B,hcmvgb,5CXF,A,311,ARG,172.95,2.3956
+HCMV glycoprotein B,hcmvgb,5CXF,A,312,PRO,178.68,2.6309
+HCMV glycoprotein B,hcmvgb,5CXF,A,313,ASN,183.84,2.8427
+HCMV glycoprotein B,hcmvgb,5CXF,A,314,ALA,178.46,2.6218
+HCMV glycoprotein B,hcmvgb,5CXF,A,315,ALA,169.94,2.2720
+HCMV glycoprotein B,hcmvgb,5CXF,A,316,PRO,169.07,2.2363
+HCMV glycoprotein B,hcmvgb,5CXF,A,317,GLU,155.47,1.6779
+HCMV glycoprotein B,hcmvgb,5CXF,A,318,THR,152.88,1.5716
+HCMV glycoprotein B,hcmvgb,5CXF,A,319,HIS,140.37,1.0579
+HCMV glycoprotein B,hcmvgb,5CXF,A,320,ARG,144.14,1.2127
+HCMV glycoprotein B,hcmvgb,5CXF,A,321,LEU,121.98,0.3028
+HCMV glycoprotein B,hcmvgb,5CXF,A,322,VAL,123.63,0.3706
+HCMV glycoprotein B,hcmvgb,5CXF,A,323,ALA,123.41,0.3615
+HCMV glycoprotein B,hcmvgb,5CXF,A,324,PHE,121.60,0.2872
+HCMV glycoprotein B,hcmvgb,5CXF,A,325,LEU,117.33,0.1119
+HCMV glycoprotein B,hcmvgb,5CXF,A,326,GLU,119.48,0.2002
+HCMV glycoprotein B,hcmvgb,5CXF,A,327,ARG,123.45,0.3632
+HCMV glycoprotein B,hcmvgb,5CXF,A,328,ALA,130.06,0.6346
+HCMV glycoprotein B,hcmvgb,5CXF,A,329,ASP,118.99,0.1801
+HCMV glycoprotein B,hcmvgb,5CXF,A,330,SER,112.76,-0.0757
+HCMV glycoprotein B,hcmvgb,5CXF,A,331,VAL,111.83,-0.1139
+HCMV glycoprotein B,hcmvgb,5CXF,A,332,ILE,117.17,0.1053
+HCMV glycoprotein B,hcmvgb,5CXF,A,333,SER,124.72,0.4153
+HCMV glycoprotein B,hcmvgb,5CXF,A,334,TRP,125.15,0.4330
+HCMV glycoprotein B,hcmvgb,5CXF,A,335,ASP,126.58,0.4917
+HCMV glycoprotein B,hcmvgb,5CXF,A,336,ILE,134.30,0.8087
+HCMV glycoprotein B,hcmvgb,5CXF,A,337,GLN,144.51,1.2279
+HCMV glycoprotein B,hcmvgb,5CXF,A,338,ASP,143.30,1.1782
+HCMV glycoprotein B,hcmvgb,5CXF,A,339,GLU,137.34,0.9335
+HCMV glycoprotein B,hcmvgb,5CXF,A,340,LYS,136.61,0.9035
+HCMV glycoprotein B,hcmvgb,5CXF,A,341,ASN,145.29,1.2599
+HCMV glycoprotein B,hcmvgb,5CXF,A,342,VAL,144.09,1.2106
+HCMV glycoprotein B,hcmvgb,5CXF,A,343,THR,142.46,1.1437
+HCMV glycoprotein B,hcmvgb,5CXF,A,344,CYS,140.37,1.0579
+HCMV glycoprotein B,hcmvgb,5CXF,A,345,GLN,129.79,0.6235
+HCMV glycoprotein B,hcmvgb,5CXF,A,346,LEU,117.64,0.1246
+HCMV glycoprotein B,hcmvgb,5CXF,A,347,THR,125.82,0.4605
+HCMV glycoprotein B,hcmvgb,5CXF,A,348,PHE,122.91,0.3410
+HCMV glycoprotein B,hcmvgb,5CXF,A,349,TRP,122.25,0.3139
+HCMV glycoprotein B,hcmvgb,5CXF,A,350,GLU,123.00,0.3447
+HCMV glycoprotein B,hcmvgb,5CXF,A,351,ALA,119.17,0.1875
+HCMV glycoprotein B,hcmvgb,5CXF,A,352,SER,140.27,1.0538
+HCMV glycoprotein B,hcmvgb,5CXF,A,353,GLU,145.86,1.2833
+HCMV glycoprotein B,hcmvgb,5CXF,A,354,ARG,149.00,1.4122
+HCMV glycoprotein B,hcmvgb,5CXF,A,355,THR,138.73,0.9906
+HCMV glycoprotein B,hcmvgb,5CXF,A,356,ILE,127.41,0.5258
+HCMV glycoprotein B,hcmvgb,5CXF,A,357,ARG,122.31,0.3164
+HCMV glycoprotein B,hcmvgb,5CXF,A,358,SER,112.27,-0.0958
+HCMV glycoprotein B,hcmvgb,5CXF,A,359,GLU,100.76,-0.5684
+HCMV glycoprotein B,hcmvgb,5CXF,A,360,ALA,96.70,-0.7351
+HCMV glycoprotein B,hcmvgb,5CXF,A,361,GLU,115.52,0.0376
+HCMV glycoprotein B,hcmvgb,5CXF,A,362,ASP,114.40,-0.0084
+HCMV glycoprotein B,hcmvgb,5CXF,A,363,SER,105.26,-0.3837
+HCMV glycoprotein B,hcmvgb,5CXF,A,364,TYR,101.57,-0.5352
+HCMV glycoprotein B,hcmvgb,5CXF,A,365,HIS,104.44,-0.4173
+HCMV glycoprotein B,hcmvgb,5CXF,A,366,PHE,108.12,-0.2662
+HCMV glycoprotein B,hcmvgb,5CXF,A,367,SER,111.04,-0.1463
+HCMV glycoprotein B,hcmvgb,5CXF,A,368,SER,117.30,0.1107
+HCMV glycoprotein B,hcmvgb,5CXF,A,369,ALA,114.92,0.0130
+HCMV glycoprotein B,hcmvgb,5CXF,A,370,LYS,123.35,0.3591
+HCMV glycoprotein B,hcmvgb,5CXF,A,371,MET,106.14,-0.3475
+HCMV glycoprotein B,hcmvgb,5CXF,A,372,THR,100.57,-0.5762
+HCMV glycoprotein B,hcmvgb,5CXF,A,373,ALA,86.03,-1.1732
+HCMV glycoprotein B,hcmvgb,5CXF,A,374,THR,94.84,-0.8115
+HCMV glycoprotein B,hcmvgb,5CXF,A,375,PHE,104.34,-0.4214
+HCMV glycoprotein B,hcmvgb,5CXF,A,376,LEU,106.70,-0.3245
+HCMV glycoprotein B,hcmvgb,5CXF,A,377,SER,112.30,-0.0946
+HCMV glycoprotein B,hcmvgb,5CXF,A,378,LYS,123.39,0.3607
+HCMV glycoprotein B,hcmvgb,5CXF,A,379,LYS,133.33,0.7689
+HCMV glycoprotein B,hcmvgb,5CXF,A,380,GLN,150.76,1.4845
+HCMV glycoprotein B,hcmvgb,5CXF,A,381,GLU,147.47,1.3494
+HCMV glycoprotein B,hcmvgb,5CXF,A,382,VAL,152.42,1.5527
+HCMV glycoprotein B,hcmvgb,5CXF,A,383,ASN,154.26,1.6282
+HCMV glycoprotein B,hcmvgb,5CXF,A,384,MET,148.12,1.3761
+HCMV glycoprotein B,hcmvgb,5CXF,A,385,SER,162.05,1.9481
+HCMV glycoprotein B,hcmvgb,5CXF,A,386,ASP,151.91,1.5317
+HCMV glycoprotein B,hcmvgb,5CXF,A,387,SER,153.53,1.5982
+HCMV glycoprotein B,hcmvgb,5CXF,A,388,ALA,139.63,1.0275
+HCMV glycoprotein B,hcmvgb,5CXF,A,389,LEU,146.14,1.2948
+HCMV glycoprotein B,hcmvgb,5CXF,A,390,ASP,139.58,1.0255
+HCMV glycoprotein B,hcmvgb,5CXF,A,391,CYS,145.19,1.2558
+HCMV glycoprotein B,hcmvgb,5CXF,A,392,VAL,135.72,0.8670
+HCMV glycoprotein B,hcmvgb,5CXF,A,393,ARG,123.16,0.3513
+HCMV glycoprotein B,hcmvgb,5CXF,A,394,ASP,138.34,0.9746
+HCMV glycoprotein B,hcmvgb,5CXF,A,395,GLU,139.15,1.0078
+HCMV glycoprotein B,hcmvgb,5CXF,A,396,ALA,138.86,0.9959
+HCMV glycoprotein B,hcmvgb,5CXF,A,397,ILE,134.02,0.7972
+HCMV glycoprotein B,hcmvgb,5CXF,A,398,ASN,134.66,0.8235
+HCMV glycoprotein B,hcmvgb,5CXF,A,399,LYS,146.65,1.3158
+HCMV glycoprotein B,hcmvgb,5CXF,A,400,LEU,142.52,1.1462
+HCMV glycoprotein B,hcmvgb,5CXF,A,401,GLN,150.84,1.4878
+HCMV glycoprotein B,hcmvgb,5CXF,A,402,GLN,151.20,1.5026
+HCMV glycoprotein B,hcmvgb,5CXF,A,403,ILE,152.88,1.5716
+HCMV glycoprotein B,hcmvgb,5CXF,A,404,PHE,153.25,1.5867
+HCMV glycoprotein B,hcmvgb,5CXF,A,405,ASN,148.39,1.3872
+HCMV glycoprotein B,hcmvgb,5CXF,A,406,THR,149.82,1.4459
+HCMV glycoprotein B,hcmvgb,5CXF,A,407,SER,144.84,1.2414
+HCMV glycoprotein B,hcmvgb,5CXF,A,408,TYR,140.51,1.0637
+HCMV glycoprotein B,hcmvgb,5CXF,A,411,THR,160.02,1.8647
+HCMV glycoprotein B,hcmvgb,5CXF,A,412,TYR,159.61,1.8479
+HCMV glycoprotein B,hcmvgb,5CXF,A,413,GLU,164.01,2.0285
+HCMV glycoprotein B,hcmvgb,5CXF,A,414,LYS,161.61,1.9300
+HCMV glycoprotein B,hcmvgb,5CXF,A,415,TYR,157.72,1.7703
+HCMV glycoprotein B,hcmvgb,5CXF,A,416,GLY,161.69,1.9333
+HCMV glycoprotein B,hcmvgb,5CXF,A,417,ASN,161.00,1.9050
+HCMV glycoprotein B,hcmvgb,5CXF,A,418,VAL,138.22,0.9696
+HCMV glycoprotein B,hcmvgb,5CXF,A,419,SER,140.03,1.0439
+HCMV glycoprotein B,hcmvgb,5CXF,A,420,VAL,140.88,1.0788
+HCMV glycoprotein B,hcmvgb,5CXF,A,421,PHE,136.56,0.9015
+HCMV glycoprotein B,hcmvgb,5CXF,A,422,GLU,122.73,0.3336
+HCMV glycoprotein B,hcmvgb,5CXF,A,423,THR,103.31,-0.4637
+HCMV glycoprotein B,hcmvgb,5CXF,A,424,SER,102.99,-0.4769
+HCMV glycoprotein B,hcmvgb,5CXF,A,425,GLY,109.80,-0.1973
+HCMV glycoprotein B,hcmvgb,5CXF,A,426,GLY,106.58,-0.3295
+HCMV glycoprotein B,hcmvgb,5CXF,A,427,LEU,103.23,-0.4670
+HCMV glycoprotein B,hcmvgb,5CXF,A,428,VAL,112.32,-0.0938
+HCMV glycoprotein B,hcmvgb,5CXF,A,429,VAL,117.14,0.1041
+HCMV glycoprotein B,hcmvgb,5CXF,A,430,PHE,129.53,0.6128
+HCMV glycoprotein B,hcmvgb,5CXF,A,431,TRP,141.74,1.1142
+HCMV glycoprotein B,hcmvgb,5CXF,A,432,GLN,147.06,1.3326
+HCMV glycoprotein B,hcmvgb,5CXF,A,433,GLY,152.11,1.5399
+HCMV glycoprotein B,hcmvgb,5CXF,A,434,ILE,152.28,1.5469
+HCMV glycoprotein B,hcmvgb,5CXF,A,476,HIS,127.37,0.5241
+HCMV glycoprotein B,hcmvgb,5CXF,A,477,ASN,111.15,-0.1418
+HCMV glycoprotein B,hcmvgb,5CXF,A,478,LEU,95.80,-0.7721
+HCMV glycoprotein B,hcmvgb,5CXF,A,479,VAL,89.22,-1.0423
+HCMV glycoprotein B,hcmvgb,5CXF,A,480,TYR,86.88,-1.1383
+HCMV glycoprotein B,hcmvgb,5CXF,A,481,ALA,89.66,-1.0242
+HCMV glycoprotein B,hcmvgb,5CXF,A,482,GLN,89.94,-1.0127
+HCMV glycoprotein B,hcmvgb,5CXF,A,483,LEU,79.20,-1.4537
+HCMV glycoprotein B,hcmvgb,5CXF,A,484,GLN,79.45,-1.4434
+HCMV glycoprotein B,hcmvgb,5CXF,A,485,PHE,84.11,-1.2521
+HCMV glycoprotein B,hcmvgb,5CXF,A,486,THR,85.14,-1.2098
+HCMV glycoprotein B,hcmvgb,5CXF,A,487,TYR,82.35,-1.3243
+HCMV glycoprotein B,hcmvgb,5CXF,A,488,ASP,86.01,-1.1740
+HCMV glycoprotein B,hcmvgb,5CXF,A,489,THR,86.06,-1.1720
+HCMV glycoprotein B,hcmvgb,5CXF,A,490,LEU,76.69,-1.5567
+HCMV glycoprotein B,hcmvgb,5CXF,A,491,ARG,76.69,-1.5567
+HCMV glycoprotein B,hcmvgb,5CXF,A,492,GLY,88.67,-1.0648
+HCMV glycoprotein B,hcmvgb,5CXF,A,493,TYR,83.05,-1.2956
+HCMV glycoprotein B,hcmvgb,5CXF,A,494,ILE,74.89,-1.6306
+HCMV glycoprotein B,hcmvgb,5CXF,A,495,ASN,80.67,-1.3933
+HCMV glycoprotein B,hcmvgb,5CXF,A,496,ARG,78.33,-1.4894
+HCMV glycoprotein B,hcmvgb,5CXF,A,497,ALA,78.81,-1.4697
+HCMV glycoprotein B,hcmvgb,5CXF,A,498,LEU,70.33,-1.8179
+HCMV glycoprotein B,hcmvgb,5CXF,A,499,ALA,79.72,-1.4323
+HCMV glycoprotein B,hcmvgb,5CXF,A,500,GLN,87.39,-1.1174
+HCMV glycoprotein B,hcmvgb,5CXF,A,501,ILE,73.04,-1.7066
+HCMV glycoprotein B,hcmvgb,5CXF,A,502,ALA,75.30,-1.6138
+HCMV glycoprotein B,hcmvgb,5CXF,A,503,GLU,91.34,-0.9552
+HCMV glycoprotein B,hcmvgb,5CXF,A,504,ALA,79.29,-1.4500
+HCMV glycoprotein B,hcmvgb,5CXF,A,505,TRP,73.57,-1.6848
+HCMV glycoprotein B,hcmvgb,5CXF,A,506,CYS,79.47,-1.4426
+HCMV glycoprotein B,hcmvgb,5CXF,A,507,VAL,72.28,-1.7378
+HCMV glycoprotein B,hcmvgb,5CXF,A,508,ASP,75.46,-1.6072
+HCMV glycoprotein B,hcmvgb,5CXF,A,509,GLN,76.21,-1.5764
+HCMV glycoprotein B,hcmvgb,5CXF,A,510,ARG,77.71,-1.5148
+HCMV glycoprotein B,hcmvgb,5CXF,A,511,ARG,71.99,-1.7497
+HCMV glycoprotein B,hcmvgb,5CXF,A,512,THR,73.43,-1.6906
+HCMV glycoprotein B,hcmvgb,5CXF,A,513,LEU,77.04,-1.5423
+HCMV glycoprotein B,hcmvgb,5CXF,A,514,GLU,76.91,-1.5477
+HCMV glycoprotein B,hcmvgb,5CXF,A,515,VAL,67.00,-1.9546
+HCMV glycoprotein B,hcmvgb,5CXF,A,516,PHE,66.55,-1.9731
+HCMV glycoprotein B,hcmvgb,5CXF,A,517,LYS,73.15,-1.7021
+HCMV glycoprotein B,hcmvgb,5CXF,A,518,GLU,76.57,-1.5616
+HCMV glycoprotein B,hcmvgb,5CXF,A,519,LEU,69.65,-1.8458
+HCMV glycoprotein B,hcmvgb,5CXF,A,520,SER,77.61,-1.5189
+HCMV glycoprotein B,hcmvgb,5CXF,A,521,LYS,77.00,-1.5440
+HCMV glycoprotein B,hcmvgb,5CXF,A,522,ILE,67.93,-1.9164
+HCMV glycoprotein B,hcmvgb,5CXF,A,523,ASN,76.06,-1.5826
+HCMV glycoprotein B,hcmvgb,5CXF,A,524,PRO,71.07,-1.7875
+HCMV glycoprotein B,hcmvgb,5CXF,A,525,SER,79.09,-1.4582
+HCMV glycoprotein B,hcmvgb,5CXF,A,526,ALA,76.44,-1.5670
+HCMV glycoprotein B,hcmvgb,5CXF,A,527,ILE,68.91,-1.8762
+HCMV glycoprotein B,hcmvgb,5CXF,A,528,LEU,71.73,-1.7604
+HCMV glycoprotein B,hcmvgb,5CXF,A,529,SER,76.96,-1.5456
+HCMV glycoprotein B,hcmvgb,5CXF,A,530,ALA,69.79,-1.8400
+HCMV glycoprotein B,hcmvgb,5CXF,A,531,ILE,68.27,-1.9024
+HCMV glycoprotein B,hcmvgb,5CXF,A,532,TYR,76.84,-1.5506
+HCMV glycoprotein B,hcmvgb,5CXF,A,533,ASN,79.04,-1.4602
+HCMV glycoprotein B,hcmvgb,5CXF,A,534,LYS,85.65,-1.1888
+HCMV glycoprotein B,hcmvgb,5CXF,A,535,PRO,80.59,-1.3966
+HCMV glycoprotein B,hcmvgb,5CXF,A,536,ILE,79.52,-1.4405
+HCMV glycoprotein B,hcmvgb,5CXF,A,537,ALA,84.93,-1.2184
+HCMV glycoprotein B,hcmvgb,5CXF,A,538,ALA,82.39,-1.3227
+HCMV glycoprotein B,hcmvgb,5CXF,A,539,ARG,81.24,-1.3699
+HCMV glycoprotein B,hcmvgb,5CXF,A,540,PHE,83.14,-1.2919
+HCMV glycoprotein B,hcmvgb,5CXF,A,541,MET,80.13,-1.4155
+HCMV glycoprotein B,hcmvgb,5CXF,A,542,GLY,88.61,-1.0673
+HCMV glycoprotein B,hcmvgb,5CXF,A,543,ASP,89.00,-1.0513
+HCMV glycoprotein B,hcmvgb,5CXF,A,544,VAL,82.29,-1.3268
+HCMV glycoprotein B,hcmvgb,5CXF,A,545,LEU,83.84,-1.2631
+HCMV glycoprotein B,hcmvgb,5CXF,A,546,GLY,88.01,-1.0919
+HCMV glycoprotein B,hcmvgb,5CXF,A,547,LEU,88.32,-1.0792
+HCMV glycoprotein B,hcmvgb,5CXF,A,548,ALA,99.10,-0.6366
+HCMV glycoprotein B,hcmvgb,5CXF,A,549,SER,104.65,-0.4087
+HCMV glycoprotein B,hcmvgb,5CXF,A,550,CYS,105.55,-0.3718
+HCMV glycoprotein B,hcmvgb,5CXF,A,551,VAL,98.26,-0.6711
+HCMV glycoprotein B,hcmvgb,5CXF,A,552,THR,97.10,-0.7187
+HCMV glycoprotein B,hcmvgb,5CXF,A,553,ILE,95.98,-0.7647
+HCMV glycoprotein B,hcmvgb,5CXF,A,554,ASN,106.71,-0.3241
+HCMV glycoprotein B,hcmvgb,5CXF,A,555,GLN,107.73,-0.2823
+HCMV glycoprotein B,hcmvgb,5CXF,A,556,THR,121.55,0.2852
+HCMV glycoprotein B,hcmvgb,5CXF,A,557,SER,113.84,-0.0314
+HCMV glycoprotein B,hcmvgb,5CXF,A,558,VAL,107.00,-0.3122
+HCMV glycoprotein B,hcmvgb,5CXF,A,559,LYS,102.88,-0.4814
+HCMV glycoprotein B,hcmvgb,5CXF,A,560,VAL,87.18,-1.1260
+HCMV glycoprotein B,hcmvgb,5CXF,A,561,LEU,92.16,-0.9215
+HCMV glycoprotein B,hcmvgb,5CXF,A,562,ARG,91.95,-0.9302
+HCMV glycoprotein B,hcmvgb,5CXF,A,563,ASP,93.00,-0.8870
+HCMV glycoprotein B,hcmvgb,5CXF,A,564,MET,91.48,-0.9495
+HCMV glycoprotein B,hcmvgb,5CXF,A,565,ASN,101.62,-0.5331
+HCMV glycoprotein B,hcmvgb,5CXF,A,566,VAL,106.84,-0.3188
+HCMV glycoprotein B,hcmvgb,5CXF,A,567,LYS,117.95,0.1374
+HCMV glycoprotein B,hcmvgb,5CXF,A,568,GLU,123.42,0.3620
+HCMV glycoprotein B,hcmvgb,5CXF,A,569,SER,117.54,0.1205
+HCMV glycoprotein B,hcmvgb,5CXF,A,570,PRO,116.76,0.0885
+HCMV glycoprotein B,hcmvgb,5CXF,A,571,GLY,110.87,-0.1533
+HCMV glycoprotein B,hcmvgb,5CXF,A,572,ARG,107.44,-0.2942
+HCMV glycoprotein B,hcmvgb,5CXF,A,573,CYS,106.74,-0.3229
+HCMV glycoprotein B,hcmvgb,5CXF,A,574,TYR,102.15,-0.5114
+HCMV glycoprotein B,hcmvgb,5CXF,A,575,SER,93.38,-0.8714
+HCMV glycoprotein B,hcmvgb,5CXF,A,576,ARG,90.78,-0.9782
+HCMV glycoprotein B,hcmvgb,5CXF,A,577,PRO,90.89,-0.9737
+HCMV glycoprotein B,hcmvgb,5CXF,A,578,VAL,90.15,-1.0041
+HCMV glycoprotein B,hcmvgb,5CXF,A,579,VAL,90.84,-0.9757
+HCMV glycoprotein B,hcmvgb,5CXF,A,580,ILE,99.42,-0.6235
+HCMV glycoprotein B,hcmvgb,5CXF,A,581,PHE,107.99,-0.2716
+HCMV glycoprotein B,hcmvgb,5CXF,A,582,ASN,112.72,-0.0774
+HCMV glycoprotein B,hcmvgb,5CXF,A,583,PHE,108.86,-0.2359
+HCMV glycoprotein B,hcmvgb,5CXF,A,584,ALA,123.57,0.3681
+HCMV glycoprotein B,hcmvgb,5CXF,A,585,ASN,149.05,1.4143
+HCMV glycoprotein B,hcmvgb,5CXF,A,586,SER,137.70,0.9483
+HCMV glycoprotein B,hcmvgb,5CXF,A,587,SER,133.18,0.7627
+HCMV glycoprotein B,hcmvgb,5CXF,A,588,TYR,124.71,0.4149
+HCMV glycoprotein B,hcmvgb,5CXF,A,589,VAL,114.83,0.0093
+HCMV glycoprotein B,hcmvgb,5CXF,A,590,GLN,101.17,-0.5516
+HCMV glycoprotein B,hcmvgb,5CXF,A,591,TYR,94.14,-0.8402
+HCMV glycoprotein B,hcmvgb,5CXF,A,592,GLY,85.42,-1.1983
+HCMV glycoprotein B,hcmvgb,5CXF,A,593,GLN,87.87,-1.0977
+HCMV glycoprotein B,hcmvgb,5CXF,A,594,LEU,80.42,-1.4036
+HCMV glycoprotein B,hcmvgb,5CXF,A,595,GLY,86.58,-1.1506
+HCMV glycoprotein B,hcmvgb,5CXF,A,596,GLU,97.83,-0.6887
+HCMV glycoprotein B,hcmvgb,5CXF,A,597,ASP,90.72,-0.9807
+HCMV glycoprotein B,hcmvgb,5CXF,A,598,ASN,86.27,-1.1634
+HCMV glycoprotein B,hcmvgb,5CXF,A,599,GLU,85.70,-1.1868
+HCMV glycoprotein B,hcmvgb,5CXF,A,600,ILE,86.98,-1.1342
+HCMV glycoprotein B,hcmvgb,5CXF,A,601,LEU,92.99,-0.8875
+HCMV glycoprotein B,hcmvgb,5CXF,A,602,LEU,116.63,0.0832
+HCMV glycoprotein B,hcmvgb,5CXF,A,603,GLY,125.01,0.4272
+HCMV glycoprotein B,hcmvgb,5CXF,A,604,ASN,130.54,0.6543
+HCMV glycoprotein B,hcmvgb,5CXF,A,605,HIS,108.80,-0.2383
+HCMV glycoprotein B,hcmvgb,5CXF,A,606,ARG,109.32,-0.2170
+HCMV glycoprotein B,hcmvgb,5CXF,A,607,THR,102.70,-0.4888
+HCMV glycoprotein B,hcmvgb,5CXF,A,608,GLU,112.46,-0.0880
+HCMV glycoprotein B,hcmvgb,5CXF,A,609,GLU,125.97,0.4667
+HCMV glycoprotein B,hcmvgb,5CXF,A,610,CYS,118.69,0.1678
+HCMV glycoprotein B,hcmvgb,5CXF,A,611,GLN,121.94,0.3012
+HCMV glycoprotein B,hcmvgb,5CXF,A,612,LEU,108.83,-0.2371
+HCMV glycoprotein B,hcmvgb,5CXF,A,613,PRO,105.55,-0.3718
+HCMV glycoprotein B,hcmvgb,5CXF,A,614,SER,100.81,-0.5664
+HCMV glycoprotein B,hcmvgb,5CXF,A,615,LEU,99.09,-0.6370
+HCMV glycoprotein B,hcmvgb,5CXF,A,616,LYS,75.76,-1.5949
+HCMV glycoprotein B,hcmvgb,5CXF,A,617,ILE,81.43,-1.3621
+HCMV glycoprotein B,hcmvgb,5CXF,A,618,PHE,81.74,-1.3494
+HCMV glycoprotein B,hcmvgb,5CXF,A,619,ILE,85.35,-1.2011
+HCMV glycoprotein B,hcmvgb,5CXF,A,620,ALA,88.23,-1.0829
+HCMV glycoprotein B,hcmvgb,5CXF,A,621,GLY,101.62,-0.5331
+HCMV glycoprotein B,hcmvgb,5CXF,A,622,ASN,105.01,-0.3939
+HCMV glycoprotein B,hcmvgb,5CXF,A,623,SER,102.58,-0.4937
+HCMV glycoprotein B,hcmvgb,5CXF,A,624,ALA,93.38,-0.8714
+HCMV glycoprotein B,hcmvgb,5CXF,A,625,TYR,89.12,-1.0464
+HCMV glycoprotein B,hcmvgb,5CXF,A,626,GLU,89.05,-1.0492
+HCMV glycoprotein B,hcmvgb,5CXF,A,627,TYR,90.72,-0.9807
+HCMV glycoprotein B,hcmvgb,5CXF,A,628,VAL,93.79,-0.8546
+HCMV glycoprotein B,hcmvgb,5CXF,A,629,ASP,93.89,-0.8505
+HCMV glycoprotein B,hcmvgb,5CXF,A,630,TYR,87.17,-1.1264
+HCMV glycoprotein B,hcmvgb,5CXF,A,631,LEU,91.74,-0.9388
+HCMV glycoprotein B,hcmvgb,5CXF,A,632,PHE,95.22,-0.7959
+HCMV glycoprotein B,hcmvgb,5CXF,A,633,LYS,95.78,-0.7729
+HCMV glycoprotein B,hcmvgb,5CXF,A,634,ARG,104.98,-0.3952
+HCMV glycoprotein B,hcmvgb,5CXF,A,635,MET,99.42,-0.6235
+HCMV glycoprotein B,hcmvgb,5CXF,A,636,ILE,100.34,-0.5857
+HCMV glycoprotein B,hcmvgb,5CXF,A,637,ASP,110.52,-0.1677
+HCMV glycoprotein B,hcmvgb,5CXF,A,638,LEU,97.53,-0.7011
+HCMV glycoprotein B,hcmvgb,5CXF,A,639,SER,100.14,-0.5939
+HCMV glycoprotein B,hcmvgb,5CXF,A,640,SER,106.99,-0.3126
+HCMV glycoprotein B,hcmvgb,5CXF,A,641,ILE,102.60,-0.4929
+HCMV glycoprotein B,hcmvgb,5CXF,A,642,SER,95.01,-0.8045
+HCMV glycoprotein B,hcmvgb,5CXF,A,643,THR,88.49,-1.0722
+HCMV glycoprotein B,hcmvgb,5CXF,A,644,VAL,83.43,-1.2800
+HCMV glycoprotein B,hcmvgb,5CXF,A,645,ASP,92.61,-0.9031
+HCMV glycoprotein B,hcmvgb,5CXF,A,646,SER,76.43,-1.5674
+HCMV glycoprotein B,hcmvgb,5CXF,A,647,MET,77.53,-1.5222
+HCMV glycoprotein B,hcmvgb,5CXF,A,648,ILE,80.46,-1.4019
+HCMV glycoprotein B,hcmvgb,5CXF,A,649,ALA,80.83,-1.3867
+HCMV glycoprotein B,hcmvgb,5CXF,A,650,LEU,86.41,-1.1576
+HCMV glycoprotein B,hcmvgb,5CXF,A,651,ASP,116.99,0.0980
+HCMV glycoprotein B,hcmvgb,5CXF,A,652,ILE,99.19,-0.6329
+HCMV glycoprotein B,hcmvgb,5CXF,A,653,ASP,92.27,-0.9170
+HCMV glycoprotein B,hcmvgb,5CXF,A,654,PRO,86.93,-1.1363
+HCMV glycoprotein B,hcmvgb,5CXF,A,655,LEU,89.80,-1.0184
+HCMV glycoprotein B,hcmvgb,5CXF,A,656,GLU,100.70,-0.5709
+HCMV glycoprotein B,hcmvgb,5CXF,A,657,ASN,99.38,-0.6251
+HCMV glycoprotein B,hcmvgb,5CXF,A,658,THR,101.86,-0.5233
+HCMV glycoprotein B,hcmvgb,5CXF,A,659,ASP,94.39,-0.8300
+HCMV glycoprotein B,hcmvgb,5CXF,A,660,PHE,92.16,-0.9215
+HCMV glycoprotein B,hcmvgb,5CXF,A,661,ARG,95.36,-0.7901
+HCMV glycoprotein B,hcmvgb,5CXF,A,662,VAL,90.46,-0.9913
+HCMV glycoprotein B,hcmvgb,5CXF,A,663,LEU,95.26,-0.7943
+HCMV glycoprotein B,hcmvgb,5CXF,A,664,GLU,98.97,-0.6419
+HCMV glycoprotein B,hcmvgb,5CXF,A,665,LEU,85.55,-1.1929
+HCMV glycoprotein B,hcmvgb,5CXF,A,666,TYR,87.20,-1.1252
+HCMV glycoprotein B,hcmvgb,5CXF,A,667,SER,106.46,-0.3344
+HCMV glycoprotein B,hcmvgb,5CXF,A,668,GLN,110.01,-0.1886
+HCMV glycoprotein B,hcmvgb,5CXF,A,669,LYS,103.03,-0.4752
+HCMV glycoprotein B,hcmvgb,5CXF,A,670,GLU,98.31,-0.6690
+HCMV glycoprotein B,hcmvgb,5CXF,A,671,LEU,96.51,-0.7429
+HCMV glycoprotein B,hcmvgb,5CXF,A,672,ARG,100.48,-0.5799
+HCMV glycoprotein B,hcmvgb,5CXF,A,673,SER,91.43,-0.9515
+HCMV glycoprotein B,hcmvgb,5CXF,A,674,SER,91.01,-0.9688
+HCMV glycoprotein B,hcmvgb,5CXF,A,675,ASN,96.47,-0.7446
+HCMV glycoprotein B,hcmvgb,5CXF,A,676,VAL,86.87,-1.1387
+HCMV glycoprotein B,hcmvgb,5CXF,A,677,PHE,83.97,-1.2578
+HCMV glycoprotein B,hcmvgb,5CXF,A,678,ASP,96.76,-0.7327
+HCMV glycoprotein B,hcmvgb,5CXF,A,679,LEU,79.08,-1.4586
+HCMV glycoprotein B,hcmvgb,5CXF,A,680,GLU,89.11,-1.0468
+HCMV glycoprotein B,hcmvgb,5CXF,A,681,GLU,87.66,-1.1063
+HCMV glycoprotein B,hcmvgb,5CXF,A,682,ILE,85.85,-1.1806
+HCMV glycoprotein B,hcmvgb,5CXF,A,683,MET,77.96,-1.5046
+HCMV glycoprotein B,hcmvgb,5CXF,A,684,ARG,93.04,-0.8854
+HCMV glycoprotein B,hcmvgb,5CXF,A,685,GLU,91.30,-0.9568
+HCMV glycoprotein B,hcmvgb,5CXF,A,686,PHE,84.63,-1.2307
+HCMV glycoprotein B,hcmvgb,5CXF,A,687,ASN,89.76,-1.0201
+HCMV glycoprotein B,hcmvgb,5CXF,A,688,SER,94.83,-0.8119
+HCMV glycoprotein B,hcmvgb,5CXF,A,689,TYR,93.23,-0.8776
+HCMV glycoprotein B,hcmvgb,5CXF,A,690,LYS,85.70,-1.1868
+HCMV glycoprotein B,hcmvgb,5CXF,A,691,GLN,99.22,-0.6317
+HCMV glycoprotein B,hcmvgb,5CXF,A,692,ARG,114.23,-0.0154
+HCMV glycoprotein B,hcmvgb,5CXF,A,693,VAL,120.04,0.2232
+HCMV glycoprotein B,hcmvgb,5CXF,A,694,LYS,130.63,0.6580
+HCMV glycoprotein B,hcmvgb,5CXF,A,695,TYR,142.13,1.1302
+HCMV glycoprotein B,hcmvgb,5CXF,A,696,VAL,148.58,1.3950
