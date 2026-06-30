@@ -150,13 +150,16 @@ def main():
         ax.set_xlabel(args.label, fontsize=13)
         ax.set_ylabel(r"$\Delta\Delta G$ (kcal/mol)", fontsize=13)
         ax.tick_params(labelsize=12)
-    axes[0][0].legend(fontsize=12, loc="upper left", framealpha=0.95)
     for j in range(len(keys), nrow * ncol):
         axes[j // ncol][j % ncol].axis("off")
+    # single figure-level legend BELOW the grid (outside all panels -> hides no data)
+    handles, labs = axes[0][0].get_legend_handles_labels()
+    fig.legend(handles, labs, loc="lower center", ncol=2, fontsize=14, frameon=True,
+               markerscale=1.4, bbox_to_anchor=(0.5, 0.005))
     fig.suptitle(f"Static surface exposure as an epitope label (apo, single-frame): every residue by "
                  f"{args.label};\nred = experimentally important, shaded = SASA$\\geq${thr} "
                  f"(what exposure alone would call epitope)", fontsize=16, fontweight="bold")
-    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    fig.tight_layout(rect=[0, 0.05, 1, 0.95])
     p1 = outdir / "sasa_allres_per_antigen.png"
     fig.savefig(p1, dpi=200); plt.close(fig)
 
@@ -186,8 +189,9 @@ def main():
            f"$\\Rightarrow$ precision {prec_all:.0%}    recall {recall_all:.0%}")
     ax.text(0.035, 0.97, txt, transform=ax.transAxes, ha="left", va="top", fontsize=14.5,
             bbox=dict(boxstyle="round,pad=0.5", fc="white", ec="#999", alpha=0.97))
-    ax.legend(fontsize=14, loc="lower right", framealpha=1.0, markerscale=1.3,
-              title="shaded = SASA $\\geq$ 0.25 (exposure's call)", title_fontsize=12)
+    ax.legend(fontsize=13.5, loc="upper left", bbox_to_anchor=(1.01, 1.0), framealpha=1.0,
+              markerscale=1.3, title="shaded = SASA $\\geq$ 0.25\n(exposure's epitope call)",
+              title_fontsize=12, borderaxespad=0)
     ax.margins(x=0.02)
     fig2.tight_layout(); p2 = outdir / "sasa_allres_pooled.png"
     fig2.savefig(p2, dpi=220); plt.close(fig2)
