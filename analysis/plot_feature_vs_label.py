@@ -82,6 +82,9 @@ def main():
     ap.add_argument("--feature-col", required=True)
     ap.add_argument("--label", default="feature")
     ap.add_argument("--cutoff", type=float, default=1.0, help="ddG (kcal/mol) for hotspot-positive")
+    ap.add_argument("--feature-threshold", type=float, default=0.25,
+                    help="feature value of the dashed decision line (default 0.25 = standard "
+                         "relative-SASA 'exposed' cutoff: what exposure alone would call epitope)")
     ap.add_argument("--outdir", default="analysis/figures")
     args = ap.parse_args()
 
@@ -89,57 +92,85 @@ def main():
     feat = load_feature(args.feature_csv, args.feature_col)
     outdir = pathlib.Path(args.outdir); outdir.mkdir(parents=True, exist_ok=True)
 
+    thr = args.feature_threshold
     keys = [k for k in KEYS.values() if k in labels and k in feat]
     ncol = 4; nrow = -(-len(keys) // ncol)
     fig, axes = plt.subplots(nrow, ncol, figsize=(4 * ncol, 3.2 * nrow), squeeze=False)
-    pooled_x, pooled_y = [], []
-    print(f"\n{'antigen':10s} {'n_scan':>6s} {'n_hot':>5s} {'Spearman':>9s} {'AUC(whole)':>10s}")
-    print("-" * 48)
-    summary = []
+    # pooled confusion + scanned-only correlation accumulators
+    P_pred = P_tp = P_imp = P_res = 0
+    pooled_xs, pooled_ys = [], []
+    print(f"\n{'antigen':10s} {'#res':>5s} {'pred+':>6s} {'TP':>4s} {'#imp':>5s} "
+          f"{'prec':>6s} {'recall':>7s} {'Spearman':>9s} {'AUC':>6s}")
+    print("-" * 70)
     for i, k in enumerate(keys):
         ax = axes[i // ncol][i % ncol]
         lab = labels[k]; fe = feat[k]
-        # scanned residues with both feature and label
-        xs = np.array([fe[res] for res in lab if res in fe])
-        ys = np.array([lab[res] for res in lab if res in fe])
-        rho = spearmanr(xs, ys).correlation if len(xs) > 2 else float("nan")
-        # whole-protein AUC: positives = scanned hotspots, negatives = all other residues
-        hot = {res for res, d in lab.items() if d >= args.cutoff}
-        pos = [fe[res] for res in hot if res in fe]
-        neg = [fe[res] for res in fe if res not in hot]
-        A = auc(pos, neg)
-        summary.append((k, len(xs), len(pos), rho, A))
-        print(f"{k:10s} {len(xs):6d} {len(pos):5d} {rho:9.3f} {A:10.3f}")
-        pooled_x += list(xs); pooled_y += list(ys)
-        # plot: feature (X) vs ddG (Y), colored by hotspot
-        col = ["#1f3fff" if y >= args.cutoff else "#222" for y in ys]
-        ax.scatter(xs, ys, c=col, s=18, alpha=0.8, edgecolors="none")
-        ax.axhline(args.cutoff, color="orange", ls="--", lw=1)
-        ax.set_title(f"{k}: $\\rho$={rho:.2f}, AUC={A:.2f}\n(n={len(xs)}, hot={len(pos)})", fontsize=9)
-        ax.set_xlabel(args.label, fontsize=8); ax.set_ylabel(r"$\Delta\Delta G$ (max over mAb)", fontsize=8)
+        resids = sorted(fe)                                   # ALL residues of the antigen
+        x = np.array([fe[r] for r in resids])
+        # y = experimental importance where known, else 0 (unscanned -> assumed not important)
+        y = np.array([lab.get(r, 0.0) for r in resids])
+        important = np.array([(r in lab and lab[r] >= args.cutoff) for r in resids])
+        pred_pos = x >= thr                                  # what SASA alone would label epitope
+        n_res = len(resids); n_imp = int(important.sum())
+        n_pred = int(pred_pos.sum()); n_tp = int((pred_pos & important).sum())
+        prec = n_tp / n_pred if n_pred else float("nan")
+        recall = n_tp / n_imp if n_imp else float("nan")
+        # scanned-only correlation (does the feature rank graded importance?)
+        sx = np.array([fe[r] for r in lab if r in fe]); sy = np.array([lab[r] for r in lab if r in fe])
+        rho = spearmanr(sx, sy).correlation if len(sx) > 2 else float("nan")
+        A = auc([fe[r] for r in lab if lab[r] >= args.cutoff and r in fe],
+                [fe[r] for r in fe if not (r in lab and lab[r] >= args.cutoff)])
+        pooled_xs += list(sx); pooled_ys += list(sy)
+        P_pred += n_pred; P_tp += n_tp; P_imp += n_imp; P_res += n_res
+        print(f"{k:10s} {n_res:5d} {n_pred:6d} {n_tp:4d} {n_imp:5d} "
+              f"{prec:6.2f} {recall:7.2f} {rho:9.3f} {A:6.2f}")
+        # plot ALL residues: grey = not important, red = experimentally important
+        ax.scatter(x[~important], y[~important], c="#bbbbbb", s=14, alpha=0.6, edgecolors="none",
+                   label="not important")
+        ax.scatter(x[important], y[important], c="#d62728", s=26, alpha=0.95, edgecolors="k",
+                   linewidths=0.3, label="important (binding)")
+        ax.axvline(thr, color="orange", ls="--", lw=1.3)
+        ax.set_title(f"{k}: {n_res} res; SASA-labeled +{n_pred}; of those {n_tp} truly important\n"
+                     f"(precision {prec:.0%}, recall {recall:.0%})", fontsize=8)
+        ax.set_xlabel(args.label, fontsize=8)
+        ax.set_ylabel(r"$\Delta\Delta G$ (kcal/mol)", fontsize=8)
         ax.tick_params(labelsize=7)
+    axes[0][0].legend(fontsize=7, loc="upper left", framealpha=0.9)
     for j in range(len(keys), nrow * ncol):
         axes[j // ncol][j % ncol].axis("off")
-    fig.suptitle(f"Static-exposure control: {args.label} vs alanine-scan $\\Delta\\Delta G$ "
-                 f"(blue = hotspot $\\geq${args.cutoff} kcal/mol)", fontsize=12)
-    fig.tight_layout(rect=[0, 0, 1, 0.97])
-    p1 = outdir / "sasa_vs_ddg_per_antigen.png"
+    fig.suptitle(f"If exposure were the label: every residue by {args.label}; red = experimentally "
+                 f"important; dashed = SASA$\\geq${thr} decision (what we'd call epitope)", fontsize=12)
+    fig.tight_layout(rect=[0, 0, 1, 0.96])
+    p1 = outdir / "sasa_allres_per_antigen.png"
     fig.savefig(p1, dpi=150); plt.close(fig)
 
-    # pooled
-    px, py = np.array(pooled_x), np.array(pooled_y)
-    rho_all = spearmanr(px, py).correlation
-    fig2, ax = plt.subplots(figsize=(5, 4))
-    col = ["#1f3fff" if y >= args.cutoff else "#222" for y in py]
-    ax.scatter(px, py, c=col, s=14, alpha=0.6, edgecolors="none")
-    ax.axhline(args.cutoff, color="orange", ls="--", lw=1)
-    ax.set_xlabel(args.label); ax.set_ylabel(r"$\Delta\Delta G$ (max over mAb, kcal/mol)")
-    ax.set_title(f"Pooled scanned residues (n={len(px)}): Spearman $\\rho$={rho_all:.3f}")
-    fig2.tight_layout(); p2 = outdir / "sasa_vs_ddg_pooled.png"
+    # pooled: all residues, same decision line
+    fig2, ax = plt.subplots(figsize=(6, 4.5))
+    allx, ally, allimp = [], [], []
+    for k in keys:
+        for r in sorted(feat[k]):
+            allx.append(feat[k][r]); ally.append(labels[k].get(r, 0.0))
+            allimp.append(r in labels[k] and labels[k][r] >= args.cutoff)
+    allx, ally, allimp = np.array(allx), np.array(ally), np.array(allimp)
+    ax.scatter(allx[~allimp], ally[~allimp], c="#bbbbbb", s=10, alpha=0.5, edgecolors="none",
+               label="not important")
+    ax.scatter(allx[allimp], ally[allimp], c="#d62728", s=22, alpha=0.9, edgecolors="k",
+               linewidths=0.3, label="important (binding)")
+    ax.axvline(thr, color="orange", ls="--", lw=1.5)
+    prec_all = P_tp / P_pred if P_pred else float("nan")
+    recall_all = P_tp / P_imp if P_imp else float("nan")
+    rho_all = spearmanr(np.array(pooled_xs), np.array(pooled_ys)).correlation
+    ax.set_xlabel(args.label); ax.set_ylabel(r"$\Delta\Delta G$ (kcal/mol)")
+    ax.set_title(f"All {P_res} residues, 8 antigens. SASA$\\geq${thr} would label {P_pred} as epitope;\n"
+                 f"only {P_tp} are truly important -> precision {prec_all:.0%}, recall {recall_all:.0%}; "
+                 f"scanned-residue $\\rho$={rho_all:.2f}", fontsize=9)
+    ax.legend(fontsize=8, loc="upper right", framealpha=0.9)
+    fig2.tight_layout(); p2 = outdir / "sasa_allres_pooled.png"
     fig2.savefig(p2, dpi=150); plt.close(fig2)
 
-    print("-" * 48)
-    print(f"POOLED scanned-residue Spearman rho = {rho_all:.3f} (n={len(px)})")
+    print("-" * 70)
+    print(f"POOLED: {P_res} residues; SASA>={thr} labels {P_pred} epitope, {P_tp} truly important "
+          f"-> precision {prec_all:.1%}, recall {recall_all:.1%}; scanned Spearman rho={rho_all:.3f}")
     print(f"wrote {p1}\n      {p2}")
 
 
