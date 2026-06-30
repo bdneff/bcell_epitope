@@ -2,9 +2,14 @@
 """Per-residue solvent-accessible surface area (SASA) for each apo antigen structure --
 the STATIC-exposure baseline feature (the control our dynamics features must beat).
 
-Single-frame SASA (Biopython Shrake-Rupley) on the apo input structures. This is the
-pre-trajectory baseline; once the Gemini runs land, swap in trajectory-AVERAGED SASA
-(gmx sasa / MDAnalysis over the production xtc) at the same residue keys.
+Single-frame SASA (Biopython Shrake-Rupley) on the input crystal structures (antigen chain
+only; antibody atoms not present in these stripped files). This is the pre-trajectory baseline;
+once the Gemini runs land, swap in trajectory-AVERAGED SASA (gmx sasa / MDAnalysis over the
+production xtc) at the same residue keys.
+
+CONFOUND: 6 of the 8 structures are complex-derived (only 1AKI, 1HGU are apo), so although the
+antibody is removed for the SASA calc, the coordinates are the BOUND conformation -> holo-state
+SASA, not true apo. Apo-MD trajectory SASA is the clean version (see manuscript sec:baseline).
 
 Output: benchmark/features/sasa_apo_singleframe.csv
   columns: antigen,key,pdb,chain,resid,resname,sasa,rel_sasa

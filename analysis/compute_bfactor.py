@@ -7,6 +7,11 @@ Uses the RAW crystal structures (NOT the repaired _fixed ones: AF-grafted loops 
 not crystallographic B). Raw B-factors are not comparable across crystals (resolution,
 refinement, overall scaling), so we z-normalise PER STRUCTURE; that z-score is the feature.
 
+CONFOUND: 6 of the 8 antigens here are deposited as antibody-antigen COMPLEXES (only 1AKI and
+1HGU are apo). With the antibody bound, the epitope residues' B-factors are damped by the
+interface contacts -- which can by itself produce a low-B-at-hotspots signal. Apo-MD RMSF is the
+clean unbound measurement; this static B-factor is a confounded teaser (see manuscript sec:baseline).
+
 Output: benchmark/features/bfactor_crystal.csv
   columns: antigen,key,pdb,chain,resid,resname,bfactor,bfactor_z
 B per residue = CA B-factor (fallback: mean over residue heavy atoms).

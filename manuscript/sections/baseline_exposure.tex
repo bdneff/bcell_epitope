@@ -5,10 +5,25 @@ get --- both to set the bar the dynamics features must clear and to make the pro
 \S\ref{sec:motivation} quantitative on our own labels. We test the two classic static proxies for
 ``epitope-ness'': surface \textbf{exposure} (this section) and \textbf{mobility} (crystallographic
 B-factors, below). The exposure descriptor is per-residue \textbf{relative solvent-accessible
-surface area} (rel.\ SASA): Shrake--Rupley SASA on the apo structure, normalised by the residue-type
-maximum~\cite{tien2013}. This is a single-frame calculation on the apo input structures --- the
-pre-trajectory baseline; once the production runs land it is replaced by trajectory-averaged SASA at
-the same residue keys (and joined by RMSF, non-bonded energetics, and hydration).
+surface area} (rel.\ SASA): Shrake--Rupley SASA on the input crystal (antigen chain only), normalised
+by the residue-type maximum~\cite{tien2013}. This is a single-frame calculation on the input crystal
+structures --- the pre-trajectory baseline; once the production runs land it is replaced by
+trajectory-averaged SASA at the same residue keys (and joined by RMSF, non-bonded energetics, and
+hydration).
+
+\paragraph{Which structures (a confound shared by both baselines).} Both descriptors are read from the
+deposited crystal of each antigen, and for \emph{six of the eight} the crystal is the antibody--antigen
+\textbf{complex} --- only lysozyme (\texttt{1AKI}) and hGH (\texttt{1HGU}) are true apo structures. This
+biases the two features differently. For SASA we compute on the antigen chain \emph{alone} (antibody
+atoms deleted), so the epitope surface is not buried in the calculation --- but the coordinates are the
+\emph{bound} conformation, so these are holo-state SASA values, equal to apo only absent induced fit.
+For B-factors the bias is more direct: the antibody is present in the crystal and damps exactly the
+epitope residues' B-factors, which on its own could \emph{manufacture} the rigid-hotspot signal below.
+The two genuine apo structures trend the same as the rest (B-factor $\rho=-0.23,\,-0.40$), so the
+patterns are not pure artefacts --- but a single crystal, especially a complex, cannot cleanly report
+the \emph{free} antigen. Apo-MD removes this at the root: trajectory SASA and RMSF are computed on the
+unbound antigen, no antibody and no lattice. We therefore read the static baselines as motivating
+bounds, not clean measurements.
 
 \paragraph{Setup.} We pool every residue of the eight $\ddG$ antigens ($1{,}790$ residues).
 A residue is \emph{important} if its alanine-scan $\ddG \geq 1$\,kcal/mol for any antibody
@@ -19,13 +34,13 @@ label. We then read off precision and recall against the experimental importance
 \begin{figure}[H]\centering
 \figorbox{sasa_baseline.png}{0.82}
 \caption{\textbf{Surface exposure as an epitope label.} Every residue of the eight $\ddG$ antigens,
-apo rel.\ SASA ($x$) vs.\ alanine-scan $\ddG$ ($y$); red $=$ scanned and important ($\ddG\geq 1$),
+rel.\ SASA ($x$, antigen chain alone) vs.\ alanine-scan $\ddG$ ($y$); red $=$ scanned and important ($\ddG\geq 1$),
 blue $=$ scanned but weak ($\ddG<1$, incl.\ binding-improving), grey $=$ not alanine-scanned (no
 data, plotted at $0$); the shaded band is what an exposure cutoff (rel.\ SASA $\geq 0.25$) would call epitope.
 Exposure flags $925$ of $1{,}790$ residues as epitope but only $31$ are truly important
 ($\mathrm{precision}\approx 3\%$), while still missing the buried-at-interface hotspots to the left of
-the line ($\mathrm{recall}\approx 63\%$). Single-frame apo SASA;
-\texttt{analysis/compute\_sasa.py} $+$ \texttt{plot\_feature\_vs\_label.py}.}\label{fig:sasa-baseline}
+the line ($\mathrm{recall}\approx 63\%$). Single-frame SASA on the input crystals (6/8 complex-derived,
+see text); \texttt{analysis/compute\_sasa.py} $+$ \texttt{plot\_feature\_vs\_label.py}.}\label{fig:sasa-baseline}
 \end{figure}
 
 \paragraph{Result.} Exposure behaves exactly as the thesis predicts. It has \emph{moderate recall}
