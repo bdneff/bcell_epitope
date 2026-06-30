@@ -184,13 +184,11 @@ def main():
     rho_all = spearmanr(np.array(pooled_xs), np.array(pooled_ys)).correlation
     ax.set_xlabel(f"{args.label}  →  more solvent-exposed", fontsize=18)
     ax.set_ylabel(r"$\Delta\Delta G_\mathrm{bind}$ (kcal/mol)", fontsize=18)
-    ax.set_title("If surface exposure were the epitope label", fontsize=19, fontweight="bold", pad=12)
-    # annotation box with the confusion summary (top-left, clear of data)
-    txt = (f"{P_pred:,} / {P_res:,} residues flagged epitope\n"
-           f"by SASA $\\geq$ {thr}; only {P_tp} truly important\n"
-           f"$\\Rightarrow$ precision {prec_all:.0%}    recall {recall_all:.0%}")
-    ax.text(0.035, 0.97, txt, transform=ax.transAxes, ha="left", va="top", fontsize=14.5,
-            bbox=dict(boxstyle="round,pad=0.5", fc="white", ec="#999", alpha=0.97))
+    ax.set_title("If surface exposure were the epitope label", fontsize=19, fontweight="bold", pad=42)
+    # confusion summary as a subtitle ABOVE the axes (out of the plot area)
+    sub = (f"SASA $\\geq$ {thr} flags {P_pred:,} / {P_res:,} residues as epitope; only {P_tp} are truly "
+           f"important\n$\\Rightarrow$ precision {prec_all:.0%}   $\\cdot$   recall {recall_all:.0%}")
+    ax.text(0.5, 1.015, sub, transform=ax.transAxes, ha="center", va="bottom", fontsize=13, color="#333")
     # legend BELOW the axes (outside the plot -> hides no data)
     h2, l2 = ax.get_legend_handles_labels()
     h2.append(Patch(facecolor=SHADE, alpha=0.6)); l2.append(f"SASA $\\geq$ {thr} (exposure's call)")
