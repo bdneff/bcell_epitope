@@ -49,7 +49,7 @@ for antigen, (key, struct) in ANTIGEN.items():
     if not p.exists():
         print(f"skip {antigen}: {struct} missing")
         continue
-    pdb = p.stem.split("_")[-1] if "_" in p.stem else p.stem  # e.g. hGH_1HGU_fixed -> 1HGU
+    pdb = p.stem.replace("_fixed", "").split("_")[-1]  # e.g. hGH_1HGU_fixed -> 1HGU; 1AKI -> 1AKI
     model = parser.get_structure(key, struct)[0]
     sr.compute(model, level="R")
     n = 0

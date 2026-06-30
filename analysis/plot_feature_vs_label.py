@@ -26,6 +26,9 @@ LABEL_CSV = "benchmark/antigen_alanine_scan_extracted_SIMPLE_v3.csv"
 KEYS = {"Lysozyme":"lysozyme","HPr":"hpr","VEGF":"vegf","Bont/A1":"bonta1",
         "IFN-gamma receptor":"ifngr","Tissue factor":"tf",
         "HCMV glycoprotein B":"hcmvgb","human growth hormone":"hgh"}
+# antigen key -> PDB code (shown on the plots instead of the antigen name)
+KEY2PDB = {"lysozyme":"1AKI","hpr":"2JEL","vegf":"1BJ1","bonta1":"2NYY",
+           "ifngr":"1JRH","tf":"1AHW","hcmvgb":"5C6T","hgh":"1HGU"}
 
 
 def load_labels():
@@ -99,7 +102,7 @@ def main():
     # pooled confusion + scanned-only correlation accumulators
     P_pred = P_tp = P_imp = P_res = 0
     pooled_xs, pooled_ys = [], []
-    print(f"\n{'antigen':10s} {'#res':>5s} {'pred+':>6s} {'TP':>4s} {'#imp':>5s} "
+    print(f"\n{'PDB':6s} {'#res':>5s} {'pred+':>6s} {'TP':>4s} {'#imp':>5s} "
           f"{'prec':>6s} {'recall':>7s} {'Spearman':>9s} {'AUC':>6s}")
     print("-" * 70)
     for i, k in enumerate(keys):
@@ -122,7 +125,7 @@ def main():
                 [fe[r] for r in fe if not (r in lab and lab[r] >= args.cutoff)])
         pooled_xs += list(sx); pooled_ys += list(sy)
         P_pred += n_pred; P_tp += n_tp; P_imp += n_imp; P_res += n_res
-        print(f"{k:10s} {n_res:5d} {n_pred:6d} {n_tp:4d} {n_imp:5d} "
+        print(f"{KEY2PDB[k]:6s} {n_res:5d} {n_pred:6d} {n_tp:4d} {n_imp:5d} "
               f"{prec:6.2f} {recall:7.2f} {rho:9.3f} {A:6.2f}")
         # plot ALL residues: grey = not important, red = experimentally important
         ax.scatter(x[~important], y[~important], c="#bbbbbb", s=14, alpha=0.6, edgecolors="none",
@@ -130,7 +133,7 @@ def main():
         ax.scatter(x[important], y[important], c="#d62728", s=26, alpha=0.95, edgecolors="k",
                    linewidths=0.3, label="important (binding)")
         ax.axvline(thr, color="orange", ls="--", lw=1.3)
-        ax.set_title(f"{k}: {n_res} res; SASA-labeled +{n_pred}; of those {n_tp} truly important\n"
+        ax.set_title(f"{KEY2PDB[k]}: {n_res} res; SASA-labeled +{n_pred}; of those {n_tp} truly important\n"
                      f"(precision {prec:.0%}, recall {recall:.0%})", fontsize=8)
         ax.set_xlabel(args.label, fontsize=8)
         ax.set_ylabel(r"$\Delta\Delta G$ (kcal/mol)", fontsize=8)
