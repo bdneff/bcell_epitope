@@ -77,5 +77,7 @@ That is precisely the opening for apo-MD --- RMSF is a cleaner, crystal-contact-
 and the trajectory additionally exposes the correlated-motion, mode-participation (FRESEAN), and
 hydration (3D-2PT) features that no single structure carries. The question the rest of this work
 asks is whether dynamics \emph{done properly} recovers signal where these static proxies fail.
-(Caveat: B-factors are contaminated by crystal contacts, resolution, and refinement protocol; the
-per-structure z-score removes only the overall scale.)
+The B-factor is a reasonable first-pass mobility proxy --- it is the standard one --- though an
+imperfect measure of intrinsic flexibility: crystal contacts, resolution, and refinement choices
+all contribute, and the per-structure z-score removes only the overall scale. MD RMSF measures the
+same quantity for the free protein without those confounds, and is the cleaner test to come.
