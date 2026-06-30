@@ -21,6 +21,17 @@ import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from scipy.stats import spearmanr
 
+# Manuscript-grade defaults: large fonts, clean axes.
+plt.rcParams.update({
+    "font.size": 15, "axes.titlesize": 15, "axes.labelsize": 17,
+    "xtick.labelsize": 14, "ytick.labelsize": 14, "legend.fontsize": 14,
+    "axes.linewidth": 1.1, "axes.spines.top": False, "axes.spines.right": False,
+    "figure.dpi": 150, "savefig.bbox": "tight", "font.family": "DejaVu Sans",
+})
+GREY = "#c2c2c2"      # not important
+RED = "#c1272d"       # experimentally important
+SHADE = "#ffe2b0"     # "SASA would call epitope" region
+
 LABEL_CSV = "benchmark/antigen_alanine_scan_extracted_SIMPLE_v3.csv"
 # antigen display key (matches feature 'key' column)
 KEYS = {"Lysozyme":"lysozyme","HPr":"hpr","VEGF":"vegf","Bont/A1":"bonta1",
@@ -98,7 +109,7 @@ def main():
     thr = args.feature_threshold
     keys = [k for k in KEYS.values() if k in labels and k in feat]
     ncol = 4; nrow = -(-len(keys) // ncol)
-    fig, axes = plt.subplots(nrow, ncol, figsize=(4 * ncol, 3.2 * nrow), squeeze=False)
+    fig, axes = plt.subplots(nrow, ncol, figsize=(4.6 * ncol, 3.8 * nrow), squeeze=False)
     # pooled confusion + scanned-only correlation accumulators
     P_pred = P_tp = P_imp = P_res = 0
     pooled_xs, pooled_ys = [], []
@@ -128,48 +139,58 @@ def main():
         print(f"{KEY2PDB[k]:6s} {n_res:5d} {n_pred:6d} {n_tp:4d} {n_imp:5d} "
               f"{prec:6.2f} {recall:7.2f} {rho:9.3f} {A:6.2f}")
         # plot ALL residues: grey = not important, red = experimentally important
-        ax.scatter(x[~important], y[~important], c="#bbbbbb", s=14, alpha=0.6, edgecolors="none",
+        ax.axvspan(thr, max(x.max(), thr) + 0.02, color=SHADE, alpha=0.5, lw=0)
+        ax.scatter(x[~important], y[~important], c=GREY, s=20, alpha=0.7, edgecolors="none",
                    label="not important")
-        ax.scatter(x[important], y[important], c="#d62728", s=26, alpha=0.95, edgecolors="k",
-                   linewidths=0.3, label="important (binding)")
-        ax.axvline(thr, color="orange", ls="--", lw=1.3)
-        ax.set_title(f"{KEY2PDB[k]}: {n_res} res; SASA-labeled +{n_pred}; of those {n_tp} truly important\n"
-                     f"(precision {prec:.0%}, recall {recall:.0%})", fontsize=8)
-        ax.set_xlabel(args.label, fontsize=8)
-        ax.set_ylabel(r"$\Delta\Delta G$ (kcal/mol)", fontsize=8)
-        ax.tick_params(labelsize=7)
-    axes[0][0].legend(fontsize=7, loc="upper left", framealpha=0.9)
+        ax.scatter(x[important], y[important], c=RED, s=46, alpha=0.95, edgecolors="k",
+                   linewidths=0.4, label="important (binding)", zorder=3)
+        ax.axvline(thr, color="#e8820c", ls="--", lw=1.8)
+        ax.set_title(f"{KEY2PDB[k]}   precision {prec:.0%} · recall {recall:.0%}",
+                     fontsize=14, fontweight="bold")
+        ax.set_xlabel(args.label, fontsize=13)
+        ax.set_ylabel(r"$\Delta\Delta G$ (kcal/mol)", fontsize=13)
+        ax.tick_params(labelsize=12)
+    axes[0][0].legend(fontsize=12, loc="upper left", framealpha=0.95)
     for j in range(len(keys), nrow * ncol):
         axes[j // ncol][j % ncol].axis("off")
-    fig.suptitle(f"If exposure were the label: every residue by {args.label}; red = experimentally "
-                 f"important; dashed = SASA$\\geq${thr} decision (what we'd call epitope)", fontsize=12)
-    fig.tight_layout(rect=[0, 0, 1, 0.96])
+    fig.suptitle(f"Static surface exposure as an epitope label (apo, single-frame): every residue by "
+                 f"{args.label};\nred = experimentally important, shaded = SASA$\\geq${thr} "
+                 f"(what exposure alone would call epitope)", fontsize=16, fontweight="bold")
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
     p1 = outdir / "sasa_allres_per_antigen.png"
-    fig.savefig(p1, dpi=150); plt.close(fig)
+    fig.savefig(p1, dpi=200); plt.close(fig)
 
-    # pooled: all residues, same decision line
-    fig2, ax = plt.subplots(figsize=(6, 4.5))
+    # pooled: all residues, same decision line -- the manuscript figure
+    fig2, ax = plt.subplots(figsize=(8.5, 6.0))
     allx, ally, allimp = [], [], []
     for k in keys:
         for r in sorted(feat[k]):
             allx.append(feat[k][r]); ally.append(labels[k].get(r, 0.0))
             allimp.append(r in labels[k] and labels[k][r] >= args.cutoff)
     allx, ally, allimp = np.array(allx), np.array(ally), np.array(allimp)
-    ax.scatter(allx[~allimp], ally[~allimp], c="#bbbbbb", s=10, alpha=0.5, edgecolors="none",
-               label="not important")
-    ax.scatter(allx[allimp], ally[allimp], c="#d62728", s=22, alpha=0.9, edgecolors="k",
-               linewidths=0.3, label="important (binding)")
-    ax.axvline(thr, color="orange", ls="--", lw=1.5)
+    ax.axvspan(thr, allx.max() + 0.03, color=SHADE, alpha=0.55, lw=0)
+    ax.scatter(allx[~allimp], ally[~allimp], c=GREY, s=16, alpha=0.55, edgecolors="none",
+               label="not important for binding")
+    ax.scatter(allx[allimp], ally[allimp], c=RED, s=42, alpha=0.95, edgecolors="k",
+               linewidths=0.4, label="important for binding", zorder=3)
+    ax.axvline(thr, color="#e8820c", ls="--", lw=2.2)
     prec_all = P_tp / P_pred if P_pred else float("nan")
     recall_all = P_tp / P_imp if P_imp else float("nan")
     rho_all = spearmanr(np.array(pooled_xs), np.array(pooled_ys)).correlation
-    ax.set_xlabel(args.label); ax.set_ylabel(r"$\Delta\Delta G$ (kcal/mol)")
-    ax.set_title(f"All {P_res} residues, 8 antigens. SASA$\\geq${thr} would label {P_pred} as epitope;\n"
-                 f"only {P_tp} are truly important -> precision {prec_all:.0%}, recall {recall_all:.0%}; "
-                 f"scanned-residue $\\rho$={rho_all:.2f}", fontsize=9)
-    ax.legend(fontsize=8, loc="upper right", framealpha=0.9)
+    ax.set_xlabel(f"{args.label}  →  more solvent-exposed", fontsize=18)
+    ax.set_ylabel(r"$\Delta\Delta G_\mathrm{bind}$ (kcal/mol)", fontsize=18)
+    ax.set_title("If surface exposure were the epitope label", fontsize=19, fontweight="bold", pad=12)
+    # annotation box with the confusion summary (top-left, clear of data)
+    txt = (f"{P_pred:,} / {P_res:,} residues flagged epitope\n"
+           f"by SASA $\\geq$ {thr}; only {P_tp} truly important\n"
+           f"$\\Rightarrow$ precision {prec_all:.0%}    recall {recall_all:.0%}")
+    ax.text(0.035, 0.97, txt, transform=ax.transAxes, ha="left", va="top", fontsize=14.5,
+            bbox=dict(boxstyle="round,pad=0.5", fc="white", ec="#999", alpha=0.97))
+    ax.legend(fontsize=14, loc="lower right", framealpha=1.0, markerscale=1.3,
+              title="shaded = SASA $\\geq$ 0.25 (exposure's call)", title_fontsize=12)
+    ax.margins(x=0.02)
     fig2.tight_layout(); p2 = outdir / "sasa_allres_pooled.png"
-    fig2.savefig(p2, dpi=150); plt.close(fig2)
+    fig2.savefig(p2, dpi=220); plt.close(fig2)
 
     print("-" * 70)
     print(f"POOLED: {P_res} residues; SASA>={thr} labels {P_pred} epitope, {P_tp} truly important "

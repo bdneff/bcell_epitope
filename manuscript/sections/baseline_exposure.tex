@@ -1,0 +1,45 @@
+\section{The static-exposure baseline}\label{sec:baseline}
+
+Before adding any dynamics, we ask how far a purely \emph{static} surface descriptor already
+gets --- both to set the bar the dynamics features must clear and to make the proximity/exposure
+critique of \S\ref{sec:motivation} quantitative on our own labels. The descriptor is per-residue
+\textbf{relative solvent-accessible surface area} (rel.\ SASA): Shrake--Rupley SASA on the apo
+structure, normalised by the residue-type maximum~\cite{tien2013}. This is a single-frame
+calculation on the apo input structures --- the pre-trajectory baseline; once the production runs
+land it is replaced by trajectory-averaged SASA at the same residue keys (and joined by RMSF,
+non-bonded energetics, and hydration).
+
+\paragraph{Setup.} We pool every residue of the eight $\ddG$ antigens ($1{,}790$ residues).
+A residue is \emph{important} if its alanine-scan $\ddG \geq 1$\,kcal/mol for any antibody
+(aggregated as the max over antibodies). An exposure-only predictor labels a residue an epitope
+if rel.\ SASA $\geq 0.25$ (the standard ``exposed'' cutoff) --- the static analogue of a proximity
+label. We then read off precision and recall against the experimental importance labels.
+
+\begin{figure}[H]\centering
+\figorbox{sasa_baseline.png}{0.82}
+\caption{\textbf{Surface exposure as an epitope label.} Every residue of the eight $\ddG$ antigens,
+apo rel.\ SASA ($x$) vs.\ alanine-scan $\ddG$ ($y$); red $=$ experimentally important for binding,
+grey $=$ not; the shaded band is what an exposure cutoff (rel.\ SASA $\geq 0.25$) would call epitope.
+Exposure flags $925$ of $1{,}790$ residues as epitope but only $31$ are truly important
+($\mathrm{precision}\approx 3\%$), while still missing the buried-at-interface hotspots to the left of
+the line ($\mathrm{recall}\approx 63\%$). Single-frame apo SASA;
+\texttt{analysis/compute\_sasa.py} $+$ \texttt{plot\_feature\_vs\_label.py}.}\label{fig:sasa-baseline}
+\end{figure}
+
+\paragraph{Result.} Exposure behaves exactly as the thesis predicts. It has \emph{moderate recall}
+(it knows roughly where the surface is: $63\%$ of importance hotspots are exposed) but
+\emph{near-zero precision} ($\approx 3\%$): rel.\ SASA $\geq 0.25$ sweeps in almost half the protein,
+overwhelmingly residues that contribute no binding energy. Per antigen the precision is $0$--$14\%$
+(highest for the clean single-domain antigens \texttt{1AKI}, \texttt{1BJ1}, \texttt{1JRH}). And
+\emph{among the scanned interface residues}, exposure does not even rank graded importance: the
+pooled Spearman correlation between rel.\ SASA and $\ddG$ is $-0.16$ --- once a residue is on the
+surface, how exposed it is says nothing about how much binding energy it carries. That gap ---
+high recall, no precision, no within-interface ranking --- is precisely what the dynamic and
+energetic features are meant to fill, and every feature we add is scored against this baseline.
+
+\paragraph{Caveats.} (i) Single-frame apo SASA; trajectory-averaging will move values and is the
+real control. (ii) \texttt{5C6T} (gB) is anomalous here --- it is scored on the unrepaired structure
+(\S\ref{sec:repair}) \emph{and} as an isolated protomer of a native trimer, so residues buried in the
+trimer interface read as exposed; \texttt{2JEL} (HPr) carries only one hotspot. (iii) Residues never
+scanned are treated as non-epitope, which alanine scans largely justify (they target the known
+epitope) but which inflates the negative set.
