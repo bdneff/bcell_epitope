@@ -19,6 +19,7 @@ import argparse, csv, collections, pathlib
 import numpy as np
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 from scipy.stats import spearmanr
 
 # Manuscript-grade defaults: large fonts, clean axes.
@@ -154,7 +155,8 @@ def main():
         axes[j // ncol][j % ncol].axis("off")
     # single figure-level legend BELOW the grid (outside all panels -> hides no data)
     handles, labs = axes[0][0].get_legend_handles_labels()
-    fig.legend(handles, labs, loc="lower center", ncol=2, fontsize=14, frameon=True,
+    handles.append(Patch(facecolor=SHADE, alpha=0.6)); labs.append(f"SASA $\\geq$ {thr} (exposure's call)")
+    fig.legend(handles, labs, loc="lower center", ncol=3, fontsize=14, frameon=True,
                markerscale=1.4, bbox_to_anchor=(0.5, 0.005))
     fig.suptitle(f"Static surface exposure as an epitope label (apo, single-frame): every residue by "
                  f"{args.label};\nred = experimentally important, shaded = SASA$\\geq${thr} "
@@ -189,12 +191,14 @@ def main():
            f"$\\Rightarrow$ precision {prec_all:.0%}    recall {recall_all:.0%}")
     ax.text(0.035, 0.97, txt, transform=ax.transAxes, ha="left", va="top", fontsize=14.5,
             bbox=dict(boxstyle="round,pad=0.5", fc="white", ec="#999", alpha=0.97))
-    ax.legend(fontsize=13.5, loc="upper left", bbox_to_anchor=(1.01, 1.0), framealpha=1.0,
-              markerscale=1.3, title="shaded = SASA $\\geq$ 0.25\n(exposure's epitope call)",
-              title_fontsize=12, borderaxespad=0)
+    # legend BELOW the axes (outside the plot -> hides no data)
+    h2, l2 = ax.get_legend_handles_labels()
+    h2.append(Patch(facecolor=SHADE, alpha=0.6)); l2.append(f"SASA $\\geq$ {thr} (exposure's call)")
+    ax.legend(h2, l2, loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=3, fontsize=13.5,
+              frameon=True, markerscale=1.3, columnspacing=1.2, handletextpad=0.5)
     ax.margins(x=0.02)
-    fig2.tight_layout(); p2 = outdir / "sasa_allres_pooled.png"
-    fig2.savefig(p2, dpi=220); plt.close(fig2)
+    p2 = outdir / "sasa_allres_pooled.png"
+    fig2.savefig(p2, dpi=220, bbox_inches="tight"); plt.close(fig2)
 
     print("-" * 70)
     print(f"POOLED: {P_res} residues; SASA>={thr} labels {P_pred} epitope, {P_tp} truly important "
