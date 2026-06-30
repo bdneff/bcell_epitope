@@ -1,13 +1,14 @@
-\section{The static-exposure baseline}\label{sec:baseline}
+\section{Static baselines: exposure and mobility}\label{sec:baseline}
 
-Before adding any dynamics, we ask how far a purely \emph{static} surface descriptor already
-gets --- both to set the bar the dynamics features must clear and to make the proximity/exposure
-critique of \S\ref{sec:motivation} quantitative on our own labels. The descriptor is per-residue
-\textbf{relative solvent-accessible surface area} (rel.\ SASA): Shrake--Rupley SASA on the apo
-structure, normalised by the residue-type maximum~\cite{tien2013}. This is a single-frame
-calculation on the apo input structures --- the pre-trajectory baseline; once the production runs
-land it is replaced by trajectory-averaged SASA at the same residue keys (and joined by RMSF,
-non-bonded energetics, and hydration).
+Before adding any dynamics, we ask how far purely \emph{static}, single-crystal descriptors already
+get --- both to set the bar the dynamics features must clear and to make the proximity critique of
+\S\ref{sec:motivation} quantitative on our own labels. We test the two classic static proxies for
+``epitope-ness'': surface \textbf{exposure} (this section) and \textbf{mobility} (crystallographic
+B-factors, below). The exposure descriptor is per-residue \textbf{relative solvent-accessible
+surface area} (rel.\ SASA): Shrake--Rupley SASA on the apo structure, normalised by the residue-type
+maximum~\cite{tien2013}. This is a single-frame calculation on the apo input structures --- the
+pre-trajectory baseline; once the production runs land it is replaced by trajectory-averaged SASA at
+the same residue keys (and joined by RMSF, non-bonded energetics, and hydration).
 
 \paragraph{Setup.} We pool every residue of the eight $\ddG$ antigens ($1{,}790$ residues).
 A residue is \emph{important} if its alanine-scan $\ddG \geq 1$\,kcal/mol for any antibody
@@ -44,3 +45,37 @@ real control. (ii) \texttt{5C6T} (gB) is anomalous here --- it is scored on the 
 trimer interface read as exposed; \texttt{2JEL} (HPr) carries only one hotspot. (iii) Residues never
 scanned are treated as non-epitope, which alanine scans largely justify (they target the known
 epitope) but which inflates the negative set.
+
+\paragraph{Static mobility (crystallographic B-factors) --- the dynamics teaser.} A second,
+long-standing idea links antigenicity to \emph{flexibility}: mobile surface regions are more
+antigenic~\cite{westhof1984}. The static, experimental proxy for residue mobility is the
+crystallographic B-factor, and it is the \emph{static analogue of the RMSF} we will extract from the
+apo trajectories --- so a B-factor signal would foreshadow the dynamics payoff. We test it the same
+way: per-residue C$\alpha$ B-factor, z-normalised per structure (raw B-factors are incomparable
+across crystals --- resolution, refinement, overall scaling), against $\ddG$
+(Fig.~\ref{fig:bfactor-baseline}). The result runs \emph{opposite} to the naive expectation. The
+energetic hotspots are among the most \emph{rigid} residues, not the most mobile: pooled Spearman
+$\rho = -0.29$, negative in six of eight antigens, with whole-protein AUC $<0.5$ (anti-discriminative).
+Residues that pay the most binding free energy are pre-organised, low-B anchors, not floppy high-B
+loops --- and the classic flexibility--antigenicity correlation concerns where antibodies \emph{bind}
+(surface loops), not which residue carries the binding \emph{energy}, exactly the
+proximity-vs-energetics distinction of \S\ref{sec:motivation}.
+
+\begin{figure}[H]\centering
+\figorbox{bfactor_baseline.png}{0.78}
+\caption{\textbf{Crystallographic mobility as an epitope label.} Per-residue C$\alpha$ B-factor
+(z-scored per structure; right $=$ more mobile) vs.\ alanine-scan $\ddG$, colours as in
+Fig.~\ref{fig:sasa-baseline}. The important (red) residues cluster at \emph{low} B-factor (left,
+rigid), not in the high-mobility band --- crystal mobility inversely tracks energetic importance
+(pooled Spearman $-0.29$). \texttt{analysis/compute\_bfactor.py} $+$
+\texttt{plot\_feature\_vs\_label.py}.}\label{fig:bfactor-baseline}
+\end{figure}
+
+\paragraph{Where this leaves us.} Neither static proxy recovers the energetic hotspots from a single
+crystal: exposure has no precision ($\sim 3\%$), and mobility points the wrong way ($\rho = -0.29$).
+That is precisely the opening for apo-MD --- RMSF is a cleaner, crystal-contact-free mobility measure,
+and the trajectory additionally exposes the correlated-motion, mode-participation (FRESEAN), and
+hydration (3D-2PT) features that no single structure carries. The question the rest of this work
+asks is whether dynamics \emph{done properly} recovers signal where these static proxies fail.
+(Caveat: B-factors are contaminated by crystal contacts, resolution, and refinement protocol; the
+per-structure z-score removes only the overall scale.)

@@ -101,8 +101,13 @@ def main():
     ap.add_argument("--feature-threshold", type=float, default=0.25,
                     help="feature value of the dashed decision line (default 0.25 = standard "
                          "relative-SASA 'exposed' cutoff: what exposure alone would call epitope)")
+    ap.add_argument("--feature-name", default="SASA", help="short name for threshold annotations")
+    ap.add_argument("--title", default="If surface exposure were the epitope label")
+    ap.add_argument("--xdir", default="more solvent-exposed", help="x-axis direction phrase ('' to omit)")
+    ap.add_argument("--outprefix", default="sasa_allres", help="output figure name prefix")
     ap.add_argument("--outdir", default="analysis/figures")
     args = ap.parse_args()
+    fname = args.feature_name
 
     labels = load_labels()
     feat = load_feature(args.feature_csv, args.feature_col)
@@ -161,14 +166,14 @@ def main():
         axes[j // ncol][j % ncol].axis("off")
     # single figure-level legend BELOW the grid (outside all panels -> hides no data)
     handles, labs = axes[0][0].get_legend_handles_labels()
-    handles.append(Patch(facecolor=SHADE, alpha=0.6)); labs.append(f"SASA $\\geq$ {thr} (exposure's call)")
+    handles.append(Patch(facecolor=SHADE, alpha=0.6)); labs.append(f"{fname} $\\geq$ {thr:g} (predicted epitope)")
     fig.legend(handles, labs, loc="lower center", ncol=4, fontsize=13, frameon=True,
                markerscale=1.4, bbox_to_anchor=(0.5, 0.005))
-    fig.suptitle(f"Static surface exposure as an epitope label (apo, single-frame): every residue, "
-                 f"{args.label} vs alanine-scan $\\Delta\\Delta G$;\nshaded $=$ SASA$\\geq${thr} "
-                 f"(what exposure alone would call epitope)", fontsize=16, fontweight="bold")
+    fig.suptitle(f"{fname} as an epitope label: every residue, {args.label} vs alanine-scan "
+                 f"$\\Delta\\Delta G$;\nshaded $=$ {fname}$\\geq${thr:g} (what this feature alone "
+                 f"would call epitope)", fontsize=16, fontweight="bold")
     fig.tight_layout(rect=[0, 0.05, 1, 0.95])
-    p1 = outdir / "sasa_allres_per_antigen.png"
+    p1 = outdir / f"{args.outprefix}_per_antigen.png"
     fig.savefig(p1, dpi=200); plt.close(fig)
 
     # pooled: all residues, same decision line -- the manuscript figure
@@ -193,20 +198,21 @@ def main():
     prec_all = P_tp / P_pred if P_pred else float("nan")
     recall_all = P_tp / P_imp if P_imp else float("nan")
     rho_all = spearmanr(np.array(pooled_xs), np.array(pooled_ys)).correlation
-    ax.set_xlabel(f"{args.label}  →  more solvent-exposed", fontsize=18)
+    xlab = f"{args.label}  →  {args.xdir}" if args.xdir else args.label
+    ax.set_xlabel(xlab, fontsize=18)
     ax.set_ylabel(r"$\Delta\Delta G_\mathrm{bind}$ (kcal/mol)", fontsize=18)
-    ax.set_title("If surface exposure were the epitope label", fontsize=19, fontweight="bold", pad=42)
+    ax.set_title(args.title, fontsize=19, fontweight="bold", pad=42)
     # confusion summary as a subtitle ABOVE the axes (out of the plot area)
-    sub = (f"SASA $\\geq$ {thr} flags {P_pred:,} / {P_res:,} residues as epitope; only {P_tp} are truly "
+    sub = (f"{fname} $\\geq$ {thr:g} flags {P_pred:,} / {P_res:,} residues as epitope; only {P_tp} are truly "
            f"important\n$\\Rightarrow$ precision {prec_all:.0%}   $\\cdot$   recall {recall_all:.0%}")
     ax.text(0.5, 1.015, sub, transform=ax.transAxes, ha="center", va="bottom", fontsize=13, color="#333")
     # legend BELOW the axes (outside the plot -> hides no data)
     h2, l2 = ax.get_legend_handles_labels()
-    h2.append(Patch(facecolor=SHADE, alpha=0.6)); l2.append(f"SASA $\\geq$ {thr} (exposure's call)")
+    h2.append(Patch(facecolor=SHADE, alpha=0.6)); l2.append(f"{fname} $\\geq$ {thr:g} (predicted epitope)")
     ax.legend(h2, l2, loc="upper center", bbox_to_anchor=(0.5, -0.15), ncol=2, fontsize=13,
               frameon=True, markerscale=1.3, columnspacing=1.5, handletextpad=0.5)
     ax.margins(x=0.02)
-    p2 = outdir / "sasa_allres_pooled.png"
+    p2 = outdir / f"{args.outprefix}_pooled.png"
     fig2.savefig(p2, dpi=220, bbox_inches="tight"); plt.close(fig2)
 
     print("-" * 70)
