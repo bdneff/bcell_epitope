@@ -27,10 +27,31 @@ in the MD structure. Before fix: **39/101** labeled residues matched. After per-
 Persisted: `benchmark/labels/numbering_offsets.json` + corrected `benchmark/labels/ddg_by_md_residue.csv`.
 **Any feature-build code that joins ΔΔG on residue number MUST apply this offset first.**
 
-**Reassessment on corrected labels (5 systems, 1BJ1 excluded, surface-restricted, per-antigen):**
-- Detection (labeled vs unlabeled surface): **intEn_vdW 0.67, HB-water 0.66** (both real, modest), HB-intra 0.60, trajSASA 0.57, DCCM 0.56; **PC1 0.50 (dead)**.
-- Gradient (HB-water ρ among labeled): **−0.50** (1AKI −0.40, 1HGU −0.80, 1JRH −0.80) — survives.
-- HB-water now DETECTS *and* grades (the earlier clean "vdW detects / HB-water grades" two-stage split was partly a mislabel artifact).
+**THIRD bug (found by Claude Code repro, 2026-07-01 late):** `grinn_intenergy_apomd.csv` is
+**0-indexed** (resid 0…N−1); every other feature file + corrected labels are **1-indexed**. Joining
+gRINN on raw resid attaches energies **one residue off**. FIX: `grinn["resid"] += 1` (verified clean
++1 shift, identical per-system counts). Any build using gRINN MUST apply +1 first.
+
+**Impact:** correcting it drops interaction-energy detection AUC **0.67 → 0.57** — intEn_vdW was NEVER
+a real feature; its apparent signal was the misalignment. **The "internal energy / protrusion /
+under-satisfied side chain" mechanism is DEAD — do not repeat it.**
+
+**FULLY-CORRECTED leaderboard (both label offsets + gRINN +1; 5 systems, 1BJ1 excluded, surface, per-antigen AUROC):**
+| feature | detection AUC |
+|---|---|
+| **H-bonds to water** | **0.66** ← single best, survived every correction |
+| H-bonds within protein | 0.60 |
+| Trajectory SASA | 0.57 |
+| Interaction energy (vdW) | 0.57 (was 0.67, off-by-one artifact) |
+| DCCM coupling | 0.56 |
+| Backbone flexibility | 0.52 |
+| PC1 participation | 0.50 (dead) |
+| SASA fluctuation | 0.40 |
+
+- Gradient (HB-water ρ among labeled): **−0.50** (unchanged; uses no gRINN).
+- HB-water is the one feature that survived every correction (detects 0.66, grades −0.50, no gRINN, no 1BJ1 dependence). It is the honest headline.
+- **Claude Code is writing the runnable eval script** (`analysis/reassess_corrected_labels.py`, currently a STUB) to regenerate both figures from committed CSVs and lock these numbers with asserts. The two committed figures used PRE-gRINN-fix energies → their intEn_vdW panels are STALE, superseded by CC's regen.
+- Combination fits may move: intEn_vdW was in the top combos (0.73); at 0.57 the H-bond-only combo (HBwater+HBintra+SASAfluct, 0.72, no gRINN) is likely the honest winner — CC to confirm.
 
 **Second, separate 1BJ1 bug:** gRINN ran on a single VEGF **monomer** (94 residues, chain 0–93) but
 VEGF is an obligate homodimer. Missing partner-chain contacts → energy scale broken (vdW median 126 vs
