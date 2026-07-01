@@ -56,4 +56,5 @@ Confirm Gemini's GROMACS module + version and partition before the first run (se
 `docs/ENVIRONMENT_gemini.md`) and pin the version in the run log.
 
 ## Build the log
-`cd manuscript && latexmk -pdf main.tex`
+`cd manuscript && tectonic main.tex` (self-contained; no TeX Live needed). Rebuild + commit
+`main.pdf` after every manuscript change, else it goes stale.

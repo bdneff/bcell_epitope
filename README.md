@@ -78,7 +78,7 @@ on Gemini and are gitignored.**
 
 4. **Build the manuscript.**
    ```bash
-   cd manuscript && tectonic main.tex     # or: latexmk -pdf main.tex
+   cd manuscript && tectonic main.tex     # self-contained; no TeX Live install needed
    ```
 
 ## Static baselines (first results)
