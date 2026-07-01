@@ -7,6 +7,78 @@ contract) and `manuscript/main.pdf` (the living notebook / record of record).
 
 ---
 
+## SESSION UPDATE (2026-07-01 PM) — four parallel tracks running; physics-feature expansion
+
+### What's running on Gemini RIGHT NOW (check before assuming anything is done)
+None of these use velocities-on-login; all are Slurm jobs. FRESEAN is GPU (gpu-a100);
+the feature jobs are CPU (compute partition), so they don't touch the a100/v100 budget.
+
+| track | job id | partition | what | check |
+|---|---|---|---|---|
+| FRESEAN 1AKI | Slurm `34201968_[1-2]` | gpu-a100 | 20 ns ×2 rep, velocity-preserving rerun | `sacct -j 34201968` |
+| FRESEAN 2JEL | Slurm `34201969_[1-2]` | gpu-a100 | 20 ns ×2 rep | `sacct -j 34201969` |
+| coord features | CS job `93eda7b1-8399-460f-89b5-077f27b135f0` | compute | DCCM + dihedral flex + SS stability, 6 systems | `.claude-science/jobs/<id>/slurm-*.out` |
+| gRINN env build | CS job `9592b8c4-81f0-4642-a53f-7b5e1aac37ec` | compute | clone gRINN + build conda env `grinn` | same |
+
+**The FRESEAN reruns REPLACE the first run** (34188829/34188830), which produced
+velocity-LESS trajectories: the reduction step used `gmx trjconv -pbc mol`, and PBC/fit
+transforms DISCARD velocities. FRESEAN's whole observable is the velocity
+cross-correlation, so that run was unusable and the velocity-bearing full .trr had
+already been auto-deleted → forced a 20 ns re-run. Fixed in commit `3569a56`: reduce with
+a PLAIN Protein selection (no -pbc/-fit), and gate the full-.trr delete on `gmx check`
+reporting `Velocities`, not on file-non-empty. **GROMACS gotcha to remember: never -pbc/-fit
+a .trr you need velocities from.** The analysis-chain validation job `7b0f97e0` (Slurm
+34201793) caught this at the velocity check before any FRESEAN math ran — that's expected,
+not a new failure.
+
+### The physics-feature roadmap (from `b_cell_eptiope_prediction_update_3rd.pdf` §12)
+The update doc's §12 is the antigen-only feature taxonomy. Mapping to what the EXISTING apo
+trajectories (all 6 intact WITH water + ions, md.tpr + md.xtc, ~10k frames at 10 ps) can yield
+— NO new MD, NO velocities needed except where noted:
+- **§12.3 flexibility** — RMSF ✅ done (rmsf_apomd.csv). NOW COMPUTING: backbone φ/ψ
+  dihedral fluctuation, side-chain χ1 variability, DSSP secondary-structure persistence
+  (coord-feature job above → `dihedral_flex_apomd.csv`, `ss_stability_apomd.csv`).
+- **§12.4 correlation/modes** — PCA participation ✅ (placeholder, re-measures RMSF at
+  +0.59, invalid at low freq — that's why FRESEAN). FRESEAN 🔄 running. NOW COMPUTING:
+  residue-residue displacement correlation matrix / DCCM (Eq. 35) → per-residue coupling
+  score (`dccm_apomd.csv`, cols coupling_abs/coupling_pos + z).
+- **§12.5 intra-protein energetics (Eq. 38)** — the strongest UNTAPPED feature, the true
+  energetic-coupling axis. Computing via **gRINN** (`osercinoglu/grinn`, actively developed
+  2026, supports GROMACS 2020.7–2025.2, defaults to amber99sb-ildn = our FF). Env building
+  now. Outputs per-residue-pair intEn Total/Elec/VdW → sum to per-residue totals (§12.5) +
+  the IEM (§12.4). PME caveat: energygrp decomposition gives short-range Coulomb+LJ within
+  cutoff (the physically-local interaction) — reciprocal-space PME can't be per-group
+  decomposed; standard and appropriate for "internal energetic environment."
+- **§12.6 protein-solvent energetics (Eq. 39)** — residue-water/ion interaction energies,
+  same `gmx -rerun` machinery, water is present. NOT started.
+- **§12.2 hydration / 3D-2PT** — Matthias's 3D-2PT (like FRESEAN, separate toolchain, needs
+  velocities → rides the FRESEAN reruns). Water residence/density needs water saved more
+  often than 10 ps. DEFERRED.
+
+**MM-PBSA is dropped.** The update doc's actual label plan is **StaB-ddG** pseudo-labels
+(benchmark it vs experimental alanine scans first; full alchemical is "its own PhD, don't
+reinvent"). MM-PBSA needs the complex and fights the apo thesis — parked for good.
+
+### New feature CSVs this session will add (schema matches rmsf_apomd.csv)
+- `benchmark/features/dccm_apomd.csv` — displacement-correlation coupling (§12.4)
+- `benchmark/features/dihedral_flex_apomd.csv` — φ/ψ + χ1 fluctuation (§12.3)
+- `benchmark/features/ss_stability_apomd.csv` — DSSP helix/sheet persistence (§12.3)
+- `benchmark/features/` gRINN outputs (§12.5) — pending env build + validation on 2JEL
+All z-scored per structure; join to labels via the identity-verified numbering in
+`analysis/rmsf_dynamics_baseline.py` (6 Tier-1 systems align at delta=0; the driver scripts
+still carry the analysis harness). Score each on the leaderboard (pooled ρ + LOAO-by-antigen)
+alongside RMSF/SASA/mode-participation. NONE of these are committed yet.
+
+### Driver scripts staged (not yet in repo)
+- `handoff/coord_features.py` (in the CS job workdir) — the DCCM/flex/SS analysis. Once it
+  lands cleanly, promote to `analysis/coord_features.py` and commit.
+- gRINN run: `python grinn_workflow.py <protein.pdb> <out> --top <top> --traj <xtc>
+  --nofixpdb --skip 100 --nt 8 --initpairfiltercutoff 10 --no_pen` — validate on 2JEL first
+  (smallest, 85 res), then the other 5. `--skip 100` = ~100 frames (avg interaction energy
+  converges fine; full 10k frames × pairwise reruns is intractable).
+
+---
+
 ## ⚠️ CORRECTION (2026-07-01) — 1OKE is Dengue Envelope (a Tier-2 antigen), NOT MT-SP1
 A labeling error propagated through the RMSF iteration: the RMSF driver treats `1OKE` as
 "MT-SP1" and excludes it for "protease numbering." Both halves are wrong. Ground truth
