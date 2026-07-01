@@ -60,8 +60,11 @@ backbone, but internally well-bonded. All effects weak; treat as hypotheses for 
 
 ### CORRECTION made this session (important for honesty)
 Agent briefly claimed "interaction energy is the ONLY feature above chance on the surface test" — this is
-**FALSE and was retracted.** On Tier-1 surface-only, slow-mode PCA (0.68) and backbone dihedral (0.67)
-are ABOVE intEn_vdw (0.65). The true statement: several features cluster in a weak 0.5–0.68 band, NO
+**FALSE and was retracted.** On Tier-1 surface-only, by SEPARATION STRENGTH (folded |AUROC−0.5|, i.e. the
+2-sided value, used here only to rank magnitude), slow-mode PCA (0.68 = complement of the 0.32 directional
+value in the table) and backbone dihedral (0.67 = complement of 0.33) are ABOVE intEn_vdw (0.65). Note the
+sign flip: PCA/dihedral separate hotspots by being LOWER (directional 0.32/0.33), energy/DCCM by being
+HIGHER (0.65/0.62) — the table is directional, this ranking is magnitude-only. The true statement: several features cluster in a weak 0.5–0.68 band, NO
 clear winner on Tier-1; energy only stands out on the dense Dengue E label. NOTE slow-mode/backbone-flex/
 RMSF are NOT independent (all ~re-measure flexibility; PC1-participation vs RMSF Pearson +0.52).
 
