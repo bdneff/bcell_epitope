@@ -1,6 +1,48 @@
 # HANDOFF — bcell_epitope dynamics features (read this first)
 
-**Last updated:** 2026-07-01 LATE PM (Claude Science session, Comp Chem MD specialist) — energetic features + directional result; see top section.
+**Last updated:** 2026-07-01 LATE PM (Claude Science session #2) — **CRITICAL LABEL-NUMBERING FIX; all prior correlations stale, see block below.**
+
+---
+
+## ⚠️ CRITICAL CORRECTION (2026-07-01 late, session #2) — READ BEFORE TRUSTING ANY ΔΔG RESULT
+
+**Bug found:** the alanine-scan ΔΔG table (`Residue #`) uses the antibody-**complex** PDB author
+numbering. The apo-MD structures are numbered differently. All feature↔ΔΔG joins this project made
+on raw residue number were therefore attaching ΔΔG to the **wrong residue** for 4 of 6 systems.
+
+**Verification method:** compare scan WT one-letter against the residue actually present at that number
+in the MD structure. Before fix: **39/101** labeled residues matched. After per-system offset: **101/101**.
+
+**Offset map (MD_resid = scan_resid + offset):**
+
+| system | offset | notes |
+|---|---|---|
+| 1AHW | −3 | |
+| 1BJ1 | −13 | (also has separate energy-scale bug, see below) |
+| 1HGU | −1 | |
+| 1JRH | −10 | |
+| 1AKI | 0 | already correct |
+| 2JEL | 0 | already correct |
+
+Persisted: `benchmark/labels/numbering_offsets.json` + corrected `benchmark/labels/ddg_by_md_residue.csv`.
+**Any feature-build code that joins ΔΔG on residue number MUST apply this offset first.**
+
+**Reassessment on corrected labels (5 systems, 1BJ1 excluded, surface-restricted, per-antigen):**
+- Detection (labeled vs unlabeled surface): **intEn_vdW 0.67, HB-water 0.66** (both real, modest), HB-intra 0.60, trajSASA 0.57, DCCM 0.56; **PC1 0.50 (dead)**.
+- Gradient (HB-water ρ among labeled): **−0.50** (1AKI −0.40, 1HGU −0.80, 1JRH −0.80) — survives.
+- HB-water now DETECTS *and* grades (the earlier clean "vdW detects / HB-water grades" two-stage split was partly a mislabel artifact).
+
+**Second, separate 1BJ1 bug:** gRINN ran on a single VEGF **monomer** (94 residues, chain 0–93) but
+VEGF is an obligate homodimer. Missing partner-chain contacts → energy scale broken (vdW median 126 vs
+43 elsewhere; elec +36 vs −2) AND PCA mode-1 = 90% variance rigid-body monomer rocking. 1BJ1 inflated
+BOTH the vdW-energy and PC1 detection results. Exclude 1BJ1 or re-run gRINN on the dimer before trusting energy features.
+
+**Status of prior figures:** every feature-vs-ΔΔG figure and combination fit from session #1 and earlier
+in session #2 used the mislabeled join → **stale**. Rebuild on corrected labels next.
+
+---
+
+**(prior header, retained):** energetic features + directional result; see section below.
 **Purpose:** catch a fresh session (Claude Code or otherwise) up on the dynamics-feature
 line of work without re-reading the whole history. Pairs with `CLAUDE.md` (operating
 contract) and `manuscript/main.pdf` (the living notebook / record of record).

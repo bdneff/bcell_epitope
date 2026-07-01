@@ -1,0 +1,13 @@
+{
+  "description": "Per-system integer offset to convert alanine-scan (complex-PDB author) residue numbering to apo-MD structure numbering. MD_resid = scan_resid + offset. Verified: WT residue identity matches MD structure 101/101 after applying.",
+  "offsets": {
+    "1AHW": -3,
+    "1BJ1": -13,
+    "1HGU": -1,
+    "1JRH": -10,
+    "1AKI": 0,
+    "2JEL": 0
+  },
+  "verification": "scan WT one-letter == MD resname at (resid+offset); 1AKI & 2JEL needed 0, others -1 to -13",
+  "date": "2026-07-01"
+}
