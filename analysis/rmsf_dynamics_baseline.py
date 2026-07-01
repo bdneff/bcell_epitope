@@ -19,8 +19,10 @@ Numbering alignment: the MD structure (apo PDB) is numbered differently from the
 antibody-complex PDBs the labels come from. We do NOT assume a fixed offset -- we verify
 alignment by matching each scanned residue's WT identity against the residue actually present
 in the MD structure at that position, and only accept a system if identities agree.
-MT-SP1 (1OKE) fails this check (protease insertion-code numbering) and is EXCLUDED, flagged
-[verify: numbering] rather than silently joined.
+The six Tier-1 systems below all align at delta=0. Two antigens are deliberately absent (and are
+NOT the same protein): MT-SP1 (labels 3BN9/3NPS) has Tier-1 ddG labels but no apo MD; Dengue E
+(1OKE) has an apo MD trajectory but Tier-2 binary labels -- scored separately on the binary track,
+not here.
 
 Feature extraction (run on Gemini, gpu-v100-dev, GROMACS 2023.2-Container):
   gmx trjconv -s md.tpr -f md.xtc -o whole.xtc -pbc mol -center -b 10000
@@ -46,9 +48,9 @@ AA3TO1 = {'ALA':'A','ARG':'R','ASN':'N','ASP':'D','CYS':'C','GLU':'E','GLN':'Q',
           'THR':'T','TRP':'W','TYR':'Y','VAL':'V'}
 # antigen display name -> apo-MD PDB code (the simulated structure)
 ANTIGEN2PDB = {"Lysozyme":"1AKI", "HPr":"2JEL", "VEGF":"1BJ1", "IFN-gamma receptor":"1JRH",
-               "Tissue factor":"1AHW", "human growth hormone":"1HGU", "MT-SP1":"1OKE"}
+               "Tissue factor":"1AHW", "human growth hormone":"1HGU"}
 DISP = {"1AKI":"Lysozyme","2JEL":"HPr","1BJ1":"VEGF","1JRH":"IFN-\u03b3R",
-        "1AHW":"Tissue factor","1HGU":"hGH","1OKE":"MT-SP1"}
+        "1AHW":"Tissue factor","1HGU":"hGH"}
 LABEL_CSV = "benchmark/antigen_alanine_scan_extracted_SIMPLE_v3.csv"
 DDG_IMPORTANT = 1.0     # kcal/mol; matches baseline "important" threshold
 

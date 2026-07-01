@@ -24,11 +24,13 @@ antibodies share one apo trajectory, so an antibody-level split would leak featu
 (\texttt{1AKI}, \texttt{2JEL}, \texttt{1BJ1}, \texttt{1JRH}, \texttt{1AHW}, \texttt{1HGU}); the MD
 structure is numbered differently from the antibody-complex crystals the scans come from, so alignment
 is \emph{verified by residue identity} --- each scanned wild-type residue must match the amino acid
-actually present at that position in the simulated structure, not assumed from an offset. MT-SP1
-(\texttt{1OKE}) fails this check (its protease numbering with activation-cleaved insertion codes does not
-map to the \texttt{3BN9}/\texttt{3NPS} scan numbering) and is \textbf{excluded here}, flagged
-[verify:\ numbering] rather than force-joined; the influenza HA run (\texttt{1HGG}) is the largest system
-and had not finished at the time of this iteration. That leaves $9$ antibody-epitopes over $6$ antigens,
+actually present at that position in the simulated structure, not assumed from an offset. All six
+systems align at zero offset. Two graded-scan antigens are deliberately \emph{not} in this set:
+\textbf{MT-SP1} (\texttt{3BN9}/\texttt{3NPS}) has $\ddG$ labels but no apo-MD trajectory yet, and
+\textbf{Dengue envelope} (\texttt{1OKE}) has an apo trajectory but Tier-2 \emph{binary} labels
+(\S\ref{sec:binary-labels}), which are scored on the binary track rather than joined to the graded
+set here. The influenza HA run (\texttt{1HGG}, also Tier-2) is the largest system and had not
+finished at the time of this iteration. That leaves $9$ antibody-epitopes over $6$ antigens,
 $97$ scanned residues.
 
 \begin{figure}[H]\centering
@@ -40,8 +42,8 @@ line is the pooled value); the correlations scatter around zero with a slight ne
 Fig.~\ref{fig:bfactor-baseline} --- the important (red) residues are spread across the mobility range,
 not concentrated on the mobile side. An RMSF$\geq 0$ cutoff (the shaded band) flags $55$ of $97$ scanned
 residues and catches $25$ of $48$ hotspots --- no better than a coin toss on this set.
-\texttt{analysis/rmsf\_dynamics\_baseline.py}. MT-SP1 (\texttt{1OKE}) excluded (numbering); HA
-(\texttt{1HGG}) pending.}\label{fig:rmsf-baseline}
+\texttt{analysis/rmsf\_dynamics\_baseline.py}. MT-SP1 (no apo MD) and Dengue~E (\texttt{1OKE}, Tier-2)
+are not in this graded set; HA (\texttt{1HGG}) pending.}\label{fig:rmsf-baseline}
 \end{figure}
 
 \paragraph{Result.} Proper dynamics does not rescue the flexibility hypothesis --- it confirms the
@@ -69,5 +71,5 @@ against this same baseline.
 not fully converged at this length, though the hotspot residues (ordered, low-RMSF) are the stable part
 of the estimate. (ii) Two epitopes rest on only $n=4$ scanned residues (hGH, lysozyme \texttt{HyHEL-10}),
 so their individual $\rho$ values are indicative, not reliable; the pooled and LOAO numbers are the ones
-to trust. (iii) MT-SP1 and HA are absent (numbering; run pending) --- the pooled value will be re-computed
-when both join. (iv) As with the static baselines, unscanned residues are treated as non-epitope.
+to trust. (iii) MT-SP1 (no apo MD yet) and the Tier-2 systems Dengue~E and HA (\texttt{1HGG} run pending)
+are absent from this graded set --- the pooled value will be re-computed as systems join. (iv) As with the static baselines, unscanned residues are treated as non-epitope.

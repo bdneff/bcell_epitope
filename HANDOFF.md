@@ -136,7 +136,7 @@ Per replica (see repo steps 03-CG → 04-FRESEAN):
    — match rmsf_apomd.csv).
 8. **Score against ΔΔG** on the same leaderboard (pooled + LOAO). This REPLACES the PCA
    placeholder row. Numbering: reuse the identity-verified alignment in
-   `analysis/rmsf_dynamics_baseline.py` (6 systems align at delta=0; 1OKE excluded).
+   `analysis/rmsf_dynamics_baseline.py` (6 systems align at delta=0; 1OKE/MT-SP1 are not in the graded set --- see the CORRECTION block above).
 9. Build the figure (figure-style), write `manuscript/sections/dynamics_modes.tex` (notebook
    voice — see dynamics_rmsf.tex), fill the `[verify]` placeholders in
    `docs/ENVIRONMENT_fresean.md` (ns/day, GB/replica, mode indices), commit + push + pull.
