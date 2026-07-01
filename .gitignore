@@ -48,3 +48,4 @@ __pycache__/
 !md/**/configs/*.mdp
 !md/**/*.sh
 !manuscript/main.pdf
+.claude/

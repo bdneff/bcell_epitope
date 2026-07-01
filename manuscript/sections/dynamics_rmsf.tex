@@ -1,0 +1,73 @@
+\section{Dynamics, first feature: apo-MD RMSF}\label{sec:rmsf}
+
+The B-factor test (\S\ref{sec:baseline}) was the static teaser; this is the measurement it was
+standing in for. With the apo production runs landed, we replace crystallographic mobility with
+its lattice- and antibody-free dynamic analogue: per-residue \textbf{root-mean-square fluctuation}
+(RMSF) from the apo trajectories. If the weak rigidity lean of the B-factors ($\rho=-0.23$) was a
+crystallographic artefact --- resolution, refinement, packing --- proper dynamics should wash it out;
+if it was real, RMSF should sharpen it. Either way this is the first feature of the dynamics program,
+and the one most directly comparable to a static baseline.
+
+\paragraph{Setup.} Per-residue C$\alpha$ RMSF over the equilibrated portion of each $100$\,ns apo
+trajectory (first $10$\,ns discarded; least-squares fit to the reference, so global tumbling is removed
+before fluctuations are measured), z-normalised per structure to match the B-factor convention
+(\texttt{analysis/rmsf\_dynamics\_baseline.py}; GROMACS \texttt{2023.2} on Gemini). Labels are kept
+at their native granularity --- one column per (antigen, antibody) \emph{epitope}, never averaged over
+antibodies, so lysozyme's three antibodies (\texttt{HyHEL-63}, \texttt{HyHEL-10}, and the opposite-face
+\texttt{D1.3}) and VEGF's two are scored separately. Correlation is reported per epitope, pooled over
+all scanned residues, and \textbf{leave-one-antigen-out} (LOAO): the honest generalisation number,
+since residues within an antigen share a fold and a trajectory and our effective $N$ is the number of
+antigens, not residues (\S\ref{sec:design}). The split is by antigen, not antibody --- lysozyme's three
+antibodies share one apo trajectory, so an antibody-level split would leak features across train and test.
+
+\paragraph{Which systems.} Six of the finished apo runs align cleanly to the labels
+(\texttt{1AKI}, \texttt{2JEL}, \texttt{1BJ1}, \texttt{1JRH}, \texttt{1AHW}, \texttt{1HGU}); the MD
+structure is numbered differently from the antibody-complex crystals the scans come from, so alignment
+is \emph{verified by residue identity} --- each scanned wild-type residue must match the amino acid
+actually present at that position in the simulated structure, not assumed from an offset. MT-SP1
+(\texttt{1OKE}) fails this check (its protease numbering with activation-cleaved insertion codes does not
+map to the \texttt{3BN9}/\texttt{3NPS} scan numbering) and is \textbf{excluded here}, flagged
+[verify:\ numbering] rather than force-joined; the influenza HA run (\texttt{1HGG}) is the largest system
+and had not finished at the time of this iteration. That leaves $9$ antibody-epitopes over $6$ antigens,
+$97$ scanned residues.
+
+\begin{figure}[H]\centering
+\figorbox{rmsf_baseline.png}{0.98}
+\caption{\textbf{Apo-MD flexibility as an epitope label.} \emph{Left:} Spearman $\rho$ between
+per-residue apo RMSF and alanine-scan $\ddG$ for each antibody-epitope (coloured by antigen; dashed
+line is the pooled value); the correlations scatter around zero with a slight negative lean.
+\emph{Right:} all $97$ scanned residues, RMSF ($z$; right $=$ more mobile) vs.\ $\ddG$, colours as in
+Fig.~\ref{fig:bfactor-baseline} --- the important (red) residues are spread across the mobility range,
+not concentrated on the mobile side. An RMSF$\geq 0$ cutoff (the shaded band) flags $55$ of $97$ scanned
+residues and catches $25$ of $48$ hotspots --- no better than a coin toss on this set.
+\texttt{analysis/rmsf\_dynamics\_baseline.py}. MT-SP1 (\texttt{1OKE}) excluded (numbering); HA
+(\texttt{1HGG}) pending.}\label{fig:rmsf-baseline}
+\end{figure}
+
+\paragraph{Result.} Proper dynamics does not rescue the flexibility hypothesis --- it confirms the
+B-factor verdict on cleaner data. The pooled scanned Spearman between RMSF and $\ddG$ is
+$\rho = -0.12$ ($p=0.24$, $n=97$), and the leave-one-antigen-out mean is $\rho = -0.15$ (over the five
+antigens with $\geq 5$ scanned residues) --- statistically indistinguishable from zero, and the same
+weak-rigid \emph{sign} the apo B-factors gave ($-0.23$). Per epitope the correlations run from
+$\rho=-0.80$ (hGH, lysozyme \texttt{HyHEL-10}, both $n=4$) through $-0.66$ (lysozyme \texttt{D1.3}) to
+$+0.29$ (IFN-$\gamma$ receptor); the sign is not even consistent across the three antibodies of a single
+antigen. As a classifier the picture is the same: thresholding at RMSF$\geq 0$ recovers roughly half the
+hotspots at roughly half the scanned residues --- the diagonal of no information. Whatever distinguishes
+a binding-energy hotspot from its neighbours, it is not how much that residue moves.
+
+\paragraph{Reading.} This is a negative result on the feature, but a positive one for the thesis of
+\S\ref{sec:baseline}: neither static nor dynamic \emph{mobility} --- B-factor or RMSF --- carries the
+hotspot signal, which is exactly what the energetic-isolation view predicts. Motion is the wrong
+observable; what should matter is a residue's \emph{coupling} to the rest of the protein, not its
+amplitude of fluctuation~\cite{serapian2020}. RMSF measures the amplitude and finds nothing, cleanly
+and on real trajectories. The same runs that produced these fluctuations carry the observables that
+the coupling view actually points at --- intra-protein nonbonded interaction energy, the
+correlation structure of the motions, and mode participation --- and those are the next features, scored
+against this same baseline.
+
+\paragraph{Caveats.} (i) Single $100$\,ns trajectory per antigen; RMSF of the most flexible loops is
+not fully converged at this length, though the hotspot residues (ordered, low-RMSF) are the stable part
+of the estimate. (ii) Two epitopes rest on only $n=4$ scanned residues (hGH, lysozyme \texttt{HyHEL-10}),
+so their individual $\rho$ values are indicative, not reliable; the pooled and LOAO numbers are the ones
+to trust. (iii) MT-SP1 and HA are absent (numbering; run pending) --- the pooled value will be re-computed
+when both join. (iv) As with the static baselines, unscanned residues are treated as non-epitope.
