@@ -1,9 +1,98 @@
 # HANDOFF — bcell_epitope dynamics features (read this first)
 
-**Last updated:** 2026-07-01 (Claude Science session, Comp Chem MD specialist).
+**Last updated:** 2026-07-01 LATE PM (Claude Science session, Comp Chem MD specialist) — energetic features + directional result; see top section.
 **Purpose:** catch a fresh session (Claude Code or otherwise) up on the dynamics-feature
 line of work without re-reading the whole history. Pairs with `CLAUDE.md` (operating
 contract) and `manuscript/main.pdf` (the living notebook / record of record).
+
+---
+
+## SESSION UPDATE (2026-07-01 LATE PM) — energetic features landed; the key result is directional
+
+**TL;DR.** All the geometry/exposure/flexibility features are weak (AUROC 0.5–0.68 on the honest
+test). The one genuinely new axis — gRINN intra-protein **interaction energy** — is now computed on
+all 6 Tier-1 systems + Dengue E. The headline is a *direction*, not a magnitude: **epitope hotspots
+sit at the LOW-participation nodes of the slowest collective mode (decoupled from the soft motion) and
+are more internally bonded (higher DCCM + interaction energy).** Nothing is a strong predictor at N=6.
+
+### The honest evaluation protocol (use this, not raw pooled ρ)
+- **Surface-restricted directional AUROC.** Restrict to surface residues (trajSASA z > per-antigen
+  median), then AUROC = P(feature_hotspot > feature_rest). This removes the surface-vs-core confound.
+  Report the **direction** (>0.5 hotspots higher, <0.5 lower) — the sign IS the result. Never report
+  the 2-sided max(a, 1−a) alone (it hides direction).
+- **Why it matters:** trajSASA/SASA-fluct **collapse to 0.51 (chance)** under this test — their apparent
+  signal was just "detecting the outside." This is the clean confirmation that raw exposure carries no
+  hotspot signal (the baseline the project is built to beat).
+
+### Feature leaderboard (Tier-1, surface-restricted directional AUROC, 6 antigens)
+| feature | AUROC | hotspot direction |
+|---|---|---|
+| PC1 participation (positional PCA) | **0.32** | LOWER — decoupled node |
+| backbone dihedral flexibility | **0.33** | LOWER — stiffer backbone |
+| χ1 flexibility | 0.53 | higher (weak) |
+| SASA fluctuation | 0.51 | at chance |
+| trajectory SASA | 0.51 | at chance |
+| RMSF | 0.58 | higher |
+| intEn electrostatic | 0.61 | higher |
+| intEn total | 0.61 | higher |
+| DCCM coupling | 0.62 | higher — more wired-in |
+| **intEn van der Waals** | **0.65** | higher — top energy term |
+Coherent physical picture: **anchored, pre-organized surface patches** — quiet in the soft mode, stiff
+backbone, but internally well-bonded. All effects weak; treat as hypotheses for FRESEAN + StaB-ΔΔG.
+
+### gRINN interaction energy — the substantive new feature (§12.5, Eq. 38)
+- **INTRAMOLECULAR** residue↔residue energy on the **apo antigen alone** (no antibody). Per pair (i,j):
+  real-space Coulomb (`intEn_elec`) + Lennard-Jones (`intEn_vdw`), summed over partners → per-residue.
+  PME caveat: long-range reciprocal Ewald is not per-pair decomposable; elec is short-range Coulomb only.
+- **Not a surface proxy:** intEn_vdw vs trajSASA Pearson = −0.09. On surface-only it STAYS 0.65 while
+  trajSASA collapses to 0.51 — carries near-independent information.
+- **On Tier-2 Dengue E (verified 96/96 numbering):** energy leads clearly — total 0.63, elec 0.62,
+  vdw 0.61 vs coordinate features 0.51–0.53. (RMSF/SASA/slow-mode NOT yet on Tier-2 → comparison incomplete.)
+- Output: `benchmark/features/grinn_intenergy_apomd.csv` (pdb,resid,intEn_total/elec/vdw + _z; 7 systems).
+
+### Learning step (single supervised combination — user asked "can weighting combos do better?")
+- **No, at N=6.** Unsupervised PC1 (38% var, exposure-dominated loadings) → 0.56; equal-weight z-sum → 0.57.
+  Supervised **L2-logistic under leave-one-ANTIGEN-out = 0.33–0.45 (below chance)** — classic
+  overfit/anti-generalization: weights fit on 5 antigens point the wrong way on the held-out 6th.
+- **Conclusion:** no transferable linear combination beats the best single feature at this N. This is the
+  rigorous "nothing works" — motivates the energetic features and the StaB-ΔΔG label scale-up.
+  **Do NOT use random forests/boosting at N=6** (CV unreliable; each fold's test set = 1 antigen).
+
+### CORRECTION made this session (important for honesty)
+Agent briefly claimed "interaction energy is the ONLY feature above chance on the surface test" — this is
+**FALSE and was retracted.** On Tier-1 surface-only, slow-mode PCA (0.68) and backbone dihedral (0.67)
+are ABOVE intEn_vdw (0.65). The true statement: several features cluster in a weak 0.5–0.68 band, NO
+clear winner on Tier-1; energy only stands out on the dense Dengue E label. NOTE slow-mode/backbone-flex/
+RMSF are NOT independent (all ~re-measure flexibility; PC1-participation vs RMSF Pearson +0.52).
+
+### HA (1HGG) held out — numbering mismatch
+Dengue E (1OKE) shotgun labels align 96/96 at delta=0 (trusted). **HA aligns only 62/84 (74%), no global
+offset fixes it** — mismatches cluster at resids ~18–60 and 153+ (HA1 head + HA2 stem; cleaved trimer,
+per-chain register issue). **HA is HELD OUT of all Tier-2 scoring/gRINN until per-chain numbering resolved.**
+
+### New files this session
+- `benchmark/features/grinn_intenergy_apomd.csv` — per-residue intra-protein interaction energy (7 systems).
+- `benchmark/features/dccm_apomd.csv`, `dihedral_flex_apomd.csv` — DCCM coupling + φ/ψ/χ1 flexibility (8 systems).
+  (`ss_stability_apomd.csv` is EMPTY — MDAnalysis DSSP failed on every system, "unequal N,CA,C,O atoms";
+  needs mdtraj.compute_dssp or complete-backbone selection as a follow-up.)
+- `benchmark/features/hbonds_<SYS>.csv` — per-residue H-bond counts, intra-protein + protein-water,
+  **explicit AMBER selections** (the default MDAnalysis guesser undercounts ~3–4× — it misses the amber
+  backbone amide `H` and polar side-chain H names; fixed 2JEL 0.14→0.55 HB/res). Merge to hbonds_apomd.csv.
+- Figures/artifacts (Claude Science store, not repo): `clear_leaderboard.png`, `epitope_feature_direction.png`
+  (diverging left/right by hotspot direction — the presentation figure), `feature_cheatsheet.pdf`
+  (3-page per-feature math + description + direction reference; built with matplotlib mathtext, NOT LaTeX).
+
+### gRINN operational recipe (for reproducing / extending)
+- Env `grinn` ships its OWN GROMACS 2026.0 (CPU AVX2_256) — `conda activate grinn`, do NOT `module load
+  Gromacs` (that's a GPU container, fatal nvml on CPU nodes). Trajectory mode REQUIRES both `--top` AND
+  `--traj`; the topology must be atom-consistent with the structure → pass a DRY topology (strip SOL/NA/CL
+  from `[ molecules ]`) + protein-only PDB. Verify residue numbering with the WT-identity check afterward.
+
+### Still running on Gemini at session end
+- **FRESEAN** velocity-mode reruns (`34201968` 1AKI, `34201969` 2JEL) — the PROPER version of the PC1 bar.
+  Key re-check when they land: do hotspots sit at the nodes of the TRUE low-freq FRESEAN modes (not the
+  Cartesian-PCA placeholder)? If it holds with the frequency-selective operator, it's a real mechanistic result.
+- **H-bond** parallel jobs (one per system) — 2JEL/1AKI/1JRH done and sane; 1AHW/1BJ1/1HGU/1OKE finishing.
 
 ---
 
