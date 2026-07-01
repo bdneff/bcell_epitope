@@ -49,3 +49,4 @@ __pycache__/
 !md/**/*.sh
 !manuscript/main.pdf
 .claude/
+md/*/apo/out_fresean/

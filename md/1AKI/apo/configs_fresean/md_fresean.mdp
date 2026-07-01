@@ -1,0 +1,54 @@
+; md_fresean.mdp — FRESEAN production (apo), 20 ns, low-frequency collective-mode analysis
+; Protocol: Sauer/Neff et al., "Fast Sampling of Protein Conformational Dynamics" (Sci Adv 2025) SI.
+; Run as 5 replicas, each with resampled Maxwell velocities (unique gen_seed) — see submit script.
+; Departures from house md.mdp are marked [FRESEAN].
+integrator              = md
+dt                      = 0.002         ; 2 fs (Fast Sampling low-freq CV protocol)
+nsteps                  = 10000000      ; 20 ns
+
+; Output — [FRESEAN] full-precision coords AND velocities every 20 fs -> .trr for velocity TCF
+nstxout                 = 10            ; [FRESEAN] 20 fs
+nstvout                 = 10            ; [FRESEAN] 20 fs (velocities REQUIRED for FRESEAN)
+nstfout                 = 0
+nstxout-compressed      = 5000          ; .xtc every 10 ps (light, for quick viewing)
+nstenergy               = 5000
+nstlog                  = 5000
+
+; Neighbour searching
+cutoff-scheme           = Verlet
+nstlist                 = 10
+pbc                     = xyz
+
+; Electrostatics / vdW  (unchanged from house stack)
+coulombtype             = PME
+rcoulomb                = 1.0
+pme_order               = 4
+fourierspacing          = 0.16
+rvdw                    = 1.0
+vdw-modifier            = Potential-shift-Verlet
+DispCorr                = EnerPres
+
+; Temperature coupling — [FRESEAN] Nose-Hoover, tau_t=1.0 (Fast Sampling SI; deterministic, gentler on velocity TCF than V-rescale)
+tcoupl                  = Nose-Hoover
+tc-grps                 = Protein  Non-Protein
+tau_t                   = 1.0      1.0
+ref_t                   = 300      300
+
+; Pressure coupling — Parrinello-Rahman, tau_p=2.0 (matches house + SI)
+pcoupl                  = Parrinello-Rahman
+pcoupltype              = isotropic
+tau_p                   = 2.0
+ref_p                   = 1.0
+compressibility         = 4.5e-5
+
+; Constraints — h-bonds/LINCS (Fast Sampling settings; NOT the 0.5fs-unconstrained FRESEAN-2023 spectroscopy protocol)
+constraints             = h-bonds
+constraint_algorithm    = LINCS
+lincs_iter              = 1
+lincs_order             = 4
+
+; [FRESEAN] each replica generates fresh Maxwell velocities with a unique seed (set per-replica in submit script)
+gen_vel                 = yes
+gen_temp                = 300
+gen_seed                = -1            ; overridden per replica
+continuation            = no
