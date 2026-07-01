@@ -7,6 +7,49 @@ contract) and `manuscript/main.pdf` (the living notebook / record of record).
 
 ---
 
+## ⚠️ CORRECTION (2026-07-01) — 1OKE is Dengue Envelope (a Tier-2 antigen), NOT MT-SP1
+A labeling error propagated through the RMSF iteration: the RMSF driver treats `1OKE` as
+"MT-SP1" and excludes it for "protease numbering." Both halves are wrong. Ground truth
+(verified against the structure files + all label CSVs on disk):
+- **1OKE = Dengue Envelope protein** (`structures/DengueE_1OKE.pdb`). Has an apo MD trajectory.
+  Its label is **Tier-2 binary**, in `benchmark/tier2_labels_dengueE.csv` (96 residues; schema
+  `chain,resid,WT,n_antibodies,critical` — critical-residue calls from shotgun/flow-cytometry
+  scans, 781 mapped antibodies). It is NOT in the Tier-1 graded-ΔΔG CSV, which is why my first
+  pass wrongly called it label-less. Dengue E is a legitimate Tier-2 system (see
+  `manuscript/sections/binary_labels.tex`), paired with HA (1HGG), which is also Tier-2.
+- **MT-SP1 = 3BN9 / 3NPS** (27 + 27 rows in the Tier-1 CSV, protease insertion-code numbering
+  e.g. 221a). Has Tier-1 labels but **NO apo MD** (no `md/3BN9`, no `md/3NPS`).
+- The driver's `KEY2PDB={"MT-SP1":"1OKE"}` / `PDB2KEY={"1OKE":"MT-SP1"}` is a **false
+  equivalence between two unrelated proteins**. The "5/47 WT-identity match → excluded for
+  protease numbering" reasoning is WRONG: it compared Dengue Envelope's sequence to MT-SP1's
+  scan positions. Wrong-protein, not wrong-numbering.
+
+**Effect on the Tier-1 leaderboard: NONE.** The 6-antigen / 9-epitope / 97-residue Tier-1 set
+(1AKI, 2JEL, 1JRH, 1BJ1, 1AHW, 1HGU) never included either — Dengue E is Tier-2, MT-SP1 has no
+MD. Every Tier-1 ρ / LOAO number stands. The error is confined to comments, the two dicts, and
+prose. Two real facts it surfaces:
+- **1OKE (Dengue E) is a Tier-2 antigen with both MD and labels** — it should be scored on the
+  **binary** track (critical vs not, AUROC / precision-recall), NOT dropped, and NOT joined to
+  the Tier-1 graded set. Same for HA (1HGG). The dynamics features (RMSF, FRESEAN, etc.) apply
+  to it directly; only the label type and metric differ.
+- **MT-SP1 (3BN9/3NPS) is a candidate for a FUTURE Tier-1 MD run** — good graded labels (27+27),
+  no trajectory yet. Correct framing, not "excluded due to numbering."
+
+**Files still carrying the error (fix these):**
+- `analysis/rmsf_dynamics_baseline.py` — lines ~22, 49, 51: the `MT-SP1↔1OKE` dict entries +
+  the exclusion comment. Drop the false mapping. 1OKE = Dengue E (Tier-2, score on binary
+  track separately); MT-SP1 = 3BN9/3NPS (Tier-1 label, no MD). Neither belongs in the Tier-1
+  join, so no Tier-1 numbers change.
+- `manuscript/sections/dynamics_rmsf.tex` — lines ~27–28, 43, 72: "MT-SP1 (1OKE)" phrasing +
+  the "excluded (numbering)" caveat. Reword: MT-SP1 is Tier-1-label-only (no MD); Dengue E
+  (1OKE) is Tier-2 and scored on the binary track.
+- `manuscript/figures/FIGURES.md` — reconcile the `mtsp1` vs `dengueE` key rows.
+- Tier-2 scoring of the dynamics features (RMSF now; FRESEAN later) on Dengue E + HA is a
+  genuine TODO — it was never done, and 1OKE's apo trajectory has been sitting unused because
+  of the mislabel.
+
+---
+
 ## The question this project is testing
 Do antigen-only (apo) dynamics/solvation/energetics features predict **B-cell epitope
 hotspots** — where "hotspot" = alanine-scan **ΔΔG_bind** (an *energy* label, not a
@@ -105,8 +148,9 @@ Per replica (see repo steps 03-CG → 04-FRESEAN):
 - **Energetic coupling** (Serapian/Colombo, gRINN-style intra-protein interaction-energy
   matrix) — the *energetic* (not geometric) coupling feature. Not yet computed. This is the
   distinct axis that the mode-participation result gestures at but does not measure.
-- **1OKE (MT-SP1)** excluded from all features — apo numbering (1OKE) ≠ label PDBs
-  (3BN9/3NPS), best 5/47 WT-identity match at any offset. Needs a real 3BN9/3NPS→1OKE map.
+- **1OKE / MT-SP1** — see the CORRECTION block at the top. 1OKE (Dengue E) has MD but no
+  label; MT-SP1 (3BN9/3NPS) has labels but no MD. Neither is in the leaderboard. MT-SP1 is a
+  candidate for a future apo MD run (it has 27+27 labels); 1OKE is an orphan trajectory.
 - **1HGG (HA)** and other large antigens — FRESEAN on these needs the CG + likely more memory;
   large systems are why the 900 GB `.trr` handling matters. Do after the two small systems validate.
 - `benchmark/features/dynamics_sasa_modes.csv` is written but not yet committed / not yet
@@ -117,5 +161,6 @@ Per replica (see repo steps 03-CG → 04-FRESEAN):
 - Submit from repo root (`/scratch/bneff/bcell_epitope`); scripts anchor to `$SLURM_SUBMIT_DIR`.
 - Module is `Gromacs` (capital G) = 2023.2-dev; `gmx` only on GPU nodes.
 - Git identity: Brandon Neff <bdneff@asu.edu>; commits carry a "Built with Claude Science" trailer.
-- Manuscript builds LOCALLY: `cd manuscript && latexmk -pdf main.tex` (not on Gemini, not in sandbox).
+- Manuscript builds LOCALLY: `cd manuscript && tectonic main.tex` (self-contained, no TeX Live;
+  matches CLAUDE.md/README — NOT latexmk, which needs a full TeX install). Not on Gemini, not in sandbox.
 - Feature CSV schema: `antigen,key,pdb,chain,resid,resname,<value>,<value>_z` (z-scored per structure).
