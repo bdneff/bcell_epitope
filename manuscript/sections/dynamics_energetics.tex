@@ -1,0 +1,123 @@
+\section{From amplitude to coupling: energetic and collective features}\label{sec:energetics}
+
+The RMSF result (\S\ref{sec:rmsf}) closed by naming the observables the energetic-isolation view
+actually points at --- not how much a residue moves, but how it is \emph{coupled} to the rest of the
+protein: its intra-protein interaction energy, the correlation structure of the motions, and its
+participation in the collective modes~\cite{serapian2020}. The same apo runs that gave the fluctuations
+carry all three. This section scores them, together with a geometric hydration count, against the same
+graded $\ddG$ baseline --- and reaches the first feature that is not simply zero.
+
+\paragraph{Setup.} Every feature is per-residue, from the equilibrated portion of each $100$\,ns apo
+trajectory (first $10$\,ns discarded), z-normalised per structure, on the six antigens that align to the
+graded scans at zero offset (\S\ref{sec:rmsf}). \textbf{Intra-protein interaction energy} is the
+residue's summed nonbonded (Coulomb $+$ Lennard-Jones) energy with every other residue of its
+\emph{own} fold, $E_i^{\mathrm{intra}}=\sum_{j\neq i}(E^{\mathrm{elec}}_{ij}+E^{\mathrm{vdW}}_{ij})$,
+evaluated frame-by-frame with gRINN (its own bundled GROMACS, \texttt{amber99sb-ildn}; the antibody is
+absent, so this is a property of the apo antigen, not an interface energy). \textbf{DCCM coupling} is the
+mean absolute dynamic cross-correlation of a residue's C$\alpha$ displacement with all others.
+\textbf{PC1 participation} is the residue's weight in the slowest mode of the C$\alpha$ position
+covariance --- a placeholder for the collective picture, and one I read with the caveat below.
+\textbf{Hydrogen bonds} are counted geometrically ($D\cdots A\leq3.5$\,\AA, $D$--$\mathrm{H}\cdots A\geq
+150^{\circ}$) with explicit \texttt{amber99sb-ildn} donor/acceptor names, split into protein--protein
+(the internal network) and protein--water (hydration). Scoring is leave-one-antigen-out throughout, as
+in \S\ref{sec:design}.
+
+\paragraph{Score on the surface, and read the direction.} Two changes to the scoring earn their keep
+here. First, the honest question on this label is not whether a feature separates the whole protein ---
+that is dominated by the buried/exposed split, which every feature reports and which is not what we are
+after. Restricting to \emph{surface} residues (trajectory SASA above the per-antigen median) removes
+that confound, and it is where exposure finally shows its hand: within the surface population,
+trajectory SASA separates hotspots from their neighbours at $\mathrm{AUROC}=0.51$ --- a coin toss.
+Raw accessibility only ever found the outside of the protein, exactly as the energetic-isolation thesis
+(\S\ref{sec:baseline}) predicts it should. Second, the \emph{sign} of the separation is the result, so I
+report the directional $\mathrm{AUROC}=P(\text{hotspot}>\text{rest})$, not its folded magnitude
+(Fig.~\ref{fig:feature-direction}).
+
+\begin{figure}[H]\centering
+\figorbox{epitope_feature_direction.png}{0.98}
+\caption{\textbf{Which apo features separate hotspots from other surface residues, and in which
+direction.} Surface residues only; bars left of centre $=$ hotspots score \emph{lower}, right $=$
+\emph{higher}; length is the separation. Hotspots are less hydrated (fewer water H-bonds), sit at the
+quiet nodes of the slowest collective mode (low PC1 participation) and have stiffer backbones, yet are
+more internally bonded (intra-protein H-bonds, DCCM coupling, interaction energy). Every effect is weak
+($N=6$ antigens); the direction, not the magnitude, is the content. \texttt{analysis/feature\_direction.py}.}
+\label{fig:feature-direction}
+\end{figure}
+
+\paragraph{A picture, not a predictor.} Read as directions, the features agree on a coherent residue.
+The hotspot is \emph{less} hydrated than its surface neighbours (protein--water H-bonds down), sits at a
+\emph{node} of the slowest collective motion rather than swinging with it (PC1 participation down), and
+carries a \emph{stiffer} backbone --- while at the same time being held \emph{more} tightly by its own
+fold (intra-protein H-bonds, DCCM coupling and interaction energy all up). These are not four
+independent readings: being well-bonded internally is what makes a residue rigid, and a rigid residue is
+what sits at the node of a soft mode. It is the same anchor the coupling view asks for, seen from four
+sides, and it lines up with the entropic argument of \S\ref{sec:baseline} --- a pre-organised, rigid,
+desolvation-ready residue pays little on binding and can carry more of the $\ddG$. What it is \emph{not}
+is a predictor: on this surface-restricted binary test the features cluster in a weak $0.5$--$0.65$
+band, and at $N=6$ the ordering within that band is noise.
+
+\paragraph{The label is graded --- so grade it.} Dichotomising a continuous $\ddG$ at $1$\,kcal\,mol$^{-1}$
+throws away most of what the alanine scans measured. Correlating each feature against the graded $\ddG$
+instead (per-antigen Spearman, the leakage-controlled number) reorders the field, and the reordering is
+the informative part. Interaction energy, which \emph{led} the binary surface test
+($\mathrm{AUROC}_{\mathrm{vdW}}=0.65$), goes flat against the gradient ($\rho\approx+0.08$): it flags the
+handful of extreme hotspots but does not track intermediate binding energy. Protein--water H-bonds do
+track it, and become the strongest single feature ($\rho=-0.48$, per antigen; pooled $-0.40$, $p=0.01$)
+--- the more a surface residue hydrogen-bonds to solvent, the lower its $\ddG$. And it is
+\emph{hydration}, not chemistry: static residue-type hydrophobicity (Kyte--Doolittle) is flat
+($\rho\approx0.00$), and the water count correlates with SASA at only $+0.19$, so this is
+context-dependent desolvation measured in the trajectory, not a property the sequence could have given
+(Fig.~\ref{fig:graded-ddg}).
+
+\begin{figure}[H]\centering
+\figorbox{graded_ddg_correlation.png}{0.98}
+\caption{\textbf{Grading the label beats thresholding it.} Per-antigen Spearman $\rho$ of each feature
+against continuous $\ddG$ (surface residues; pooled $\rho$ overlaid as points). Hydration leads;
+interaction energy --- the binary winner --- is flat on the gradient. \emph{Right:} the water-H-bond
+vs.\ $\ddG$ relation, coloured by antigen. \texttt{analysis/graded\_ddg.py}.}
+\label{fig:graded-ddg}
+\end{figure}
+
+\paragraph{One combination that does better --- and does not overfit.} The two strongest low-direction
+features measure genuinely different things: hydration is desolvation, PC1 participation is collective
+rigidity, and they are only weakly related residue-to-residue. Their sign-aligned, \emph{equal-weight}
+sum $z(\mathrm{HB}_{\mathrm{water}})+z(P^{(1)})$ --- no fitted coefficients --- tracks the graded $\ddG$
+at per-antigen $\rho=-0.60$, above hydration alone ($-0.48$) and PC1 alone ($-0.31$), and negative in
+all four antigens with enough scanned surface residues to score
+(Fig.~\ref{fig:combined-cv}). The fixed weighting is the point: the same features under a
+\emph{fitted} leave-one-antigen-out logistic go \emph{below} chance, weights learned on five antigens
+pointing the wrong way on the sixth --- the signature of overfitting at $N=6$. Averaging two real,
+complementary signals with no free parameters is the honest version of ``a combination that does
+better,'' and adding a third feature degrades it, which says the information lives specifically in the
+desolvation and rigidity axes.
+
+\begin{figure}[H]\centering
+\figorbox{combined_cv_ddg.png}{0.90}
+\caption{\textbf{Hydration $+$ collective motion.} The equal-weight, unfitted collective variable
+$z(\mathrm{HB}_{\mathrm{water}})+z(P^{(1)})$ vs.\ $\ddG$, centred within antigen so the pooled slope
+matches the per-antigen effect (per-antigen $\rho=-0.60$); the pooled uncentred cloud inverts by
+Simpson's paradox and is not the honest view. \emph{Right:} within-antigen $\rho$ for the combination
+against its two components. \texttt{analysis/combined\_cv.py}.}
+\label{fig:combined-cv}
+\end{figure}
+
+\paragraph{Reading.} This is the first feature line that is not flat, and it says something specific:
+the hotspot signal on an energy label is not motion and not exposure but \emph{desolvation coupled to
+rigidity} --- a residue that has given up its water and been locked into its fold. That is the
+energetic-isolation picture made concrete at the residue level, and it is worth stating where it sits
+relative to the patch-level version (\S\ref{sec:baseline}): Colombo's argument predicts \emph{where} on
+the surface an antibody can grab --- a weakly-coupled, protrudable patch --- while this result says
+\emph{which residues within reach} carry the binding energy --- the well-bonded, pre-organised anchors.
+Location and anchor, not a contradiction, but the same word ``coupling'' pointing at two different
+scales, and the manuscript should keep them apart.
+
+\paragraph{Caveats.} (i) $N=6$ antigens, and the per-antigen correlations rest on four of them (tissue
+factor, VEGF, lysozyme, IFN-$\gamma$ receptor); the others carry too few scanned surface residues for a
+within-antigen $\rho$. Every ranking here is a hypothesis, not an estimate. (ii) PC1 participation is
+Cartesian-covariance PCA, which partly re-measures amplitude (it correlates with RMSF at $+0.52$); the
+``hotspots at the nodes'' claim only becomes mechanistic if it survives the frequency-selective
+FRESEAN modes now running, which is the correct operator for the soft collective motion and the reason
+those runs exist. (iii) The interaction energies are the short-range decomposable part; the long-range
+reciprocal-space Ewald term is not per-pair separable and is not in $E^{\mathrm{elec}}$. (iv) The
+bottleneck is the label set, not the model --- no fitted combination beat the best hand-chosen fixed
+one --- which is why the pseudo-label scale-up matters more than any further feature.
