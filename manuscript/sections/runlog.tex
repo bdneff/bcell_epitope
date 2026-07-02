@@ -70,3 +70,48 @@ RMSDs in \S\ref{sec:repair}; scripts \texttt{analysis/repair\_structure.py},
 clash-free --- so both are ready to prep. \textbf{HCMV gB} (\texttt{5C6T}) is \emph{absent from
 AlphaFold~DB} (viral) and its 32-residue gap is de-novo prediction; deferred pending an AF3
 (AlphaFold Server) model. Net: eight antigens ready to \texttt{sbatch} on Gemini.
+
+\paragraph{Dynamics-feature push (2026-06-30 / 07-01) --- what happened, including the wrong turns.}
+Two days of apo-MD feature extraction and scoring against the \emph{energy} label (alanine-scan
+$\ddG$), on 6 Tier-1 antigens (\texttt{1AKI 2JEL 1BJ1 1JRH 1AHW 1HGU}; $\sim$9 antibody-epitopes,
+$\sim$97 scanned residues). Features computed on Gemini: RMSF, trajectory SASA and SASA fluctuation,
+slow-mode (positional-PCA) participation, DCCM coupling, $\phi/\psi/\chi_1$ dihedral flexibility,
+per-residue H-bond counts (intra-protein and to water), and gRINN intra-protein interaction energy.
+Evaluation: \emph{surface-restricted directional AUROC} --- restrict to surface residues (trajSASA
+above the per-antigen median), then $P(\text{feature}_{\text{hotspot}} > \text{feature}_{\text{rest}})$,
+reporting the sign; leave-one-antigen-out for generalisation. Under it, raw exposure (SASA) collapses
+to $\approx 0.51$ (chance), confirming the baseline the project is built to beat.
+
+\emph{Four bugs surfaced, each of which moved a headline number:} (i) the alanine-scan $\ddG$ table is
+in antibody-\emph{complex} PDB numbering while the apo-MD structures are numbered differently --- every
+feature$\leftrightarrow\ddG$ join on raw residue number mislabelled 4 of 6 systems (only $39/101$
+labelled residues matched by wild-type identity; $101/101$ after per-system offsets
+\texttt{1AHW}$-3$, \texttt{1BJ1}$-13$, \texttt{1HGU}$-1$, \texttt{1JRH}$-10$; persisted in
+\texttt{benchmark/labels/numbering\_offsets.json} + \texttt{ddg\_by\_md\_residue.csv}, WT-verified).
+(ii) gRINN's output is $0$-indexed while every other file is $1$-indexed --- the energy join was off by
+one residue; correcting it (\texttt{grinn.resid $+=1$}) \textbf{collapsed interaction-energy detection
+$0.67\to0.57$}: the apparent energy signal, and the ``internal-energy / protrusion / under-satisfied
+side-chain'' mechanism built on it, were an alignment artefact --- \textbf{that narrative is dead}.
+(iii) gRINN for VEGF ran on a single protomer of the obligate homodimer (\texttt{1BJ1}, 94 vs 188
+residues) --- energy scale and PC1 broken; \texttt{1BJ1} excluded. (iv) reproducibility gaps: the
+reassessment computation lived only in an ephemeral session (committed script was a stub), the two
+figures were not regenerable, and the committed trajSASA carried \texttt{NaN} for \texttt{UNK}
+residues. A runnable evaluation script now replaces the stub
+(\texttt{analysis/reassess\_corrected\_labels.py}): it applies the offsets with a WT-identity assertion,
+fixes the gRINN index in one place, and locks the numbers.
+
+\emph{Corrected, reconciled headline} (5 systems, \texttt{1BJ1} dropped; surface, per-antigen AUROC):
+H-bonds to water $0.66$ (best single feature, survives every correction), H-bonds intra $0.60$,
+trajectory SASA $0.57$, interaction energy (vdW) $0.57$, DCCM $0.56$, backbone flexibility $0.52$,
+PC1 participation $0.50$, SASA fluctuation $0.40$. The HB-water \emph{gradient} among labelled residues
+is $\rho=-0.33$ (an earlier $-0.50$ was wrongly surface-restricted, dropping \texttt{2JEL}, which runs
+the other way, $\rho=+0.27$); it is not unanimous. \textbf{Honest state:} no single antigen-only feature
+is a strong predictor of the energy label at $N\approx6$; every exposure/flexibility feature is weak
+(as the thesis predicts), and interaction energy is now dead. The real bottleneck is $N$ --- no
+transferable linear combination beats the best single feature (LOAO logistic goes below chance) ---
+which motivates scaling the label set. \emph{Still open:} reconcile the HB-water detection number
+between the runnable script ($\approx0.52$ on the shared surface set) and the Science-kernel $0.656$
+(a residual AUROC/negative-set difference); regenerate the feature figures once locked; the
+FRESEAN low-frequency-mode run (proper replacement for the PCA placeholder) is in progress.
+\emph{Note for a later revision:} the draft energetics narrative rests on the now-retracted energy
+result and needs rewriting once FRESEAN and the label scale-up land --- flagged, not yet edited.
