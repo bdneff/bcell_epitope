@@ -30,6 +30,26 @@ Pivot away from N=5 Tier-1 (3-17 labeled residues/system, fragile means) to the 
 - **Working dir:** `md/1AKI/apo/fresean_extract/` (has `topol_prot.top`, `topol_prot-aa.mtop`, `prot.tpr`, `posre.itp`).
 - **Status:** diagnostic jobs passed; full CG→FRESEAN run being submitted for 1AKI both reps. 2JEL after 1AKI verifies.
 
+### FRESEAN is a GATE, not a result — decided 2026-07-06 (Brandon)
+1AKI/2JEL are Tier-1 (3–17 labeled residues) → cannot be scored for a hotspot p-value. Treat these
+two runs as a **methods/implementation gate + convergence test**, NOT a hypothesis test. Do NOT quote a
+FRESEAN AUROC off the fragile Tier-1 labels (that is the exact trap the Dengue pivot escaped). Two
+go/no-go checks when the extraction lands:
+1. **Convergence:** rep1-vs-rep2 mode overlap on the top zero-freq modes (7,8,…). High ⇒ 20 ns is
+   enough; low ⇒ the run length is insufficient and any Dengue run must be longer.
+2. **Independence from RMSF:** per-residue FRESEAN participation vs RMSF Pearson. The PCA placeholder
+   FAILED here (+0.52 = just re-measured flexibility). Near-zero ⇒ genuine new axis; ~+0.5 ⇒ a fancier
+   flexibility proxy that adds nothing over B-factor/RMSF — park it.
+   (1AKI bonus: the repo reference FRESEAN protocol is HEWL = same protein → a ground-truth mode-7/8
+   comparison to validate the eigenvectors independent of any epitope question.)
+
+**Decision the gate drives:** if BOTH pass (clean implementation + converges + RMSF-independent) → the
+pipeline works, so run a **velocity-bearing 20 ns FRESEAN on Dengue E (1OKE)** and score participation as
+a 4th increment in the honest CV (SASA → +B-factor → +DCCM → **+FRESEAN?**). This needs a DEDICATED run —
+the standard apo Dengue trajectory saves coords every 10 ps with no velocities; FRESEAN needs 20 fs
+velocity output. If either check fails → park FRESEAN, note why in the notebook, don't spend a Dengue GPU
+run on it. Do NOT write `dynamics_modes.tex` until the gate passes (leave it unwritten).
+
 ---
 
 ## ⚠️ CRITICAL CORRECTION (2026-07-01 late, session #2) — READ BEFORE TRUSTING ANY ΔΔG RESULT
