@@ -1,6 +1,34 @@
 # HANDOFF — bcell_epitope dynamics features (read this first)
 
-**Last updated:** 2026-07-01 LATE PM (Claude Science session #2) — **CRITICAL LABEL-NUMBERING FIX; all prior correlations stale, see block below.**
+**Last updated:** 2026-07-06 (Claude Science session #3) — **gRINN ENERGY AGGREGATION BUG (3rd energy bug) + Dengue-E single-system pivot + FRESEAN extraction underway.**
+
+---
+
+## ⚠️ SESSION #3 (2026-07-06) — READ FIRST
+
+### 1. gRINN energy feature was INVALID (position ramp) — now REBUILT
+- **Symptom Brandon caught:** per-residue `intEn_vdw` trended upward with residue *number* in the Dengue profile.
+- **Diagnosis:** the committed `grinn_intenergy_apomd.csv` per-residue values ramp with resid (Pearson **+0.75..+0.86 in ALL 7 systems**) and were all-POSITIVE (unphysical). They have **~0 correlation** (pearson −0.05..−0.11) with the true pairwise energies. The per-residue **aggregation step** was broken (one-sided / mis-summed), NOT gRINN itself.
+- **Raw pairwise file is fine:** `md/<SYS>/apo/grinn/out/average_interaction_energies.csv` (cols `Res1_ResNum,Res2_ResNum,Avg_VdW/Elec/Total_Energy`; each unordered pair stored ONCE).
+- **FIX (applied):** symmetric re-aggregation — sum each pairwise E_ij into BOTH residues i and j. Verified: symmetric per-residue sum = 2× pairwise total. No MD/gRINN re-run needed.
+- **Rebuilt `benchmark/features/grinn_intenergy_apomd.csv` for all 7 systems** (UNCOMMITTED as of this writing — `git status` shows it modified). After fix: position corr −0.05..+0.17 (ramp gone), vdw non-positive. `resid` is gRINN author numbering (1AHW 4-211, 1BJ1 14-107, 1OKE 1-394, etc.) — **must verify alignment to dccm/hbonds (1..N MD numbering) before Tier-1 use.**
+- **Corrected 1OKE energy detection:** intEn_vdw AUROC **0.567** (real now: epitope-critical = less-favorable vdW packing / protrusion), intEn_elec **0.495** (dead — was riding the ramp), intEn_total **0.515**. Only vdW carries signal. NOTE the broken vdw also read ~0.57 by positional coincidence (epitopes cluster at high resid).
+
+### 2. Dengue E (1OKE) single-system analysis — the statistically honest track
+Pivot away from N=5 Tier-1 (3-17 labeled residues/system, fragile means) to the ONE well-sampled shotgun system: **96 critical / 298 non-critical residues, one system, real p-values.**
+- **Per-feature detection AUROC (raw, direction-agnostic):** SASA **0.63** (exposure control), B-factor 0.40 (rigid→critical), HB-water 0.57, vdW 0.57 (corrected), HB-intra 0.41, DCCM 0.53, bb-flex 0.51.
+- **Honest 5-fold CV combination (L2 logistic, 5 repeats, 392 residues):** SASA-only **0.628** → +B-factor **0.684** → +DCCM **0.696** (best). **Dynamics/rigidity add +0.07 on top of the exposure control.**
+- **B-factor is the key additive feature** (single-feature runner-up to SASA at 0.59). vdW and HB-water do NOT add on top of SASA+B-factor+DCCM (redundant with exposure).
+- **B-factor provenance caveat** (`benchmark/features/BFACTOR_1OKE_NOTE.md`): 1OKE crystal is HOLO (β-OG detergent bound, not antibody). Verified apo counterpart **1OAN** gives B-factor AUROC 0.386 ≈ holo 0.40 — signal is NOT a ligand artifact. B-factor+SASA are crystal/structural (single-frame); the rest are apo-MD (source mismatch to keep in mind).
+- Figures: `dengue_profile_raw.png` (all 7 metrics vs epitope score, raw units), `dengue_combination.png` (single-feature bars + incremental CV model).
+- **OWED:** apo-MD RMSF for 1OKE (offered, not yet run — the MD-native flexibility metric to pair with/replace crystal B-factor).
+
+### 3. FRESEAN extraction — MD done, extraction pipeline underway (1AKI first)
+- **All 4 replicas complete with velocities:** 1AKI rep1/rep2, 2JEL rep1/rep2 — each 1,000,001 frames, Coords+Velocities+Box, 0.02 ps, protein-only trr (1AKI 1960 atoms).
+- **Pipeline (Heyden `protocol_FRESEAN+convergedWTMetad+DCCM`):** 03-CG (mtop → coarse-grain → matrix) → 04-FRESEAN (matrix → eigen → extract top 30 zero-freq modes).
+- **Gotchas resolved this session:** (a) FRESEAN bins need `LD_LIBRARY_PATH=/home/bneff/.conda/envs/fresean/lib` for libfftw3; (b) protein-only `topol_prot.top` built by cutting full topol.top through the `#endif` of the POSRES block (cutting before it leaves `#ifdef POSRES` open → "No molecules defined"); (c) the `-pbc mol` velocity-drop bug does NOT bite when protein-only trr is matched to a protein-only tpr (1960=1960) — verified both `-pbc whole` and `-pbc mol` preserve velocities in gmx2026 with matched atom counts.
+- **Working dir:** `md/1AKI/apo/fresean_extract/` (has `topol_prot.top`, `topol_prot-aa.mtop`, `prot.tpr`, `posre.itp`).
+- **Status:** diagnostic jobs passed; full CG→FRESEAN run being submitted for 1AKI both reps. 2JEL after 1AKI verifies.
 
 ---
 
