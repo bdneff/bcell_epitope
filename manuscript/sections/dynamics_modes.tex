@@ -1,0 +1,133 @@
+\section{Collective modes and the strict-evaluation ceiling}\label{sec:modes}
+
+The energetics section (\S\ref{sec:energetics}) closed on a promise and a caveat: the ``hotspots at
+the nodes of the slow mode'' reading rested on Cartesian-covariance PCA, a placeholder that partly
+re-measures amplitude, and it would only become mechanistic under the frequency-selective FRESEAN
+modes~\cite{fresean2023,fastsampling2024}. Those modes have now landed for lysozyme (\texttt{1AKI}), and with them
+the analysis finally has the right operator for the soft collective motion --- the velocity
+cross-correlation modes of the anharmonic low-frequency vibrations, not a positional-covariance proxy.
+This section reports what they say, and then subjects the whole physics-feature program --- collective,
+energetic, and geometric together --- to the strictest evaluation the data allow: predict a held-out
+antigen. The section is one long deflation, and the deflation is the result.
+
+\paragraph{FRESEAN setup.} A dedicated velocity-saving apo run on \texttt{1AKI} (two replicas, 20\,ns,
+first 1\,ns discarded for Nos\'e--Hoover ringing from the cold-velocity start; \texttt{amber99sb-ildn},
+matching every other system so modes are comparable) feeds Matthias Heyden's FRESEAN toolbox: coarse-grain
+to 2 beads/residue, build the velocity cross-correlation matrix, eigendecompose the zero-frequency block.
+Modes~1--6 are rigid-body (verified: combined translation$+$rotation subspace overlap $0.91$; modes 7--30
+internal, overlap $\approx0.015$), so all residue analysis uses modes~7+. Per-residue \textbf{involvement}
+is $I_i=\sum_{m=7}^{k}\sum_{b\in i}|e_{mb}|^2$, the summed eigenvector weight of a residue's beads across
+the internal modes (\texttt{analysis/fresean\_involvement.py}).
+
+\paragraph{The single-system signal, and why it does not survive its own control.} On \texttt{1AKI}'s
+23 alanine labels, involvement \emph{detects} epitopes at $\mathrm{AUROC}=0.75$ ($p=2\times10^{-4}$) ---
+above the exposure control (SASA $0.67$) and above RMSF ($0.66$), and epitopes are \emph{more} involved in
+the collective motion, the opposite sign to the old PCA ``decoupling'' reading. Encouraging, until the
+surface restriction that the rest of the project insists on (\S\ref{sec:energetics}) is applied. The
+$0.75$ is a buried/exposed confound: involvement correlates with SASA at the whole-protein level, and once
+scoring is restricted to surface residues --- the only fair comparison, since epitopes are exposed by
+construction --- detection falls to $0.64$ ($p=0.10$, not significant), and the companion isolation reading
+(how decoupled a residue is from the rest) falls to $0.55$ and \emph{flips direction}, with
+integration-vs-SASA correlating at $-0.68$ (Fig.~\ref{fig:surface-isolation}). The mode signal was mostly
+telling us which residues are on the outside.
+
+\begin{figure}[H]\centering
+\figorbox{surface_isolation_control_1aki.png}{0.98}
+\caption{\textbf{The collective-mode signal is a surface confound.} Whole-protein involvement/isolation
+AUROCs (left) collapse once restricted to surface residues (right): involvement $0.75\!\to\!0.64$ (n.s.),
+isolation to chance ($0.55$, direction flips). Integration vs.\ SASA correlates at $-0.68$: buried residues
+are the coupled ones. \texttt{1AKI}, $N=1$. \texttt{analysis/fresean\_involvement.py}.}
+\label{fig:surface-isolation}
+\end{figure}
+
+\paragraph{``Co-moving decoupled patch'' is generic, not epitopic.} The mode picture does say something
+real and visualisable --- an epitope is a locally co-moving patch of surface residues, decoupled from the
+bulk --- and the per-antibody decomposition makes it concrete: lysozyme's two footprints (\texttt{HyHEL-63},
+\texttt{D1.3}, recovered exactly from the SKEMPI single-mutant records that together reproduce our pooled
+23-residue set) each co-move internally ($+0.20$, $+0.24$) and are decoupled from \emph{each other}
+($-0.02$) --- two antibodies, two dynamically distinct patches (Fig.~\ref{fig:per-antibody}). But this is
+not special to epitopes. Decomposing the whole protein into 12 dynamical communities, \emph{all twelve}
+show within-patch coupling far above between-patch (mean $+0.56$ vs.\ $-0.04$), and the epitope patches are
+no more internally coherent than the non-epitope ones ($0.55$ vs.\ $0.56$; Fig.~\ref{fig:patch-generality}).
+Every part of the protein is a co-moving decoupled patch. The property is real; its discriminative value is
+zero.
+
+\begin{figure}[H]\centering
+\figorbox{per_antibody_patches_1aki.png}{0.98}
+\caption{\textbf{Two antibodies, two dynamically distinct patches.} Leave-one-antibody-out on lysozyme:
+\texttt{HyHEL-63} and \texttt{D1.3} footprints each co-move internally and are decoupled from one another
+($-0.02$). The patches are real per-antibody footprints, not a pooling artefact --- but see
+Fig.~\ref{fig:patch-generality}. \texttt{analysis/fresean\_involvement.py}.}
+\label{fig:per-antibody}
+\end{figure}
+
+\begin{figure}[H]\centering
+\figorbox{patch_generality_1aki.png}{0.98}
+\caption{\textbf{The decoupled-patch property is generic.} All 12 dynamical communities of \texttt{1AKI}
+co-move internally (bars) and decouple from the rest ($\blacklozenge$); epitope patches (red) are no more
+coherent than non-epitope patches (grey). \texttt{analysis/fresean\_involvement.py}.}
+\label{fig:patch-generality}
+\end{figure}
+
+\paragraph{Testing Colombo's method on its own terms.} The energetic-isolation thesis~\cite{serapian2020}
+is an \emph{energetic}-coupling claim, not a dynamical one: its MLCE construction (matrix of low coupling
+energies) eigendecomposes the residue--residue nonbonded interaction-energy matrix and nominates
+weakly-coupled surface patches as antigenic. We have that matrix --- gRINN's pairwise interaction energies,
+already computed for all seven systems --- so we can test the actual method, not an analogue. Three ways,
+each fair, each negative. \emph{(i) As the paper uses it}, qualitatively: the bottom-15\% MLCE surface patch
+overlaps known epitopes on 2 of 6 systems (\texttt{2JEL}, \texttt{1JRH}) and fails on the other four.
+\emph{(ii) As a strict per-residue classifier}, surface-restricted: $\mathrm{AUROC}=0.49$, chance.
+\emph{(iii) As one feature in the collection}, which is the fair reframing: MLCE correlates $-0.84$ with the
+per-residue interaction energy already in the set, and adding it to the surface LOAO model moves nothing
+($0.40\!\to\!0.42$, within noise; Fig.~\ref{fig:mlce-feature}). The energetic coupling is real physics and
+tracks the features we already have --- it simply does not separate epitopes from other surface residues
+beyond what exposure already gives.
+
+\begin{figure}[H]\centering
+\figorbox{mlce_as_feature_1aki.png}{0.98}
+\caption{\textbf{MLCE energetic coupling adds nothing as a feature.} Left: the MLCE score is largely
+redundant with per-residue interaction energy ($r=-0.84$). Right: adding it to the 8-feature surface LOAO
+model yields $+0.03$, within noise. \texttt{analysis/mlce.py}.}
+\label{fig:mlce-feature}
+\end{figure}
+
+\paragraph{No combination, and no external transfer.} With MLCE in the pool, an exhaustive search over all
+2047 subsets of the transferable feature set (surface, LOAO) tops out at $\mathrm{AUROC}=0.61$, and the
+best-of-search sits inside the label-shuffled null band --- search-inflated, not a discovery. An MLP does no
+better: it memorises the training antigens (train $\to1.0$, test $0.58\pm0.03$ across seeds), the signature
+of more capacity than $N=6$ can constrain. The decisive test is the one that mimics deployment --- fit on all
+six Tier-1 antigens (alanine $\ddG$) and predict a genuinely unseen antigen, Dengue envelope, scored against
+an orthogonal label (shotgun-mutagenesis $n/N$ over 700+ antibodies). \emph{Every physics feature set lands at
+chance} (0.43--0.52); the coupling features fall below it. The one signal that transfers is exposure ---
+crystal SASA, $\mathrm{AUROC}=0.58$, graded $\rho=+0.15$ --- weak but real and positive, while the physics is
+noise (Fig.~\ref{fig:external}).
+
+\begin{figure}[H]\centering
+\figorbox{external_dengue_test.png}{0.98}
+\caption{\textbf{The strict test: train Tier-1, predict Dengue E.} Physics-feature sets (energy, H-bonds,
+dynamical and energetic coupling) all transfer at chance to an unseen antigen and a different label type;
+only exposure transfers ($0.58$, $\rho=+0.15$). \texttt{analysis/external\_dengue.py}.}
+\label{fig:external}
+\end{figure}
+
+\paragraph{Reading.} Every dynamical and energetic feature we have tested --- FRESEAN collective-mode
+involvement, dynamical isolation, energetic MLCE coupling, and their combinations --- reduces to exposure
+once evaluated on surface residues, across antigens, or on a held-out antigen. This is not a failure of the
+methods; each measures real, interpretable physics (the decoupled patch, the pre-organised anchor, the weakly
+coupled surface). It is a statement about \emph{discriminative} content at this scale: at $N=6$ antigens, with
+tens of surface positives, MD-derived physics does not predict epitope residues beyond solvent accessibility,
+and the published energetic method does not either when held to a leakage-controlled, multi-antigen,
+per-residue standard. The ceiling is the label set, not the model --- exactly the conclusion the RMSF and
+energetics sections reached feature by feature, now established under the strongest test in the project.
+
+\paragraph{Caveats.} (i) The FRESEAN modes and the mechanistic single-system claims are $N=1$
+(\texttt{1AKI}); they are a hypothesis about one protein, not a result. (ii) The external test omits the two
+trajectory dynamics features (RMSF, slow modes) because \texttt{1OKE}'s velocity-saving FRESEAN run --- the
+dense-label system built precisely to break the $N$ bottleneck --- is still in progress (chunk 1 validated;
+chunks 2--20 pending). When it lands, the external test can be rerun with the collective-motion features on
+the test side. (iii) The MLCE here uses gRINN's in-vacuo Coulomb$+$LJ pairwise energies; Colombo's original
+adds a GB solvation term, which could reshape the coupling matrix, though the $r=-0.84$ redundancy with
+interaction energy suggests it would not rescue the result. (iv) The two moves that actually attack the
+ceiling --- the SKEMPI label expansion (more antigens) and the \texttt{1OKE} dense-label run (more positives)
+--- are staged, not yet folded in; this section is the ``strict evaluation of what we have'' checkpoint before
+that scale-up, and its negative verdict is the motivation for it.

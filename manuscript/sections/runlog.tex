@@ -115,3 +115,21 @@ between the runnable script ($\approx0.52$ on the shared surface set) and the Sc
 FRESEAN low-frequency-mode run (proper replacement for the PCA placeholder) is in progress.
 \emph{Note for a later revision:} the draft energetics narrative rests on the now-retracted energy
 result and needs rewriting once FRESEAN and the label scale-up land --- flagged, not yet edited.
+
+\medskip
+\emph{Session \#5 (2026-07-07), collective modes + strict evaluation (\S\ref{sec:modes}).} FRESEAN
+low-frequency modes landed for \texttt{1AKI} (the proper replacement for the PCA placeholder). The
+promising single-system involvement signal ($\mathrm{AUROC}=0.75$) is a buried/exposed confound: surface-
+restricted it falls to $0.64$ (n.s.), isolation to chance and flipped (integration-vs-SASA $-0.68$). The
+``co-moving decoupled patch'' is generic --- all 12 dynamical communities show it, epitope patches no more
+than non-epitope ($0.55$ vs $0.56$). Colombo's MLCE tested on its own gRINN interaction-energy matrix:
+qualitative overlap on 2/6 systems, strict surface AUROC $0.49$, and $-0.84$ redundant with the interaction
+energy already in the set (zero marginal LOAO gain). Exhaustive 2047-subset search maxes at $0.61$ (inside
+the shuffled null); MLP memorises ($0.58\pm0.03$ test). \textbf{The decisive test} --- train on 6 Tier-1
+antigens, predict unseen Dengue E ($n/N$ shotgun label): every physics-feature set at chance (0.43--0.52),
+only exposure transfers ($0.58$, $\rho=+0.15$). \textbf{The physics-feature program is now closed at $N=6$:}
+flexibility, energetics, dynamical and energetic coupling do not beat exposure under leakage-controlled,
+cross-antigen, per-residue evaluation. This is the checkpoint that motivates the scale-up --- SKEMPI label
+expansion (211 true antigen-side labels / 19 complexes) and the \texttt{1OKE} dense-label FRESEAN run
+(chunk 1 validated, 2--20 pending) --- rather than a fancier model. Per-antibody lysozyme decomposition
+(from SKEMPI, zero new MD) is the one clean positive: two antibodies map to two dynamically distinct patches.

@@ -1,6 +1,89 @@
 # HANDOFF — bcell_epitope dynamics features (read this first)
 
-**Last updated:** 2026-07-07 (Claude Science session #4) — **FRESEAN 1AKI modes extracted + VERIFIED; collective-mode involvement detects 1AKI epitopes (0.75, beats exposure); 1OKE (Dengue-E) FRESEAN run staged (chunked, not yet launched).**
+**Last updated:** 2026-07-07 (Claude Science session #5) — **Physics-feature program CLOSED at N=6: FRESEAN collective modes, energetic MLCE coupling, and every combination reduce to exposure under strict evaluation. The strict train-on-6/test-on-Dengue test is the capstone. New manuscript section `dynamics_modes.tex` written. Scale-up (SKEMPI labels + 1OKE dense run) is now the path. 1OKE chunk 1 validated; chunks 2–20 HELD pending user go.**
+
+---
+
+## ⚠️ SESSION #5 (2026-07-07) — READ FIRST
+
+### Headline: the physics-feature program is closed at N=6 (this is a RESULT, not a failure)
+Every MD-derived physics feature — FRESEAN collective-mode involvement, dynamical isolation, gRINN
+energetics, Colombo's MLCE energetic coupling, and all combinations (linear + MLP) — reduces to
+**solvent exposure** once evaluated honestly (surface-restricted, cross-antigen, or held-out antigen).
+This was established three independent ways this session. The ceiling is the **label set (N=6 antigens)**,
+not the model. The two moves that attack it (SKEMPI expansion, 1OKE dense labels) are staged.
+
+**1. FRESEAN involvement 0.75 was a buried/exposed confound.** On 1AKI's 23 labels, mode involvement
+detects epitopes at AUROC 0.745 (p=2e-4) whole-protein — but surface-restricted it falls to **0.638 (n.s.)**,
+and the isolation reading falls to **0.552 (chance) and flips direction** (integration-vs-SASA pearson −0.68).
+The mode signal mostly encoded which residues are on the outside. (`analysis/fresean_involvement.py`)
+
+**2. "Co-moving decoupled patch" is GENERIC, not epitope-specific.** All 12 dynamical communities of 1AKI
+show within-patch coupling ≫ between (mean +0.56 vs −0.04); epitope patches are no more coherent than
+non-epitope (0.55 vs 0.56). The property is real and visualisable but has zero discriminative value.
+
+**3. Per-antibody lysozyme decomposition = the one clean POSITIVE (zero new MD).** SKEMPI single-mutant
+records for 1DQJ (HyHEL-63, 11 resids) and 1VFB (D1.3, 12 resids) EXACTLY reproduce our pooled 23-residue
+1AKI set. Their footprints each co-move internally (+0.20, +0.24) and are decoupled from each other (−0.02)
+→ two antibodies target two dynamically distinct patches. (1YQV = single R45K on a non-epitope isolated
+module; dropped.) Saved `lysozyme_per_antibody_labels.csv` (24 labels / 3 antibodies, offset 0 to 1AKI).
+
+**4. Colombo MLCE tested on its own terms — negative all three ways.** MLCE (matrix of low coupling
+energies) implemented on gRINN's pairwise interaction-energy matrix (`average_interaction_energies.csv`,
+on scratch for all 7 systems). (i) Paper's qualitative standard: bottom-15% MLCE surface patch overlaps
+epitopes on 2/6 systems (2JEL, 1JRH), fails on 4. (ii) Strict surface per-residue AUROC = **0.49 (chance)**.
+(iii) As a feature: MLCE correlates **−0.84** with per-residue interaction energy we already have; adding it
+to the surface LOAO model moves 0.40→0.42 (noise). Note: our MLCE uses gRINN in-vacuo Coulomb+LJ; Colombo's
+adds GB solvation — a [verify] gap, but the −0.84 redundancy suggests solvation won't rescue it.
+
+**5. The decisive test — train Tier-1, predict unseen Dengue E.** Fit on all 6 Tier-1 antigens (alanine ΔΔG),
+predict Dengue envelope scored against the orthogonal shotgun n/N label. **Every physics-feature set lands at
+chance (0.43–0.52); coupling features below it. Only exposure transfers: crystal SASA AUROC 0.58, graded
+ρ=+0.15.** Exhaustive 2047-subset search (MLCE included) maxes at 0.61 inside the shuffled null; MLP memorises
+(train→1.0, test 0.58±0.03). This is the strongest test in the project and it's unambiguous.
+- Transferable feature set (exists for BOTH Tier-1 and 1OKE): intEn_total/elec/vdw, hb_intra/water,
+  bb_dih_std, chi1_std, coupling_abs/pos (DCCM), mlce_coupling. **RMSF and slow-modes are NOT in the external
+  test** because 1OKE has no trajectory-dynamics features yet (that's the pending FRESEAN run) — rerun the
+  external test with them once 1OKE modes land.
+
+### Manuscript: NEW section `manuscript/sections/dynamics_modes.tex` (written this session)
+- `\section{Collective modes and the strict-evaluation ceiling}\label{sec:modes}`, wired into `main.tex`
+  after `dynamics_energetics`. Notebook voice, 7 paragraphs, 5 figures. This is the rewrite the runlog's
+  "Note for a later revision" flagged as pending (energetics narrative rested on the retracted energy result).
+- Figures staged in `manuscript/figures/`: `surface_isolation_control_1aki.png`, `per_antibody_patches_1aki.png`,
+  `patch_generality_1aki.png`, `mlce_as_feature_1aki.png`, `external_dengue_test.png`.
+- **New bib entries** `fresean2023` (JCTC 10.1021/acs.jctc.2c01309) and `fastsampling2024` (Sci Adv
+  10.1126/sciadv.aea4617, arXiv 2411.08154) — **author lists carry `note = {... [verify]}`; Brandon must
+  confirm against the published versions** (Brandon is a co-author on fastsampling2024, NOT on fresean2023).
+- `runlog.tex` got a session-#5 paragraph summarising the closure.
+- **Manuscript NOT built** — tectonic isn't in the Claude Science sandbox. Structure validated (all cite keys
+  defined, all figorbox figures present, begin/end balanced). **Build locally: `cd manuscript && tectonic main.tex`.**
+
+### SKEMPI label expansion (the antigen scale-up path)
+- Downloaded SKEMPI 2.0 (`https://life.bsc.es/pid/skempi2/database/download/skempi_v2.csv`; life.bsc.es
+  is network-allowlisted). 7085 records / 345 PDBs; ab-antigen subset 897 records / 52 complexes.
+- **CRITICAL curation fix:** first pass (594 labels/48 complexes) was WRONG — it counted antibody-CDR
+  mutations as epitope labels. After checking every chain against RCSB entities, mutations TRULY on the
+  ANTIGEN chain = **211 labels / 19 complexes**. Saved `skempi_antibody_antigen_labels.csv` (⚠️ still contains
+  the over-broad 594 set; the true-211 subset is computed in-session, not yet re-saved — REGENERATE before use).
+- Usable NEW soluble antigens for MD: **MT-SP1 (3BN9+3NPS, same 227-res construct, 54 alanine labels, 2
+  antibodies), enterotoxin B (3W2D, 4), gp120-OD (4JPK, 8)**. Most SKEMPI "antigens" (integrin/EGFR/HER2/IL-13/
+  gp120-3NGB/HA) had Fab-side mutations → NOT usable.
+
+### 1OKE (Dengue E) FRESEAN — chunk 1 VALIDATED, chunks 2–20 HELD
+- Chunk-1 job `8b8092e2-23e8-43d4-bbec-5cbbb50f9f17` SUCCESS. Velocity gate PASSED: `prot_chunk1.trr` has
+  50,001 frames of coords+velocities (the −pbc-mol velocity-drop bug did NOT recur). Full 404 GB `chunk1.trr`
+  deleted; 6.9 GB protein-only retained. `fresean_state.txt`=1, resumable. Perf 1.34 h/ns → chunks 2–20 ≈ 25 h.
+- **User HELD the launch** to settle MLCE/MT-SP1 first. To resume: `sbatch md/1OKE/apo/md_fresean_chunked.sh`
+  (auto-resumes from chunk 2).
+
+### MT-SP1 build — BLOCKED on numbering, do NOT attach labels yet
+- 3BN9 + 3NPS fetched. Both clean to build (HETATM only EDO/HOH/SO4/CL/NA — no active-site inhibitor;
+  7 SS-bonds/copy). Antigen is the IDENTICAL 227-res construct (resid 16–244, 100% identical) → **ONE apo MD
+  serves both antibodies.**
+- **BLOCKER:** SKEMPI renumbered the PDB's chymotrypsin insertion-code numbering (raw 60,60a,60b,60c,60e,60f)
+  sequentially; NO integer offset maps them (best +5 = 10/27 WT match). **Labels require proper sequence
+  alignment before any MD build — same class as the earlier project label bugs.** Not started.
 
 ---
 
