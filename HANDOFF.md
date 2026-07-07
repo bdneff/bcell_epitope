@@ -1,6 +1,36 @@
 # HANDOFF — bcell_epitope dynamics features (read this first)
 
-**Last updated:** 2026-07-06 (Claude Science session #3) — **gRINN ENERGY AGGREGATION BUG (3rd energy bug) + Dengue-E single-system pivot + FRESEAN extraction underway.**
+**Last updated:** 2026-07-07 (Claude Science session #4) — **FRESEAN 1AKI modes extracted + VERIFIED; collective-mode involvement detects 1AKI epitopes (0.75, beats exposure); 1OKE (Dengue-E) FRESEAN run staged (chunked, not yet launched).**
+
+---
+
+## ⚠️ SESSION #4 (2026-07-07) — READ FIRST
+
+### 1. FRESEAN 1AKI mode extraction COMPLETE + rigid-body verified
+- Both 1AKI replicas extracted 30 zero-freq modes (`md/1AKI/apo/fresean_extract/rep{1,2}/evec_freq1_mode1-30_cg.xyz`, `eval_matrix_cg.mmat.dat`, `ref-cg.gro`). CG = 246 beads / 129 residues (2-bead BACK+SIDE; Gly has BACK only).
+- **Rigid-body check PASSED:** modes 1-6 rigid (combined trans+rot subspace overlap 0.91; reps 0.907/0.911), modes 7-30 internal (~0.015). Verified split: modes 1-3 translation-dominated (0.87-0.92), 4-6 rotation-dominated (0.86-0.96). NOTE FRESEAN sorts eigenvalues large→small so this ordering was computed, not assumed.
+- **The "failed" compute-job status is a FALSE ALARM** (known): the job's final `ls eigenval*cg*` matches nothing (file is `eval_matrix_cg.mmat.dat`) → nonzero exit under `set -eo pipefail`. Outputs are valid. Harvest globs also failed; pull with `c.download(remote, local=None)`.
+
+### 2. NEW RESULT — collective-mode involvement DETECTS 1AKI epitopes, beats exposure
+Feature = per-residue involvement in internal modes: `involvement_i = Σ_{m=7..k} Σ_{beads∈i} |e_{mb}|²` (eigenvectors unit-normalized → total over residues = #modes). Script: `analysis/fresean_involvement.py`.
+- **Detection AUROC 0.745 (p=2e-4)** on 23 alanine-scan labels — epitopes are MORE involved in collective motion (OPPOSITE of the old Cartesian-PCA "isolation/decoupling" reading).
+- **Beats the exposure control:** SASA (relsasa_md_z) 0.671, RMSF 0.664. Involvement survives SASA control (residual 0.66) AND RMSF control (residual 0.73) — not just exposure, not just flexibility.
+- **Band sweep:** cumulative 7→k peaks at **7-21 (0.777)** on a broad 7-14..7-24 plateau (~0.75-0.78). DO NOT hard-tune the endpoint — it's a within-sample argmax on N=23. Slowest modes alone are weak (7-8: 0.62, 7-9: 0.655 — below SASA); the signal needs the mid-frequency internal band. No single mode dominates (strongest: 21, 27, 23).
+- **Graded gradient vs ΔΔG is flat** (ρ=-0.10) — detects epitope-vs-not, doesn't rank hotspot strength.
+- **CAVEAT (critical): N=1 protein.** This is 1AKI's modes vs 1AKI's labels — NOT the Dengue-E epitopeness score. Promising single-system signal, not a result. The whole point of the 1OKE run below is to test it with dense labels + real power.
+- Figures (artifacts, not committed): `fresean_involvement_1aki.png`, `involvement_vs_sasa_1aki.png`, `mode_band_sweep_1aki.png`, `fresean_mode_verification.png`. Animations: `cartoon_mode{01,04,07,08,09}.gif` (PyMOL), `fresean_modes_grid.gif` (3x3 labeled), `mode_XX.gif` (matplotlib backbone). NMWiz file for local VMD: `~/Desktop/1AKI_rep1_FRESEAN_modes.nmd` (`vmd -e <file>`).
+
+### 3. 1OKE (Dengue E) FRESEAN run — STAGED, NOT LAUNCHED
+- **Why it needs new MD:** 1OKE's existing trajectory is xtc-only (no velocities); FRESEAN needs coords+velocities in a full-precision .trr. Reuses the equilibrated box (`out/npt.gro`) + `out/topol.top` (AMBER99SB-ILDN/TIP3P — same FF as 1AKI, REQUIRED for mode comparability) with fresh Maxwell velocities.
+- **Chunked to cap storage:** 1OKE is 347,139 atoms (6,129 protein). A monolithic 20 ns velocity trr = ~8 TB transient. Chunked 1 ns × 20 with reduce-then-delete caps peak scratch at ~one full chunk (~416 GB) + accumulating protein-only (~7.4 GB/chunk → ~147 GB). Fits /scratch (105 TB free).
+- **Files (on scratch + repo `md/1OKE/apo/`):** `configs_fresean/md_fresean_chunk1.mdp` (gen_vel), `md_fresean_cont.mdp` (continuation), `md_fresean_chunked.sh` (resumable via `fresean_state.txt`, velocity-preserving reduction with gmx-check gate, trjcat at end). 1 replica.
+- **Submit:** `sbatch md/1OKE/apo/md_fresean_chunked.sh` (gpu-a100, runs on compute node — NEVER login). ~20 chunks over many hours. NOT yet submitted — awaiting Brandon's go.
+- **Tamarind ruled out:** their GROMACS only emits xtc+pdb (no velocities) → can't feed FRESEAN.
+
+### 4. Reconciliation asks from Claude Code (local session) — OWED
+- **Blocked-CV disagreement:** CC's Dengue combination under spatially-blocked CV (contiguous sequence-block holdout, since epitopes are patches) finds **B-factor is the ONLY robust increment over SASA (+0.05); DCCM's +0.007 is spatial leakage** (vanishes under blocking), vdW coef collapses to ~0.01. Honest headline: exposure + crystal rigidity ~0.66, MD features don't add under an honest split. → re-run our combination under blocked/grouped CV to confirm.
+- **1OKE apo-MD features OWED (quick, from existing 1OKE trajectory, no new MD):** (a) per-residue apo-MD RMSF, (b) trajectory-averaged apo SASA — both schema-matched to `rmsf_apomd.csv`, MD 1..394 numbering, 96/96 WT-identity check. Commit to `benchmark/features/`.
+- **Provenance gap:** commit the Dengue feature-build script (1OKE SASA + crystal B-factor live only in the Science workspace, in NO committed CSV).
 
 ---
 
@@ -17,7 +47,7 @@
 ### 2. Dengue E (1OKE) single-system analysis — the statistically honest track
 Pivot away from N=5 Tier-1 (3-17 labeled residues/system, fragile means) to the ONE well-sampled shotgun system: **96 critical / 298 non-critical residues, one system, real p-values.**
 - **Per-feature detection AUROC (raw, direction-agnostic):** SASA **0.63** (exposure control), B-factor 0.40 (rigid→critical), HB-water 0.57, vdW 0.57 (corrected), HB-intra 0.41, DCCM 0.53, bb-flex 0.51.
-- **Honest 5-fold CV combination (L2 logistic, 5 repeats, 392 residues):** SASA-only **0.628** → +B-factor **0.684** → +DCCM **0.696** (best). **Dynamics/rigidity add +0.07 on top of the exposure control.**
+- **Honest 5-fold CV combination (L2 logistic, 5 repeats, 392 residues):** SASA-only **0.628** → +B-factor **0.684** → +DCCM **0.696** → +bb-flex **0.697** (nominal best; the +bb-flex step is +0.001, within CV noise, so SASA+B-factor+DCCM is the parsimonious model). **Dynamics/rigidity add +0.07 on top of the exposure control.**
 - **B-factor is the key additive feature** (single-feature runner-up to SASA at 0.59). vdW and HB-water do NOT add on top of SASA+B-factor+DCCM (redundant with exposure).
 - **B-factor provenance caveat** (`benchmark/features/BFACTOR_1OKE_NOTE.md`): 1OKE crystal is HOLO (β-OG detergent bound, not antibody). Verified apo counterpart **1OAN** gives B-factor AUROC 0.386 ≈ holo 0.40 — signal is NOT a ligand artifact. B-factor+SASA are crystal/structural (single-frame); the rest are apo-MD (source mismatch to keep in mind).
 - Figures: `dengue_profile_raw.png` (all 7 metrics vs epitope score, raw units), `dengue_combination.png` (single-feature bars + incremental CV model).
